@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Delusion Studio Blog</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue' %}" />
+
+    <style>
+
+        div#header-container{
+            padding-top: 2%;
+            width: 90%;
+            font-size: 30px;
+            text-align: center;
+            top-bottom: 0.5cm;
+            margin-bottom: 1.2cm;
+        }
+
+        div#paging_area {
+            width: 95%;
+            padding: 6px;
+            font-size: 16px;
+            text-align: left;
+            margin-left: 1.3cm;
+        }
+
+        div#search_word1{
+            margin-top: 1cm;
+            margin-right: 4cm;
+        }
+
+        div#search_word2{
+            margin-right: 6cm;
+        }
+
+        div#filter{
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 1cm;
+        }
+
+        div#trend{
+            margin-outside: 3cm;
+        }
+
+        div#table{
+            margin: 4%;
+            font-size:	14px;
+        }
+
+        table, thead, tbody, tr {
+            border: 1px solid #ececec;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        thead>tr>th {
+            padding: 4px;
+            text-align: center;
+            background-color: antiquewhite;
+        }
+
+        tbody>tr>td {
+            padding: 6px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="header-container">
+        <a href="{%  url 'index' %}">Home</a> &nbsp; | &nbsp;
+        <a href="{%  url 'simple_list' %}">Reviews</a> &nbsp; | &nbsp;
+        <a href="{%  url 'review_trend' %}">Reviews and Stars Trend</a>  &nbsp; | &nbsp;
+        <a href="{%  url 'word_table' %}">Word Top 10</a>  &nbsp; | &nbsp;
+        <a href="{%  url 'word_2_vec' %}">Custom Word</a>
+    </div>
+
+    {%  block content %}
+
+    {% endblock %}
+
+</body>
+</html>

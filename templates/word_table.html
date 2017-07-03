@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="filter">
+         <form method=get action="/word_table">{% csrf_token %}
+                 <select name="lang" >
+                <option  value="" selected="selected">Language</option>
+                <option value="en">English</option>
+                <option value="ko">Koean</option>
+            </select>
+
+             <select name="app">
+                <option  value="" selected="selected">App</option>
+                <option value="ios">ios</option>
+                <option value="android">Android</option>
+            </select>
+
+             <select name="version" >
+                <option  value="" selected="selected">Version</option>
+                {% for ver in version%}
+                 <option value="{{ver.version}}">{{ver.version}}</option>
+                {% endfor %}
+            </select>
+
+             <select name="days">
+                <option  value="" selected="selected">Days</option>
+                <option value="7d">Last 7 Days</option>
+                <option value="14d">Last 14 Days</option>
+                <option value="1m">Last 1 Month</option>
+                <option value="3m">Last 3 Month</option>
+                <option value="6m">Last 6 Month</option>
+                <option value="1y">Last 1 Year</option>
+                <option value="custom_days">Custom</option>
+            </select>
+          <button type="submit">Search</button>
+        </form>
+    </div>
+    <div id="trend" align="center">
+            <embed width="45%" type="image/svg+xml" src= {{ word_pie|safe }} />
+            <embed width="45%" type="image/svg+xml" src= {{ word_bar|safe }} />
+    </div>
+    <div id="search_word1">
+        <form method=get action="/word_2_vec">{% csrf_token %}
+            <p align=right><input type=text name="q"  size=30  maxlength=30>
+            <input type=submit value="Search Word"></p>
+        </form>
+    </div>
+{% endblock %}
