@@ -142,7 +142,6 @@ SQLAlchemy==1.0.13
 static3==0.7.0
 statsmodels==0.6.1
 sympy==1.0
-tables==3.2.2
 texttable==0.8.7
 toolz==0.8.0
 tornado==4.4.2
