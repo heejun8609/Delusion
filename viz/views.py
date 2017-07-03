@@ -16,82 +16,6 @@ import django_tables2 as tables
 from django.utils import timezone
 
 
-
-# INDEX
-
-def index(request):
-	return render(request, 'index.html')
-
-
-# REVIEWS
-
-class DateColumn(tables.Column):
-    def render(self, value):
-        return str(value)[:10]
-
-class SimpleTable(tables.Table):
-    date = DateColumn()
-    class Meta:
-        model = Raw
-        attrs = {'class': 'paleblue'}
-        orderable = True
-
-def simple_list(request):
-    queryset = Raw.objects.all().values('app', 'version', 'title', 'content', 'date', 'rating', 'lang')
-    query = ''
-
-    if 'q' in request.GET :
-        query = request.GET['q']
-        queryset = Raw.objects.filter(content__icontains=query)
-
-    table = SimpleTable(queryset)
-    table.paginate(page=request.GET.get('page', 1), per_page=10)
-    return render(request, 'simple_list.html', {'table': table, 'query':query})
-
-
-# 차트 기본 디자인
-line_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=14,
-    label_font_size=20,
-    legend_font_size=18,
-    title_font_size=30,
-    opacity='.6',
-    opacity_hover='.9',
-    colors=['#0b9ce0'],
-    background='transparent',
-    plot_background='transparent')
-
-stack_bar_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=14,
-    label_font_size=20,
-    legend_font_size=18,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent',
-    colors=('#FF0000', '#FF540D', '#F2BF27', '#F26699', '#E80C7A'))
-
-bar_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=20,
-    legend_font_size=18,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent',
-    colors=('#FF0000', '#FF540D', '#F2BF27', '#E80C7A', '#F26699', '#000000'))
-
-pie_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=20,
-    legend_font_size=18,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent')
-
-
 # Preprocessing Function
 def YMD(x):
     return str(x)[:10]
@@ -138,58 +62,60 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all):
     text = []
     for x in text_all:
         text.append(x)
-    df_text = pd.DataFrame(text, columns=['author_id', 'text'])
+    df_text = pd.DataFrame(text, columns=['id', 'text'])
 
     row = []
     for x in res:
         row.append(x)
-    print(row)
-    df = pd.DataFrame(row, columns=['app', 'version', 'author_id', 'title', 'contents', 'date', 'rating', 'lang'])
+    df = pd.DataFrame(row, columns=['app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'])
     df['date'] = df['date'].apply(YMD)
-    df = pd.merge(df, df_text, on='author_id')
+    print('========================================df',df)
+    print('========================================text', df_text)
+    df = pd.merge(df, df_text, on='id')
+    print('========================================df_final',df)
 
     rating_1 = []
     for x in star_1:
         rating_1.append(x)
     rating_1 = pd.DataFrame(rating_1,
-                            columns=['app', 'version', 'author_id', 'title', 'contents', 'date', 'rating', 'lang'])
+                            columns=['app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'])
     rating_1['date'] = rating_1['date'].apply(YMD)
-    rating_1 = pd.merge(rating_1, df_text, on='author_id')
+    rating_1 = pd.merge(rating_1, df_text, on='id')
 
     rating_2 = []
     for x in star_2:
         rating_2.append(x)
     rating_2 = pd.DataFrame(rating_2,
-                            columns=['app', 'version', 'author_id', 'title', 'contents', 'date', 'rating', 'lang'])
+                            columns=['app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'])
     rating_2['date'] = rating_2['date'].apply(YMD)
-    rating_2 = pd.merge(rating_2, df_text, on='author_id')
+    rating_2 = pd.merge(rating_2, df_text, on='id')
 
     rating_3 = []
     for x in star_3:
         rating_3.append(x)
     rating_3 = pd.DataFrame(rating_3,
-                            columns=['app', 'version', 'author_id', 'title', 'contents', 'date', 'rating', 'lang'])
+                            columns=['app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'])
     rating_3['date'] = rating_3['date'].apply(YMD)
-    rating_3 = pd.merge(rating_3, df_text, on='author_id')
+    rating_3 = pd.merge(rating_3, df_text, on='id')
 
     rating_4 = []
     for x in star_4:
         rating_4.append(x)
     rating_4 = pd.DataFrame(rating_4,
-                            columns=['app', 'version', 'author_id', 'title', 'contents', 'date', 'rating', 'lang'])
+                            columns=['app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'])
     rating_4['date'] = rating_4['date'].apply(YMD)
-    rating_4 = pd.merge(rating_4, df_text, on='author_id')
+    rating_4 = pd.merge(rating_4, df_text, on='id')
 
     rating_5 = []
     for x in star_5:
         rating_5.append(x)
     rating_5 = pd.DataFrame(rating_5,
-                            columns=['app', 'version', 'author_id', 'title', 'contents', 'date', 'rating', 'lang'])
+                            columns=['app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'])
     rating_5['date'] = rating_5['date'].apply(YMD)
-    rating_5 = pd.merge(rating_5, df_text, on='author_id')
+    rating_5 = pd.merge(rating_5, df_text, on='id')
 
     # 일별 리뷰수, 별점수
-    reviews = pd.DataFrame(df.groupby('date')['contents'].size()).reset_index()
+    reviews = pd.DataFrame(df.groupby('date')['content'].size()).reset_index()
     reviews.columns = ['date', 'reviews']
     rat_1 = pd.DataFrame(rating_1.groupby('date')['rating'].size()).reset_index()
     rat_1.columns = ['date', 'star_1']
@@ -247,6 +173,149 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all):
             'neg_df': neg_df,
             'word_count': word_count
             }
+
+# INDEX
+
+def index(request):
+	return render(request, 'index.html')
+
+
+# REVIEWS
+
+class DateColumn(tables.Column):
+    def render(self, value):
+        return str(value)[:10]
+
+class SimpleTable(tables.Table):
+    date = DateColumn()
+    class Meta:
+        model = Raw
+        attrs = {'class': 'paleblue'}
+        orderable = True
+
+def simple_list(request):
+    queryset = Raw.objects.all().values('app', 'version', 'title', 'content', 'date', 'rating', 'lang')
+    version_list = Raw.objects.order_by().values('version').distinct()
+
+    query = ''
+    app = ''
+    version = ''
+    r_min = 0
+    r_max = 5
+    rating = (r_min, r_max)
+    lang =''
+    days1 = datetime.date.today()
+    days2 = datetime.date.today() - datetime.timedelta(days=99999)
+
+    if 'q' in request.GET :
+        query = request.GET['q']
+    if 'app' in request.GET:
+        app = request.GET['app']
+    if 'version' in request.GET:
+        version = request.GET['version']
+
+    L = []
+    if '1s' in request.GET:
+        r1 = request.GET['1s']
+        L.append(r1)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        print('n:',r_min, 'x:',r_max)
+        rating = (r_min, r_max)
+    if '2s' in request.GET:
+        r2 = request.GET['2s']
+        L.append(r2)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        rating = (r_min, r_max)
+    if '3s' in request.GET:
+        r3 = request.GET['3s']
+        L.append(r3)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        rating = (r_min, r_max)
+    if '4s' in request.GET:
+        r4 = request.GET['4s']
+        L.append(r4)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        rating = (r_min, r_max)
+    if '5s' in request.GET:
+        r5 = request.GET['5s']
+        L.append(r5)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        rating = (r_min, r_max)
+
+
+    if 'lang' in request.GET:
+        lang = request.GET['lang']
+    if 'days' in request.GET:
+        days = request.GET['days']
+        if days == '7d':
+            days2 = datetime.date.today() - datetime.timedelta(days=7)
+        elif days == '14d':
+            days2 = datetime.date.today() - datetime.timedelta(days=14)
+        elif days == '1m':
+            days2 = datetime.date.today() - datetime.timedelta(days=30)
+        elif days == '3m':
+            days2 = datetime.date.today() - datetime.timedelta(days=90)
+        elif days == '6m':
+            days2 = datetime.date.today() - datetime.timedelta(days=180)
+        elif days == '1y':
+            days2 = datetime.date.today() - datetime.timedelta(days=365)
+
+    if request.GET:
+        print('query: ',query,' app: ',app,' version: ',version,' lang: ',' rating: ',rating, ' days: ', days1, days2)
+        queryset = Raw.objects.filter(content__icontains=query, app__contains=app, version__contains=version, lang__contains=lang, rating__range=rating, date__gte=days2, date__lte=days1)
+
+    table = SimpleTable(queryset)
+    table.paginate(page=request.GET.get('page', 1), per_page=10)
+    return render(request, 'simple_list.html', {'table': table, 'query':query, 'version':version_list })
+
+
+# 차트 기본 디자인
+line_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=14,
+    label_font_size=20,
+    legend_font_size=18,
+    title_font_size=30,
+    opacity='.6',
+    opacity_hover='.9',
+    colors=['#0b9ce0'],
+    background='transparent',
+    plot_background='transparent')
+
+stack_bar_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=14,
+    label_font_size=20,
+    legend_font_size=18,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#FF0000', '#FF540D', '#F2BF27', '#F26699', '#E80C7A'))
+
+bar_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=20,
+    legend_font_size=18,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#FF0000', '#FF540D', '#F2BF27', '#E80C7A', '#F26699', '#000000'))
+
+pie_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=20,
+    legend_font_size=18,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent')
+
 
 
 def review_trend(request):
