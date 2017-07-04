@@ -1,5 +1,6 @@
 import pandas as pd
 import datetime
+import numpy as np
 
 from django.shortcuts import render
 from django.template.loader import get_template
@@ -13,7 +14,11 @@ from pygal.style import Style
 from gensim import models
 
 import django_tables2 as tables
-from django.utils import timezone
+
+# test
+def test(request):
+    template = get_template('test.html')
+    return HttpResponse(template.render())
 
 
 # Preprocessing Function
@@ -214,7 +219,6 @@ def simple_list(request):
         L.append(r1)
         r_min = min(x for x in L if x is not '')
         r_max = max(x for x in L if x is not '')
-        print('n:',r_min, 'x:',r_max)
         rating = (r_min, r_max)
     if '2s' in request.GET:
         r2 = request.GET['2s']
@@ -257,9 +261,18 @@ def simple_list(request):
             days2 = datetime.date.today() - datetime.timedelta(days=180)
         elif days == '1y':
             days2 = datetime.date.today() - datetime.timedelta(days=365)
+    if 'sta_date' in request.GET:
+        days2 = request.GET['sta_date']
+        if str(days2) == '':
+            days2 = datetime.date.today() - datetime.timedelta(days=99999)
+        days2 = pd.to_datetime(days2)
+    if 'end_date' in request.GET:
+        days1 = request.GET['end_date']
+        if str(days1) == '':
+            days1 = datetime.date.today()
+        days1 = pd.to_datetime(days1)
 
     if request.GET:
-        print('query: ',query,' app: ',app,' version: ',version,' lang: ',' rating: ',rating, ' days: ', days1, days2)
         queryset = Raw.objects.filter(content__icontains=query, app__contains=app, version__contains=version, lang__contains=lang, rating__range=rating, date__gte=days2, date__lte=days1)
 
     table = SimpleTable(queryset)
@@ -343,6 +356,16 @@ def review_trend(request):
             days2 = datetime.date.today() - datetime.timedelta(days=180)
         elif days == '1y':
             days2 = datetime.date.today() - datetime.timedelta(days=365)
+    if 'sta_date' in request.GET:
+        days2 = request.GET['sta_date']
+        if str(days2) == '':
+            days2 = datetime.date.today() - datetime.timedelta(days=99999)
+        days2 = pd.to_datetime(days2)
+    if 'end_date' in request.GET:
+        days1 = request.GET['end_date']
+        if str(days1) == '':
+            days1 = datetime.date.today()
+        days1 = pd.to_datetime(days1)
 
     res, star_1, star_2, star_3, star_4, star_5, res_all, text_all = db()
 
@@ -434,7 +457,6 @@ def word_table(request):
 
     app = ''
     version = ''
-    rating = ''
     lang =''
     days1 = datetime.date.today()
     days2 = datetime.date.today() - datetime.timedelta(days=99999)
@@ -461,59 +483,35 @@ def word_table(request):
             days2 = datetime.date.today() - datetime.timedelta(days=180)
         elif days == '1y':
             days2 = datetime.date.today() - datetime.timedelta(days=365)
+    if 'sta_date' in request.GET:
+        days2 = request.GET['sta_date']
+        if str(days2) == '':
+            days2 = datetime.date.today() - datetime.timedelta(days=99999)
+        days2 = pd.to_datetime(days2)
+    if 'end_date' in request.GET:
+        days1 = request.GET['end_date']
+        if str(days1) == '':
+            days1 = datetime.date.today()
+        days1 = pd.to_datetime(days1)
 
-    r_min = 0
-    r_max = 5
-    rating = (r_min, r_max)
-    L = []
-    if '1s' in request.GET:
-        r1 = request.GET['1s']
-        L.append(r1)
-        r_min = min(x for x in L if x is not '')
-        r_max = max(x for x in L if x is not '')
-        print('n:',r_min, 'x:',r_max)
-        rating = (r_min, r_max)
-    if '2s' in request.GET:
-        r2 = request.GET['2s']
-        L.append(r2)
-        r_min = min(x for x in L if x is not '')
-        r_max = max(x for x in L if x is not '')
-        rating = (r_min, r_max)
-    if '3s' in request.GET:
-        r3 = request.GET['3s']
-        L.append(r3)
-        r_min = min(x for x in L if x is not '')
-        r_max = max(x for x in L if x is not '')
-        rating = (r_min, r_max)
-    if '4s' in request.GET:
-        r4 = request.GET['4s']
-        L.append(r4)
-        r_min = min(x for x in L if x is not '')
-        r_max = max(x for x in L if x is not '')
-        rating = (r_min, r_max)
-    if '5s' in request.GET:
-        r5 = request.GET['5s']
-        L.append(r5)
-        r_min = min(x for x in L if x is not '')
-        r_max = max(x for x in L if x is not '')
-        rating = (r_min, r_max)
+    sort_by = 'total_count'
+    if 'rating' in request.GET:
+        sort_by = request.GET['rating']
 
     res, star_1, star_2, star_3, star_4, star_5, res_all, text_all = db()
-
+    print(res)
     if request.GET:
-        res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating__range=rating, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_2 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
-    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['word_total_count']
-    sort_by = 'total_count'
 
+    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['word_total_count']
     word_total_count = word_total_count.sort_values(by=sort_by, ascending=False)
     top_word = word_total_count[:10].reset_index().drop('index', axis=1)
-
 
     word_pie = pygal.Pie(style=pie_chart_style, inner_radius=.4, print_values=True)
     word_pie.title = 'Word Top 10(%)'
@@ -560,8 +558,7 @@ def word_2_vec(request):
 
     app = ''
     version = ''
-    rating = ''
-    lang =''
+    lang = ''
     days1 = datetime.date.today()
     days2 = datetime.date.today() - datetime.timedelta(days=99999)
 
@@ -569,8 +566,6 @@ def word_2_vec(request):
         app = request.GET['app']
     if 'version' in request.GET:
         version = request.GET['version']
-    if 'rating' in request.GET:
-        rating = request.GET['rating']
     if 'lang' in request.GET:
         lang = request.GET['lang']
     if 'days' in request.GET:
@@ -587,10 +582,22 @@ def word_2_vec(request):
             days2 = datetime.date.today() - datetime.timedelta(days=180)
         elif days == '1y':
             days2 = datetime.date.today() - datetime.timedelta(days=365)
+    if 'sta_date' in request.GET:
+        days2 = request.GET['sta_date']
+        if str(days2) == '':
+            days2 = datetime.date.today() - datetime.timedelta(days=99999)
+        days2 = pd.to_datetime(days2)
+    if 'end_date' in request.GET:
+        days1 = request.GET['end_date']
+        if str(days1) == '':
+            days1 = datetime.date.today()
+        days1 = pd.to_datetime(days1)
+
 
     res, star_1, star_2, star_3, star_4, star_5, res_all, text_all = db()
 
     if request.GET:
+        # print('app:',app, 'version:',version, 'lang:',lang, 'days:', days2, days1)
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_2 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
@@ -611,7 +618,6 @@ def word_2_vec(request):
 
     if 'q' in request.GET:
         query = request.GET['q']
-        print(query)
         search_word = query
 
     # 랭킹 상위 순위

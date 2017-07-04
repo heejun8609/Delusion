@@ -2,45 +2,51 @@
 {% block content %}
     <div id="filter">
          <form method=get action="/review_trend">{% csrf_token %}
-                 <select name="lang" >
-                <option  value="" selected="selected">All Language</option>
-                <option value="en">English</option>
-                <option value="ko">Koean</option>
-            </select>
-
-             <select name="app">
-                <option  value="" selected="selected">All App</option>
-                <option value="ios">ios</option>
-                <option value="android">Android</option>
-            </select>
-
-             <select name="version" >
-                <option  value="" selected="selected">All Version</option>
-                {% for ver in version%}
-                 <option value="{{ver.version}}">{{ver.version}}</option>
-                {% endfor %}
-            </select>
-
-{#             <select name="rating">#}
-{#                <option  value="" selected="selected">Stars</option>#}
-{#                <option value="1">1 Star</option>#}
-{#                <option value="2">2 Star</option>#}
-{#                <option value="3">3 Star</option>#}
-{#                <option value="4">4 Star</option>#}
-{#                <option value="5">5 Star</option>#}
-{#            </select>#}
-
-             <select name="days">
-                <option  value="" selected="selected">All Days</option>
-                <option value="7d">Last 7 Days</option>
-                <option value="14d">Last 14 Days</option>
-                <option value="1m">Last 30 Days</option>
-                <option value="3m">Last 90 Days</option>
-                <option value="6m">Last 180 Days</option>
-                <option value="1y">Last 365 Days</option>
-                <option value="custom_days">Custom</option>
-            </select>
-          <button type="submit">Search</button>
+            <tr>
+                <td>
+                    App:
+                 <select name="app">
+                    <option  value="" selected="selected">All</option>
+                    <option value="ios">ios</option>
+                    <option value="android">Android</option>
+                </select>
+                </td>
+                <td>
+                Version:
+                 <select name="version" >
+                    <option  value="" selected="selected">All</option>
+                    {% for ver in version%}
+                     <option value="{{ver.version}}">{{ver.version}}</option>
+                    {% endfor %}
+                </select>
+                </td>
+               <td>
+                   Language:
+                <select name="lang" >
+                    <option  value="" selected="selected">All</option>
+                    <option value="en">English</option>
+                    <option value="ko">Koean</option>
+                </select>
+               </td>
+                <td>
+                    Date:
+                     <select name="days">
+                        <option  value="" selected="selected">All</option>
+                        <option value="7d">Last 7 Days</option>
+                        <option value="14d">Last 14 Days</option>
+                        <option value="1m">Last 30 Days</option>
+                        <option value="3m">Last 90 Days</option>
+                        <option value="6m">Last 180 Days</option>
+                        <option value="1y">Last 365 Days</option>
+                    </select>
+                </td>
+                <td>
+                    Custom Date: <input name="sta_date" size="7" type="text" id="StartDate"> - <input name="end_date" size="7" type="text" id="EndDate">
+                </td>
+            </tr>
+                <td>
+                   <button type="submit">Search</button>
+                </td>
         </form>
     </div>
     <div id="trend" align="center">

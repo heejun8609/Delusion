@@ -10,6 +10,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue' %}" />
 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="/resources/demos/style.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+      <script>
+      $( function() {
+        $( "#StartDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            useCurrent: false,
+            useDefault: false
+        })
+        $( "#EndDate" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            defaultDate: null,
+            useCurrent: false,
+            useDefault: false
+        })
+      });
+
+      </script>
     <style>
 
         div#header-container{
@@ -53,12 +77,6 @@
             font-size:	14px;
         }
 
-        div#scrollbox{
-            font-size: 10px;
-            height: 60px;
-            width: 200px;
-            border: dashed;
-        }
 
         table, thead, tbody, tr {
             border: 1px solid #ececec;
@@ -85,7 +103,8 @@
         <a href="{%  url 'simple_list' %}">Reviews</a> &nbsp; | &nbsp;
         <a href="{%  url 'review_trend' %}">Reviews and Stars Trend</a>  &nbsp; | &nbsp;
         <a href="{%  url 'word_table' %}">Word Top 10</a>  &nbsp; | &nbsp;
-        <a href="{%  url 'word_2_vec' %}">Custom Word</a>
+        <a href="{%  url 'word_2_vec' %}">Custom Word</a> |
+        <a href="{%  url 'test' %}">Test</a> |
     </div>
 
     {%  block content %}

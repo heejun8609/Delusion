@@ -7,45 +7,45 @@
         <table align="center">
          <form method=get action="/simple_list">{% csrf_token %}
             <tr>
-               <td>
-                <select name="lang" >
-                    <option  value="" selected="selected">All Language</option>
-                    <option value="en">English</option>
-                    <option value="ko">Koean</option>
-                </select>
-               </td>
                 <td>
+                    App:
                  <select name="app">
-                    <option  value="" selected="selected">All App</option>
+                    <option  value="" selected="selected">All</option>
                     <option value="ios">ios</option>
                     <option value="android">Android</option>
                 </select>
                 </td>
                 <td>
+                Version:
                  <select name="version" >
-                    <option  value="" selected="selected">All Version</option>
+                    <option  value="" selected="selected">All</option>
                     {% for ver in version%}
                      <option value="{{ver.version}}">{{ver.version}}</option>
                     {% endfor %}
                 </select>
                 </td>
+               <td>
+                   Language:
+                <select name="lang" >
+                    <option  value="" selected="selected">All</option>
+                    <option value="en">English</option>
+                    <option value="ko">Koean</option>
+                </select>
+               </td>
                 <td>
+                    Date:
                      <select name="days">
-                        <option  value="" selected="selected">All Days</option>
+                        <option  value="" selected="selected">All</option>
                         <option value="7d">Last 7 Days</option>
                         <option value="14d">Last 14 Days</option>
                         <option value="1m">Last 30 Days</option>
                         <option value="3m">Last 90 Days</option>
                         <option value="6m">Last 180 Days</option>
                         <option value="1y">Last 365 Days</option>
-                        <option value="custom_days">Custom</option>
                     </select>
                 </td>
                 <td>
-                   <input type=text name="q" size=8  maxlength=15>
-                </td>
-                <td>
-                   <button type="submit">Search</button>
+                    Custom Date: <input name="sta_date" size="7" type="text" id="StartDate"> - <input name="end_date" size="7" type="text" id="EndDate">
                 </td>
             </tr>
             <tr>
@@ -69,6 +69,10 @@
                         </td>
                         <td>
                             <input name='5s' type="checkbox" value="5">5 Star</input>
+                        </td>
+                        <td>
+                           <input type=text name="q" size=8  maxlength=15>
+                           <button type="submit">Search</button>
                         </td>
                     </table>
                         </div>

@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^review_trend/?', views.review_trend, name='review_trend'),
     url(r'^word_table/?', views.word_table, name='word_table'),
     url(r'^word_2_vec/?', views.word_2_vec, name='word_2_vec'),
-    url(r'^search/?', views.simple_list, name='search')
+    url(r'^search/?', views.simple_list, name='search'),
+    url(r'^test/?', views.test, name='test'),
 
 ]
