@@ -1,38 +1,78 @@
 {% extends 'base.html' %}
 {% block content %}
     <div id="filter">
+        <table align="center">
          <form method=get action="/word_table">{% csrf_token %}
-                 <select name="lang" >
-                <option  value="" selected="selected">All Language</option>
-                <option value="en">English</option>
-                <option value="ko">Koean</option>
-            </select>
-
-             <select name="app">
-                <option  value="" selected="selected">All App</option>
-                <option value="ios">ios</option>
-                <option value="android">Android</option>
-            </select>
-
-             <select name="version" >
-                <option  value="" selected="selected">All Version</option>
-                {% for ver in version%}
-                 <option value="{{ver.version}}">{{ver.version}}</option>
-                {% endfor %}
-            </select>
-
-             <select name="days">
-                <option  value="" selected="selected">All Days</option>
-                <option value="7d">Last 7 Days</option>
-                <option value="14d">Last 14 Days</option>
-                <option value="1m">Last 1 Month</option>
-                <option value="3m">Last 3 Month</option>
-                <option value="6m">Last 6 Month</option>
-                <option value="1y">Last 1 Year</option>
-                <option value="custom_days">Custom</option>
-            </select>
-          <button type="submit">Search</button>
+            <tr>
+               <td>
+                <select name="lang" >
+                    <option  value="" selected="selected">All Language</option>
+                    <option value="en">English</option>
+                    <option value="ko">Koean</option>
+                </select>
+               </td>
+                <td>
+                 <select name="app">
+                    <option  value="" selected="selected">All App</option>
+                    <option value="ios">ios</option>
+                    <option value="android">Android</option>
+                </select>
+                </td>
+                <td>
+                 <select name="version" >
+                    <option  value="" selected="selected">All Version</option>
+                    {% for ver in version%}
+                     <option value="{{ver.version}}">{{ver.version}}</option>
+                    {% endfor %}
+                </select>
+                </td>
+                <td>
+                     <select name="days">
+                        <option  value="" selected="selected">All Days</option>
+                        <option value="7d">Last 7 Days</option>
+                        <option value="14d">Last 14 Days</option>
+                        <option value="1m">Last 30 Days</option>
+                        <option value="3m">Last 90 Days</option>
+                        <option value="6m">Last 180 Days</option>
+                        <option value="1y">Last 365 Days</option>
+                        <option value="custom_days">Custom</option>
+                    </select>
+                </td>
+                <td>
+                   <input type=text name="q" size=8  maxlength=15>
+                </td>
+                <td>
+                   <button type="submit">Search</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="4">
+                    <div id="checkbox">
+                    <table>
+                        <td>
+                            Star Rating ★
+                        </td>
+                         <td>
+                            <input name='1s' type="checkbox" value="1">1 Star</input>
+                         </td>
+                        <td>
+                            <input name='2s' type="checkbox" value="2">2 Star</input>
+                        </td>
+                        <td>
+                            <input name='3s' type="checkbox" value="3">3 Star</input>
+                        </td>
+                        <td>
+                            <input name='4s' type="checkbox" value="4">4 Star</input>
+                        </td>
+                        <td>
+                            <input name='5s' type="checkbox" value="5">5 Star</input>
+                        </td>
+                    </table>
+                        </div>
+                </td>
+            </tr>
         </form>
+        </table>
     </div>
     <div id="trend" align="center">
             <embed width="45%" type="image/svg+xml" src= {{ word_pie|safe }} />

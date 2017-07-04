@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/simple_list.html" afterPath="$PROJECT_DIR$/templates/simple_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/viz/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/models.py" afterPath="$PROJECT_DIR$/viz/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/word_table.html" afterPath="$PROJECT_DIR$/templates/word_table.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/views.py" afterPath="$PROJECT_DIR$/viz/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,14 +33,14 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="382" column="36" lean-forward="true" selection-start-line="382" selection-start-column="36" selection-end-line="382" selection-end-column="36" />
+            <state relative-caret-position="-1154">
+              <caret line="60" column="63" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="63" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1499073663220" expanded="true" signature="602:628" ph="select * Fro... app_text" />
-                <marker date="1499073663220" expanded="true" signature="719:740" ph="select * FRO... app" />
-                <marker date="1499073663220" expanded="true" signature="826:864" ph="select * FRO... app" />
-                <marker date="1499073663220" expanded="true" signature="1246:1272" ph="select * FRO... app_word" />
+                <marker date="1499139911770" expanded="true" signature="602:628" ph="select * Fro... app_text" />
+                <marker date="1499139911770" expanded="true" signature="719:740" ph="select * FRO... app" />
+                <marker date="1499139911770" expanded="true" signature="826:864" ph="select * FRO... app" />
+                <marker date="1499139911770" expanded="true" signature="1246:1272" ph="select * FRO... app_word" />
               </folding>
             </state>
           </provider>
@@ -63,8 +59,8 @@
       <file leaf-file-name="simple_list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/simple_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="55" column="33" lean-forward="false" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+            <state relative-caret-position="-247">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="78" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -95,7 +91,7 @@
       <file leaf-file-name="review_trend.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/review_trend.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-304">
+            <state relative-caret-position="-475">
               <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="43" selection-end-column="15" />
               <folding />
             </state>
@@ -115,8 +111,8 @@
       <file leaf-file-name="word_table.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/word_table.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="24" column="58" lean-forward="false" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
+            <state relative-caret-position="-494">
+              <caret line="4" column="45" lean-forward="false" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -154,21 +150,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>b</find>
-      <find>div</find>
-      <find>customer</find>
-      <find>opt</find>
-      <find>search_word</find>
-      <find>page</find>
-      <find>word_total</find>
-      <find>word_total_count = word_total_count.sort('total_count', ascending=False)</find>
       <find>&quot;q&quot; table.prefixed_order_by_field=column.order_by_alias.next %</find>
       <find>range</find>
       <find>version</find>
       <find>&lt;table</find>
       <find>{% extends 'base.html' %}</find>
       <find>{% csrf_token %}</find>
-      <find>top_word</find>
       <find>import pandas as pd</find>
       <find>['text</find>
       <find>app_version</find>
@@ -183,7 +170,16 @@
       <find>id</find>
       <find>007aaf74f66f1855f03b16013178a2d7</find>
       <find>get</find>
+      <find>to</find>
+      <find>app_word</find>
+      <find>df['text']</find>
+      <find>res_all</find>
+      <find>word_count</find>
+      <find>top_word</find>
+      <find>word_total_count</find>
+      <find>(1, 5)</find>
       <find>rating</find>
+      <find>res</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,11 +201,11 @@
         <option value="$PROJECT_DIR$/viz/admin.py" />
         <option value="$PROJECT_DIR$/templates/review_trend.html" />
         <option value="$PROJECT_DIR$/templates/word_2_vec.html" />
-        <option value="$PROJECT_DIR$/templates/word_table.html" />
         <option value="$PROJECT_DIR$/viz/models.py" />
-        <option value="$PROJECT_DIR$/viz/views.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/simple_list.html" />
+        <option value="$PROJECT_DIR$/viz/views.py" />
+        <option value="$PROJECT_DIR$/templates/word_table.html" />
       </list>
     </option>
   </component>
@@ -682,10 +678,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1499073663220" expanded="true" signature="602:628" ph="select * Fro... app_text" />
-            <marker date="1499073663220" expanded="true" signature="719:740" ph="select * FRO... app" />
-            <marker date="1499073663220" expanded="true" signature="826:864" ph="select * FRO... app" />
-            <marker date="1499073663220" expanded="true" signature="1246:1272" ph="select * FRO... app_word" />
+            <marker date="1499139911770" expanded="true" signature="602:628" ph="select * Fro... app_text" />
+            <marker date="1499139911770" expanded="true" signature="719:740" ph="select * FRO... app" />
+            <marker date="1499139911770" expanded="true" signature="826:864" ph="select * FRO... app" />
+            <marker date="1499139911770" expanded="true" signature="1246:1272" ph="select * FRO... app_word" />
           </folding>
         </state>
       </provider>
@@ -747,10 +743,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1499073663220" expanded="true" signature="602:628" ph="select * Fro... app_text" />
-            <marker date="1499073663220" expanded="true" signature="719:740" ph="select * FRO... app" />
-            <marker date="1499073663220" expanded="true" signature="826:864" ph="select * FRO... app" />
-            <marker date="1499073663220" expanded="true" signature="1246:1272" ph="select * FRO... app_word" />
+            <marker date="1499139911770" expanded="true" signature="602:628" ph="select * Fro... app_text" />
+            <marker date="1499139911770" expanded="true" signature="719:740" ph="select * FRO... app" />
+            <marker date="1499139911770" expanded="true" signature="826:864" ph="select * FRO... app" />
+            <marker date="1499139911770" expanded="true" signature="1246:1272" ph="select * FRO... app_word" />
           </folding>
         </state>
       </provider>
@@ -843,22 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/word_table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="58" lean-forward="false" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/review_trend.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-304">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="43" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/word_2_vec.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -885,14 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Delusion/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -901,24 +873,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/review_trend.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-475">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="43" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/simple_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="55" column="33" lean-forward="false" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+        <state relative-caret-position="-247">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="78" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Delusion/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/word_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-494">
+          <caret line="4" column="45" lean-forward="false" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="382" column="36" lean-forward="true" selection-start-line="382" selection-start-column="36" selection-end-line="382" selection-end-column="36" />
+        <state relative-caret-position="-1154">
+          <caret line="60" column="63" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="63" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1499073663220" expanded="true" signature="602:628" ph="select * Fro... app_text" />
-            <marker date="1499073663220" expanded="true" signature="719:740" ph="select * FRO... app" />
-            <marker date="1499073663220" expanded="true" signature="826:864" ph="select * FRO... app" />
-            <marker date="1499073663220" expanded="true" signature="1246:1272" ph="select * FRO... app_word" />
+            <marker date="1499139911770" expanded="true" signature="602:628" ph="select * Fro... app_text" />
+            <marker date="1499139911770" expanded="true" signature="719:740" ph="select * FRO... app" />
+            <marker date="1499139911770" expanded="true" signature="826:864" ph="select * FRO... app" />
+            <marker date="1499139911770" expanded="true" signature="1246:1272" ph="select * FRO... app_word" />
           </folding>
         </state>
       </provider>

@@ -69,10 +69,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all):
         row.append(x)
     df = pd.DataFrame(row, columns=['app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'])
     df['date'] = df['date'].apply(YMD)
-    print('========================================df',df)
-    print('========================================text', df_text)
     df = pd.merge(df, df_text, on='id')
-    print('========================================df_final',df)
 
     rating_1 = []
     for x in star_1:
@@ -158,16 +155,13 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all):
     word_total_count = pd.DataFrame(word_count.groupby('word')[
                                         'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'].sum().reset_index())
 
-    word_total_count = word_total_count.sort_values(by='total_count', ascending=False)
-
-    top_word = word_total_count[:10].reset_index().drop('index', axis=1)
 
     # 긍정, 부정 구분
     pos_df = pd.concat([rating_4, rating_5])
     neg_df = pd.concat([rating_1, rating_2, rating_3])
 
     return {'reviews': reviews,
-            'top_word': top_word,
+            'word_total_count': word_total_count,
             'df': df,
             'pos_df': pos_df,
             'neg_df': neg_df,
@@ -200,12 +194,7 @@ def simple_list(request):
     query = ''
     app = ''
     version = ''
-    r_min = 0
-    r_max = 5
-    rating = (r_min, r_max)
     lang =''
-    days1 = datetime.date.today()
-    days2 = datetime.date.today() - datetime.timedelta(days=99999)
 
     if 'q' in request.GET :
         query = request.GET['q']
@@ -213,7 +202,12 @@ def simple_list(request):
         app = request.GET['app']
     if 'version' in request.GET:
         version = request.GET['version']
+    if 'lang' in request.GET:
+        lang = request.GET['lang']
 
+    r_min = 0
+    r_max = 5
+    rating = (r_min, r_max)
     L = []
     if '1s' in request.GET:
         r1 = request.GET['1s']
@@ -247,9 +241,8 @@ def simple_list(request):
         r_max = max(x for x in L if x is not '')
         rating = (r_min, r_max)
 
-
-    if 'lang' in request.GET:
-        lang = request.GET['lang']
+    days1 = datetime.date.today()
+    days2 = datetime.date.today() - datetime.timedelta(days=99999)
     if 'days' in request.GET:
         days = request.GET['days']
         if days == '7d':
@@ -290,7 +283,7 @@ line_chart_style = Style(
 stack_bar_chart_style = Style(
     tooltip_font_family='googlefont:Raleway',
     major_label_font_size=14,
-    label_font_size=20,
+    label_font_size=15,
     legend_font_size=18,
     title_font_size=30,
     background='transparent',
@@ -469,17 +462,58 @@ def word_table(request):
         elif days == '1y':
             days2 = datetime.date.today() - datetime.timedelta(days=365)
 
+    r_min = 0
+    r_max = 5
+    rating = (r_min, r_max)
+    L = []
+    if '1s' in request.GET:
+        r1 = request.GET['1s']
+        L.append(r1)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        print('n:',r_min, 'x:',r_max)
+        rating = (r_min, r_max)
+    if '2s' in request.GET:
+        r2 = request.GET['2s']
+        L.append(r2)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        rating = (r_min, r_max)
+    if '3s' in request.GET:
+        r3 = request.GET['3s']
+        L.append(r3)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        rating = (r_min, r_max)
+    if '4s' in request.GET:
+        r4 = request.GET['4s']
+        L.append(r4)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        rating = (r_min, r_max)
+    if '5s' in request.GET:
+        r5 = request.GET['5s']
+        L.append(r5)
+        r_min = min(x for x in L if x is not '')
+        r_max = max(x for x in L if x is not '')
+        rating = (r_min, r_max)
+
     res, star_1, star_2, star_3, star_4, star_5, res_all, text_all = db()
 
     if request.GET:
-        res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating__range=rating, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_2 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
-    top_word = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['top_word']
+    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['word_total_count']
+    sort_by = 'total_count'
+
+    word_total_count = word_total_count.sort_values(by=sort_by, ascending=False)
+    top_word = word_total_count[:10].reset_index().drop('index', axis=1)
+
 
     word_pie = pygal.Pie(style=pie_chart_style, inner_radius=.4, print_values=True)
     word_pie.title = 'Word Top 10(%)'
@@ -564,14 +598,15 @@ def word_2_vec(request):
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
-    top_word = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['top_word']
     pos_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['pos_df']
     neg_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['neg_df']
-    top_word = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['top_word']
+    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['word_total_count']
     word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['word_count']
     df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['df']
 
     # word2vec 검색 단어
+    word_total_count = word_total_count.sort_values(by='total_count', ascending=False)
+    top_word = word_total_count[:10].reset_index().drop('index', axis=1)
     search_word = top_word['word'][0]
 
     if 'q' in request.GET:

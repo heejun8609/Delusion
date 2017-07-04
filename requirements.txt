@@ -43,7 +43,6 @@ docutils==0.12
 et-xmlfile==1.0.1
 fastcache==1.0.2
 filelock==2.0.6
-gensim==2.2.0
 gevent==1.1.2
 greenlet==0.4.10
 gunicorn==19.6.0
