@@ -1,5 +1,4 @@
 from django.db import models
-import django_tables2 as tables
 
 class Raw(models.Model):
     app = models.CharField(db_column='app', max_length=32, blank=True, null=True)

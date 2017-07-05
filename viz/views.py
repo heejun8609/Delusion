@@ -1,6 +1,5 @@
 import pandas as pd
 import datetime
-import numpy as np
 
 from django.shortcuts import render
 from django.template.loader import get_template
