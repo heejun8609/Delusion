@@ -131,17 +131,17 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all):
 
     # 리뷰수, 별점수 병합
     def mer(x, y):
-        return pd.merge(x, y, on='date')
+        return pd.merge(x, y,  how='outer', on='date')
 
     dfs = [rat_1, rat_2, rat_3, rat_4, rat_5]
     for d in dfs:
         reviews = mer(reviews, d)
-
-    # 별점 평균
+    reviews = reviews.fillna(0)
+    # 평점 평균
     reviews['star_avg'] = (reviews['star_1'] + reviews['star_2'] * 2 + reviews['star_3'] * 3 + reviews['star_4'] * 4 +
                            reviews['star_5'] * 5) / reviews['reviews']
 
-    # 별점 합계
+    # 총 평점 개수
     reviews['star_total'] = reviews['star_1'] + reviews['star_2'] + reviews['star_3'] + reviews['star_4'] + reviews[
         'star_5']
 
@@ -678,7 +678,8 @@ def word_2_vec(request):
                         legend_at_bottom=True,
                         legend_at_bottom_columns=6,
                         stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'},
-                        tooltip_border_radius=20)
+                        tooltip_border_radius=20,
+                        x_label_rotation=20)
 
     W_line.title = search_word.upper() + ' Trend'
     W_line.x_labels = map(str, search_w['date'])

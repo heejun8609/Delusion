@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Delusion.iml" afterPath="$PROJECT_DIR$/.idea/Delusion.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/views.py" afterPath="$PROJECT_DIR$/viz/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,14 +33,14 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="500" column="0" lean-forward="false" selection-start-line="500" selection-start-column="0" selection-end-line="500" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1499320882474" expanded="true" signature="674:700" ph="select * Fro... app_text" />
-                <marker date="1499320882474" expanded="true" signature="791:812" ph="select * FRO... app" />
-                <marker date="1499320882474" expanded="true" signature="898:936" ph="select * FRO... app" />
-                <marker date="1499320882474" expanded="true" signature="1318:1344" ph="select * FRO... app_word" />
+                <marker date="1499335186361" expanded="true" signature="674:700" ph="select * Fro... app_text" />
+                <marker date="1499335186361" expanded="true" signature="791:812" ph="select * FRO... app" />
+                <marker date="1499335186361" expanded="true" signature="898:936" ph="select * FRO... app" />
+                <marker date="1499335186361" expanded="true" signature="1318:1344" ph="select * FRO... app_word" />
               </folding>
             </state>
           </provider>
@@ -152,7 +149,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>['text</find>
       <find>app_version</find>
       <find>df</find>
       <find>time</find>
@@ -170,7 +166,6 @@
       <find>df['text']</find>
       <find>res_all</find>
       <find>word_count</find>
-      <find>top_word</find>
       <find>word_total_count</find>
       <find>(1, 5)</find>
       <find>rating</find>
@@ -182,6 +177,8 @@
       <find>nat</find>
       <find>width</find>
       <find>sta_date</find>
+      <find>top_word</find>
+      <find>def mer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -448,7 +445,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15251572" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40952381" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40952381" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -512,10 +509,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1499320882474" expanded="true" signature="674:700" ph="select * Fro... app_text" />
-            <marker date="1499320882474" expanded="true" signature="791:812" ph="select * FRO... app" />
-            <marker date="1499320882474" expanded="true" signature="898:936" ph="select * FRO... app" />
-            <marker date="1499320882474" expanded="true" signature="1318:1344" ph="select * FRO... app_word" />
+            <marker date="1499335186361" expanded="true" signature="674:700" ph="select * Fro... app_text" />
+            <marker date="1499335186361" expanded="true" signature="791:812" ph="select * FRO... app" />
+            <marker date="1499335186361" expanded="true" signature="898:936" ph="select * FRO... app" />
+            <marker date="1499335186361" expanded="true" signature="1318:1344" ph="select * FRO... app_word" />
           </folding>
         </state>
       </provider>
@@ -574,10 +571,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1499320882474" expanded="true" signature="674:700" ph="select * Fro... app_text" />
-            <marker date="1499320882474" expanded="true" signature="791:812" ph="select * FRO... app" />
-            <marker date="1499320882474" expanded="true" signature="898:936" ph="select * FRO... app" />
-            <marker date="1499320882474" expanded="true" signature="1318:1344" ph="select * FRO... app_word" />
+            <marker date="1499335186361" expanded="true" signature="674:700" ph="select * Fro... app_text" />
+            <marker date="1499335186361" expanded="true" signature="791:812" ph="select * FRO... app" />
+            <marker date="1499335186361" expanded="true" signature="898:936" ph="select * FRO... app" />
+            <marker date="1499335186361" expanded="true" signature="1318:1344" ph="select * FRO... app_word" />
           </folding>
         </state>
       </provider>
@@ -764,14 +761,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/viz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="500" column="0" lean-forward="false" selection-start-line="500" selection-start-column="0" selection-end-line="500" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1499320882474" expanded="true" signature="674:700" ph="select * Fro... app_text" />
-            <marker date="1499320882474" expanded="true" signature="791:812" ph="select * FRO... app" />
-            <marker date="1499320882474" expanded="true" signature="898:936" ph="select * FRO... app" />
-            <marker date="1499320882474" expanded="true" signature="1318:1344" ph="select * FRO... app_word" />
+            <marker date="1499335186361" expanded="true" signature="674:700" ph="select * Fro... app_text" />
+            <marker date="1499335186361" expanded="true" signature="791:812" ph="select * FRO... app" />
+            <marker date="1499335186361" expanded="true" signature="898:936" ph="select * FRO... app" />
+            <marker date="1499335186361" expanded="true" signature="1318:1344" ph="select * FRO... app_word" />
           </folding>
         </state>
       </provider>
