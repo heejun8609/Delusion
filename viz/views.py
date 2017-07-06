@@ -4,7 +4,7 @@ import datetime
 from django.shortcuts import render
 from django.template.loader import get_template
 from django.http.response import HttpResponse
-from viz.models import Raw, Eng
+from viz.models import Raw
 from django.db import connection
 
 import pygal
@@ -498,7 +498,6 @@ def word_table(request):
         sort_by = request.GET['rating']
 
     res, star_1, star_2, star_3, star_4, star_5, res_all, text_all = db()
-    print(res)
     if request.GET:
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
