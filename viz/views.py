@@ -6,6 +6,7 @@ from django.template.loader import get_template
 from django.http.response import HttpResponse
 from viz.models import Raw
 from django.db import connection
+from django.utils.safestring import mark_safe
 
 import pygal
 from pygal.style import Style
@@ -20,6 +21,7 @@ def test(request):
     return HttpResponse(template.render())
 
 
+
 # Preprocessing Function
 def YMD(x):
     return str(x)[:10]
@@ -27,6 +29,8 @@ def YMD(x):
 def MD(x):
     return x[5:]
 
+def mer(x, y):
+    return pd.merge(x, y,  how='outer', on='date')
 
 # DB 데이터 호출
 def db():
@@ -57,12 +61,21 @@ def db():
             curs.execute(sql)
             res_all = curs.fetchall()
 
+            sql = "select * From app.app_patch"
+            curs.execute(sql)
+            pat = curs.fetchall()
+
     finally:
         connection.close()
 
-    return res, star_1, star_2, star_3, star_4, star_5, res_all, text_all
+    return res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat
 
-def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all):
+def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat):
+    patch = []
+    for x in pat:
+        patch.append(x)
+    df_patch = pd.DataFrame(patch, columns=['date', 'patch'])
+
     text = []
     for x in text_all:
         text.append(x)
@@ -130,9 +143,6 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all):
     rat_5.columns = ['date', 'star_5']
 
     # 리뷰수, 별점수 병합
-    def mer(x, y):
-        return pd.merge(x, y,  how='outer', on='date')
-
     dfs = [rat_1, rat_2, rat_3, rat_4, rat_5]
     for d in dfs:
         reviews = mer(reviews, d)
@@ -169,14 +179,170 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all):
             'df': df,
             'pos_df': pos_df,
             'neg_df': neg_df,
-            'word_count': word_count
+            'word_count': word_count,
+            'df_patch': df_patch
             }
+
+
+
+# 차트 기본 디자인
+line_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=18,
+    title_font_size=30,
+    opacity='.6',
+    opacity_hover='.9',
+    colors=['#0b9ce0'],
+    background='transparent',
+    plot_background='transparent')
+
+stack_bar_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=18,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#FF0000', '#FF540D', '#F2BF27', '#F26699', '#E80C7A'))
+
+bar_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=18,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#FF0000', '#FF540D', '#F2BF27', '#E80C7A', '#F26699', '#000000'))
+
+star_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=18,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#FF0000', '#F2BF27', '#000000'))
+
+pie_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=18,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent')
 
 # INDEX
 
 def index(request):
 	return render(request, 'index.html')
 
+# Main info
+def main_info(request):
+    template = get_template('main_info.html')
+    version_list = Raw.objects.order_by().values('version').distinct()
+    app = ''
+    version = ''
+    rating = ''
+    lang =''
+    days1 = datetime.date.today()
+    days2 = datetime.date.today() - datetime.timedelta(days=99999)
+
+    if 'app' in request.GET:
+        app = request.GET['app']
+    if 'version' in request.GET:
+        version = request.GET['version']
+    if 'rating' in request.GET:
+        rating = request.GET['rating']
+    if 'lang' in request.GET:
+        lang = request.GET['lang']
+    if 'days' in request.GET:
+        days = request.GET['days']
+        if days == '7d':
+            days2 = datetime.date.today() - datetime.timedelta(days=7)
+        elif days == '14d':
+            days2 = datetime.date.today() - datetime.timedelta(days=14)
+        elif days == '1m':
+            days2 = datetime.date.today() - datetime.timedelta(days=30)
+        elif days == '3m':
+            days2 = datetime.date.today() - datetime.timedelta(days=90)
+        elif days == '6m':
+            days2 = datetime.date.today() - datetime.timedelta(days=180)
+        elif days == '1y':
+            days2 = datetime.date.today() - datetime.timedelta(days=365)
+    if 'sta_date' in request.GET:
+        days2 = request.GET['sta_date']
+        if str(days2) == '':
+            days2 = datetime.date.today() - datetime.timedelta(days=99999)
+        days2 = pd.to_datetime(days2)
+    if 'end_date' in request.GET:
+        days1 = request.GET['end_date']
+        if str(days1) == '':
+            days1 = datetime.date.today()
+        days1 = pd.to_datetime(days1)
+
+    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
+
+    if request.GET:
+        res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        star_2 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+
+    reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['reviews']
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
+    df_patch['date'] = df_patch['date'].apply(MD)
+    reviews = mer(reviews, df_patch)
+    reviews = reviews.fillna(-5)
+
+
+    # Reviews 데이터
+    R_line = pygal.Line(style=line_chart_style,
+                        dots_size=5,
+                        max_scale=1,
+                        show_legend=False,
+                        tooltip_border_radius=20,
+                        show_minor_x_labels=False,
+                        truncate_label=-1)
+    R_line.title = 'Reviews Volume'
+    R_line.x_labels = map(str, reviews['date'])
+    R_line.x_labels_major = [reviews['date'].values[0],
+                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
+                             reviews['date'].values[-1]]
+    R_line.add('Reviws Timeline', reviews['reviews'], stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'})
+    R_line.add('Patch', reviews['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
+    R_line = R_line.render_data_uri()
+
+    # Ratings 데이터(%)
+    SR_line = pygal.Line(style=star_chart_style,
+                        dots_size=5,
+                        max_scale=1,
+                        legend_at_bottom=True,
+                        legend_at_bottom_columns=4,
+                        tooltip_border_radius=20,
+                        stroke_style={'width': 2, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
+                        show_minor_x_labels=False,
+                        truncate_label=-1)
+
+    SR_line.title = 'Stars Rating (%)'
+    SR_line.x_labels = map(str, reviews['date'])
+    SR_line.x_labels_major = [reviews['date'].values[0],
+                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
+                             reviews['date'].values[-1]]
+    SR_line.add('star 1', round(reviews['star_1'] / reviews['star_total'] * 100, 1))
+    SR_line.add('star 2', round(reviews['star_2'] / reviews['star_total'] * 100, 1))
+    SR_line.add('Patch', reviews['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
+
+    SR_line = SR_line.render_data_uri()
+
+    return HttpResponse(template.render({'R_line': R_line, 'SR_line': SR_line, 'version':version_list}))
 
 # REVIEWS
 
@@ -189,7 +355,6 @@ class SimpleTable(tables.Table):
     class Meta:
         model = Raw
         attrs = {'class': 'paleblue'}
-        orderable = True
 
 def simple_list(request):
     queryset = Raw.objects.all().values('app', 'version', 'title', 'content', 'date', 'rating', 'lang')
@@ -272,55 +437,11 @@ def simple_list(request):
         days1 = pd.to_datetime(days1)
 
     if request.GET:
-        queryset = Raw.objects.filter(content__icontains=query, app__contains=app, version__contains=version, lang__contains=lang, rating__range=rating, date__gte=days2, date__lte=days1)
+        queryset = Raw.objects.filter(content__icontains=query, app__contains=app, version__contains=version, lang__contains=lang, rating__range=rating, date__gte=days2, date__lte=days1).values('app', 'version', 'title', 'content', 'date', 'rating', 'lang')
 
-    table = SimpleTable(queryset)
+    table = SimpleTable(queryset.order_by('-date'))
     table.paginate(page=request.GET.get('page', 1), per_page=10)
     return render(request, 'simple_list.html', {'table': table, 'query':query, 'version':version_list })
-
-
-# 차트 기본 디자인
-line_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=14,
-    label_font_size=20,
-    legend_font_size=18,
-    title_font_size=30,
-    opacity='.6',
-    opacity_hover='.9',
-    colors=['#0b9ce0'],
-    background='transparent',
-    plot_background='transparent')
-
-stack_bar_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=14,
-    label_font_size=15,
-    legend_font_size=18,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent',
-    colors=('#FF0000', '#FF540D', '#F2BF27', '#F26699', '#E80C7A'))
-
-bar_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=20,
-    legend_font_size=18,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent',
-    colors=('#FF0000', '#FF540D', '#F2BF27', '#E80C7A', '#F26699', '#000000'))
-
-pie_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=20,
-    legend_font_size=18,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent')
-
 
 
 def review_trend(request):
@@ -366,7 +487,7 @@ def review_trend(request):
             days1 = datetime.date.today()
         days1 = pd.to_datetime(days1)
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all = db()
+    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
 
     if request.GET:
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
@@ -376,7 +497,11 @@ def review_trend(request):
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
-    reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['reviews']
+    reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['reviews']
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
+    df_patch['date'] = df_patch['date'].apply(MD)
+    reviews = mer(reviews, df_patch)
+    reviews = reviews.fillna(-5)
 
 
     # Reviews 데이터
@@ -384,11 +509,16 @@ def review_trend(request):
                         dots_size=5,
                         max_scale=1,
                         show_legend=False,
-                        tooltip_border_radius=20)
+                        tooltip_border_radius=20,
+                        show_minor_x_labels=False,
+                        truncate_label=-1)
     R_line.title = 'Reviews Volume'
     R_line.x_labels = map(str, reviews['date'])
-    R_line.add('Reviws Timeline', reviews['reviews'],
-               stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'})
+    R_line.x_labels_major = [reviews['date'].values[0],
+                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
+                             reviews['date'].values[-1]]
+    R_line.add('Reviws Timeline', reviews['reviews'], stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'})
+    R_line.add('Patch', reviews['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
     R_line = R_line.render_data_uri()
 
     # Average Ratings 데이터
@@ -398,10 +528,15 @@ def review_trend(request):
                         max_scale=1,
                         range=(1, 5),
                         show_legend=False,
-                        tooltip_border_radius=20)
+                        tooltip_border_radius=20,
+                        show_minor_x_labels=False,
+                        truncate_label=-1)
 
     S_line.title = 'Average Stars'
     S_line.x_labels = map(str, reviews['date'])
+    S_line.x_labels_major = [reviews['date'].values[0],
+                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
+                             reviews['date'].values[-1]]
     S_line.add('Stars', round(reviews['star_avg'], 1))
     S_line = S_line.render_data_uri()
 
@@ -409,20 +544,24 @@ def review_trend(request):
     SC_line = pygal.Line(style=bar_chart_style,
                          dots_size=5,
                          max_scale=1,
-                         legend_box_size=18,
                          legend_at_bottom=True,
-                         legend_at_bottom_columns=5,
+                         legend_at_bottom_columns=6,
                          stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'},
-                         tooltip_border_radius=20)
+                         tooltip_border_radius=20,
+                         show_minor_x_labels=False,
+                         truncate_label=-1)
 
     SC_line.title = 'Stars Timeline'
     SC_line.x_labels = map(str, reviews['date'])
+    SC_line.x_labels_major = [reviews['date'].values[0],
+                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
+                             reviews['date'].values[-1]]
     SC_line.add('star 1', reviews['star_1'])
     SC_line.add('star 2', reviews['star_2'])
     SC_line.add('star 3', reviews['star_3'])
     SC_line.add('star 4', reviews['star_4'])
     SC_line.add('star 5', reviews['star_5'])
-
+    SC_line.add('Patch', reviews['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
     SC_line = SC_line.render_data_uri()
 
     # Ratings 데이터(%)
@@ -433,12 +572,16 @@ def review_trend(request):
                               legend_at_bottom_columns=5,
                               max_scale=1,
                               inverse_y_axis=True,
-                              legend_box_size=18,
                               value_formatter=lambda x: '{}%'.format(x),
-                              tooltip_border_radius=20)
+                              tooltip_border_radius=20,
+                              show_minor_x_labels=False,
+                              truncate_label=-1)
 
     SR_bar.title = 'Stars Rating (%)'
     SR_bar.x_labels = map(str, reviews['date'])
+    SR_bar.x_labels_major = [reviews['date'].values[0],
+                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
+                             reviews['date'].values[-1]]
     SR_bar.add('star 1', round(reviews['star_1'] / reviews['star_total'] * 100, 1))
     SR_bar.add('star 2', round(reviews['star_2'] / reviews['star_total'] * 100, 1))
     SR_bar.add('star 3', round(reviews['star_3'] / reviews['star_total'] * 100, 1))
@@ -497,7 +640,7 @@ def word_table(request):
     if 'rating' in request.GET:
         sort_by = request.GET['rating']
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all = db()
+    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
     if request.GET:
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
@@ -507,7 +650,7 @@ def word_table(request):
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
 
-    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['word_total_count']
+    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_total_count']
     word_total_count = word_total_count.sort_values(by=sort_by, ascending=False)
     top_word = word_total_count[:10].reset_index().drop('index', axis=1)
 
@@ -533,7 +676,6 @@ def word_table(request):
                                 legend_at_bottom_columns=5,
                                 max_scale=1,
                                 inverse_y_axis=True,
-                                legend_box_size=18,
                                 value_formatter=lambda x: '{}%'.format(x),
                                 tooltip_border_radius=20,
                                 x_label_rotation=20)
@@ -592,7 +734,7 @@ def word_2_vec(request):
         days1 = pd.to_datetime(days1)
 
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all = db()
+    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
 
     if request.GET:
         # print('app:',app, 'version:',version, 'lang:',lang, 'days:', days2, days1)
@@ -603,11 +745,12 @@ def word_2_vec(request):
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
-    pos_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['pos_df']
-    neg_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['neg_df']
-    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['word_total_count']
-    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['word_count']
-    df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all)['df']
+    pos_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['pos_df']
+    neg_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['neg_df']
+    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_total_count']
+    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_count']
+    df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df']
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
 
     # word2vec 검색 단어
     word_total_count = word_total_count.sort_values(by='total_count', ascending=False)
@@ -670,25 +813,29 @@ def word_2_vec(request):
     # 검색단어 Count
     search_w = word_count[word_count['word'] == search_word]
     search_w['date'] = search_w['date'].apply(MD)
+    df_patch['date'] = df_patch['date'].apply(MD)
+    search_w = mer(search_w, df_patch)
+    search_w = search_w.fillna(-5)
 
     W_line = pygal.Line(style=bar_chart_style,
                         dots_size=5,
                         max_scale=1,
-                        legend_box_size=18,
                         legend_at_bottom=True,
                         legend_at_bottom_columns=6,
-                        stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'},
                         tooltip_border_radius=20,
-                        x_label_rotation=20)
+                        stroke_style={'width': 2, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
+                        show_minor_x_labels=False,
+                        truncate_label=-1)
 
     W_line.title = search_word.upper() + ' Trend'
     W_line.x_labels = map(str, search_w['date'])
+    W_line.x_labels_major = [search_w['date'].values[0],search_w['date'].values[int((len(search_w['date'])-1)/2)], search_w['date'].values[-1]]
     W_line.add('star 1', search_w['r1_count'])
     W_line.add('star 2', search_w['r2_count'])
     W_line.add('star 3', search_w['r3_count'])
     W_line.add('star 4', search_w['r4_count'])
     W_line.add('star 5', search_w['r5_count'])
-    W_line.add('Total', search_w['total_count'])
+    W_line.add('Patch', search_w['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
 
     W_line = W_line.render_data_uri()
 

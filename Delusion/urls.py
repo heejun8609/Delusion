@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^word_table/?', views.word_table, name='word_table'),
     url(r'^word_2_vec/?', views.word_2_vec, name='word_2_vec'),
     url(r'^search/?', views.simple_list, name='search'),
+    url(r'^main_info/?', views.main_info, name='main_info'),
     url(r'^test/?', views.test, name='test'),
 
 ]

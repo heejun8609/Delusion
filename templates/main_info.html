@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="filter">
+         <form method=get action="/review_trend">{% csrf_token %}
+            <tr>
+                <td>
+                    App:
+                 <select name="app">
+                    <option  value="" selected="selected">All</option>
+                    <option value="ios">ios</option>
+                    <option value="android">Android</option>
+                </select>
+                </td>
+                <td>
+                Version:
+                 <select name="version" >
+                    <option  value="" selected="selected">All</option>
+                    {% for ver in version%}
+                     <option value="{{ver.version}}">{{ver.version}}</option>
+                    {% endfor %}
+                </select>
+                </td>
+               <td>
+                   Language:
+                <select name="lang" >
+                    <option  value="" selected="selected">All</option>
+                    <option value="en">English</option>
+                    <option value="ko">Koean</option>
+                </select>
+               </td>
+                <td>
+                    Date:
+                     <select name="days">
+                        <option  value="" selected="selected">All</option>
+                        <option value="7d">Last 7 Days</option>
+                        <option value="14d">Last 14 Days</option>
+                        <option value="1m">Last 30 Days</option>
+                        <option value="3m">Last 90 Days</option>
+                        <option value="6m">Last 180 Days</option>
+                        <option value="1y">Last 365 Days</option>
+                    </select>
+                </td>
+                <td>
+                    Custom Date: <input name="sta_date" size="7" type="text" id="StartDate"> - <input name="end_date" size="7" type="text" id="EndDate">
+                </td>
+            </tr>
+                <td>
+                   <button type="submit">Search</button>
+                </td>
+        </form>
+    </div>
+    <div id="trend" align="center">
+            <embed width="30%" type="image/svg+xml" src= {{ R_line|safe }} />
+            <embed width="30%" type="image/svg+xml" src= {{ SR_line|safe }} />
+    </div>
+    <div id="trend" align="center">>
+    </div>
+
+{% endblock %}
