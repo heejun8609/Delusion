@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<table align="center">
+     <form method=get action="/card_trend">{% csrf_token %}
+         <tr>
+            <td>
+                App:
+             <select name="app">
+                <option  value="" selected="selected">All</option>
+                <option value="ios">ios</option>
+                <option value="android">Android</option>
+            </select>
+            </td>
+            <td>
+            Version:
+             <select name="version" >
+                <option  value="" selected="selected">All</option>
+                {% for ver in version%}
+                 <option value="{{ver.version}}">{{ver.version}}</option>
+                {% endfor %}
+            </select>
+            </td>
+           <td>
+               Language:
+            <select name="lang" >
+                <option  value="" selected="selected">All</option>
+                <option value="en">English</option>
+                <option value="ko">Koean</option>
+            </select>
+           </td>
+            <td>
+                Date:
+                 <select name="days">
+                    <option  value="" selected="selected">All</option>
+                    <option value="7d">Last 7 Days</option>
+                    <option value="14d">Last 14 Days</option>
+                    <option value="1m">Last 30 Days</option>
+                    <option value="3m">Last 90 Days</option>
+                    <option value="6m">Last 180 Days</option>
+                    <option value="1y">Last 365 Days</option>
+                </select>
+            </td>
+            <td>
+                Custom Date: <input name="sta_date" size="7" type="text" id="StartDate"> - <input name="end_date" size="7" type="text" id="EndDate">
+            </td>
+             <td>
+                   <button type="submit">Search</button>
+            </td>
+         </tr>
+          <tr>
+             <td colspan="10">
+             Card:
+             <select name="card" >
+                <option  value="" selected="selected">--- < Select > ---</option>
+                {% for card in alram_card%}
+                 <option value="{{card}}">{{card|title}}</option>
+                {% endfor %}
+            </select>
+             </td>
+         </tr>
+        </form>
+        <tr>
+            <td colspan="10">
+            {% if card_gp %}
+                <embed width="80%" type="image/svg+xml" src= {{ card_gp|safe }} />
+            {% endif %}
+            </td>
+        </tr>
+</table>
+
+{% endblock %}

@@ -68,9 +68,6 @@
             margin-bottom: 0.5cm;
         }
 
-        div#trend{
-            margin-outside: 3cm;
-        }
 
         div#table{
             margin: 3%;
@@ -99,12 +96,15 @@
 <body>
     <div id="header-container">
         <a href="{%  url 'index' %}">Home</a> &nbsp; | &nbsp;
-        <a href="{%  url 'main_info' %}">Main Info</a> &nbsp; | &nbsp;
         <a href="{%  url 'simple_list' %}">Reviews</a> &nbsp; | &nbsp;
-        <a href="{%  url 'review_trend' %}">Reviews and Stars Trend</a>  &nbsp; | &nbsp;
-        <a href="{%  url 'word_table' %}">Word Top 10</a>  &nbsp; | &nbsp;
-        <a href="{%  url 'word_2_vec' %}">Custom Word</a>
-{#        <a href="{%  url 'test' %}">Test</a> |#}
+        <a href="{%  url 'review_star_trend' %}">Reviews and Stars Trend</a> &nbsp; |&nbsp;
+        <a href="{%  url 'card_trend' %}">Card Trend</a> &nbsp; |&nbsp;
+        <a href="{%  url 'issue_trend' %}">Issue Trend</a> &nbsp; |&nbsp;
+        <a href="{%  url 'word_2_vec' %}">Custom Word</a> &nbsp; | &nbsp;
+        <!--<a href="{%  url 'review_trend' %}">Total Trend</a>  &nbsp; | &nbsp;-->
+        <!--<a href="{%  url 'word_table' %}">Word Top 10</a>  &nbsp; | &nbsp;-->
+
+
     </div>
 
     {%  block content %}
