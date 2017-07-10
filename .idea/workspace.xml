@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/card_trend.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/issue_trend.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/review_star_trend.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Delusion/urls.py" afterPath="$PROJECT_DIR$/Delusion/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/main_info.html" afterPath="$PROJECT_DIR$/templates/main_info.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/issue_trend.html" afterPath="$PROJECT_DIR$/templates/issue_trend.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/review_star_trend.html" afterPath="$PROJECT_DIR$/templates/review_star_trend.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/views.py" afterPath="$PROJECT_DIR$/viz/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +34,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="608" column="35" lean-forward="false" selection-start-line="608" selection-start-column="35" selection-end-line="608" selection-end-column="35" />
+            <state relative-caret-position="-338">
+              <caret line="496" column="123" lean-forward="false" selection-start-line="496" selection-start-column="123" selection-end-line="496" selection-end-column="123" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -88,8 +83,8 @@
       <file leaf-file-name="review_star_trend.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/review_star_trend.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="29" column="20" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="56" selection-end-column="14" />
+            <state relative-caret-position="698">
+              <caret line="52" column="28" lean-forward="false" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -142,8 +137,8 @@
       <file leaf-file-name="issue_trend.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/issue_trend.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="53" column="15" lean-forward="false" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
+            <state relative-caret-position="641">
+              <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -162,7 +157,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>search_word</find>
       <find>reviews['date'].values[int((len(reviews['date']) - 1) * 3 / 4)],</find>
       <find>['date'].values</find>
       <find>legend_box</find>
@@ -191,6 +185,7 @@
       <find>bar</find>
       <find>bar_chart_</find>
       <find>r1_count</find>
+      <find>stacked</find>
       <find>if</find>
     </findStrings>
   </component>
@@ -221,11 +216,11 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/main_info.html" />
         <option value="$PROJECT_DIR$/templates/reveiw_star_trend.html" />
-        <option value="$PROJECT_DIR$/templates/review_star_trend.html" />
         <option value="$PROJECT_DIR$/Delusion/urls.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/issue_trend.html" />
         <option value="$PROJECT_DIR$/templates/card_trend.html" />
+        <option value="$PROJECT_DIR$/templates/review_star_trend.html" />
+        <option value="$PROJECT_DIR$/templates/issue_trend.html" />
         <option value="$PROJECT_DIR$/viz/views.py" />
       </list>
     </option>
@@ -543,7 +538,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1924" height="1056" extended-state="0" />
+    <frame x="-8" y="0" width="1924" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15251572" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -576,13 +571,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/viz/views.py</url>
-          <line>1183</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
@@ -833,14 +821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/review_star_trend.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="29" column="20" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="56" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/word_table.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -859,10 +839,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/review_star_trend.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="698">
+          <caret line="52" column="28" lean-forward="false" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/issue_trend.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="53" column="15" lean-forward="false" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
+        <state relative-caret-position="641">
+          <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -877,8 +865,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/viz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="608" column="35" lean-forward="false" selection-start-line="608" selection-start-column="35" selection-end-line="608" selection-end-column="35" />
+        <state relative-caret-position="-338">
+          <caret line="496" column="123" lean-forward="false" selection-start-line="496" selection-start-column="123" selection-end-line="496" selection-end-column="123" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
