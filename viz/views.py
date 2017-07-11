@@ -4,7 +4,7 @@ import datetime
 from django.shortcuts import render
 from django.template.loader import get_template
 from django.http.response import HttpResponse
-from viz.models import Raw
+from viz.models import Raw, Word_count
 from django.db import connection
 
 import pygal
@@ -74,6 +74,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
     for x in pat:
         patch.append(x)
     df_patch = pd.DataFrame(patch, columns=['date', 'patch'])
+    df_patch['date'] = df_patch['date'].apply(YMD)
 
     text = []
     for x in text_all:
@@ -127,6 +128,10 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
     rating_5['date'] = rating_5['date'].apply(YMD)
     rating_5 = pd.merge(rating_5, df_text, on='id')
 
+    # 긍정, 부정 구분
+    pos_df = pd.concat([rating_4, rating_5])
+    neg_df = pd.concat([rating_1, rating_2, rating_3])
+
     # 일별 리뷰수, 별점수
     reviews = pd.DataFrame(df.groupby('date')['content'].size()).reset_index()
     reviews.columns = ['date', 'reviews']
@@ -154,9 +159,6 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
     reviews['star_total'] = reviews['star_1'] + reviews['star_2'] + reviews['star_3'] + reviews['star_4'] + reviews[
         'star_5']
 
-    # 연도 제거
-    reviews['date'] = reviews['date'].apply(MD)
-
     # Word Count and Top Word
     word_list = []
     for x in res_all:
@@ -164,14 +166,11 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
     word_count = pd.DataFrame(word_list,
                               columns=['date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count',
                                        'r4_count', 'r5_count'])
+    word_count['date'] = word_count['date'].apply(YMD)
 
     word_total_count = pd.DataFrame(word_count.groupby('word')[
                                         'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'].sum().reset_index())
 
-
-    # 긍정, 부정 구분
-    pos_df = pd.concat([rating_4, rating_5])
-    neg_df = pd.concat([rating_1, rating_2, rating_3])
 
     return {'reviews': reviews,
             'word_total_count': word_total_count,
@@ -395,7 +394,7 @@ def review_star_trend(request):
 
     reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['reviews']
     df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
-    df_patch['date'] = df_patch['date'].apply(MD)
+    # df_patch['date'] = df_patch['date'].apply(MD)
     reviews = mer_date(reviews, df_patch)
     reviews = reviews.fillna(-reviews['reviews'].max()/20)
 
@@ -494,13 +493,14 @@ def card_trend(request):
     res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
 
     if request.GET:
-        print('app__contains=',app, 'version__contains=',version, 'lang__contains=',lang, 'date__gte=',days2, 'date__lte=',days1)
+        # print('app__contains=',app, 'version__contains=',version, 'lang__contains=',lang, 'date__gte=',days2, 'date__lte=',days1)
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_2 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        res_all = list(Word_count.objects.filter(date__gte=days2, date__lte=days1).values('date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'))
 
     df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
     # df_patch['date'] = df_patch['date'].apply(MD)
@@ -530,19 +530,20 @@ def card_trend(request):
         card_dic[cn] = pd.merge(card_dic[cn], ini[['date', 'low_total']], on='date', how='outer')
         card_dic[cn]['low_card_ratio'] = round(card_dic[cn]['low_rank'] / card_dic[cn]['low_total'] * 100, 1)
         card_dic[cn]['word'] = card_dic[cn]['word'].fillna(cn)
+        card_dic[cn]['date_word'] = card_dic[cn]['date_word'].fillna(str(card_dic[cn]['date']) + ' 00:00:00')
         card_dic[cn] = card_dic[cn].fillna(0)
         card_dic[cn] = mer_date(card_dic[cn], df_patch)
         card_dic[cn] = card_dic[cn].fillna(-(card_dic[cn]['low_card_ratio'].max())/20).sort_values(by='date')
 
     alram_card = []
-
+    danger_card_ratio = {}
     for card in card_dic:
+        danger_card_ratio[card] = float(card_dic[card][card_dic[card]['date'] == '2017-07-02']['low_card_ratio'])
         # if card_dic[card][card_dic[card]['date'] == str(datetime.datetime.now())[5:10]]['low_card_ratio']
         if (card_dic[card][card_dic[card]['date'] == '2017-07-02']['low_card_ratio'] >= 50).bool():
             alram_card.append(card)
 
     gp_dic = {}
-
     for card in alram_card:
 
         C_line = pygal.Line(style=star_chart_style,
@@ -569,7 +570,8 @@ def card_trend(request):
 
         gp_dic[card] = C_line
 
-    card_gp = None
+    card = max(danger_card_ratio, key=danger_card_ratio.get)
+    card_gp = gp_dic[card]
 
     if 'card' in request.GET:
         card = request.GET['card']
@@ -632,6 +634,7 @@ def issue_trend(request):
         star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+        res_all = list(Word_count.objects.filter(date__gte=days2, date__lte=days1).values('date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'))
 
     df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
     # df_patch['date'] = df_patch['date'].apply(MD)
@@ -648,7 +651,6 @@ def issue_trend(request):
     for issue in issue_dic:
         issue_dic[issue]['low_rank'] = issue_dic[issue]['r1_count'] + issue_dic[issue]['r2_count']
 
-
     bug_error = mer_date(issue_dic['bug'][['date', 'low_rank']], issue_dic['error'][['date', 'low_rank']])
     bug_error = bug_error.fillna(0)
     bug_error['BE_total'] = bug_error.sum(axis=1)
@@ -656,7 +658,10 @@ def issue_trend(request):
                                pd.DataFrame(bug_error[['date', 'BE_total']]), on='date', how='outer')
     total_bug_error = total_bug_error.fillna(0)
     total_bug_error = mer_date(total_bug_error, df_patch)
-    total_bug_error = total_bug_error.fillna(-round(total_bug_error['BE_total']/total_bug_error['total_count']*100, 2).max()/20).sort_values(by='date')
+    total_bug_error['patch'] = total_bug_error['patch'].fillna(
+        -round(total_bug_error['BE_total'] / total_bug_error['total_count'] * 100, 2).max() / 20)
+    total_bug_error = total_bug_error.fillna(0)
+    total_bug_error = total_bug_error.sort_values(by='date')
 
     balance = mer_date(issue_dic['balanc'][['date', 'low_rank']], issue_dic['unbalanc'][['date', 'low_rank']])
     balance = balance.fillna(0)
@@ -665,7 +670,10 @@ def issue_trend(request):
                                pd.DataFrame(balance[['date', 'B_total']]), on='date', how='outer')
     total_balance = total_balance.fillna(0)
     total_balance = mer_date(total_balance, df_patch)
-    total_balance = total_balance.fillna(-round(total_balance['B_total']/total_balance['total_count']*100, 2).max()/20).sort_values(by='date')
+    total_balance['patch'] = total_balance['patch'].fillna(
+        -round(total_balance['B_total'] / total_balance['total_count'] * 100, 2).max() / 20)
+    total_balance = total_balance.fillna(0)
+    total_balance = total_balance.sort_values(by='date')
 
     fair = mer_date(issue_dic['fair'][['date', 'low_rank']], issue_dic['unfair'][['date', 'low_rank']])
     fair = fair.fillna(0)
@@ -674,7 +682,10 @@ def issue_trend(request):
                           pd.DataFrame(fair[['date', 'F_total']]), on='date', how='outer')
     total_fair = total_fair.fillna(0)
     total_fair = mer_date(total_fair, df_patch)
-    total_fair = total_fair.fillna(-round(total_fair['F_total'] / total_fair['total_count'] * 100, 2).max() / 20).sort_values(by='date')
+    total_fair['patch'] = total_fair['patch'].fillna(
+        -round(total_fair['F_total'] / total_fair['total_count'] * 100, 2).max() / 20)
+    total_fair = total_fair.fillna(0)
+    total_fair = total_fair.sort_values(by='date')
 
     money = mer_date(issue_dic['money'][['date', 'low_rank']], issue_dic['elixir'][['date', 'low_rank']])
     money = money.fillna(0)
@@ -683,8 +694,10 @@ def issue_trend(request):
                            pd.DataFrame(money[['date', 'M_total']]), on='date', how='outer')
     total_money = total_money.fillna(0)
     total_money = mer_date(total_money, df_patch)
-    total_money = total_money.fillna(
-        -round(total_money['M_total'] / total_money['total_count'] * 100, 2).max() / 20).sort_values(by='date')
+    total_money['patch'] = total_money['patch'].fillna(
+        -round(total_money['M_total'] / total_money['total_count'] * 100, 2).max() / 20)
+    total_money = total_money.fillna(0)
+    total_money = total_money.sort_values(by='date')
 
     match = mer_date(issue_dic['match'][['date', 'low_rank']], issue_dic['matchmak'][['date', 'low_rank']])
     match = match.fillna(0)
@@ -693,8 +706,10 @@ def issue_trend(request):
                            pd.DataFrame(match[['date', 'M_total']]), on='date', how='outer')
     total_match = total_match.fillna(0)
     total_match = mer_date(total_match, df_patch)
-    total_match = total_match.fillna(
-        -round(total_match['M_total'] / total_match['total_count'] * 100, 2).max() / 20).sort_values(by='date')
+    total_match['patch'] = total_match['patch'].fillna(
+        -round(total_match['M_total'] / total_match['total_count'] * 100, 2).max() / 20)
+    total_match = total_match.fillna(0)
+    total_match = total_match.sort_values(by='date')
 
     # Line 그래프
     L_line = pygal.Line(style=issue_chart_style,
@@ -975,7 +990,7 @@ def review_trend(request):
 
     reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['reviews']
     df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
-    df_patch['date'] = df_patch['date'].apply(MD)
+    # df_patch['date'] = df_patch['date'].apply(MD)
     reviews = mer_date(reviews, df_patch)
     reviews = reviews.fillna(-5)
 

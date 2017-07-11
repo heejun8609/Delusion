@@ -6,9 +6,10 @@
 
     <title>Delusion Studio Blog</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -35,6 +36,26 @@
 
       </script>
     <style>
+
+        table, thead, tbody, tr {
+            border: 1px solid #ececec;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        thead>tr>th {
+            padding: 4px;
+            text-align: center;
+            background-color: antiquewhite;
+        }
+
+        tbody>tr>td {
+            padding: 6px;
+        }
+
+        body {
+        background-size: 90%;
+        }
 
         div#header-container{
             padding-top: 2%;
@@ -68,32 +89,43 @@
             margin-bottom: 0.5cm;
         }
 
-
         div#table{
             margin: 3%;
-            font-size:	14px;
+            font-size: 14px;
         }
 
-
-        table, thead, tbody, tr {
-            border: 1px solid #ececec;
-            border-collapse: collapse;
-            text-align: center;
+        div#index {
+            margin-top: 2cm;
+            margin-left: 6cm;
+            margin-right: 6cm;
         }
 
-        thead>tr>th {
-            padding: 4px;
-            text-align: center;
-            background-color: antiquewhite;
+        div#comment_rs {
+            text-align: right;
+            margin-top: 0.4cm;
+            margin-right: 13cm;
         }
 
-        tbody>tr>td {
-            padding: 6px;
+        div#comment_c {
+            text-align: right;
+            margin-top: 0.4cm;
+            margin-right: 18.5cm;
         }
+
+        div#comment_i {
+            text-align: left;
+            margin-left: 3.5cm;
+        }
+
+        div#comment_w {
+            text-align: left;
+            margin-left: 1cm;
+        }
+
 
     </style>
 </head>
-<body>
+<body background="{% static "img/delusion_logo5.jpg" %}">
     <div id="header-container">
         <a href="{%  url 'index' %}">Home</a> &nbsp; | &nbsp;
         <a href="{%  url 'simple_list' %}">Reviews</a> &nbsp; | &nbsp;

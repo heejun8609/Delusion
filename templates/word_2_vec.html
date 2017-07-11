@@ -60,9 +60,10 @@
     <div align="center">
         <table width="75%" align="center" cellspacing="50">
             <tbody >
+                <tr>
                     <td width="60%"><embed type="image/svg+xml" src= {{ W_line|safe }} /></td>
                     <td></td><td></td><td></td><td></td><td></td>
-                    <td width="40%">
+                    <td width="40%" rowspan="2">
                         <table >
                             <thead>
                                 <tr rowspan="3">
@@ -71,8 +72,8 @@
                                 <tr>
                                     <th>Ranking</th>
                                     <th>Total</th>
-                                    <th>Positive</th>
-                                    <th>Negative</th>
+                                    <th>Upper(4~5)</th>
+                                    <th>Lower(1~3)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -115,6 +116,16 @@
                             </tbody>
                          </table>
                      </td>
+                  </tr>
+                <tr>
+                    <td width="100%">
+                        <div id="comment_w">
+                            <span style="font-weight:bold; font-size:14px">
+                            * Star = (A Word Each Rating Count / A Word Total Rating Count) * 100
+                            </span>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

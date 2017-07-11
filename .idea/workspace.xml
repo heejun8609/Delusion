@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/viz/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/viz/migrations/__init__.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/card_trend.html" afterPath="$PROJECT_DIR$/templates/card_trend.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/issue_trend.html" afterPath="$PROJECT_DIR$/templates/issue_trend.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/review_star_trend.html" afterPath="$PROJECT_DIR$/templates/review_star_trend.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/word_2_vec.html" afterPath="$PROJECT_DIR$/templates/word_2_vec.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/models.py" afterPath="$PROJECT_DIR$/viz/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/views.py" afterPath="$PROJECT_DIR$/viz/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-338">
-              <caret line="496" column="123" lean-forward="false" selection-start-line="496" selection-start-column="123" selection-end-line="496" selection-end-column="123" />
+            <state relative-caret-position="3284">
+              <caret line="711" column="52" lean-forward="false" selection-start-line="711" selection-start-column="52" selection-end-line="711" selection-end-column="52" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -43,38 +51,92 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1011">
-              <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+            <state relative-caret-position="384">
+              <caret line="121" column="26" lean-forward="false" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
               <folding>
-                <element signature="e#2872#2878#0" expanded="true" />
+                <element signature="e#3619#3625#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="word_table.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/word_table.html">
+      <file leaf-file-name="issue_trend.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/issue_trend.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="73" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="603">
+              <caret line="58" column="184" lean-forward="false" selection-start-line="58" selection-start-column="184" selection-end-line="58" selection-end-column="184" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="e#2447#2453#0" expanded="true" />
+                <element signature="e#2453#2459#0" expanded="true" />
+                <element signature="e#2459#2465#0" expanded="true" />
+                <element signature="e#2465#2471#0" expanded="true" />
+                <element signature="e#2471#2477#0" expanded="true" />
+                <element signature="e#2477#2483#0" expanded="true" />
+                <element signature="e#2483#2489#0" expanded="true" />
+                <element signature="e#2489#2495#0" expanded="true" />
+                <element signature="e#2495#2501#0" expanded="true" />
+                <element signature="e#2501#2507#0" expanded="true" />
+                <element signature="e#2507#2513#0" expanded="true" />
+                <element signature="e#2513#2519#0" expanded="true" />
+                <element signature="e#2519#2525#0" expanded="true" />
+                <element signature="e#2525#2531#0" expanded="true" />
+                <element signature="e#2531#2537#0" expanded="true" />
+                <element signature="e#2537#2543#0" expanded="true" />
+                <element signature="e#2543#2549#0" expanded="true" />
+                <element signature="e#2549#2555#0" expanded="true" />
+                <element signature="e#2555#2561#0" expanded="true" />
+                <element signature="e#2561#2567#0" expanded="true" />
+                <element signature="e#2567#2573#0" expanded="true" />
+                <element signature="e#2573#2579#0" expanded="true" />
+                <element signature="e#2579#2585#0" expanded="true" />
+                <element signature="e#2585#2591#0" expanded="true" />
+                <element signature="e#2591#2597#0" expanded="true" />
+                <element signature="e#2597#2603#0" expanded="true" />
+                <element signature="e#2603#2609#0" expanded="true" />
+                <element signature="e#2609#2615#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Crawling.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Crawling.py">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="878">
-              <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+            <state relative-caret-position="209">
+              <caret line="11" column="70" lean-forward="false" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
               <folding>
-                <marker date="1499159985250" expanded="true" signature="3570:3773" ph="insert into app" />
-                <marker date="1499159985250" expanded="true" signature="3980:4121" ph="insert into app_text" />
-                <marker date="1499159985250" expanded="true" signature="4962:5154" ph="insert into app" />
-                <marker date="1499159985250" expanded="true" signature="5361:5502" ph="insert into app_text" />
+                <element signature="n#style#0;n#span#0;n#h2#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#175#181#0" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#h3#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#338#344#0" expanded="true" />
+                <element signature="e#385#391#0" expanded="true" />
+                <element signature="e#392#398#0" expanded="true" />
+                <element signature="e#459#465#0" expanded="true" />
+                <element signature="e#466#472#0" expanded="true" />
+                <element signature="e#581#587#0" expanded="true" />
+                <element signature="e#588#594#0" expanded="true" />
+                <element signature="e#701#707#0" expanded="true" />
+                <element signature="e#708#714#0" expanded="true" />
+                <element signature="e#837#843#0" expanded="true" />
+                <element signature="e#844#850#0" expanded="true" />
+                <element signature="e#952#958#0" expanded="true" />
+                <element signature="e#1001#1007#0" expanded="true" />
+                <element signature="e#1008#1014#0" expanded="true" />
+                <element signature="e#1116#1122#0" expanded="true" />
+                <element signature="e#1123#1129#0" expanded="true" />
+                <element signature="e#1191#1197#0" expanded="true" />
+                <element signature="e#1198#1204#0" expanded="true" />
+                <element signature="e#1267#1273#0" expanded="true" />
+                <element signature="e#1274#1280#0" expanded="true" />
+                <element signature="e#1345#1351#0" expanded="true" />
+                <element signature="e#1352#1358#0" expanded="true" />
+                <element signature="e#1424#1430#0" expanded="true" />
+                <element signature="e#1431#1437#0" expanded="true" />
+                <element signature="e#1438#1444#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,39 +146,19 @@
         <entry file="file://$PROJECT_DIR$/templates/review_star_trend.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="698">
-              <caret line="52" column="28" lean-forward="false" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Delusion/wsgi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="60" selection-end-column="10" />
               <folding>
-                <element signature="e#225#234#0" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#2;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="card_trend.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/card_trend.html">
+      <file leaf-file-name="blog" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viz/static/css/blog">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="55" column="54" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simple_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/simple_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="85" column="17" lean-forward="false" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="17" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -125,21 +167,43 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Delusion/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
+            <state relative-caret-position="437">
               <caret line="25" column="57" lean-forward="false" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Delusion/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="97" column="42" lean-forward="false" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="card_trend.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/card_trend.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="631">
+              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="73" selection-end-column="10" />
               <folding>
-                <element signature="e#642#683#0" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="issue_trend.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/issue_trend.html">
+      <file leaf-file-name="word_2_vec.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/word_2_vec.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="603">
+              <caret line="121" column="42" lean-forward="false" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,15 +221,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reviews['date'].values[int((len(reviews['date']) - 1) * 3 / 4)],</find>
-      <find>['date'].values</find>
-      <find>legend_box</find>
-      <find>res, star_1, star_2, star_3, star_4, star_5, res_all, text_all,</find>
-      <find>res_all, text_all,</find>
-      <find>db()</find>
-      <find>search_w</find>
-      <find>pat</find>
-      <find>df_patch</find>
       <find>reviews</find>
       <find>queryset</find>
       <find>r_line</find>
@@ -176,7 +231,6 @@
       <find>groupby('date')</find>
       <find>groupby</find>
       <find>word_total_count</find>
-      <find>word_count</find>
       <find>MD</find>
       <find>bar_chart_style</find>
       <find>legend</find>
@@ -186,6 +240,16 @@
       <find>bar_chart_</find>
       <find>r1_count</find>
       <find>stacked</find>
+      <find>df_text</find>
+      <find>card_gp = gp_dic[card]</find>
+      <find>card_dic[cn]['word'] = card_dic[cn]['word'].fillna(cn)</find>
+      <find>md</find>
+      <find>df_patch</find>
+      <find>word_count</find>
+      <find>search_word</find>
+      <find>margin</find>
+      <find>pre</find>
+      <find>conta</find>
       <find>if</find>
     </findStrings>
   </component>
@@ -202,26 +266,26 @@
         <option value="$PROJECT_DIR$/viz/tests.py" />
         <option value="$PROJECT_DIR$/viz/apps.py" />
         <option value="$PROJECT_DIR$/templates/simple_list.html" />
-        <option value="$PROJECT_DIR$/templates/word_2_vec.html" />
         <option value="$PROJECT_DIR$/templates/word_table.html" />
         <option value="$PROJECT_DIR$/templates/review_trend.html" />
         <option value="$PROJECT_DIR$/Delusion/Crawling.py" />
         <option value="$PROJECT_DIR$/Crawling.py" />
-        <option value="$PROJECT_DIR$/viz/models.py" />
         <option value="$PROJECT_DIR$/viz/admin.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/Delusion/settings.py" />
-        <option value="$PROJECT_DIR$/viz/static/css/blog" />
         <option value="$PROJECT_DIR$/templates/test.html" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/main_info.html" />
         <option value="$PROJECT_DIR$/templates/reveiw_star_trend.html" />
         <option value="$PROJECT_DIR$/Delusion/urls.py" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/card_trend.html" />
-        <option value="$PROJECT_DIR$/templates/review_star_trend.html" />
-        <option value="$PROJECT_DIR$/templates/issue_trend.html" />
+        <option value="$PROJECT_DIR$/viz/models.py" />
         <option value="$PROJECT_DIR$/viz/views.py" />
+        <option value="$PROJECT_DIR$/viz/static/css/blog" />
+        <option value="$PROJECT_DIR$/templates/review_star_trend.html" />
+        <option value="$PROJECT_DIR$/templates/card_trend.html" />
+        <option value="$PROJECT_DIR$/templates/issue_trend.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/word_2_vec.html" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
       </list>
     </option>
   </component>
@@ -325,6 +389,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Delusion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Delusion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -538,7 +620,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1924" height="1056" extended-state="1" />
+    <frame x="-8" y="0" width="1924" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15251572" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -576,20 +658,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1539">
-          <caret line="81" column="37" lean-forward="false" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/simple_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/viz/migrations/0001_initial.py" />
     <entry file="file://$PROJECT_DIR$/viz/models.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -613,7 +681,7 @@
         <state relative-caret-position="190">
           <caret line="10" column="58" lean-forward="false" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
           <folding>
-            <element signature="e#642#683#0" expanded="true" />
+            <element signature="e#642#683#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -670,28 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viz/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="35" column="68" lean-forward="false" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/word_2_vec.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="45" column="150" lean-forward="false" selection-start-line="45" selection-start-column="150" selection-end-line="45" selection-end-column="150" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viz/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/viz/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -732,22 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Delusion/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="97" column="42" lean-forward="false" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viz/static/css/blog">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -772,20 +802,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Delusion/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#225#234#0" expanded="true" />
+            <element signature="e#225#234#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -811,16 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Delusion/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="57" lean-forward="false" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-          <folding>
-            <element signature="e#642#683#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/word_table.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -829,12 +841,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
+    <entry file="file://$USER_HOME$/Downloads/Sublime Text Build 3126 x64/sublime.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1011">
-          <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viz/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="35" column="68" lean-forward="false" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viz/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="71" lean-forward="false" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viz/static/img/delusion_logo.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Delusion/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="97" column="42" lean-forward="false" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viz/static/css/blog">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Delusion/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="25" column="57" lean-forward="false" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viz/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3284">
+          <caret line="711" column="52" lean-forward="false" selection-start-line="711" selection-start-column="52" selection-end-line="711" selection-end-column="52" />
           <folding>
-            <element signature="e#2872#2878#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/issue_trend.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="58" column="184" lean-forward="false" selection-start-line="58" selection-start-column="184" selection-end-line="58" selection-end-column="184" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#2447#2453#0" expanded="true" />
+            <element signature="e#2453#2459#0" expanded="true" />
+            <element signature="e#2459#2465#0" expanded="true" />
+            <element signature="e#2465#2471#0" expanded="true" />
+            <element signature="e#2471#2477#0" expanded="true" />
+            <element signature="e#2477#2483#0" expanded="true" />
+            <element signature="e#2483#2489#0" expanded="true" />
+            <element signature="e#2489#2495#0" expanded="true" />
+            <element signature="e#2495#2501#0" expanded="true" />
+            <element signature="e#2501#2507#0" expanded="true" />
+            <element signature="e#2507#2513#0" expanded="true" />
+            <element signature="e#2513#2519#0" expanded="true" />
+            <element signature="e#2519#2525#0" expanded="true" />
+            <element signature="e#2525#2531#0" expanded="true" />
+            <element signature="e#2531#2537#0" expanded="true" />
+            <element signature="e#2537#2543#0" expanded="true" />
+            <element signature="e#2543#2549#0" expanded="true" />
+            <element signature="e#2549#2555#0" expanded="true" />
+            <element signature="e#2555#2561#0" expanded="true" />
+            <element signature="e#2561#2567#0" expanded="true" />
+            <element signature="e#2567#2573#0" expanded="true" />
+            <element signature="e#2573#2579#0" expanded="true" />
+            <element signature="e#2579#2585#0" expanded="true" />
+            <element signature="e#2585#2591#0" expanded="true" />
+            <element signature="e#2591#2597#0" expanded="true" />
+            <element signature="e#2597#2603#0" expanded="true" />
+            <element signature="e#2603#2609#0" expanded="true" />
+            <element signature="e#2609#2615#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="70" lean-forward="false" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#h2#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#175#181#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#h3#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#338#344#0" expanded="true" />
+            <element signature="e#385#391#0" expanded="true" />
+            <element signature="e#392#398#0" expanded="true" />
+            <element signature="e#459#465#0" expanded="true" />
+            <element signature="e#466#472#0" expanded="true" />
+            <element signature="e#581#587#0" expanded="true" />
+            <element signature="e#588#594#0" expanded="true" />
+            <element signature="e#701#707#0" expanded="true" />
+            <element signature="e#708#714#0" expanded="true" />
+            <element signature="e#837#843#0" expanded="true" />
+            <element signature="e#844#850#0" expanded="true" />
+            <element signature="e#952#958#0" expanded="true" />
+            <element signature="e#1001#1007#0" expanded="true" />
+            <element signature="e#1008#1014#0" expanded="true" />
+            <element signature="e#1116#1122#0" expanded="true" />
+            <element signature="e#1123#1129#0" expanded="true" />
+            <element signature="e#1191#1197#0" expanded="true" />
+            <element signature="e#1198#1204#0" expanded="true" />
+            <element signature="e#1267#1273#0" expanded="true" />
+            <element signature="e#1274#1280#0" expanded="true" />
+            <element signature="e#1345#1351#0" expanded="true" />
+            <element signature="e#1352#1358#0" expanded="true" />
+            <element signature="e#1424#1430#0" expanded="true" />
+            <element signature="e#1431#1437#0" expanded="true" />
+            <element signature="e#1438#1444#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/card_trend.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="73" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -842,33 +992,29 @@
     <entry file="file://$PROJECT_DIR$/templates/review_star_trend.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="698">
-          <caret line="52" column="28" lean-forward="false" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/issue_trend.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/card_trend.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="55" column="54" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viz/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-338">
-          <caret line="496" column="123" lean-forward="false" selection-start-line="496" selection-start-column="123" selection-end-line="496" selection-end-column="123" />
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="60" selection-end-column="10" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/word_2_vec.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="121" column="42" lean-forward="false" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="121" column="26" lean-forward="false" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
+          <folding>
+            <element signature="e#3619#3625#0" expanded="true" />
           </folding>
         </state>
       </provider>

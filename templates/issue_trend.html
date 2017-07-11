@@ -49,13 +49,22 @@
                 </td>
         </form>
     </div>
+
     <div align="center">
         <embed width="45%" type="image/svg+xml" src= {{ L_line|safe }} />
         <embed width="45%" type="image/svg+xml" src= {{ L_bar|safe }} />
+        <div id="comment_i">
+            <span style="font-weight:bold; font-size:14px">
+                * Issue Word = (A Issue Word Count / Total Word Count) * 100
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                * Issue Word = (A Issue Word Count / Total Issue Word Count) * 100
+            </span>
+        </div>
          <form method=get action="/word_2_vec">{% csrf_token %}
             <p align=right><input type=text name="q"  size=30  maxlength=30>
             <input type=submit value="Search Word"></p>
         </form>
     </div>
+
 
 {% endblock %}
