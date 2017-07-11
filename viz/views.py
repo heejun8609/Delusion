@@ -823,7 +823,8 @@ def word_2_vec(request):
         star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-
+        res_all = list(Word_count.objects.filter(date__gte=days2, date__lte=days1).values('date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'))
+        
     pos_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['pos_df']
     neg_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['neg_df']
     word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_total_count']
@@ -844,58 +845,51 @@ def word_2_vec(request):
     topn = 20
 
     # 전체단어 word2vec
-    try:
-        dic_w2v = []
-        for x in df['text']:
-            dic_w2v.append(list(x.split(',')))
-        w2v = models.Word2Vec(dic_w2v, size=len(word_count['word'].unique()), min_count=2)
 
-        top20 = w2v.similar_by_word(search_word, topn=topn)
+    dic_w2v = []
+    for x in df['text']:
+        dic_w2v.append(list(x.split(',')))
+    w2v = models.Word2Vec(dic_w2v, size=len(word_count['word'].unique()), min_count=2)
 
-        upper_word = []
-        for x in top20:
-            upper_word.append(x[0])
+    top20 = w2v.similar_by_word(search_word, topn=topn)
 
-        # 긍정단어 word2vec
-        pos_dic = {}
-        for x in pos_df['text']:
-            for y in list(x.split(',')):
-                pos_dic[y] = y
+    upper_word = []
+    for x in top20:
+        upper_word.append(x[0])
 
-        pos_dic_w2v = []
-        for x in pos_df['text']:
-            pos_dic_w2v.append(list(x.split(',')))
-        pos_w2v = models.Word2Vec(pos_dic_w2v, size=len(pos_dic), min_count=2)
+    # 긍정단어 word2vec
+    pos_dic = {}
+    for x in pos_df['text']:
+        for y in list(x.split(',')):
+            pos_dic[y] = y
 
-        pos_top20 = pos_w2v.similar_by_word(search_word, topn=topn)
+    pos_dic_w2v = []
+    for x in pos_df['text']:
+        pos_dic_w2v.append(list(x.split(',')))
+    pos_w2v = models.Word2Vec(pos_dic_w2v, size=len(pos_dic), min_count=2)
 
-        pos_upper_word = []
-        for x in pos_top20:
-            pos_upper_word.append(x[0])
+    pos_top20 = pos_w2v.similar_by_word(search_word, topn=topn)
 
-        # 부정단어 word2vec
-        neg_dic = {}
-        for x in neg_df['text']:
-            for y in list(x.split(',')):
-                neg_dic[y] = y
+    pos_upper_word = []
+    for x in pos_top20:
+        pos_upper_word.append(x[0])
 
-        neg_dic_w2v = []
-        for x in neg_df['text']:
-            neg_dic_w2v.append(list(x.split(',')))
-        neg_w2v = models.Word2Vec(neg_dic_w2v, size=len(neg_dic), min_count=2)
+    # 부정단어 word2vec
+    neg_dic = {}
+    for x in neg_df['text']:
+        for y in list(x.split(',')):
+            neg_dic[y] = y
 
-        neg_top20 = neg_w2v.similar_by_word(search_word, topn=topn)
+    neg_dic_w2v = []
+    for x in neg_df['text']:
+        neg_dic_w2v.append(list(x.split(',')))
+    neg_w2v = models.Word2Vec(neg_dic_w2v, size=len(neg_dic), min_count=2)
 
-        neg_upper_word = []
-        for x in neg_top20:
-            neg_upper_word.append(x[0])
+    neg_top20 = neg_w2v.similar_by_word(search_word, topn=topn)
 
-
-
-    except Exception as e:
-        print(e)
-        template = get_template('home.html')
-        return HttpResponse(template.render())
+    neg_upper_word = []
+    for x in neg_top20:
+        neg_upper_word.append(x[0])
 
     # 검색단어 Count
     search_w = word_count[word_count['word'] == search_word]
