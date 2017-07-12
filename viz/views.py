@@ -184,6 +184,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
 
 
 # 차트 기본 디자인
+
 line_chart_style = Style(
     tooltip_font_family='googlefont:Raleway',
     major_label_font_size=18,
@@ -214,7 +215,17 @@ star_chart_style = Style(
     title_font_size=30,
     background='transparent',
     plot_background='transparent',
-    colors=('#FF0000', '#F2BF27', '#000000'))
+    colors=('#0095FF', '#FF70F5', '#FF0000', '#F2BF27', '#000000'))
+
+card_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=14,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#0095FF', '#FF70F5', '#000000'))
 
 issue_chart_style = Style(
     tooltip_font_family='googlefont:Raleway',
@@ -396,52 +407,65 @@ def review_star_trend(request):
     df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
     # df_patch['date'] = df_patch['date'].apply(MD)
     reviews = mer_date(reviews, df_patch)
-    reviews = reviews.fillna(-reviews['reviews'].max()/20)
 
+    r_max = reviews['reviews'].max()
+    reviews = reviews.fillna(-r_max/20)
 
+    day_unit = 5
+    reviews['MAL%d' % day_unit] = pd.rolling_mean(reviews['reviews'], window=day_unit)
+    reviews['MAL5'] = reviews['MAL5'].fillna(reviews['MAL5'][4])
     # Reviews 데이터
-    R_line = pygal.Line(style=line_chart_style,
+    R_line = pygal.Line(style=star_chart_style,
+                        range=(0, int(r_max)),
                         dots_size=5,
-                        max_scale=1,
-                        show_legend=False,
+                        interpolate = 'cubic',
+                        legend_at_bottom=True,
+                        legend_at_bottom_columns=5,
                         tooltip_border_radius=20,
                         show_minor_x_labels=False,
-                        truncate_label=-1)
-    R_line.title = 'Reviews Volume'
+                        truncate_label=-1,
+                        stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'},
+                        secondary_range=(-reviews['reviews'].max()/20, 100))
+    R_line.title = 'Reviews and Low Ratings'
+    R_line.y_labels = 0, int(r_max/2), int(r_max)
     R_line.x_labels = map(str, reviews['date'])
     R_line.x_labels_major = [reviews['date'].values[0],
                              reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
                              reviews['date'].values[-1]]
-    R_line.add('Reviws Timeline', reviews['reviews'], stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'})
-    R_line.add('Patch', reviews['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
+    R_line.add('Reviws', reviews['reviews'])
+    R_line.add('Reviws MAL', reviews['MAL5'])
+    R_line.add('star 1', round(reviews['star_1'] / reviews['star_total'] * 100, 1), secondary=True)
+    R_line.add('star 2', round(reviews['star_2'] / reviews['star_total'] * 100, 1), secondary=True)
+    R_line.add('Patch', reviews['patch'], print_values=True, dots_size=8, show_legend=False, secondary=True)
     R_line = R_line.render_data_uri()
 
-    # Ratings 데이터(%)
-    SR_line = pygal.Line(style=star_chart_style,
-                        dots_size=5,
-                        max_scale=1,
-                        legend_at_bottom=True,
-                        legend_at_bottom_columns=4,
-                        tooltip_border_radius=20,
-                        stroke_style={'width': 2, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
-                        show_minor_x_labels=False,
-                        truncate_label=-1)
-
-    SR_line.title = 'Stars Rating (%)'
-    SR_line.x_labels = map(str, reviews['date'])
-    SR_line.x_labels_major = [reviews['date'].values[0],
-                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
-                             reviews['date'].values[-1]]
-    SR_line.add('star 1', round(reviews['star_1'] / reviews['star_total'] * 100, 1))
-    SR_line.add('star 2', round(reviews['star_2'] / reviews['star_total'] * 100, 1))
-    SR_line.add('Patch', reviews['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
-
-    SR_line = SR_line.render_data_uri()
+    # # Ratings 데이터(%)
+    # SR_line = pygal.Line(style=star_chart_style,
+    #                     dots_size=5,
+    #                     max_scale=1,
+    #                     interpolate = 'cubic',
+    #                     legend_at_bottom=True,
+    #                     legend_at_bottom_columns=4,
+    #                     tooltip_border_radius=20,
+    #                     stroke_style={'width': 2, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
+    #                     show_minor_x_labels=False,
+    #                     truncate_label=-1)
+    #
+    # SR_line.title = 'Stars Rating (%)'
+    # SR_line.x_labels = map(str, reviews['date'])
+    # SR_line.x_labels_major = [reviews['date'].values[0],
+    #                          reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
+    #                          reviews['date'].values[-1]]
+    # SR_line.add('star 1', round(reviews['star_1'] / reviews['star_total'] * 100, 1))
+    # SR_line.add('star 2', round(reviews['star_2'] / reviews['star_total'] * 100, 1))
+    # SR_line.add('Patch', reviews['patch'], dots_size=8)
+    #
+    # SR_line = SR_line.render_data_uri()
 
 
     word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_count']
 
-    context = {'R_line' : R_line, 'SR_line' : SR_line, 'version': version_list}
+    context = {'R_line' : R_line, 'version': version_list}
 
     return HttpResponse(template.render(context))
 
@@ -525,6 +549,7 @@ def card_trend(request):
 
     ini['low_total'] = ini.sum(axis=1)
 
+    day_unit = 5
 
     for cn in card_dic:
         card_dic[cn] = pd.merge(card_dic[cn], ini[['date', 'low_total']], on='date', how='outer')
@@ -534,7 +559,8 @@ def card_trend(request):
         card_dic[cn] = card_dic[cn].fillna(0)
         card_dic[cn] = mer_date(card_dic[cn], df_patch)
         card_dic[cn] = card_dic[cn].fillna(-(card_dic[cn]['low_card_ratio'].max())/20).sort_values(by='date')
-
+        card_dic[cn]['MAL%d' % day_unit] = pd.rolling_mean(card_dic[cn]['low_card_ratio'], window=day_unit)
+        card_dic[cn]['MAL5'] = card_dic[cn]['MAL5'].fillna(card_dic[cn]['MAL5'][4])
     alram_card = []
     danger_card_ratio = {}
     for card in card_dic:
@@ -543,12 +569,15 @@ def card_trend(request):
         if (card_dic[card][card_dic[card]['date'] == '2017-07-02']['low_card_ratio'] >= 50).bool():
             alram_card.append(card)
 
+
+
     gp_dic = {}
     for card in alram_card:
 
-        C_line = pygal.Line(style=star_chart_style,
+        C_line = pygal.Line(style=card_chart_style,
                             dots_size=5,
                             max_scale=1,
+                            interpolate='cubic',
                             legend_at_bottom=True,
                             legend_at_bottom_columns=6,
                             tooltip_border_radius=20,
@@ -557,14 +586,15 @@ def card_trend(request):
                             truncate_label=-1)
 
         C_line.title = card.title() + ' Card (%)'
+        C_line.y_labels = 0, 50, 100
         C_line.x_labels = map(str, card_dic[card]['date'])
         C_line.x_labels_major = [card_dic[card]['date'].values[0],
                                  card_dic[card]['date'].values[int((len(card_dic[card]['date']) - 1) / 2)],
                                  card_dic[card]['date'].values[-1]]
 
         C_line.add(card, card_dic[card]['low_card_ratio'])
-
-        C_line.add('Patch', card_dic['hog']['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
+        C_line.add('MAL5', card_dic[card]['MAL5'])
+        C_line.add('Patch', card_dic['hog']['patch'], dots_size=8)
 
         C_line = C_line.render_data_uri()
 
@@ -715,6 +745,7 @@ def issue_trend(request):
     L_line = pygal.Line(style=issue_chart_style,
                         dots_size=3,
                         max_scale=1,
+                        interpolate='cubic',
                         legend_at_bottom=True,
                         legend_at_bottom_columns=6,
                         tooltip_border_radius=20,
@@ -724,6 +755,7 @@ def issue_trend(request):
                         truncate_legend=15)
 
     L_line.title = 'Issue Keyword Timeline (%)'
+    L_line.y_labels = 0, 0.5, 1
     L_line.x_labels = map(str, total_bug_error['date'])
     L_line.x_labels_major = [total_bug_error['date'].values[0],
                              total_bug_error['date'].values[int((len(total_bug_error['date']) - 1) / 2)],
@@ -734,7 +766,7 @@ def issue_trend(request):
     L_line.add('Balance', round(total_balance['B_total'] / total_balance['total_count'] * 100, 2))
     L_line.add('Fair', round(total_fair['F_total'] / total_fair['total_count'] * 100, 2))
     L_line.add('Bug and Error', round(total_bug_error['BE_total'] / total_bug_error['total_count'] * 100, 2))
-    L_line.add('Patch', total_balance['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
+    L_line.add('Patch', total_balance['patch'], dots_size=8)
 
     L_line = L_line.render_data_uri()
 
@@ -762,7 +794,6 @@ def issue_trend(request):
     L_bar.add('Balance', round(total_balance['B_total'] / total_issue * 100, 1))
     L_bar.add('Fair', round(total_fair['F_total'] / total_issue * 100, 1))
     L_bar.add('Bug and Error', round(total_bug_error['BE_total'] / total_issue * 100, 1))
-    L_bar.add('Patch', total_balance['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
 
     L_bar = L_bar.render_data_uri()
 
@@ -824,7 +855,7 @@ def word_2_vec(request):
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         res_all = list(Word_count.objects.filter(date__gte=days2, date__lte=days1).values('date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'))
-        
+
     pos_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['pos_df']
     neg_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['neg_df']
     word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_total_count']
@@ -901,8 +932,10 @@ def word_2_vec(request):
 
 
     W_line = pygal.Line(style=issue_chart_style,
-                        dots_size=5,
+                        range=(-round((search_w['r5_count']/ search_w['total_count'] * 100).max()/20,1),80),
+                        dots_size=4,
                         max_scale=1,
+                        interpolate='cubic',
                         legend_at_bottom=True,
                         legend_at_bottom_columns=6,
                         tooltip_border_radius=20,
@@ -911,6 +944,7 @@ def word_2_vec(request):
                         truncate_label=-1)
 
     W_line.title = search_word.upper() + ' Trend (%)'
+    W_line.y_labels = 0, 40, 80
     W_line.x_labels = map(str, search_w['date'])
     W_line.x_labels_major = [search_w['date'].values[0],search_w['date'].values[int((len(search_w['date'])-1)/2)], search_w['date'].values[-1]]
     W_line.add('star 1', round(search_w['r1_count']/ search_w['total_count'] * 100, 1))
@@ -918,7 +952,7 @@ def word_2_vec(request):
     W_line.add('star 3', round(search_w['r3_count']/ search_w['total_count'] * 100, 1))
     W_line.add('star 4', round(search_w['r4_count']/ search_w['total_count'] * 100, 1))
     W_line.add('star 5', round(search_w['r5_count']/ search_w['total_count'] * 100, 1))
-    W_line.add('Patch', search_w['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
+    W_line.add('Patch', search_w['patch'], dots_size=8)
 
     W_line = W_line.render_data_uri()
 
@@ -1003,7 +1037,7 @@ def review_trend(request):
                              reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
                              reviews['date'].values[-1]]
     R_line.add('Reviws Timeline', reviews['reviews'], stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'})
-    R_line.add('Patch', reviews['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
+    R_line.add('Patch', reviews['patch'], secondary=True, print_values=True, dots_size=8, show_legend=False)
     R_line = R_line.render_data_uri()
 
     # Average Ratings 데이터
@@ -1029,6 +1063,7 @@ def review_trend(request):
     SC_line = pygal.Line(style=issue_chart_style,
                          dots_size=5,
                          max_scale=1,
+                         interpolate='cubic',
                          legend_at_bottom=True,
                          legend_at_bottom_columns=6,
                          stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'},
@@ -1046,13 +1081,14 @@ def review_trend(request):
     SC_line.add('star 3', reviews['star_3'])
     SC_line.add('star 4', reviews['star_4'])
     SC_line.add('star 5', reviews['star_5'])
-    SC_line.add('Patch', reviews['patch'], Secondary=True, print_values=True, dots_size=8, show_legend=False)
+    SC_line.add('Patch', reviews['patch'], secondary=True, print_values=True, dots_size=8, show_legend=False)
     SC_line = SC_line.render_data_uri()
 
     # Ratings 데이터(%)
     SR_bar = pygal.StackedBar(range=(0, 100),
                               stack_from_top=True,
                               style=stack_bar_chart_style,
+                              interpolate='cubic',
                               legend_at_bottom=True,
                               legend_at_bottom_columns=5,
                               max_scale=1,
