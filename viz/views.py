@@ -745,7 +745,6 @@ def issue_trend(request):
     L_line = pygal.Line(style=issue_chart_style,
                         dots_size=3,
                         max_scale=1,
-                        interpolate='cubic',
                         legend_at_bottom=True,
                         legend_at_bottom_columns=6,
                         tooltip_border_radius=20,
