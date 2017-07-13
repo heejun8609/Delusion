@@ -92,9 +92,9 @@ def MD(x):
 def mer_date(x, y):
     return pd.merge(x, y,  how='outer', on='date')
 
+# 리뷰수, 별점수 병합
 def mer_date_word(x, y):
     return pd.merge(x, y, how='outer', on=['date', 'word'])
-
 
 # DB 데이터 호출
 def db():
@@ -131,6 +131,7 @@ def db():
     return res, star_1, star_2, star_3, star_4, star_5, text_all, pat
 
 def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
+
     patch = []
     for x in pat:
         patch.append(x)
@@ -208,50 +209,51 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
     rat_5.columns = ['date', 'star_5']
 
     # 단어 별점 수
+    # 단어 별점 수
     df_word = [{'date': 0, 'word': 0}]
     for x, y in df.iterrows():
-        for word in y['text']:
-            df_word.append({'date': str(y['date'])[:10], 'word': word})
+        for x in y['text'].split(','):
+            df_word.append({'date': str(y['date'])[:10], 'word': x})
     df_word = pd.DataFrame(df_word)[1:]
     df_count = df_word.groupby(['date', 'word']).size().reset_index()
     df_count.columns = ['date', 'word', 'total_count']
 
     rating_1_word = [{'date': 0, 'word': 0}]
     for x, y in rating_1.iterrows():
-        for word in y['text']:
-            rating_1_word.append({'date': str(y['date'])[:10], 'word': word})
+        for x in y['text'].split(','):
+            rating_1_word.append({'date': str(y['date'])[:10], 'word': x})
     rating_1_word = pd.DataFrame(rating_1_word)[1:]
     r1_count = rating_1_word.groupby(['date', 'word']).size().reset_index()
     r1_count.columns = ['date', 'word', 'r1_count']
 
     rating_2_word = [{'date': 0, 'word': 0}]
     for x, y in rating_2.iterrows():
-        for word in y['text']:
-            rating_2_word.append({'date': str(y['date'])[:10], 'word': word})
+        for x in y['text'].split(','):
+            rating_2_word.append({'date': str(y['date'])[:10], 'word': x})
     rating_2_word = pd.DataFrame(rating_2_word)[1:]
     r2_count = rating_2_word.groupby(['date', 'word']).size().reset_index()
     r2_count.columns = ['date', 'word', 'r2_count']
 
     rating_3_word = [{'date': 0, 'word': 0}]
     for x, y in rating_3.iterrows():
-        for word in y['text']:
-            rating_3_word.append({'date': str(y['date'])[:10], 'word': word})
+        for x in y['text'].split(','):
+            rating_3_word.append({'date': str(y['date'])[:10], 'word': x})
     rating_3_word = pd.DataFrame(rating_3_word)[1:]
     r3_count = rating_3_word.groupby(['date', 'word']).size().reset_index()
     r3_count.columns = ['date', 'word', 'r3_count']
 
     rating_4_word = [{'date': 0, 'word': 0}]
     for x, y in rating_4.iterrows():
-        for word in y['text']:
-            rating_4_word.append({'date': str(y['date'])[:10], 'word': word})
+        for x in y['text'].split(','):
+            rating_4_word.append({'date': str(y['date'])[:10], 'word': x})
     rating_4_word = pd.DataFrame(rating_4_word)[1:]
     r4_count = rating_4_word.groupby(['date', 'word']).size().reset_index()
     r4_count.columns = ['date', 'word', 'r4_count']
 
     rating_5_word = [{'date': 0, 'word': 0}]
     for x, y in rating_5.iterrows():
-        for word in y['text']:
-            rating_5_word.append({'date': str(y['date'])[:10], 'word': word})
+        for x in y['text'].split(','):
+            rating_5_word.append({'date': str(y['date'])[:10], 'word': x})
     rating_5_word = pd.DataFrame(rating_5_word)[1:]
     r5_count = rating_5_word.groupby(['date', 'word']).size().reset_index()
     r5_count.columns = ['date', 'word', 'r5_count']
@@ -444,7 +446,7 @@ def review_star_trend(request):
             days1 = datetime.date.today()
         days1 = pd.to_datetime(days1)
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
+    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
 
     if request.GET:
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
@@ -454,16 +456,15 @@ def review_star_trend(request):
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
-    reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['reviews']
-    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
-    # df_patch['date'] = df_patch['date'].apply(MD)
+    reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['reviews']
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
     reviews = mer_date(reviews, df_patch)
 
     r_max = reviews['reviews'].max()
     reviews = reviews.fillna(-r_max/20)
 
     day_unit = 5
-    reviews['MAL%d' % day_unit] = pd.rolling_mean(reviews['reviews'], window=day_unit)
+    reviews['MAL%d' % day_unit] = reviews['reviews'].rolling(window=day_unit).mean()
     reviews['MAL5'] = reviews['MAL5'].fillna(reviews['MAL5'][4])
     # Reviews 데이터
     R_line = pygal.Line(style=star_chart_style,
@@ -514,7 +515,7 @@ def review_star_trend(request):
     # SR_line = SR_line.render_data_uri()
 
 
-    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_count']
+    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
 
     context = {'R_line' : R_line, 'version': version_list}
 
@@ -565,7 +566,7 @@ def card_trend(request):
             days1 = datetime.date.today()
         days1 = pd.to_datetime(days1)
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
+    res, star_1, star_2, star_3, star_4, star_5,  text_all, pat = db()
 
     if request.GET:
         # print('app__contains=',app, 'version__contains=',version, 'lang__contains=',lang, 'date__gte=',days2, 'date__lte=',days1)
@@ -575,11 +576,9 @@ def card_trend(request):
         star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        res_all = list(Word_count.objects.filter(date__gte=days2, date__lte=days1).values('date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'))
 
-    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
-    # df_patch['date'] = df_patch['date'].apply(MD)
-    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_count']
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
+    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
 
     # 카드 Count
 
@@ -587,7 +586,6 @@ def card_trend(request):
     card_dic = {}
     for x in card:
         card_count = word_count[word_count['word'] == x]
-        # card_count['date'] = card_count['date'].apply(MD)
         card_dic[x] = card_count
 
     for cn in card_dic:
@@ -602,16 +600,14 @@ def card_trend(request):
 
     day_unit = 5
 
+    print(card_dic)
     for cn in card_dic:
         card_dic[cn] = pd.merge(card_dic[cn], ini[['date', 'low_total']], on='date', how='outer')
         card_dic[cn]['low_card_ratio'] = round(card_dic[cn]['low_rank'] / card_dic[cn]['low_total'] * 100, 1)
         card_dic[cn]['word'] = card_dic[cn]['word'].fillna(cn)
-        card_dic[cn]['date_word'] = card_dic[cn]['date_word'].fillna(str(card_dic[cn]['date']) + ' 00:00:00')
         card_dic[cn] = card_dic[cn].fillna(0)
         card_dic[cn] = mer_date(card_dic[cn], df_patch)
         card_dic[cn] = card_dic[cn].fillna(-(card_dic[cn]['low_card_ratio'].max())/20).sort_values(by='date')
-        card_dic[cn]['MAL%d' % day_unit] = pd.rolling_mean(card_dic[cn]['low_card_ratio'], window=day_unit)
-        card_dic[cn]['MAL5'] = card_dic[cn]['MAL5'].fillna(card_dic[cn]['MAL5'][4])
     alram_card = []
     danger_card_ratio = {}
     for card in card_dic:
@@ -644,7 +640,6 @@ def card_trend(request):
                                  card_dic[card]['date'].values[-1]]
 
         C_line.add(card, card_dic[card]['low_card_ratio'])
-        C_line.add('MAL5', card_dic[card]['MAL5'])
         C_line.add('Patch', card_dic['hog']['patch'], dots_size=8)
 
         C_line = C_line.render_data_uri()
@@ -706,7 +701,7 @@ def issue_trend(request):
             days1 = datetime.date.today()
         days1 = pd.to_datetime(days1)
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
+    res, star_1, star_2, star_3, star_4, star_5,  text_all, pat = db()
 
     if request.GET:
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
@@ -715,11 +710,9 @@ def issue_trend(request):
         star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        res_all = list(Word_count.objects.filter(date__gte=days2, date__lte=days1).values('date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'))
 
-    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
-    # df_patch['date'] = df_patch['date'].apply(MD)
-    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_count']
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
+    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
 
     # 이슈 Count
 
@@ -799,6 +792,7 @@ def issue_trend(request):
                         legend_at_bottom=True,
                         legend_at_bottom_columns=6,
                         tooltip_border_radius=20,
+                        interpolate='cubic',
                         stroke_style={'width': 2, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
                         show_minor_x_labels=False,
                         truncate_label=-1,
@@ -894,7 +888,7 @@ def word_2_vec(request):
         days1 = pd.to_datetime(days1)
 
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
+    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
 
     if request.GET:
         # print('app:',app, 'version:',version, 'lang:',lang, 'days:', days2, days1)
@@ -904,14 +898,14 @@ def word_2_vec(request):
         star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        res_all = list(Word_count.objects.filter(date__gte=days2, date__lte=days1).values('date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'))
 
-    pos_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['pos_df']
-    neg_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['neg_df']
-    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_total_count']
-    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_count']
-    df = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df']
-    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
+
+    pos_df = preprocess(res, star_1, star_2, star_3, star_4, star_5,  text_all, pat)['pos_df']
+    neg_df = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['neg_df']
+    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_total_count']
+    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
+    df = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df']
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
 
     # word2vec 검색 단어
     word_total_count = word_total_count.sort_values(by='total_count', ascending=False)
@@ -974,8 +968,6 @@ def word_2_vec(request):
 
     # 검색단어 Count
     search_w = word_count[word_count['word'] == search_word]
-    # search_w['date'] = search_w['date'].apply(MD)
-    # df_patch['date'] = df_patch['date'].apply(MD)
     search_w = mer_date(search_w, df_patch)
     search_w = search_w.fillna(-round((search_w['r5_count']/ search_w['total_count'] * 100).max()/20,1))
 
@@ -1056,7 +1048,7 @@ def review_trend(request):
             days1 = datetime.date.today()
         days1 = pd.to_datetime(days1)
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
+    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
 
     if request.GET:
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
@@ -1066,8 +1058,8 @@ def review_trend(request):
         star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
-    reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['reviews']
-    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['df_patch']
+    reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['reviews']
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
     # df_patch['date'] = df_patch['date'].apply(MD)
     reviews = mer_date(reviews, df_patch)
     reviews = reviews.fillna(-5)
@@ -1211,7 +1203,7 @@ def word_table(request):
     if 'rating' in request.GET:
         sort_by = request.GET['rating']
 
-    res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat = db()
+    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
     if request.GET:
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
@@ -1221,7 +1213,7 @@ def word_table(request):
         star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
 
-    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat)['word_total_count']
+    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_total_count']
     word_total_count = word_total_count.sort_values(by=sort_by, ascending=False)
     top_word = word_total_count[:10].reset_index().drop('index', axis=1)
 
