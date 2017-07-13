@@ -19,7 +19,68 @@ def test(request):
     template = get_template('test.html')
     return HttpResponse(template.render())
 
+# 차트 기본 디자인
 
+line_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=14,
+    title_font_size=30,
+    opacity='.6',
+    opacity_hover='.9',
+    colors=['#0b9ce0'],
+    background='transparent',
+    plot_background='transparent')
+
+stack_bar_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=14,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#FF0000', '#FF540D', '#F2BF27', '#F26699', '#E80C7A'))
+
+star_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=14,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#0095FF', '#FF70F5', '#FF0000', '#F2BF27', '#000000'))
+
+card_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=14,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#0095FF', '#FF70F5', '#000000'))
+
+issue_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=14,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent',
+    colors=('#FF0000', '#0015FF', '#4D078A', '#F2BF27','#0E8A07', '#000000'))
+
+pie_chart_style = Style(
+    tooltip_font_family='googlefont:Raleway',
+    major_label_font_size=18,
+    label_font_size=15,
+    legend_font_size=14,
+    title_font_size=30,
+    background='transparent',
+    plot_background='transparent')
 
 # Preprocessing Function
 def YMD(x):
@@ -30,6 +91,10 @@ def MD(x):
 
 def mer_date(x, y):
     return pd.merge(x, y,  how='outer', on='date')
+
+def mer_date_word(x, y):
+    return pd.merge(x, y, how='outer', on=['date', 'word'])
+
 
 # DB 데이터 호출
 def db():
@@ -56,10 +121,6 @@ def db():
             curs.execute(sql, [5])
             star_5 = curs.fetchall()
 
-            sql = "select * FROM app.app_word"
-            curs.execute(sql)
-            res_all = curs.fetchall()
-
             sql = "select * From app.app_patch"
             curs.execute(sql)
             pat = curs.fetchall()
@@ -67,9 +128,9 @@ def db():
     finally:
         connection.close()
 
-    return res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat
+    return res, star_1, star_2, star_3, star_4, star_5, text_all, pat
 
-def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, pat):
+def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
     patch = []
     for x in pat:
         patch.append(x)
@@ -146,11 +207,61 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
     rat_5 = pd.DataFrame(rating_5.groupby('date')['rating'].size()).reset_index()
     rat_5.columns = ['date', 'star_5']
 
+    # 단어 별점 수
+    df_word = [{'date': 0, 'word': 0}]
+    for x, y in df.iterrows():
+        for word in y['text']:
+            df_word.append({'date': str(y['date'])[:10], 'word': word})
+    df_word = pd.DataFrame(df_word)[1:]
+    df_count = df_word.groupby(['date', 'word']).size().reset_index()
+    df_count.columns = ['date', 'word', 'total_count']
+
+    rating_1_word = [{'date': 0, 'word': 0}]
+    for x, y in rating_1.iterrows():
+        for word in y['text']:
+            rating_1_word.append({'date': str(y['date'])[:10], 'word': word})
+    rating_1_word = pd.DataFrame(rating_1_word)[1:]
+    r1_count = rating_1_word.groupby(['date', 'word']).size().reset_index()
+    r1_count.columns = ['date', 'word', 'r1_count']
+
+    rating_2_word = [{'date': 0, 'word': 0}]
+    for x, y in rating_2.iterrows():
+        for word in y['text']:
+            rating_2_word.append({'date': str(y['date'])[:10], 'word': word})
+    rating_2_word = pd.DataFrame(rating_2_word)[1:]
+    r2_count = rating_2_word.groupby(['date', 'word']).size().reset_index()
+    r2_count.columns = ['date', 'word', 'r2_count']
+
+    rating_3_word = [{'date': 0, 'word': 0}]
+    for x, y in rating_3.iterrows():
+        for word in y['text']:
+            rating_3_word.append({'date': str(y['date'])[:10], 'word': word})
+    rating_3_word = pd.DataFrame(rating_3_word)[1:]
+    r3_count = rating_3_word.groupby(['date', 'word']).size().reset_index()
+    r3_count.columns = ['date', 'word', 'r3_count']
+
+    rating_4_word = [{'date': 0, 'word': 0}]
+    for x, y in rating_4.iterrows():
+        for word in y['text']:
+            rating_4_word.append({'date': str(y['date'])[:10], 'word': word})
+    rating_4_word = pd.DataFrame(rating_4_word)[1:]
+    r4_count = rating_4_word.groupby(['date', 'word']).size().reset_index()
+    r4_count.columns = ['date', 'word', 'r4_count']
+
+    rating_5_word = [{'date': 0, 'word': 0}]
+    for x, y in rating_5.iterrows():
+        for word in y['text']:
+            rating_5_word.append({'date': str(y['date'])[:10], 'word': word})
+    rating_5_word = pd.DataFrame(rating_5_word)[1:]
+    r5_count = rating_5_word.groupby(['date', 'word']).size().reset_index()
+    r5_count.columns = ['date', 'word', 'r5_count']
+
     # 리뷰수, 별점수 병합
     dfs = [rat_1, rat_2, rat_3, rat_4, rat_5]
     for d in dfs:
         reviews = mer_date(reviews, d)
     reviews = reviews.fillna(0)
+
     # 평점 평균
     reviews['star_avg'] = (reviews['star_1'] + reviews['star_2'] * 2 + reviews['star_3'] * 3 + reviews['star_4'] * 4 +
                            reviews['star_5'] * 5) / reviews['reviews']
@@ -159,10 +270,16 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
     reviews['star_total'] = reviews['star_1'] + reviews['star_2'] + reviews['star_3'] + reviews['star_4'] + reviews[
         'star_5']
 
-    # Word Count and Top Word
+    r_counts = [r1_count, r2_count, r3_count, r4_count, r5_count]
+    for r in r_counts:
+        df_count = mer_date_word(df_count, r)
+    df_count = df_count.fillna(0)
+
+    df_count['date'] = df_count['date'] + ' 00:00:00'
+
     word_list = []
-    for x in res_all:
-        word_list.append(x)
+    for x in df_count.iterrows():
+        word_list.append(x[1])
     word_count = pd.DataFrame(word_list,
                               columns=['date_word', 'date', 'word', 'total_count', 'r1_count', 'r2_count', 'r3_count',
                                        'r4_count', 'r5_count'])
@@ -170,7 +287,6 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
 
     word_total_count = pd.DataFrame(word_count.groupby('word')[
                                         'total_count', 'r1_count', 'r2_count', 'r3_count', 'r4_count', 'r5_count'].sum().reset_index())
-
 
     return {'reviews': reviews,
             'word_total_count': word_total_count,
@@ -180,71 +296,6 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, res_all, text_all, p
             'word_count': word_count,
             'df_patch': df_patch
             }
-
-
-
-# 차트 기본 디자인
-
-line_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=15,
-    legend_font_size=14,
-    title_font_size=30,
-    opacity='.6',
-    opacity_hover='.9',
-    colors=['#0b9ce0'],
-    background='transparent',
-    plot_background='transparent')
-
-stack_bar_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=15,
-    legend_font_size=14,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent',
-    colors=('#FF0000', '#FF540D', '#F2BF27', '#F26699', '#E80C7A'))
-
-star_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=15,
-    legend_font_size=14,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent',
-    colors=('#0095FF', '#FF70F5', '#FF0000', '#F2BF27', '#000000'))
-
-card_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=15,
-    legend_font_size=14,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent',
-    colors=('#0095FF', '#FF70F5', '#000000'))
-
-issue_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=15,
-    legend_font_size=14,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent',
-    colors=('#FF0000', '#0015FF', '#4D078A', '#F2BF27','#0E8A07', '#000000'))
-
-pie_chart_style = Style(
-    tooltip_font_family='googlefont:Raleway',
-    major_label_font_size=18,
-    label_font_size=15,
-    legend_font_size=14,
-    title_font_size=30,
-    background='transparent',
-    plot_background='transparent')
 
 # INDEX
 
