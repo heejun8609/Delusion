@@ -582,7 +582,7 @@ def card_trend(request):
 
     # 카드 Count
 
-    card = ['hog', 'wizard', 'giant', 'witch']
+    card = ['hog', 'wizard', 'giant', 'witch', 'goblin']
     card_dic = {}
     for x in card:
         card_count = word_count[word_count['word'] == x]
@@ -600,7 +600,6 @@ def card_trend(request):
 
     day_unit = 5
 
-    print(card_dic)
     for cn in card_dic:
         card_dic[cn] = pd.merge(card_dic[cn], ini[['date', 'low_total']], on='date', how='outer')
         card_dic[cn]['low_card_ratio'] = round(card_dic[cn]['low_rank'] / card_dic[cn]['low_total'] * 100, 1)
