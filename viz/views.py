@@ -461,34 +461,36 @@ def review_star_trend(request):
     reviews = mer_date(reviews, df_patch)
 
     r_max = reviews['reviews'].max()
-    reviews = reviews.fillna(-r_max/20)
+    reviews = reviews.fillna(-3.5)
 
-    day_unit = 5
-    reviews['MAL%d' % day_unit] = reviews['reviews'].rolling(window=day_unit).mean()
-    reviews['MAL5'] = reviews['MAL5'].fillna(reviews['MAL5'][4])
+    # day_unit = 5
+    # reviews['MAL%d' % day_unit] = reviews['reviews'].rolling(window=day_unit).mean()
+    # reviews['MAL5'] = reviews['MAL5'].fillna(reviews['MAL5'][4])
     # Reviews 데이터
     R_line = pygal.Line(style=star_chart_style,
-                        range=(0, int(r_max)),
-                        dots_size=5,
+                        # range=(0, int(r_max)),
+                        range=(-reviews['reviews'].max()/20, 70),
+                        dots_size=3,
                         interpolate = 'cubic',
                         legend_at_bottom=True,
                         legend_at_bottom_columns=5,
                         tooltip_border_radius=20,
                         show_minor_x_labels=False,
                         truncate_label=-1,
-                        stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'},
-                        secondary_range=(-reviews['reviews'].max()/20, 100))
-    R_line.title = 'Reviews and Low Ratings'
-    R_line.y_labels = 0, int(r_max/2), int(r_max)
+                        stroke_style={'width': 2, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'},
+                        # secondary_range=(-reviews['reviews'].max()/20, 100)
+                        )
+    R_line.title = 'Low Ratings'
+    R_line.y_labels = 0, 25, 50, 75, 100
     R_line.x_labels = map(str, reviews['date'])
     R_line.x_labels_major = [reviews['date'].values[0],
                              reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
                              reviews['date'].values[-1]]
-    R_line.add('Reviws', reviews['reviews'])
-    R_line.add('Reviws MAL', reviews['MAL5'])
-    R_line.add('star 1', round(reviews['star_1'] / reviews['star_total'] * 100, 1), secondary=True)
-    R_line.add('star 2', round(reviews['star_2'] / reviews['star_total'] * 100, 1), secondary=True)
-    R_line.add('Patch', reviews['patch'], print_values=True, dots_size=8, show_legend=False, secondary=True)
+    # R_line.add('Reviws', reviews['reviews'])
+    # R_line.add('Reviws MAL', reviews['MAL5'])
+    R_line.add('star 1', round(reviews['star_1'] / reviews['star_total'] * 100, 1))
+    R_line.add('star 2', round(reviews['star_2'] / reviews['star_total'] * 100, 1))
+    R_line.add('Patch', reviews['patch'], print_values=True, dots_size=5, show_legend=False)
     R_line = R_line.render_data_uri()
 
     # # Ratings 데이터(%)
@@ -610,7 +612,7 @@ def card_trend(request):
     alram_card = []
     danger_card_ratio = {}
     for card in card_dic:
-        danger_card_ratio[card] = float(card_dic[card][card_dic[card]['date'] == '2017-07-02']['low_card_ratio'])
+        danger_card_ratio[card] = float(card_dic[card][card_dic[card]['date'] == '2017-07-18']['low_card_ratio'])
         # if card_dic[card][card_dic[card]['date'] == str(datetime.datetime.now())[5:10]]['low_card_ratio']
         if (card_dic[card][card_dic[card]['date'] == '2017-07-02']['low_card_ratio'] >= 50).bool():
             alram_card.append(card)
@@ -621,7 +623,7 @@ def card_trend(request):
     for card in alram_card:
 
         C_line = pygal.Line(style=card_chart_style,
-                            dots_size=5,
+                            dots_size=3,
                             max_scale=1,
                             interpolate='cubic',
                             legend_at_bottom=True,
@@ -639,7 +641,7 @@ def card_trend(request):
                                  card_dic[card]['date'].values[-1]]
 
         C_line.add(card, card_dic[card]['low_card_ratio'])
-        C_line.add('Patch', card_dic['hog']['patch'], dots_size=8)
+        C_line.add('Patch', card_dic['hog']['patch'], dots_size=6)
 
         C_line = C_line.render_data_uri()
 
@@ -786,19 +788,19 @@ def issue_trend(request):
 
     # Line 그래프
     L_line = pygal.Line(style=issue_chart_style,
-                        dots_size=3,
+                        dots_size=1,
                         max_scale=1,
                         legend_at_bottom=True,
                         legend_at_bottom_columns=6,
                         tooltip_border_radius=20,
                         interpolate='cubic',
-                        stroke_style={'width': 2, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
+                        stroke_style={'width': 1, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
                         show_minor_x_labels=False,
                         truncate_label=-1,
                         truncate_legend=15)
 
     L_line.title = 'Issue Keyword Timeline (%)'
-    L_line.y_labels = 0, 0.5, 1
+    L_line.y_labels = 0, 1.5, 3
     L_line.x_labels = map(str, total_bug_error['date'])
     L_line.x_labels_major = [total_bug_error['date'].values[0],
                              total_bug_error['date'].values[int((len(total_bug_error['date']) - 1) / 2)],
@@ -809,7 +811,7 @@ def issue_trend(request):
     L_line.add('Balance', round(total_balance['B_total'] / total_balance['total_count'] * 100, 2))
     L_line.add('Fair', round(total_fair['F_total'] / total_fair['total_count'] * 100, 2))
     L_line.add('Bug and Error', round(total_bug_error['BE_total'] / total_bug_error['total_count'] * 100, 2))
-    L_line.add('Patch', total_balance['patch'], dots_size=8)
+    L_line.add('Patch', total_balance['patch'], dots_size=4)
 
     L_line = L_line.render_data_uri()
 
@@ -974,7 +976,7 @@ def word_2_vec(request):
 
     W_line = pygal.Line(style=issue_chart_style,
                         range=(-round((search_w['r5_count']/ search_w['total_count'] * 100).max()/20,1),80),
-                        dots_size=4,
+                        dots_size=1,
                         max_scale=1,
                         interpolate='cubic',
                         legend_at_bottom=True,
@@ -985,15 +987,15 @@ def word_2_vec(request):
                         truncate_label=-1)
 
     W_line.title = search_word.upper() + ' Trend (%)'
-    W_line.y_labels = 0, 40, 80
+    W_line.y_labels = 0, 45, 90
     W_line.x_labels = map(str, search_w['date'])
     W_line.x_labels_major = [search_w['date'].values[0],search_w['date'].values[int((len(search_w['date'])-1)/2)], search_w['date'].values[-1]]
     W_line.add('star 1', round(search_w['r1_count']/ search_w['total_count'] * 100, 1))
     W_line.add('star 2', round(search_w['r2_count']/ search_w['total_count'] * 100, 1))
-    W_line.add('star 3', round(search_w['r3_count']/ search_w['total_count'] * 100, 1))
-    W_line.add('star 4', round(search_w['r4_count']/ search_w['total_count'] * 100, 1))
-    W_line.add('star 5', round(search_w['r5_count']/ search_w['total_count'] * 100, 1))
-    W_line.add('Patch', search_w['patch'], dots_size=8)
+    # W_line.add('star 3', round(search_w['r3_count']/ search_w['total_count'] * 100, 1))
+    # W_line.add('star 4', round(search_w['r4_count']/ search_w['total_count'] * 100, 1))
+    # W_line.add('star 5', round(search_w['r5_count']/ search_w['total_count'] * 100, 1))
+    W_line.add('Patch', search_w['patch'], dots_size=5)
 
     W_line = W_line.render_data_uri()
 
