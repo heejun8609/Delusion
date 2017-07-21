@@ -314,7 +314,10 @@ class SimpleTable(tables.Table):
     date = DateColumn()
     class Meta:
         model = Raw
-        attrs = {'class': 'paleblue'}
+        attrs = {'class': 'paleblue',
+                 "td": {"align": "left"}
+                 }
+
 
 def simple_list(request):
     queryset = Raw.objects.all().values('app', 'version', 'title', 'content', 'date', 'rating', 'lang')
