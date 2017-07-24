@@ -2,27 +2,33 @@ import pandas as pd
 import requests
 import datetime
 import pymysql
-from apscheduler.schedulers.blocking import BlockingScheduler
-
 import nltk
 from nltk.stem.porter import *
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import re
+from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.triggers.cron import CronTrigger
+from apscheduler.triggers.interval import IntervalTrigger
+
 
 def YMD(x):
     return str(x)[:10]
 
+
 def MD(x):
     return x[5:]
 
+
 stemmer = PorterStemmer()
+
 
 def stem_tokens(tokens, stemmer):
     stemmed = []
     for item in tokens:
         stemmed.append(stemmer.stem(item))
     return stemmed
+
 
 def tokenizer(doc):
     eng = re.compile('[^ A-Za-z]+')
@@ -31,14 +37,13 @@ def tokenizer(doc):
     stemmed_tokens = stem_tokens(filtered, stemmer)
     POS = []
     for x in nltk.pos_tag(stemmed_tokens):
-        if x[1] in ['NN', 'NNS', 'VB', 'VBP', 'VBZ', 'VBD', 'JJ', 'JJS']:
+        if x[1] in ['NN', 'NNS', 'VBN', 'VB', 'VBP', 'VBZ', 'VBD', 'JJ', 'JJS', 'JJR', 'RB', 'RBR', 'RP']:
             POS.append(x[0])
     return ','.join(POS)
 
+
 app = [{'ios': 'id=1053012308'}, {'android': 'p=com.supercell.clashroyale'}]
-
 # lang = ['ko', 'en']
-
 lang = ['en']
 
 
@@ -70,8 +75,8 @@ def job():
                     print(lan, access[0])
                     movieIdListURL = "https://data.42matters.com/api/v2.0/" + access[0] + "/apps/reviews.json?\
                                         " + access[1] + "&\
-                                        access_token=88e930d8fcad33d78082697a1136092eafe3490d&\
-                                        days=4&\
+                                        access_token=62cac95732da67ddee97f5f8e4f1635b66ac3661&\
+                                        days=30&\
                                         lang=" + lan + "&\
                                         page=" + str(page)
 
@@ -136,7 +141,7 @@ def job():
                                             values (%s, %s, %s, %s, %s, %s, %s)"""
                                 cur.execute(sql, data)
 
-                                data = (rev['author_id'], tokenizer(rev['title'] + ' ' + rev['content']))
+                                data = (rev['author_id'], tokenizer(rev['content']))
                                 sql = """insert into
                                             app.app_text (id, context)
                                             values(%s, %s)"""
@@ -167,7 +172,9 @@ class Scheduler():
     # 특정 시각에 실행되도록 합니다.(cron과 동일)
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
-        self.sched.add_job(job, 'cron', day_of_week='mon-sun', hour=8)
+        #         trigger = IntervalTrigger(hours=1)
+        trigger = CronTrigger(day_of_week='mon-fri', hour='8', minute='41')
+        self.sched.add_job(job, trigger)
         self.sched.start()
 
 
