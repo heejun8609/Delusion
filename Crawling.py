@@ -7,9 +7,6 @@ from nltk.stem.porter import *
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import re
-from apscheduler.schedulers.blocking import BlockingScheduler
-from apscheduler.triggers.cron import CronTrigger
-from apscheduler.triggers.interval import IntervalTrigger
 
 
 def YMD(x):
@@ -75,8 +72,10 @@ def job():
                     print(lan, access[0])
                     movieIdListURL = "https://data.42matters.com/api/v2.0/" + access[0] + "/apps/reviews.json?\
                                         " + access[1] + "&\
-                                        access_token=62cac95732da67ddee97f5f8e4f1635b66ac3661&\
-                                        days=30&\
+                                        access_token=" + pay + "&\
+                                        start_date=2017-06-29&\
+                                        end_date=2017-07-28&\
+                                        limit=100&\
                                         lang=" + lan + "&\
                                         page=" + str(page)
 
@@ -161,23 +160,4 @@ def job():
     print("Complete Stacking, " + str(success_count) + "건 성공, " + str(now))
 
 
-class Scheduler():
-    # 클래스 생성시 스케쥴러 데몬을 생성합니다.
-    def __init__(self):
-        self.sched = BlockingScheduler()
-
-    # 스케쥴러입니다. 스케쥴러가 실행되면서 hello를 실행시키는 쓰레드가 생성되어집니다.
-    # 그리고 다음 함수는 type 인수 값에 따라 cron과 interval 형식으로 지정할 수 있습니다.
-    # 인수값이 cron일 경우, 날짜, 요일, 시간, 분, 초 등의 형식으로 지정하여,
-    # 특정 시각에 실행되도록 합니다.(cron과 동일)
-    # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
-    def scheduler(self):
-        #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-fri', hour='8', minute='41')
-        self.sched.add_job(job, trigger)
-        self.sched.start()
-
-
-if __name__ == '__main__':
-    scheduler = Scheduler()
-    scheduler.scheduler()
+job()
