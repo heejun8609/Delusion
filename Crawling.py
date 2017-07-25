@@ -154,8 +154,5 @@ def job():
                             pass
 
                     page += 1
-
     print("Complete Stacking, " + str(success_count) + "건 성공, " + str(now))
-
-
 job()
