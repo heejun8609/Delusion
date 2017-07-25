@@ -72,10 +72,8 @@ def job():
                     print(lan, access[0])
                     movieIdListURL = "https://data.42matters.com/api/v2.0/" + access[0] + "/apps/reviews.json?\
                                         " + access[1] + "&\
-                                        access_token=" + pay + "&\
-                                        start_date=2017-06-29&\
-                                        end_date=2017-07-28&\
-                                        limit=100&\
+                                        access_token=fdcdb4c9ec8c81e2ba0b4d00ab2eb0e80e310fd4&\
+                                        days=1&\
                                         lang=" + lan + "&\
                                         page=" + str(page)
 
