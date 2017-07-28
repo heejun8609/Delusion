@@ -8,7 +8,6 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import re
 
-
 def YMD(x):
     return str(x)[:10]
 
@@ -46,11 +45,6 @@ lang = ['en']
 
 def job():
     now = datetime.datetime.now()
-    #     print('----- Start :' + str(datetime.datetime.now())[:16] + '-----')
-    #     today = str(datetime.datetime.now())[:10]
-    #     date = datetime.datetime.strptime(today, "%Y-%m-%d")
-    #     date += datetime.timedelta(days= -1)
-    #     yesterday = str(date)[:10]
     success_count = 0
 
     for con in app:
