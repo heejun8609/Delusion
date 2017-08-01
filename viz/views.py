@@ -683,31 +683,34 @@ def issue_trend(request):
     if 'days' in request.GET:
         days = request.GET['days']
         if days == '7d':
-            days2 = datetime.date.today() - datetime.timedelta(days=7)
+            days2 = days1 - datetime.timedelta(days=7)
         elif days == '14d':
-            days2 = datetime.date.today() - datetime.timedelta(days=14)
+            days2 = days1 - datetime.timedelta(days=14)
         elif days == '1m':
-            days2 = datetime.date.today() - datetime.timedelta(days=30)
+            days2 = days1 - datetime.timedelta(days=30)
         elif days == '3m':
-            days2 = datetime.date.today() - datetime.timedelta(days=90)
+            days2 = days1 - datetime.timedelta(days=90)
         elif days == '6m':
-            days2 = datetime.date.today() - datetime.timedelta(days=180)
+            days2 = days1 - datetime.timedelta(days=180)
         elif days == '1y':
-            days2 = datetime.date.today() - datetime.timedelta(days=365)
+            days2 = days1 - datetime.timedelta(days=365)
     if 'sta_date' in request.GET:
-        days2 = request.GET['sta_date']
-        if str(days2) == '':
+        d2 = request.GET['sta_date']
+        if d2 == ' ':
             days2 = datetime.date.today() - datetime.timedelta(days=99999)
-        days2 = pd.to_datetime(days2)
+        else:
+            days2 = pd.to_datetime(d2)
     if 'end_date' in request.GET:
-        days1 = request.GET['end_date']
-        if str(days1) == '':
+        d1 = request.GET['end_date']
+        if d1 == ' ':
             days1 = datetime.date.today()
-        days1 = pd.to_datetime(days1)
+        else:
+            days1 = pd.to_datetime(d1)
 
     res, star_1, star_2, star_3, star_4, star_5,  text_all, pat = db()
 
     if request.GET:
+        print('app:',app, 'version:',version, 'lang:',lang, 'days:', days2, days1)
         res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
         star_2 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
