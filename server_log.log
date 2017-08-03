@@ -1,0 +1,1023 @@
+[26/Jul/2017 07:32:42] "GET / HTTP/1.1" 200 5993
+Not Found: /resources/demos/style.css
+[26/Jul/2017 07:32:42] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[26/Jul/2017 07:32:42] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[26/Jul/2017 07:32:42] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[27/Jul/2017 10:01:12] "GET / HTTP/1.1" 200 5993
+Not Found: /resources/demos/style.css
+[27/Jul/2017 10:01:12] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[27/Jul/2017 10:01:12] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[27/Jul/2017 10:01:12] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[27/Jul/2017 10:01:12] "GET /static/img/delusion_logo5.jpg HTTP/1.1" 200 46025
+[27/Jul/2017 10:01:14] "GET /simple_list HTTP/1.1" 200 21505
+[27/Jul/2017 10:01:14] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[27/Jul/2017 10:01:14] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[27/Jul/2017 10:01:14] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[27/Jul/2017 10:01:18] "GET /simple_list?csrfmiddlewaretoken=hxcWbmCFckEnIwA3SpoYbKuqeKfQ42K75MKxlIxaNjgMCEQwTT1uRYoTigihpJ38&app=&version=&lang=&days=&sta_date=&end_date=&q=unsta HTTP/1.1" 200 10531
+[27/Jul/2017 10:01:19] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[27/Jul/2017 10:01:19] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[27/Jul/2017 10:01:19] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[27/Jul/2017 10:02:21] "GET /simple_list?csrfmiddlewaretoken=yKUyChfmtjcSJkuBIXO3pontWJquygOVmZs9MDaR4iOhDsK4Jrrz5ChW0ftVTX7W&app=&version=&lang=&days=&sta_date=&end_date=&q=respond HTTP/1.1" 200 25593
+[27/Jul/2017 10:02:22] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[27/Jul/2017 10:02:22] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[27/Jul/2017 10:02:22] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:08:40] "GET /simple_list?csrfmiddlewaretoken=qx3xGDmrdPLsAy4dQVqoK2CA556WiaeNeMB8QZhWOOnRuGkGRp3Uqgw39B9nDRxO&app=&version=&lang=&days=&sta_date=&end_date=&q=pool HTTP/1.1" 200 16859
+[28/Jul/2017 01:08:40] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:08:40] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:08:40] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 01:11:54] "GET /simple_list?csrfmiddlewaretoken=2nYXbsPFCGNX6VCN4jO6XQBNpbuV1mTVQCwylOKadFpm03Sg5NrCD4vgtHxmm3cW&app=&version=&lang=&days=&sta_date=&end_date=&q=bull HTTP/1.1" 200 23641
+[28/Jul/2017 01:11:54] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 01:11:54] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:11:54] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:11:54] "GET /static/img/delusion_logo5.jpg HTTP/1.1" 304 0
+[28/Jul/2017 01:15:14] "GET /simple_list?csrfmiddlewaretoken=JCxB68SpGGFr3KhzhCfsBAVH6NhMs9T7xR5cguNUhFhQXSx2i6SYhOPaajkdNQc8&app=&version=&lang=&days=&sta_date=&end_date=&q= HTTP/1.1" 200 23990
+[28/Jul/2017 01:15:14] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 01:15:14] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:15:14] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:15:16] "GET /simple_list?csrfmiddlewaretoken=kftLwmyZhxmvFJhB9YqNrhoEQ71ljiLl8u1mGItuSwYUzRx4as3j7vi7UD4MEZ4m&app=&version=&lang=&days=&sta_date=&end_date=&q=hammer HTTP/1.1" 200 12330
+[28/Jul/2017 01:15:16] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:15:16] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:15:16] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 01:17:35] "GET /simple_list?csrfmiddlewaretoken=wfZSqDKisZlekzCS21upxcytpg2pFHHnkuxtAZFN3YXDeHSl3v7VdqsWtM5Q0o0o&app=&version=&lang=&days=&sta_date=&end_date=&q=pay+to+win HTTP/1.1" 200 26750
+[28/Jul/2017 01:17:35] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 01:17:35] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:17:35] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:17:41] "GET /simple_list?page=18&csrfmiddlewaretoken=wfZSqDKisZlekzCS21upxcytpg2pFHHnkuxtAZFN3YXDeHSl3v7VdqsWtM5Q0o0o&q=pay+to+win HTTP/1.1" 200 25711
+[28/Jul/2017 01:17:41] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:17:41] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:17:41] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 01:35:55] "GET /simple_list?csrfmiddlewaretoken=8fbGW3zNV2djSlsioMwqkY1fPWmNvr2lWuJh6puiw1PIMtILpg9W0cVITspeQ8lm&app=&version=&lang=&days=&sta_date=&end_date=&q=install HTTP/1.1" 200 25351
+[28/Jul/2017 01:35:55] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 01:35:55] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:35:55] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:42:16] "GET /simple_list?csrfmiddlewaretoken=iUYFU08WuAUTo7b9h85PKYrdVZ84AJNS69wg4m3r5zwiifrCiCIlqclGZvbvVq6T&app=&version=&lang=&days=&sta_date=&end_date=&q=download HTTP/1.1" 200 25352
+[28/Jul/2017 01:42:16] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 01:42:16] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:42:16] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:45:29] "GET /simple_list?csrfmiddlewaretoken=7aa09yEXsJTVF15orlaXakU5M9DXq012VpIBjUzs3Ivkz9lRsPNtQyOyQFGoLHk3&app=&version=&lang=&days=&sta_date=&end_date=&q=worthless HTTP/1.1" 200 16474
+[28/Jul/2017 01:45:29] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 01:45:29] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:45:29] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:47:38] "GET /simple_list?csrfmiddlewaretoken=5uGCU6MwQcuGS3iPJWtiKk4rSgpmtMaWTJed4sH1rb65MbyiKq6OqyYUWMsNOttX&app=&version=&lang=&days=&sta_date=&end_date=&q=fail HTTP/1.1" 200 25862
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:47:38] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:47:38] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 01:47:38] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 01:48:38] "GET /simple_list?csrfmiddlewaretoken=5uGCU6MwQcuGS3iPJWtiKk4rSgpmtMaWTJed4sH1rb65MbyiKq6OqyYUWMsNOttX&app=&version=&lang=&days=&sta_date=&end_date=&q=failure HTTP/1.1" 200 17872
+[28/Jul/2017 01:48:38] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:48:38] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 01:48:38] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 01:48:51] "GET /simple_list?csrfmiddlewaretoken=5uGCU6MwQcuGS3iPJWtiKk4rSgpmtMaWTJed4sH1rb65MbyiKq6OqyYUWMsNOttX&app=&version=&lang=&days=&sta_date=&end_date=&q=failure HTTP/1.1" 200 17872
+[28/Jul/2017 01:48:52] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 01:48:52] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 01:48:52] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:01:24] "GET /simple_list?csrfmiddlewaretoken=G906xQpyMLrK5E2OsvatY9kdalfsvvWSuoyHHck3nK39ZMihtZNZEneGeRiTQcfT&app=&version=&lang=&days=&sta_date=&end_date=&q=Wtf HTTP/1.1" 200 10515
+[28/Jul/2017 02:01:24] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:01:24] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:01:24] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:03:31] "GET /simple_list?csrfmiddlewaretoken=4NlWNm8PvN9rD5ju74sCeOQpsM130T9NS2TxXI3k6MLQxdzX8y58U2KSwi4ulAsO&app=&version=&lang=&days=&sta_date=&end_date=&q=rob HTTP/1.1" 200 27830
+[28/Jul/2017 02:03:31] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:03:31] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:03:31] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:04:52] "GET /simple_list?csrfmiddlewaretoken=MP64Pg1wnRccYFA6ESx2AJLygmRlhL2tA4EFZCW1YQOBSNQzFmaygXF1kSUMCslu&app=&version=&lang=&days=&sta_date=&end_date=&q=bias HTTP/1.1" 200 17066
+[28/Jul/2017 02:04:52] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:04:52] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:04:52] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:07:38] "GET /simple_list?csrfmiddlewaretoken=kZozeNTjRZSPpUe8SSpocN9Wb6SicNsR8eWao9OOsYuej2uBTm2US13pfCVJxuLS&app=&version=&lang=&days=&sta_date=&end_date=&q=poorli HTTP/1.1" 200 10539
+[28/Jul/2017 02:07:38] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:07:38] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:07:38] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:07:44] "GET /simple_list?csrfmiddlewaretoken=d2DumFqdmNrUjZYMtuPZmjqktxq8Gfem1hb5w1lIXM3jd7efuYsv2xkNx3tz1Wxn&app=&version=&lang=&days=&sta_date=&end_date=&q=poor HTTP/1.1" 200 25919
+[28/Jul/2017 02:07:44] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:07:44] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:07:44] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:08:47] "GET /simple_list?csrfmiddlewaretoken=NnPIrYI9nAd9kNql33NLU5nap6N4P3LxBCnjBkDEYzPyeVGO4xqhAjhDtCQvaK4y&app=&version=&lang=&days=&sta_date=&end_date=&q=flaw HTTP/1.1" 200 27032
+[28/Jul/2017 02:08:47] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:08:47] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:08:47] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:30:00] "GET /simple_list?csrfmiddlewaretoken=wLhdB5y4VR7m8D7B2mjFmBdmlGQgYXFHk0POLrtzwQJL2Ln43QWb2P7PpcTHjEYI&app=&version=&lang=&days=&sta_date=&end_date=&q=dislike HTTP/1.1" 200 18538
+[28/Jul/2017 02:30:00] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:30:00] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:30:00] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:30:38] "GET /simple_list?csrfmiddlewaretoken=gVU6dxsRv0oDp2IxiYoVQ79F8st4pQOw4asHnTnm6Z02jaY0js1rwl38cYwvKx7x&app=&version=&lang=&days=&sta_date=&end_date=&q=unable HTTP/1.1" 200 25500
+[28/Jul/2017 02:30:38] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:30:38] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:30:38] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:32:46] "GET /simple_list?csrfmiddlewaretoken=AQxG0QYIR0DaQNT1vVkyWYrehJrB0j23o55hacTdsZfzKV9uwpX4CclHlfu2l0l4&app=&version=&lang=&days=&sta_date=&end_date=&q=unplayable HTTP/1.1" 200 24130
+[28/Jul/2017 02:32:46] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:32:46] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:32:46] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:33:15] "GET /simple_list?csrfmiddlewaretoken=2w8ShZv0as46rPT3rcmr7Je9aFoVrMqPQLGtrlqvLrGvlX9wsGZXNX8CebrmMtJQ&app=&version=&lang=&days=&sta_date=&end_date=&q=unplay HTTP/1.1" 200 24098
+[28/Jul/2017 02:33:15] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:33:15] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:33:15] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:34:06] "GET /simple_list?csrfmiddlewaretoken=AVO6xApD4Es138Qn7HTV7pYdHT4K1jEKoamHHWk8FD4qXg6Q8bwrNDSGLp7bm0XL&app=&version=&lang=&days=&sta_date=&end_date=&q=disadvantag HTTP/1.1" 200 25346
+[28/Jul/2017 02:34:06] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 02:34:06] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:34:06] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:34:29] "GET /simple_list?csrfmiddlewaretoken=f6KpYVvrA2SU6Nx5rmodR1Ul1yqCo6u73li08hqWb1uj0VNysQ1JxfOO54t3JNN8&app=&version=&lang=&days=&sta_date=&end_date=&q=delete HTTP/1.1" 200 27261
+[28/Jul/2017 02:34:29] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 02:34:29] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:34:29] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:34:31] "GET /simple_list?csrfmiddlewaretoken=onoRY7OmSYbB1RgFNHjDr8UNzfTfuAwOcCWs8tJRtXN0VZw8ObW97mOgDLWGPhPP&app=&version=&lang=&days=&sta_date=&end_date=&q=delet HTTP/1.1" 200 27298
+[28/Jul/2017 02:34:31] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:34:31] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:34:31] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:37:13] "GET /simple_list?csrfmiddlewaretoken=wqOM7FHKCpzqHEb4uj5no9xJFOsmxCfJkFmnh1CfdobPBMrxvNIT4nrcJkvNSjyK&app=&version=&lang=&days=&sta_date=&end_date=&q=embarrass HTTP/1.1" 200 10563
+[28/Jul/2017 02:37:14] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:37:14] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:37:14] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:37:17] "GET /simple_list?csrfmiddlewaretoken=8FRRVLHxqs55JE9YvELEdgqE5HYaM0KqWUps57C21rHuDMprw8oaTuk79d1B7H3r&app=&version=&lang=&days=&sta_date=&end_date=&q=embarr HTTP/1.1" 200 10539
+[28/Jul/2017 02:37:17] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 02:37:17] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:37:17] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:38:25] "GET /simple_list?csrfmiddlewaretoken=y1bOsKlILIkV0I9G9axxcRdRbiztQvFMmgJpC6gdmHWkUQp9aEa3S57kfOCUbcYN&app=&version=&lang=&days=&sta_date=&end_date=&q=rubbish HTTP/1.1" 200 16839
+[28/Jul/2017 02:38:25] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 02:38:25] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:38:25] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:39:33] "GET /simple_list?csrfmiddlewaretoken=epXVy2diR2ncfpQjhgBISRSFOeFw81J82EvwIo8Ns1ZB9x6MiKeey5M8SKIXtI29&app=&version=&lang=&days=&sta_date=&end_date=&q=obnoxious HTTP/1.1" 200 22486
+Not Found: /resources/demos/style.css
+[28/Jul/2017 02:39:33] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 02:39:33] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 02:39:33] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 03:55:47] "GET /simple_list?csrfmiddlewaretoken=ya0L3TA0eAhVCzy0LwSQtZg7HIlBkuOQmpymdfvvPzTkwHOtM0vm9daALeo2Fb7R&app=&version=&lang=&days=&sta_date=&end_date=&q=quit HTTP/1.1" 200 25814
+Not Found: /resources/demos/style.css
+[28/Jul/2017 03:55:47] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 03:55:47] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 03:55:47] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 05:53:51] "GET /simple_list?csrfmiddlewaretoken=zTECmLz0tFlreARSpuaL77qMS5NiuEkun8cdw7uv4EXQ8I7lqYNhNlkfWBQJPlDv&app=&version=&lang=&days=&sta_date=&end_date=&q=mad HTTP/1.1" 200 29166
+Not Found: /resources/demos/style.css
+[28/Jul/2017 05:53:51] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 05:53:51] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 05:53:51] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 06:03:49] "GET /simple_list?csrfmiddlewaretoken=zTECmLz0tFlreARSpuaL77qMS5NiuEkun8cdw7uv4EXQ8I7lqYNhNlkfWBQJPlDv&app=&version=&lang=&days=&sta_date=&end_date=&q=unnecessa HTTP/1.1" 200 13723
+[28/Jul/2017 06:03:49] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 06:03:49] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 06:03:49] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 06:19:37] "GET /simple_list?csrfmiddlewaretoken=If8MqdIFK7JLAqQU69tmAc6eXcBJXY8gwuGnAzDal6lauy6n7D6Sgq0H1IEaiFrh&app=&version=&lang=&days=&sta_date=&end_date=&q=slow HTTP/1.1" 200 26384
+[28/Jul/2017 06:19:37] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 06:19:37] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 06:19:37] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 06:40:25] "GET /simple_list?csrfmiddlewaretoken=zdykecmBd3SINyKJy0TEZJ6P0bJSNGA8ns6Voyh6O2u7HG0czuwaFX0i4HMj8nT9&app=&version=&lang=&days=&sta_date=&end_date=&q=diffculti HTTP/1.1" 200 10563
+[28/Jul/2017 06:40:25] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 06:40:25] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 06:40:25] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 06:42:23] "GET /simple_list?csrfmiddlewaretoken=IKfhU2D02mfU2cSVBfzgvYkaZYxollWbwZNS4oyvDlRjWk8oCJcMbceD3uAPG2fc&app=&version=&lang=&days=&sta_date=&end_date=&q=disgrace HTTP/1.1" 200 13621
+[28/Jul/2017 06:42:23] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 06:42:23] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 06:42:23] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 08:35:22] "GET / HTTP/1.1" 200 5993
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:35:22] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:35:22] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 08:35:22] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 08:35:23] "GET /simple_list HTTP/1.1" 200 23105
+[28/Jul/2017 08:35:23] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 08:35:23] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:35:23] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:35:31] "GET / HTTP/1.1" 200 5993
+[28/Jul/2017 08:35:31] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 08:35:31] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:35:31] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:35:33] "GET /simple_list HTTP/1.1" 200 23105
+[28/Jul/2017 08:35:33] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 08:35:33] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:35:33] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:35:37] "GET /simple_list HTTP/1.1" 200 23105
+[28/Jul/2017 08:35:37] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 08:35:37] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:35:37] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[28/Jul/2017 08:36:11] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 08:36:11] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:36:11] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:36:11] "GET /review_star_trend HTTP/1.1" 200 2074826
+/home/phj/Delusion/viz/views.py:597: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  card_dic[cn]['low_rank'] = card_dic[cn]['r1_count'] + card_dic[cn]['r2_count']
+Internal Server Error: /card_trend
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/phj/Delusion/viz/views.py", line 654, in card_trend
+    card_gp = gp_dic[card]
+KeyError: 'hog'
+[28/Jul/2017 08:38:07] "GET /card_trend HTTP/1.1" 500 122854
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[28/Jul/2017 08:38:09] "GET /review_star_trend HTTP/1.1" 200 2074826
+[28/Jul/2017 08:38:09] "GET /review_star_trend HTTP/1.1" 200 2074826
+[28/Jul/2017 08:39:02] "GET /simple_list HTTP/1.1" 200 23105
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:39:02] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:39:02] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 08:39:02] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 08:39:03] "GET /static/img/delusion_logo5.jpg HTTP/1.1" 200 46025
+[28/Jul/2017 08:39:04] "GET /simple_list HTTP/1.1" 200 23105
+[28/Jul/2017 08:39:04] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:39:04] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:39:04] "GET /static/css/blog.css HTTP/1.1" 404 1649
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:39:39] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 08:39:39] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 08:39:39] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:39:39] "GET /review_star_trend HTTP/1.1" 200 2074826
+[28/Jul/2017 08:52:12] "GET / HTTP/1.1" 200 5993
+[28/Jul/2017 08:52:12] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 08:52:12] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:52:12] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:52:14] "GET /static/img/delusion_logo5.jpg HTTP/1.1" 200 46025
+Not Found: /favicon.ico
+[28/Jul/2017 08:52:14] "GET /favicon.ico HTTP/1.1" 404 3124
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+Not Found: /resources/demos/style.css
+[28/Jul/2017 08:52:46] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 08:52:46] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 08:52:46] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 08:52:46] "GET /review_star_trend HTTP/1.1" 200 2074826
+[28/Jul/2017 09:00:44] "GET /simple_list?csrfmiddlewaretoken=0BYZf2bNmsmaXA8tGUuscX9z9OiQUY4iOQwApo6iXrYzRIoWHo7YSb32dklhfFnj&app=&version=&lang=&days=&sta_date=&end_date=&q=horrend HTTP/1.1" 200 13364
+[28/Jul/2017 09:00:44] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 09:00:44] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 09:00:44] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 09:02:00] "GET /simple_list?csrfmiddlewaretoken=mhoN6MGUyGZelEuEn2YMPXXtwdI0yeoCggVFInC9Is25z8n4aZxpBnhrD1jUGzAz&app=&version=&lang=&days=&sta_date=&end_date=&q=gross HTTP/1.1" 200 12693
+[28/Jul/2017 09:02:00] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[28/Jul/2017 09:02:00] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[28/Jul/2017 09:02:00] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 09:54:38] "GET /simple_list?csrfmiddlewaretoken=PoyIyYz6vH1i0MCDlG6btVt7WtMnCxQnJn5AazvlFt49egv38DFOflN53hnhKS2k&app=&version=&lang=&days=&sta_date=&end_date=&q=atrocious HTTP/1.1" 200 16145
+[28/Jul/2017 09:54:38] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 09:54:38] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 09:54:38] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 09:55:18] "GET /simple_list?csrfmiddlewaretoken=F2OjQ0RXruWwAbpmidm8JQxDV29niC1az1lbsBNcBgZnOFiM5aVLvgRB2QKhqXd7&app=&version=&lang=&days=&sta_date=&end_date=&q=greedy HTTP/1.1" 200 28690
+[28/Jul/2017 09:55:18] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 09:55:18] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 09:55:18] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 09:55:23] "GET /simple_list?page=2&csrfmiddlewaretoken=F2OjQ0RXruWwAbpmidm8JQxDV29niC1az1lbsBNcBgZnOFiM5aVLvgRB2QKhqXd7&q=greedy HTTP/1.1" 200 21234
+[28/Jul/2017 09:55:23] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 09:55:23] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[28/Jul/2017 09:55:23] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 09:57:39] "GET /simple_list?csrfmiddlewaretoken=rqzCAzlLGiOG1A8DHYX1X40F3S4N3V6flp6ucah0Q4Rxf413uVwEJukDaGFHbgic&app=&version=&lang=&days=&sta_date=&end_date=&q=Uneven HTTP/1.1" 200 13077
+[28/Jul/2017 09:57:39] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[28/Jul/2017 09:57:39] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[28/Jul/2017 09:57:39] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 00:42:22] "GET / HTTP/1.1" 200 5993
+[31/Jul/2017 00:42:22] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 00:42:22] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 00:42:22] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 00:42:22] "GET /static/img/delusion_logo5.jpg HTTP/1.1" 304 0
+[31/Jul/2017 00:42:24] "GET /simple_list HTTP/1.1" 200 21969
+[31/Jul/2017 00:42:24] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 00:42:24] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 00:42:24] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 00:42:29] "GET /simple_list?page=4 HTTP/1.1" 200 23837
+[31/Jul/2017 00:42:29] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[31/Jul/2017 00:42:29] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[31/Jul/2017 00:42:29] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:08:26] "GET /simple_list HTTP/1.1" 200 21969
+[31/Jul/2017 01:08:26] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[31/Jul/2017 01:08:26] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:08:26] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:08:26] "GET /static/img/delusion_logo5.jpg HTTP/1.1" 304 0
+[31/Jul/2017 01:51:44] "GET / HTTP/1.1" 200 5993
+[31/Jul/2017 01:51:44] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:51:44] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 01:51:44] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:51:45] "GET /simple_list HTTP/1.1" 200 21969
+[31/Jul/2017 01:51:45] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 01:51:45] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:51:45] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:51:49] "GET /simple_list?csrfmiddlewaretoken=DHFTn8e6OXgmGfqMnptxDwVZH4TXflQLxGcLZJalYJjdUJjcam2apWfXOSuRnG2I&app=&version=&lang=&days=&sta_date=&end_date=&q=sepn HTTP/1.1" 200 10523
+[31/Jul/2017 01:51:49] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 01:51:49] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:51:49] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:51:52] "GET /simple_list?csrfmiddlewaretoken=gSQOfBgFtxwknzs3VTfjEo7FAxK1T6e2aRnGRccUDjzbB3ltIQOWqOrDHllV1rqZ&app=&version=&lang=&days=&sta_date=&end_date=&q=spen HTTP/1.1" 200 27740
+[31/Jul/2017 01:51:52] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 01:51:52] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:51:52] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:52:08] "GET /simple_list?page=2&csrfmiddlewaretoken=gSQOfBgFtxwknzs3VTfjEo7FAxK1T6e2aRnGRccUDjzbB3ltIQOWqOrDHllV1rqZ&q=spen HTTP/1.1" 200 29189
+[31/Jul/2017 01:52:08] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 01:52:08] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:52:08] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:53:08] "GET /simple_list?csrfmiddlewaretoken=zme6jNOpESnugXYMOdEjucBxJjwl5XQytlLYVoKEOEqlurRcBadWgCVvQ77fdi2v&app=&version=&lang=&days=&sta_date=&end_date=&q=asap HTTP/1.1" 200 19292
+[31/Jul/2017 01:53:08] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:53:08] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:53:08] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[31/Jul/2017 01:53:48] "GET /simple_list?csrfmiddlewaretoken=5R4DrOtfT7qpL9BXGFjJa3l7NzejVd5vZQBv3ppu3TtgZDuntCSmWtF5UnPd3yhs&app=&version=&lang=&days=&sta_date=&end_date=&q=wtf HTTP/1.1" 200 10515
+[31/Jul/2017 01:53:48] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 01:53:48] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:53:48] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:53:52] "GET /simple_list?csrfmiddlewaretoken=wXfbSjnnXgusyH2xGKkz4WTCT6KI4gX6qWM3uUjC72xjMbVXtHTcQmdA0UlCcB93&app=&version=&lang=&days=&sta_date=&end_date=&q=wtf HTTP/1.1" 200 10515
+[31/Jul/2017 01:53:52] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 01:53:52] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:53:52] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:57:58] "GET /simple_list?csrfmiddlewaretoken=7V9EgithByxdQeWGISZo6ErBE5bJ4xUX1UGwSTpwLkA44IP6vPy1S4LzLTMDcS6U&app=&version=&lang=&days=&sta_date=&end_date=&q=rob HTTP/1.1" 200 29235
+[31/Jul/2017 01:57:58] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 01:57:58] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:57:58] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:58:05] "GET /simple_list?page=2&csrfmiddlewaretoken=7V9EgithByxdQeWGISZo6ErBE5bJ4xUX1UGwSTpwLkA44IP6vPy1S4LzLTMDcS6U&q=rob HTTP/1.1" 200 25809
+[31/Jul/2017 01:58:06] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[31/Jul/2017 01:58:06] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:58:06] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:58:11] "GET /simple_list?page=3&csrfmiddlewaretoken=7V9EgithByxdQeWGISZo6ErBE5bJ4xUX1UGwSTpwLkA44IP6vPy1S4LzLTMDcS6U&q=rob HTTP/1.1" 200 27111
+[31/Jul/2017 01:58:11] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[31/Jul/2017 01:58:11] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 01:58:11] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[31/Jul/2017 05:17:44] "GET /simple_list?csrfmiddlewaretoken=SrSmJM6nFCePI0aVin9i4asMjZOUOPCcMqpeln2CPohGWu3l5kIVQAMKqNpOWaO9&app=&version=&lang=&days=&sta_date=&end_date=&q=wifi HTTP/1.1" 200 26321
+[31/Jul/2017 05:17:44] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 05:17:44] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 05:17:44] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 05:18:38] "GET /simple_list?page=2&csrfmiddlewaretoken=SrSmJM6nFCePI0aVin9i4asMjZOUOPCcMqpeln2CPohGWu3l5kIVQAMKqNpOWaO9&q=wifi HTTP/1.1" 200 24388
+[31/Jul/2017 05:18:38] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 05:18:38] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 05:18:38] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 05:20:15] "GET /simple_list?page=3&csrfmiddlewaretoken=SrSmJM6nFCePI0aVin9i4asMjZOUOPCcMqpeln2CPohGWu3l5kIVQAMKqNpOWaO9&q=wifi HTTP/1.1" 200 24848
+[31/Jul/2017 05:20:15] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 05:20:15] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 05:20:15] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 05:21:32] "GET /simple_list?page=4&csrfmiddlewaretoken=SrSmJM6nFCePI0aVin9i4asMjZOUOPCcMqpeln2CPohGWu3l5kIVQAMKqNpOWaO9&q=wifi HTTP/1.1" 200 24638
+[31/Jul/2017 05:21:32] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 05:21:32] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 05:21:32] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 05:22:39] "GET /simple_list?page=5&csrfmiddlewaretoken=SrSmJM6nFCePI0aVin9i4asMjZOUOPCcMqpeln2CPohGWu3l5kIVQAMKqNpOWaO9&q=wifi HTTP/1.1" 200 24422
+[31/Jul/2017 05:22:39] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 05:22:39] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 05:22:39] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 07:56:59] "GET /simple_list?csrfmiddlewaretoken=dmBN2JYjkxNrnjIAzvQulGEv64Bcnf8w7l8FEkUyujQiBNB0msp776YtdSc6vAkt&app=&version=&lang=&days=&sta_date=&end_date=&q=painful HTTP/1.1" 200 20740
+[31/Jul/2017 07:56:59] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 07:56:59] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 07:56:59] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+/home/phj/Delusion/viz/views.py:730: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  issue_dic[issue]['low_rank'] = issue_dic[issue]['r1_count'] + issue_dic[issue]['r2_count']
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[31/Jul/2017 09:59:48] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 09:59:48] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 09:59:48] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 09:59:48] "GET /issue_trend HTTP/1.1" 200 4437785
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[31/Jul/2017 09:59:55] "GET /review_star_trend HTTP/1.1" 200 2120802
+/home/phj/Delusion/viz/views.py:730: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  issue_dic[issue]['low_rank'] = issue_dic[issue]['r1_count'] + issue_dic[issue]['r2_count']
+[31/Jul/2017 10:01:42] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[31/Jul/2017 10:01:42] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[31/Jul/2017 10:01:42] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 10:01:43] "GET /issue_trend?app=&version=&lang=&days=1m&sta_date=&end_date= HTTP/1.1" 200 4437785
+/home/phj/Delusion/viz/views.py:730: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  issue_dic[issue]['low_rank'] = issue_dic[issue]['r1_count'] + issue_dic[issue]['r2_count']
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[31/Jul/2017 10:02:20] "GET /issue_trend?app=&version=&lang=&days=1m&sta_date=06%2F30%2F2017&end_date=07%2F30%2F2017 HTTP/1.1" 200 1500777
+[31/Jul/2017 10:02:21] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 10:02:21] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[31/Jul/2017 10:02:21] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+/home/phj/Delusion/viz/views.py:730: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  issue_dic[issue]['low_rank'] = issue_dic[issue]['r1_count'] + issue_dic[issue]['r2_count']
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+Not Found: /resources/demos/style.css
+[31/Jul/2017 10:03:13] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[31/Jul/2017 10:03:13] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[31/Jul/2017 10:03:13] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[31/Jul/2017 10:03:13] "GET /issue_trend?app=&version=&lang=&days=&sta_date=05%2F31%2F2017&end_date=07%2F30%2F2017 HTTP/1.1" 200 2945877
+[01/Aug/2017 00:45:12] "GET /simple_list HTTP/1.1" 200 22819
+Not Found: /resources/demos/style.css
+[01/Aug/2017 00:45:12] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 00:45:12] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 00:45:12] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 00:45:15] "GET /simple_list?csrfmiddlewaretoken=DOhP7fuxHORsUdJCdzUkFWoYclnkn0ifxNOHJQqMRAUj8HC20wtXrmIWj9Yevluc&app=&version=&lang=&days=&sta_date=&end_date=&q=useless HTTP/1.1" 200 24262
+[01/Aug/2017 00:45:15] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 00:45:15] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 00:45:15] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 00:45:24] "GET /simple_list?page=2&csrfmiddlewaretoken=DOhP7fuxHORsUdJCdzUkFWoYclnkn0ifxNOHJQqMRAUj8HC20wtXrmIWj9Yevluc&q=useless HTTP/1.1" 200 24800
+[01/Aug/2017 00:45:24] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 00:45:24] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 00:45:24] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 00:45:27] "GET /simple_list?page=3&csrfmiddlewaretoken=DOhP7fuxHORsUdJCdzUkFWoYclnkn0ifxNOHJQqMRAUj8HC20wtXrmIWj9Yevluc&q=useless HTTP/1.1" 200 22199
+[01/Aug/2017 00:45:27] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 00:45:27] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 00:45:27] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:14:11] "GET /simple_list?csrfmiddlewaretoken=GCCSFvv9rOaB6TEtvjPL6xgiRMh1B4EsAB9Kh6roBAdsknxTigooSXAgYASVJpQp&app=&version=&lang=&days=&sta_date=&end_date=&q=ban HTTP/1.1" 200 25904
+[01/Aug/2017 01:14:11] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:14:11] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:14:11] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:14:11] "GET /static/img/delusion_logo5.jpg HTTP/1.1" 304 0
+[01/Aug/2017 01:14:43] "GET /simple_list?page=2&csrfmiddlewaretoken=GCCSFvv9rOaB6TEtvjPL6xgiRMh1B4EsAB9Kh6roBAdsknxTigooSXAgYASVJpQp&q=ban HTTP/1.1" 200 25981
+[01/Aug/2017 01:14:43] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:14:43] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:14:43] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:15:05] "GET /simple_list?csrfmiddlewaretoken=CWEj3F8pHQdqiuHOsSTBuiMUf7f1fov8wVbbFg4ERCghwYAefPsegI6SmVQVnJH5&app=&version=&lang=&days=&sta_date=&end_date=&q=sign HTTP/1.1" 200 28148
+[01/Aug/2017 01:15:05] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:15:05] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:15:05] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:15:46] "GET /simple_list?page=2&csrfmiddlewaretoken=CWEj3F8pHQdqiuHOsSTBuiMUf7f1fov8wVbbFg4ERCghwYAefPsegI6SmVQVnJH5&q=sign HTTP/1.1" 200 27813
+[01/Aug/2017 01:15:46] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:15:46] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:15:46] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:15:57] "GET /simple_list?csrfmiddlewaretoken=ykgd65ZO9ocNPVLS7wmlHlEJhCYiSie9sjN5IGV3jafE3pEiUtVYtLYHoqzc0Dq6&app=&version=&lang=&days=&sta_date=&end_date=&q=sign+out HTTP/1.1" 200 10555
+[01/Aug/2017 01:15:57] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:15:57] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:15:57] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:16:01] "GET /simple_list?csrfmiddlewaretoken=RaKqwQ819GchmOGX7STyU6b29nvEr02KL9hi8r4gjsf8AiznUPsbGwv0gb6yzleH&app=&version=&lang=&days=&sta_date=&end_date=&q=sign HTTP/1.1" 200 28148
+[01/Aug/2017 01:16:01] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 01:16:01] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:16:01] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:16:27] "GET /simple_list?csrfmiddlewaretoken=OOM1d7NGC7oMs5pQAVyoSANgg3hzdfvvINjTPIJVMTrDGzignS71E07enRStlAHs&app=&version=&lang=&days=&sta_date=&end_date=&q=sign+in HTTP/1.1" 200 17177
+[01/Aug/2017 01:16:27] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 01:16:27] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:16:27] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:17:20] "GET /simple_list?csrfmiddlewaretoken=Apo2IqbiGafaAbv89k1PVpI9oYDVvxmNuoVUk17xQWi1OFoyWhAsHP27vMePDSyK&app=&version=&lang=&days=&sta_date=&end_date=&q=lte HTTP/1.1" 200 25884
+[01/Aug/2017 01:17:21] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:17:21] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:17:21] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:17:31] "GET /simple_list?csrfmiddlewaretoken=NP8rnUqa4ySiJsIOeI3XeuRoeWh3a0cjHOFjZvmpekV9XWBe1FCA0UbmlKSXilog&app=&version=&lang=&days=&sta_date=&end_date=&q=latency HTTP/1.1" 200 14574
+[01/Aug/2017 01:17:31] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:17:31] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:17:31] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 01:18:02] "GET /simple_list?csrfmiddlewaretoken=PIqNNIIBBxVh5BjRHhzATuWLDPngnhVhJHXFpjEQLjY8j5chue8dFUgJKDYavC7e&app=&version=&lang=&days=&sta_date=&end_date=&q=ping HTTP/1.1" 200 27224
+[01/Aug/2017 01:18:02] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 01:18:02] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:18:02] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:18:09] "GET /simple_list?page=2&csrfmiddlewaretoken=PIqNNIIBBxVh5BjRHhzATuWLDPngnhVhJHXFpjEQLjY8j5chue8dFUgJKDYavC7e&q=ping HTTP/1.1" 200 28123
+[01/Aug/2017 01:18:09] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:18:09] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:18:09] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:18:17] "GET /simple_list?page=3&csrfmiddlewaretoken=PIqNNIIBBxVh5BjRHhzATuWLDPngnhVhJHXFpjEQLjY8j5chue8dFUgJKDYavC7e&q=ping HTTP/1.1" 200 26892
+[01/Aug/2017 01:18:17] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:18:17] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:18:17] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:22:05] "GET /simple_list?page=4&csrfmiddlewaretoken=PIqNNIIBBxVh5BjRHhzATuWLDPngnhVhJHXFpjEQLjY8j5chue8dFUgJKDYavC7e&q=ping HTTP/1.1" 200 30084
+[01/Aug/2017 01:22:05] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 01:22:05] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:22:05] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:22:28] "GET /simple_list?page=5&csrfmiddlewaretoken=PIqNNIIBBxVh5BjRHhzATuWLDPngnhVhJHXFpjEQLjY8j5chue8dFUgJKDYavC7e&q=ping HTTP/1.1" 200 28274
+[01/Aug/2017 01:22:28] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 01:22:28] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 01:22:28] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:07:16] "GET /simple_list?csrfmiddlewaretoken=J0aDcfGKYLIcVXVWkqSRqy1YCs8izBVjDZHvOQCZ8xL39rOm7nrucYlWJgJcHW7g&app=&version=&lang=&days=&sta_date=&end_date=&q=freeze HTTP/1.1" 200 26568
+[01/Aug/2017 02:07:16] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:07:16] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:07:16] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:09:18] "GET /simple_list?csrfmiddlewaretoken=E3XznfrCRN7oSY7F1OHWZrIeX7iM1yzSy2urZQnR1zaf6s05OLgzLR2c4VTG9TLP&app=&version=&lang=&days=&sta_date=&end_date=&q=respon HTTP/1.1" 200 27768
+[01/Aug/2017 02:09:18] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:09:18] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:09:18] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:12:11] "GET /simple_list?page=2&csrfmiddlewaretoken=E3XznfrCRN7oSY7F1OHWZrIeX7iM1yzSy2urZQnR1zaf6s05OLgzLR2c4VTG9TLP&q=respon HTTP/1.1" 200 26838
+[01/Aug/2017 02:12:11] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:12:11] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:12:11] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:13:20] "GET /simple_list?csrfmiddlewaretoken=K0IfjhjGDrWCmstMOIv42uqmYDtjb2l0EZf7VSfVNdZtAWmcBF4HOUKk5r4djnxX&app=&version=&lang=&days=&sta_date=&end_date=&q=battery HTTP/1.1" 200 23236
+[01/Aug/2017 02:13:20] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:13:20] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:13:20] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:13:35] "GET /simple_list?page=2&csrfmiddlewaretoken=K0IfjhjGDrWCmstMOIv42uqmYDtjb2l0EZf7VSfVNdZtAWmcBF4HOUKk5r4djnxX&q=battery HTTP/1.1" 200 11909
+[01/Aug/2017 02:13:35] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:13:35] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:13:35] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:13:41] "GET /simple_list?csrfmiddlewaretoken=d2AmRpwg0FpAYWBNKnJuYlpFSDwjcsKD717et0svarsrcqudxki7KLJDZr7dkNWA&app=&version=&lang=&days=&sta_date=&end_date=&q=wait HTTP/1.1" 200 30064
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:13:41] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:13:41] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:13:41] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:14:16] "GET /simple_list?page=2&csrfmiddlewaretoken=d2AmRpwg0FpAYWBNKnJuYlpFSDwjcsKD717et0svarsrcqudxki7KLJDZr7dkNWA&q=wait HTTP/1.1" 200 26118
+[01/Aug/2017 02:14:16] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:14:16] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:14:16] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:14:44] "GET /simple_list?csrfmiddlewaretoken=j7GJcSDxG50RmWC0dONkUkns8sqf7DO9d6dBOtzMQR3IAqvq0LmXGKHqfg19fY06&app=&version=&lang=&days=&sta_date=&end_date=&q=fail HTTP/1.1" 200 25862
+[01/Aug/2017 02:14:44] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:14:44] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:14:44] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:15:06] "GET /simple_list?csrfmiddlewaretoken=MTaf2Gxtf8gjQO5mYtN6FKESEK2QzNA1GSH7EhtIpUja4iYMLqmJraYQLyDKH8MY&app=&version=&lang=&days=&sta_date=&end_date=&q=fault HTTP/1.1" 200 26315
+[01/Aug/2017 02:15:06] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:15:06] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:15:06] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:16:03] "GET /simple_list?csrfmiddlewaretoken=hTpeaOya3pTq1pnVV7mMKLVGblbjOHLHbSW6MpupdbWhfTglI4VpwbfEi9MdW2XE&app=&version=&lang=&days=&sta_date=&end_date=&q=cant HTTP/1.1" 200 27088
+[01/Aug/2017 02:16:03] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:16:03] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:16:03] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:16:38] "GET /simple_list?page=2&csrfmiddlewaretoken=hTpeaOya3pTq1pnVV7mMKLVGblbjOHLHbSW6MpupdbWhfTglI4VpwbfEi9MdW2XE&q=cant HTTP/1.1" 200 25126
+[01/Aug/2017 02:16:38] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:16:38] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:16:38] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:17:30] "GET /simple_list?csrfmiddlewaretoken=SEUAsLBQQS2qCmyD1Ip9HTWdw4jYCU9PMDrs4mx50E5hQQr3OFYMtjgbDSUSKflM&app=&version=&lang=&days=&sta_date=&end_date=&q=elapse HTTP/1.1" 200 10539
+[01/Aug/2017 02:17:30] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:17:30] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:17:30] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:17:33] "GET /simple_list?csrfmiddlewaretoken=SOexNHSF5YwBZWOv1OWj7xnvnilbsccOMNLppiOUfKzsdqHVOLvWTXHtu6W5AxoL&app=&version=&lang=&days=&sta_date=&end_date=&q=elap HTTP/1.1" 200 10523
+[01/Aug/2017 02:17:33] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:17:33] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:17:33] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:17:56] "GET /simple_list?csrfmiddlewaretoken=IdSfl2zjcbTOcCBl3lctHCrlFNJ6zWnuCcp7XDvymXWFq6uLQiL6t2LjMBk0Hhzr&app=&version=&lang=&days=&sta_date=&end_date=&q=elaps HTTP/1.1" 200 10531
+[01/Aug/2017 02:17:56] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:17:56] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:17:56] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:18:03] "GET /simple_list?csrfmiddlewaretoken=FeORcUonfJo19Ne4NaE0FpPUnwKAnqoozdlJOvkCpvrSnh7uA7dDrP9SukluvLAl&app=&version=&lang=&days=&sta_date=&end_date=&q=IAP HTTP/1.1" 200 21558
+[01/Aug/2017 02:18:03] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:18:03] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:18:03] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:18:47] "GET /simple_list?csrfmiddlewaretoken=ibcOyGwGzRt6WZSFMGeHRMxLvKECmhPhcaJGahsVJDwXatL5zDNkDcRJCyfwuC1e&app=&version=&lang=&days=&sta_date=&end_date=&q=purchase HTTP/1.1" 200 24893
+[01/Aug/2017 02:18:47] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:18:47] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:18:47] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:19:07] "GET /simple_list?csrfmiddlewaretoken=22onBjFsEg1SoLrRVD3q8TGOw2JhTmHwW1VfdUBHO24JCfkhIAC3Uj0MDQkb1HTt&app=&version=&lang=&days=&sta_date=&end_date=&q=in-app HTTP/1.1" 200 28894
+[01/Aug/2017 02:19:07] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:19:07] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:19:07] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:23:48] "GET /simple_list?csrfmiddlewaretoken=Qf60yuaRitMNYipKgEuhmTZNFxHiKRSfKeDSa566sfPEcMia3B3U8jjLMlicSc4c&app=&version=&lang=&days=&sta_date=&end_date=&q=boring HTTP/1.1" 200 26753
+[01/Aug/2017 02:23:48] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:23:48] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:23:48] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:24:08] "GET /simple_list?page=2&csrfmiddlewaretoken=Qf60yuaRitMNYipKgEuhmTZNFxHiKRSfKeDSa566sfPEcMia3B3U8jjLMlicSc4c&q=boring HTTP/1.1" 200 23800
+[01/Aug/2017 02:24:08] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:24:08] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:24:08] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:24:26] "GET /simple_list?page=3&csrfmiddlewaretoken=Qf60yuaRitMNYipKgEuhmTZNFxHiKRSfKeDSa566sfPEcMia3B3U8jjLMlicSc4c&q=boring HTTP/1.1" 200 23645
+[01/Aug/2017 02:24:26] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:24:26] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:24:26] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:25:50] "GET /simple_list?csrfmiddlewaretoken=vihGSCo8Hls5mg2bppSwop9LIbyTAeVnphOyudknR7vWAKVBcmr9aPtJPZ9NIz7k&app=&version=&lang=&days=&sta_date=&end_date=&q=stale HTTP/1.1" 200 20464
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:25:50] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:25:50] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:25:50] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:26:07] "GET /simple_list?csrfmiddlewaretoken=3haQcufqFHFOR2hJPGILk8RXJ7bkvLF8XgHIO5bFPtIF5wa9CDho6ybVQVMeD6R5&app=&version=&lang=&days=&sta_date=&end_date=&q=trouble HTTP/1.1" 200 32150
+[01/Aug/2017 02:26:07] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:26:07] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:26:07] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:26:15] "GET /simple_list?page=2&csrfmiddlewaretoken=3haQcufqFHFOR2hJPGILk8RXJ7bkvLF8XgHIO5bFPtIF5wa9CDho6ybVQVMeD6R5&q=trouble HTTP/1.1" 200 12055
+[01/Aug/2017 02:26:15] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:26:15] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:26:15] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:26:33] "GET /simple_list?csrfmiddlewaretoken=MGr2cSdJpSVry12OARS1eCuQyE18Wn18GFYUOt9YzEYiMvVenOrE02OOFsC24Id5&app=&version=&lang=&days=&sta_date=&end_date=&q=piss HTTP/1.1" 200 25823
+[01/Aug/2017 02:26:33] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:26:34] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:26:34] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:26:56] "GET /simple_list?csrfmiddlewaretoken=AFBxm0EXsTN4xLkxZojAqjmjnIRsYjA9uE8pYBAcCFQVLfdXMlSdcJGhuwsm6EM6&app=&version=&lang=&days=&sta_date=&end_date=&q=force HTTP/1.1" 200 26945
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:26:56] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:26:56] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:26:56] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:27:25] "GET /simple_list?csrfmiddlewaretoken=JdZYEF9QnUyHBBvBcQ0f2rxCoLCp8wfvDcwQgg55xGByP5o1ZNzSORRAvzdjgRrs&app=&version=&lang=&days=&sta_date=&end_date=&q=angry HTTP/1.1" 200 27531
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:27:25] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:27:25] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:27:25] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:28:16] "GET /simple_list?csrfmiddlewaretoken=KWgADbUtXpW2JEDPCodZto20MIoD33bdEVNsfMQI7bZTX8wfplMCfOmYTwZxbona&app=&version=&lang=&days=&sta_date=&end_date=&q=angrytime HTTP/1.1" 200 13219
+[01/Aug/2017 02:28:16] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:28:16] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:28:16] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:28:28] "GET /simple_list?csrfmiddlewaretoken=DJsp0GsEcoHypP23EPd6tNGLok7PxYsmxIZhChoTmaKpDjVtrMMJfd0Jv8IJFjEj&app=&version=&lang=&days=&sta_date=&end_date=&q=p2w HTTP/1.1" 200 26096
+[01/Aug/2017 02:28:28] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:28:28] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:28:28] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:28:52] "GET /simple_list?csrfmiddlewaretoken=atVEG6DsgoT2MpZkWQ8vsLd4oTrw2z9i4sswiHzHqaWT0TSKJNH8ebx2vH2qaUlf&app=&version=&lang=&days=&sta_date=&end_date=&q=repeat HTTP/1.1" 200 25772
+[01/Aug/2017 02:28:52] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:28:52] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:28:52] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:29:19] "GET /simple_list?csrfmiddlewaretoken=A2SQ1O0VCb9RYEWEClkwl8XI1xeuef1eu1pIDpWaMXcIc8P4piT97yhG8lPomAdb&app=&version=&lang=&days=&sta_date=&end_date=&q=buff HTTP/1.1" 200 26780
+[01/Aug/2017 02:29:19] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:29:19] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:29:19] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:29:27] "GET /simple_list?page=2&csrfmiddlewaretoken=A2SQ1O0VCb9RYEWEClkwl8XI1xeuef1eu1pIDpWaMXcIc8P4piT97yhG8lPomAdb&q=buff HTTP/1.1" 200 29328
+[01/Aug/2017 02:29:27] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:29:27] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:29:27] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:30:24] "GET /simple_list?csrfmiddlewaretoken=Ivn1jCzr8w94qs6SClfBxsx3N2hLoCPgCuUTVdvGiicVEWZipiOejSR1UQSFwX1d&app=&version=&lang=&days=&sta_date=&end_date=&q=debuff HTTP/1.1" 200 11965
+[01/Aug/2017 02:30:24] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:30:24] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:30:24] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:30:33] "GET /simple_list?csrfmiddlewaretoken=5xl9zAokyko2JZ4JaJTrJUeNVKtmXqTDZwS1bbkzI6rTXtX9XGs4vkyL2y4g5L5A&app=&version=&lang=&days=&sta_date=&end_date=&q=buffer HTTP/1.1" 200 12299
+[01/Aug/2017 02:30:34] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:30:34] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:30:34] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:31:10] "GET /simple_list?csrfmiddlewaretoken=wvltNojZ29AUfXlB3vLKUVyKvwLpWN3cquSlpZfecVDLtre1QsknGlSICkmj48f9&app=&version=&lang=&days=&sta_date=&end_date=&q=smurf HTTP/1.1" 200 14921
+[01/Aug/2017 02:31:10] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:31:10] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:31:10] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:31:54] "GET /simple_list?csrfmiddlewaretoken=OF8i5QTIAb7UtaaBsoVaKfQluyaI93FZIEFaHrPXKXaLHE31fluNwFajBmLChoRW&app=&version=&lang=&days=&sta_date=&end_date=&q=care HTTP/1.1" 200 27788
+[01/Aug/2017 02:31:54] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:31:54] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:31:54] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:32:08] "GET /simple_list?csrfmiddlewaretoken=9pnW1hz09GHurBkBtggmim2SDXS5W9DF3oUODSvfjsKlF5d1gdPZ4MmQKLtZ4uPC&app=&version=&lang=&days=&sta_date=&end_date=&q=support HTTP/1.1" 200 24001
+[01/Aug/2017 02:32:08] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:32:08] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:32:08] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:32:27] "GET /simple_list?csrfmiddlewaretoken=aXghyVFovSd4GzjMJbLQghVNPOmE64Tl4WN9awBDFEgVU3ccw8kt2HfLWCXyep5i&app=&version=&lang=&days=&sta_date=&end_date=&q=lobside HTTP/1.1" 200 10547
+[01/Aug/2017 02:32:27] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:32:27] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:32:27] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:32:32] "GET /simple_list?csrfmiddlewaretoken=NNigJKWmCQY1bG3AR4xABRwxhwEy8z0zHMP8llSBMC1SpaW0E16dnhQvokfsgUcw&app=&version=&lang=&days=&sta_date=&end_date=&q=lobsid HTTP/1.1" 200 10539
+[01/Aug/2017 02:32:33] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:32:33] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:32:33] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:32:38] "GET /simple_list?csrfmiddlewaretoken=C2nONlk0Tr1ZjOkiYrYK2hB6JAkqYfqqw1UGpWgf3d4QxidILoxnOHV4QoVk6ACn&app=&version=&lang=&days=&sta_date=&end_date=&q=odds HTTP/1.1" 200 28566
+[01/Aug/2017 02:32:38] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:32:38] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:32:38] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:48:50] "GET /simple_list?csrfmiddlewaretoken=d2uUpYMoJPGIDakiTd7NJJT8qcD2578I711M1zIDTBJzREdIGaGqv9d6x0eWdskF&app=&version=&lang=&days=&sta_date=&end_date=&q=satis HTTP/1.1" 200 23364
+[01/Aug/2017 02:48:50] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:48:50] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+[01/Aug/2017 02:48:50] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 02:49:29] "GET /simple_list?csrfmiddlewaretoken=UuvHgwHizkjaFUyhZNoHuoMBel07rw6oOt2zS7DxJ6m1TorHMKXkgO6zl9B1zRil&app=&version=&lang=&days=&sta_date=&end_date=&q=unsat HTTP/1.1" 200 10531
+[01/Aug/2017 02:49:29] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 02:49:29] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Not Found: /resources/demos/style.css
+[01/Aug/2017 02:49:29] "GET /resources/demos/style.css HTTP/1.1" 404 3166
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 26, 2017 - 07:32:12
+Django version 1.10, using settings 'Delusion.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[01/Aug/2017 06:18:49] "GET /simple_list HTTP/1.1" 200 22755
+[01/Aug/2017 06:18:49] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 06:18:49] "GET /static/css/blog.css HTTP/1.1" 404 1649
+/home/phj/Delusion/viz/views.py:733: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  issue_dic[issue]['low_rank'] = issue_dic[issue]['r1_count'] + issue_dic[issue]['r2_count']
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[01/Aug/2017 06:19:17] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 06:19:17] "GET /static/css/blog.css HTTP/1.1" 404 1649
+[01/Aug/2017 06:19:18] "GET /issue_trend HTTP/1.1" 200 4485005
+Internal Server Error: /issue_trend
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/phj/Delusion/viz/views.py", line 714, in issue_trend
+    res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 794, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 812, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1227, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1253, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1187, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1083, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 19, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 59, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1275, in get_prep_value
+    return self.to_python(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1227, in to_python
+    if settings.USE_TZ and timezone.is_aware(value):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/timezone.py", line 344, in is_aware
+    return value.utcoffset() is not None
+  File "pandas/_libs/tslib.pyx", line 3942, in pandas._libs.tslib._make_error_func.f (pandas/_libs/tslib.c:67379)
+ValueError: NaTType does not support utcoffset
+[01/Aug/2017 06:20:24] "GET /issue_trend?app=&version=&lang=&days=1m&sta_date=&end_date= HTTP/1.1" 500 156850
+Performing system checks...
+
+System check identified no issues (0 silenced).
+August 01, 2017 - 06:18:45
+Django version 1.10, using settings 'Delusion.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+app:  version:  lang:  days: NaT NaT
+[01/Aug/2017 06:21:55] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 06:21:55] "GET /static/css/blog.css HTTP/1.1" 404 1649
+Internal Server Error: /issue_trend
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/phj/Delusion/viz/views.py", line 714, in issue_trend
+    res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 794, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 812, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1227, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1253, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1187, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1083, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 19, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 59, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1275, in get_prep_value
+    return self.to_python(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1227, in to_python
+    if settings.USE_TZ and timezone.is_aware(value):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/timezone.py", line 344, in is_aware
+    return value.utcoffset() is not None
+  File "pandas/_libs/tslib.pyx", line 3942, in pandas._libs.tslib._make_error_func.f (pandas/_libs/tslib.c:67379)
+ValueError: NaTType does not support utcoffset
+[01/Aug/2017 06:22:04] "GET /issue_trend?app=&version=&lang=&days=1m&sta_date=&end_date= HTTP/1.1" 500 157352
+[01/Aug/2017 06:22:23] "GET / HTTP/1.1" 200 5857
+[01/Aug/2017 06:22:23] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 06:22:23] "GET / HTTP/1.1" 200 5857
+[01/Aug/2017 06:22:23] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+/home/phj/Delusion/viz/views.py:733: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  issue_dic[issue]['low_rank'] = issue_dic[issue]['r1_count'] + issue_dic[issue]['r2_count']
+/usr/local/lib/python3.5/dist-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[01/Aug/2017 06:22:49] "GET /static/django_tables2/themes/paleblue HTTP/1.1" 404 1683
+[01/Aug/2017 06:22:49] "GET /issue_trend HTTP/1.1" 200 4484933
+Internal Server Error: /issue_trend
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/phj/Delusion/viz/views.py", line 714, in issue_trend
+    res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 794, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 812, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1227, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1253, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1187, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1083, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 19, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 59, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1275, in get_prep_value
+    return self.to_python(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1227, in to_python
+    if settings.USE_TZ and timezone.is_aware(value):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/timezone.py", line 344, in is_aware
+    return value.utcoffset() is not None
+  File "pandas/_libs/tslib.pyx", line 3942, in pandas._libs.tslib._make_error_func.f (pandas/_libs/tslib.c:67379)
+ValueError: NaTType does not support utcoffset
+[01/Aug/2017 06:23:02] "GET /issue_trend?app=&version=&lang=&days=1m&sta_date=&end_date= HTTP/1.1" 500 157352
+Performing system checks...
+
+System check identified no issues (0 silenced).
+August 01, 2017 - 06:21:53
+Django version 1.10, using settings 'Delusion.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+app:  version:  lang:  days: NaT NaT
+app:  version:  lang:  days: NaT NaT
+Internal Server Error: /issue_trend
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/phj/Delusion/viz/views.py", line 715, in issue_trend
+    res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 794, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 812, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1227, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1253, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1187, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1083, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 19, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 59, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1275, in get_prep_value
+    return self.to_python(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1227, in to_python
+    if settings.USE_TZ and timezone.is_aware(value):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/timezone.py", line 344, in is_aware
+    return value.utcoffset() is not None
+  File "pandas/_libs/tslib.pyx", line 3942, in pandas._libs.tslib._make_error_func.f (pandas/_libs/tslib.c:67379)
+ValueError: NaTType does not support utcoffset
+[01/Aug/2017 06:25:23] "GET /issue_trend?app=&version=&lang=&days=14d&sta_date=&end_date= HTTP/1.1" 500 157488
+Performing system checks...
+
+System check identified no issues (0 silenced).
+August 01, 2017 - 06:25:10
+Django version 1.10, using settings 'Delusion.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+2017-08-01 2017-07-18
+app:  version:  lang:  days: NaT NaT
+Internal Server Error: /issue_trend
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/phj/Delusion/viz/views.py", line 715, in issue_trend
+    res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 794, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 812, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1227, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1253, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1187, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1083, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 19, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 59, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1275, in get_prep_value
+    return self.to_python(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1227, in to_python
+    if settings.USE_TZ and timezone.is_aware(value):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/timezone.py", line 344, in is_aware
+    return value.utcoffset() is not None
+  File "pandas/_libs/tslib.pyx", line 3942, in pandas._libs.tslib._make_error_func.f (pandas/_libs/tslib.c:67379)
+ValueError: NaTType does not support utcoffset
+[01/Aug/2017 06:27:13] "GET /issue_trend?app=&version=&lang=&days=1m&sta_date=&end_date= HTTP/1.1" 500 157488

@@ -71,7 +71,7 @@ issue_chart_style = Style(
     title_font_size=30,
     background='transparent',
     plot_background='transparent',
-    colors=('#FF0000', '#0015FF', '#4D078A', '#F2BF27','#0E8A07', '#000000'))
+    colors=('#4D078A', '#0E8A07', '#FF0000', '#F2BF27'))
 
 pie_chart_style = Style(
     tooltip_font_family='googlefont:Raleway',
@@ -669,8 +669,8 @@ def issue_trend(request):
     app = ''
     version = ''
     lang =''
-    days1 = datetime.date.today()
-    days2 = datetime.date.today() - datetime.timedelta(days=99999)
+    days1 = datetime.date.today() - datetime.timedelta(days=1)
+    days2 = days1 - datetime.timedelta(days=30)
 
     if 'app' in request.GET:
         app = request.GET['app']
@@ -680,34 +680,22 @@ def issue_trend(request):
         rating = request.GET['rating']
     if 'lang' in request.GET:
         lang = request.GET['lang']
-    if 'days' in request.GET:
-        days = request.GET['days']
-        if days == '7d':
-            days2 = days1 - datetime.timedelta(days=7)
-        elif days == '14d':
-            days2 = days1 - datetime.timedelta(days=14)
-        elif days == '1m':
-            days2 = days1 - datetime.timedelta(days=30)
-        elif days == '3m':
-            days2 = days1 - datetime.timedelta(days=90)
-        elif days == '6m':
-            days2 = days1 - datetime.timedelta(days=180)
-        elif days == '1y':
-            days2 = days1 - datetime.timedelta(days=365)
     if 'sta_date' in request.GET:
         d2 = request.GET['sta_date']
-        if d2 == ' ':
-            days2 = datetime.date.today() - datetime.timedelta(days=99999)
-        else:
-            days2 = pd.to_datetime(d2)
+        days2 = pd.to_datetime(d2)
+        if d2 == '':
+            print('1---------------',days1, days2)
+            days2 = datetime.date.today() - datetime.timedelta(days=30)
     if 'end_date' in request.GET:
         d1 = request.GET['end_date']
-        if d1 == ' ':
-            days1 = datetime.date.today()
-        else:
-            days1 = pd.to_datetime(d1)
+        days1 = pd.to_datetime(d1)
+        if d1 == '':
+            print('3---------------',days1, days2)
+            days1 = datetime.date.today() - datetime.timedelta(days=1)
+        
 
     res, star_1, star_2, star_3, star_4, star_5,  text_all, pat = db()
+    res = list(Raw.objects.filter(date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
     if request.GET:
         print('app:',app, 'version:',version, 'lang:',lang, 'days:', days2, days1)
@@ -723,76 +711,87 @@ def issue_trend(request):
 
     # 이슈 Count
 
-    issue = ['bug', 'error', 'balanc', 'unbalanc', 'fair', 'unfair', 'money', 'elixir', 'match', 'matchmak']
-    issue_dic = {}
-    for x in issue:
-        issue_count = word_count[word_count['word'] == x]
-        issue_dic[x] = issue_count
+    env_word = ['system', 'error', 'devic', 'account', 'log', 'login', 'server', 'load', 'lag', 'network', 
+                'internet', 'connect', 'disconnect', 'glitch', 'crash', 'hacker', 'hack', 'delay', 'screen', 
+                'bug', 'unstable', 'ban', 'wifi', 'sign', 'lte', 'latenc', 'ping', 'freez', 'stuck', 
+                'respons', 'respond', 'irrespons', 'batteri', 'wait', 'fail', 'failur', 'unabl', 'cant', 'cheat', 
+                'cheater', 'elaps']
+    pay_word = ['pay', 'payment', 'paytowin', 'payoff ', 'refund', 'money', 'cash', 'ruby', 'currenc', 
+                'transact', 'price', 'lost', 'bill', 'fraud', 'IAP', 'purchas', 'inapp']
+    neg_word = env_word + pay_word + ['complain', 'complaint', 'request', 'fix', 'work', 'claim', 'suggest', 'wrong', 
+                'wors', 'worst', 'bad', 'issu', 'disappoint', 'ignor', 'annoy', 'suck', 'fuck', 'motherfuck',
+                'hate', 'terribl', 'horribl', 'anger', 'angri', 'stupid', 'absurd', 'frustrat', 'disgust', 'idiot',
+                'ridicul', 'screw', 'bitch', 'scam', 'pathet', 'garbag', 'wast', 'delet', 'support', 'care', 
+                'imposs', 'hell', 'serious', 'bull', 'uninstal', 'worthless', 'rob', 'bias', 'poor', 'flaw', 
+                'dislik', 'unplay', 'rubbish', 'obnoxi', 'crap', 'mad', 'disgrac', 'horrend', 'gross', 'atrocious', 
+                'greedi', 'greed', 'futil', 'asap', 'wtf', 'useless', 'quit', 'abandon', 'problem', 'solv', 
+                'resolv', 'remov', 'confus', 'rip', 'ripoff', 'trash', 'unsatisf', 'stop', 'awful', 'bore', 
+                'churn', 'stale', 'troubl', 'silli', 'difficult', 'difficulti', 'unacceptabl', 'sick', 'piss', 'desperat', 
+                'dumb', 'forc', 'spend', 'spent', 'repeat', 'too', 'balanc', 'imbalanc', 'unbalanc', 'outbalanc', 
+                'rebalanc', 'match', 'matchmak', 'matchup', 'fair', 'unfair', 'fairli', 'win', 'lose', 'lopsid', 'nerf', 
+                'overpow', 'op', 'odd', 'rig', 'chanc', 'uneven', 'buff', 'smurf', 'broken', 'broke']
 
-    for issue in issue_dic:
-        issue_dic[issue]['low_rank'] = issue_dic[issue]['r1_count'] + issue_dic[issue]['r2_count']
+    neg_dic = {}
+    for x in neg_word:
+        neg_count = word_count[word_count['word'] == x]
+        neg_dic[x] = neg_count
+    
+    env_dic = {}
+    for x in env_word:
+        env_count = word_count[word_count['word'] == x]
+        env_dic[x] = env_count
+        
+    pay_dic = {}
+    for x in pay_word:
+        pay_count = word_count[word_count['word'] == x]
+        pay_dic[x] = pay_count
 
-    bug_error = mer_date(issue_dic['bug'][['date', 'low_rank']], issue_dic['error'][['date', 'low_rank']])
-    bug_error = bug_error.fillna(0)
-    bug_error['BE_total'] = bug_error.sum(axis=1)
-    total_bug_error = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
-                               pd.DataFrame(bug_error[['date', 'BE_total']]), on='date', how='outer')
-    total_bug_error = total_bug_error.fillna(0)
-    total_bug_error = mer_date(total_bug_error, df_patch)
-    total_bug_error['patch'] = total_bug_error['patch'].fillna(
-        -round(total_bug_error['BE_total'] / total_bug_error['total_count'] * 100, 2).max() / 20)
-    total_bug_error = total_bug_error.fillna(0)
-    total_bug_error = total_bug_error.sort_values(by='date')
+    neg = neg_dic[neg_word[0]][['date', 'total_count']]
+    for n in neg_word[1:]:
+        neg = mer_date(neg, neg_dic[n][['date', 'total_count']])
+    neg = neg.fillna(0)
+    neg['N_total'] = neg.sum(axis=1)
+    total_neg = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
+                           pd.DataFrame(neg[['date', 'N_total']]), on='date', how='outer')
+    total_neg = total_neg.fillna(0)
+    total_neg = mer_date(total_neg, df_patch)
+    neg_max = round(total_neg['total_count']/100, 2).max()
+    total_neg['patch'] = total_neg['patch'].fillna(
+        -neg_max / 20)
+    total_neg = total_neg.fillna(0)
+    total_neg['N_total'] = total_neg['N_total'].apply(int)
+    total_neg = total_neg.sort_values(by='date')
 
-    balance = mer_date(issue_dic['balanc'][['date', 'low_rank']], issue_dic['unbalanc'][['date', 'low_rank']])
-    balance = balance.fillna(0)
-    balance['B_total'] = balance.sum(axis=1)
-    total_balance = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
-                               pd.DataFrame(balance[['date', 'B_total']]), on='date', how='outer')
-    total_balance = total_balance.fillna(0)
-    total_balance = mer_date(total_balance, df_patch)
-    total_balance['patch'] = total_balance['patch'].fillna(
-        -round(total_balance['B_total'] / total_balance['total_count'] * 100, 2).max() / 20)
-    total_balance = total_balance.fillna(0)
-    total_balance = total_balance.sort_values(by='date')
+    env = env_dic[env_word[0]][['date', 'total_count']]
+    for n in env_word[1:]:
+        env = mer_date(env, neg_dic[n][['date', 'total_count']])
+    env = env.fillna(0)
+    env['E_total'] = env.sum(axis=1)
+    total_env = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
+                               pd.DataFrame(env[['date', 'E_total']]), on='date', how='outer')
+    total_env = total_env.fillna(0)
+    total_env = mer_date(total_env, df_patch)
+    total_env['patch'] = total_env['patch'].fillna(
+        -neg_max / 20)
+    total_env = total_env.fillna(0)
+    total_env['E_total'] = total_env['E_total'].apply(int)
+    total_env = total_env.sort_values(by='date')
 
-    fair = mer_date(issue_dic['fair'][['date', 'low_rank']], issue_dic['unfair'][['date', 'low_rank']])
-    fair = fair.fillna(0)
-    fair['F_total'] = fair.sum(axis=1)
-    total_fair = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
-                          pd.DataFrame(fair[['date', 'F_total']]), on='date', how='outer')
-    total_fair = total_fair.fillna(0)
-    total_fair = mer_date(total_fair, df_patch)
-    total_fair['patch'] = total_fair['patch'].fillna(
-        -round(total_fair['F_total'] / total_fair['total_count'] * 100, 2).max() / 20)
-    total_fair = total_fair.fillna(0)
-    total_fair = total_fair.sort_values(by='date')
+    pay = pay_dic[pay_word[0]][['date', 'total_count']]
+    for n in pay_word[1:]:
+        pay = mer_date(pay, neg_dic[n][['date', 'total_count']])
+    pay = pay.fillna(0)
+    pay['P_total'] = pay.sum(axis=1)
+    total_pay = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
+                           pd.DataFrame(pay[['date', 'P_total']]), on='date', how='outer')
+    total_pay = total_pay.fillna(0)
+    total_pay = mer_date(total_pay, df_patch)
+    total_pay['patch'] = total_pay['patch'].fillna(
+        -neg_max / 20)
+    total_pay = total_pay.fillna(0)
+    total_pay['P_total'] = total_pay['P_total'].apply(int)
+    total_pay = total_pay.sort_values(by='date')
 
-    money = mer_date(issue_dic['money'][['date', 'low_rank']], issue_dic['elixir'][['date', 'low_rank']])
-    money = money.fillna(0)
-    money['M_total'] = money.sum(axis=1)
-    total_money = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
-                           pd.DataFrame(money[['date', 'M_total']]), on='date', how='outer')
-    total_money = total_money.fillna(0)
-    total_money = mer_date(total_money, df_patch)
-    total_money['patch'] = total_money['patch'].fillna(
-        -round(total_money['M_total'] / total_money['total_count'] * 100, 2).max() / 20)
-    total_money = total_money.fillna(0)
-    total_money = total_money.sort_values(by='date')
-
-    match = mer_date(issue_dic['match'][['date', 'low_rank']], issue_dic['matchmak'][['date', 'low_rank']])
-    match = match.fillna(0)
-    match['M_total'] = match.sum(axis=1)
-    total_match = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
-                           pd.DataFrame(match[['date', 'M_total']]), on='date', how='outer')
-    total_match = total_match.fillna(0)
-    total_match = mer_date(total_match, df_patch)
-    total_match['patch'] = total_match['patch'].fillna(
-        -round(total_match['M_total'] / total_match['total_count'] * 100, 2).max() / 20)
-    total_match = total_match.fillna(0)
-    total_match = total_match.sort_values(by='date')
-
-    # Line 그래프
     L_line = pygal.Line(style=issue_chart_style,
                         dots_size=1,
                         max_scale=1,
@@ -806,49 +805,21 @@ def issue_trend(request):
                         truncate_legend=15)
 
     L_line.title = 'Issue Keyword Timeline (%)'
-    L_line.y_labels = 0, 1.5, 3
-    L_line.x_labels = map(str, total_bug_error['date'])
-    L_line.x_labels_major = [total_bug_error['date'].values[0],
-                             total_bug_error['date'].values[int((len(total_bug_error['date']) - 1) / 2)],
-                             total_bug_error['date'].values[-1]]
+    L_line.y_labels = 0, neg_max*3/8, neg_max*3/4
+    L_line.x_labels = map(str, total_neg['date'])
+    L_line.x_labels_major = [total_neg['date'].values[0],
+                             total_neg['date'].values[int((len(total_neg['date']) - 1) / 2)],
+                             total_neg['date'].values[-1]]
 
-    L_line.add('Price', round(total_money['M_total'] / total_money['total_count'] * 100, 2))
-    L_line.add('Matching', round(total_match['M_total'] / total_match['total_count'] * 100, 2))
-    L_line.add('Balance', round(total_balance['B_total'] / total_balance['total_count'] * 100, 2))
-    L_line.add('Fair', round(total_fair['F_total'] / total_fair['total_count'] * 100, 2))
-    L_line.add('Bug and Error', round(total_bug_error['BE_total'] / total_bug_error['total_count'] * 100, 2))
-    L_line.add('Patch', total_balance['patch'], dots_size=4)
+    L_line.add('Environmental', round(total_env['E_total'] / total_env['total_count'] * 100, 2))
+    L_line.add('Payments', round(total_pay['P_total'] / total_pay['total_count'] * 100, 2))
+    L_line.add('Negative', round(total_neg['N_total'] / total_neg['total_count'] * 100, 2))
+    L_line.add('Patch', total_neg['patch'], dots_size=4)
 
     L_line = L_line.render_data_uri()
 
-    # Stacked bar 그래프
-    L_bar = pygal.StackedBar(range=(0, 100),
-                             stack_from_top=True,
-                             style=stack_bar_chart_style,
-                             legend_at_bottom=True,
-                             legend_at_bottom_columns=6,
-                             max_scale=1,
-                             inverse_y_axis=True,
-                             value_formatter=lambda x: '{}%'.format(x),
-                             tooltip_border_radius=20,
-                             show_minor_x_labels=False,
-                             truncate_label=-1)
 
-    L_bar.title = 'Issue Keyword Bar (%)'
-    L_bar.x_labels = map(str, total_bug_error['date'])
-    L_bar.x_labels_major = [total_bug_error['date'].values[0],
-                            total_bug_error['date'].values[int((len(total_bug_error['date']) - 1) / 2)],
-                            total_bug_error['date'].values[-1]]
-    total_issue = total_money['M_total']+total_match['M_total']+total_balance['B_total']+total_fair['F_total']+total_bug_error['BE_total']
-    L_bar.add('Price', round(total_money['M_total'] / total_issue * 100, 1))
-    L_bar.add('Matching', round(total_match['M_total'] / total_issue * 100, 1))
-    L_bar.add('Balance', round(total_balance['B_total'] / total_issue * 100, 1))
-    L_bar.add('Fair', round(total_fair['F_total'] / total_issue * 100, 1))
-    L_bar.add('Bug and Error', round(total_bug_error['BE_total'] / total_issue * 100, 1))
-
-    L_bar = L_bar.render_data_uri()
-
-    context = {'L_line': L_line, 'L_bar': L_bar, 'version': version_list}
+    context = {'L_line': L_line, 'version': version_list}
 
     return HttpResponse(template.render(context))
 
@@ -1009,254 +980,3 @@ def word_2_vec(request):
                'pos_upper_word': pos_upper_word, 'neg_upper_word': neg_upper_word, 'version':version_list}
 
     return HttpResponse(template.render(context))
-
-
-# total trend
-def review_trend(request):
-    template = get_template('review_trend.html')
-    version_list = Raw.objects.order_by().values('version').distinct()
-    app = ''
-    version = ''
-    rating = ''
-    lang =''
-    days1 = datetime.date.today()
-    days2 = datetime.date.today() - datetime.timedelta(days=99999)
-
-    if 'app' in request.GET:
-        app = request.GET['app']
-    if 'version' in request.GET:
-        version = request.GET['version']
-    if 'rating' in request.GET:
-        rating = request.GET['rating']
-    if 'lang' in request.GET:
-        lang = request.GET['lang']
-    if 'days' in request.GET:
-        days = request.GET['days']
-        if days == '7d':
-            days2 = datetime.date.today() - datetime.timedelta(days=7)
-        elif days == '14d':
-            days2 = datetime.date.today() - datetime.timedelta(days=14)
-        elif days == '1m':
-            days2 = datetime.date.today() - datetime.timedelta(days=30)
-        elif days == '3m':
-            days2 = datetime.date.today() - datetime.timedelta(days=90)
-        elif days == '6m':
-            days2 = datetime.date.today() - datetime.timedelta(days=180)
-        elif days == '1y':
-            days2 = datetime.date.today() - datetime.timedelta(days=365)
-    if 'sta_date' in request.GET:
-        days2 = request.GET['sta_date']
-        if str(days2) == '':
-            days2 = datetime.date.today() - datetime.timedelta(days=99999)
-        days2 = pd.to_datetime(days2)
-    if 'end_date' in request.GET:
-        days1 = request.GET['end_date']
-        if str(days1) == '':
-            days1 = datetime.date.today()
-        days1 = pd.to_datetime(days1)
-
-    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
-
-    if request.GET:
-        res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_2 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-
-    reviews = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['reviews']
-    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
-    # df_patch['date'] = df_patch['date'].apply(MD)
-    reviews = mer_date(reviews, df_patch)
-    reviews = reviews.fillna(-5)
-
-
-    # Reviews 데이터
-    R_line = pygal.Line(style=line_chart_style,
-                        dots_size=5,
-                        max_scale=1,
-                        show_legend=False,
-                        tooltip_border_radius=20,
-                        show_minor_x_labels=False,
-                        truncate_label=-1)
-    R_line.title = 'Reviews Volume'
-    R_line.x_labels = map(str, reviews['date'])
-    R_line.x_labels_major = [reviews['date'].values[0],
-                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
-                             reviews['date'].values[-1]]
-    R_line.add('Reviws Timeline', reviews['reviews'], stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'})
-    R_line.add('Patch', reviews['patch'], secondary=True, print_values=True, dots_size=8, show_legend=False)
-    R_line = R_line.render_data_uri()
-
-    # Average Ratings 데이터
-    S_line = pygal.Line(style=line_chart_style,
-                        fill=True,
-                        dots_size=5,
-                        max_scale=1,
-                        range=(1, 5),
-                        show_legend=False,
-                        tooltip_border_radius=20,
-                        show_minor_x_labels=False,
-                        truncate_label=-1)
-
-    S_line.title = 'Average Stars'
-    S_line.x_labels = map(str, reviews['date'])
-    S_line.x_labels_major = [reviews['date'].values[0],
-                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
-                             reviews['date'].values[-1]]
-    S_line.add('Stars', round(reviews['star_avg'], 1))
-    S_line = S_line.render_data_uri()
-
-    # Ratings 데이터(개)
-    SC_line = pygal.Line(style=issue_chart_style,
-                         dots_size=5,
-                         max_scale=1,
-                         interpolate='cubic',
-                         legend_at_bottom=True,
-                         legend_at_bottom_columns=6,
-                         stroke_style={'width': 3, 'dasharray': '3, 6', 'linecap': 'round', 'linejoin': 'round'},
-                         tooltip_border_radius=20,
-                         show_minor_x_labels=False,
-                         truncate_label=-1)
-
-    SC_line.title = 'Stars Timeline'
-    SC_line.x_labels = map(str, reviews['date'])
-    SC_line.x_labels_major = [reviews['date'].values[0],
-                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
-                             reviews['date'].values[-1]]
-    SC_line.add('star 1', reviews['star_1'])
-    SC_line.add('star 2', reviews['star_2'])
-    SC_line.add('star 3', reviews['star_3'])
-    SC_line.add('star 4', reviews['star_4'])
-    SC_line.add('star 5', reviews['star_5'])
-    SC_line.add('Patch', reviews['patch'], secondary=True, print_values=True, dots_size=8, show_legend=False)
-    SC_line = SC_line.render_data_uri()
-
-    # Ratings 데이터(%)
-    SR_bar = pygal.StackedBar(range=(0, 100),
-                              stack_from_top=True,
-                              style=stack_bar_chart_style,
-                              interpolate='cubic',
-                              legend_at_bottom=True,
-                              legend_at_bottom_columns=5,
-                              max_scale=1,
-                              inverse_y_axis=True,
-                              value_formatter=lambda x: '{}%'.format(x),
-                              tooltip_border_radius=20,
-                              show_minor_x_labels=False,
-                              truncate_label=-1)
-
-    SR_bar.title = 'Stars Rating (%)'
-    SR_bar.x_labels = map(str, reviews['date'])
-    SR_bar.x_labels_major = [reviews['date'].values[0],
-                             reviews['date'].values[int((len(reviews['date']) - 1) / 2)],
-                             reviews['date'].values[-1]]
-    SR_bar.add('star 1', round(reviews['star_1'] / reviews['star_total'] * 100, 1))
-    SR_bar.add('star 2', round(reviews['star_2'] / reviews['star_total'] * 100, 1))
-    SR_bar.add('star 3', round(reviews['star_3'] / reviews['star_total'] * 100, 1))
-    SR_bar.add('star 4', round(reviews['star_4'] / reviews['star_total'] * 100, 1))
-    SR_bar.add('star 5', round(reviews['star_5'] / reviews['star_total'] * 100, 1))
-
-    SR_bar = SR_bar.render_data_uri()
-
-    return HttpResponse(template.render({'R_line': R_line, 'S_line': S_line, 'SC_line': SC_line, 'SR_bar': SR_bar, 'version':version_list}))
-
-
-def word_table(request):
-    template = get_template('word_table.html')
-    version_list = Raw.objects.order_by().values('version').distinct()
-
-    app = ''
-    version = ''
-    lang =''
-    days1 = datetime.date.today()
-    days2 = datetime.date.today() - datetime.timedelta(days=99999)
-
-    if 'app' in request.GET:
-        app = request.GET['app']
-    if 'version' in request.GET:
-        version = request.GET['version']
-    if 'rating' in request.GET:
-        rating = request.GET['rating']
-    if 'lang' in request.GET:
-        lang = request.GET['lang']
-    if 'days' in request.GET:
-        days = request.GET['days']
-        if days == '7d':
-            days2 = datetime.date.today() - datetime.timedelta(days=7)
-        elif days == '14d':
-            days2 = datetime.date.today() - datetime.timedelta(days=14)
-        elif days == '1m':
-            days2 = datetime.date.today() - datetime.timedelta(days=30)
-        elif days == '3m':
-            days2 = datetime.date.today() - datetime.timedelta(days=90)
-        elif days == '6m':
-            days2 = datetime.date.today() - datetime.timedelta(days=180)
-        elif days == '1y':
-            days2 = datetime.date.today() - datetime.timedelta(days=365)
-    if 'sta_date' in request.GET:
-        days2 = request.GET['sta_date']
-        if str(days2) == '':
-            days2 = datetime.date.today() - datetime.timedelta(days=99999)
-        days2 = pd.to_datetime(days2)
-    if 'end_date' in request.GET:
-        days1 = request.GET['end_date']
-        if str(days1) == '':
-            days1 = datetime.date.today()
-        days1 = pd.to_datetime(days1)
-
-    sort_by = 'total_count'
-    if 'rating' in request.GET:
-        sort_by = request.GET['rating']
-
-    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
-    if request.GET:
-        res = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_1 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_2 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_3 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_4 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-        star_5 = list(Raw.objects.filter(app__contains=app, version__contains=version, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'version', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-
-
-    word_total_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_total_count']
-    word_total_count = word_total_count.sort_values(by=sort_by, ascending=False)
-    top_word = word_total_count[:10].reset_index().drop('index', axis=1)
-
-    word_pie = pygal.Pie(style=pie_chart_style, inner_radius=.4, print_values=True)
-    word_pie.title = 'Word Top 10(%)'
-    word_pie.add(top_word['word'][0], round(top_word['total_count'][0] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][1], round(top_word['total_count'][1] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][2], round(top_word['total_count'][2] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][3], round(top_word['total_count'][3] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][4], round(top_word['total_count'][4] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][5], round(top_word['total_count'][5] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][6], round(top_word['total_count'][6] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][7], round(top_word['total_count'][7] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][8], round(top_word['total_count'][8] / sum(top_word['total_count']) * 100, 1))
-    word_pie.add(top_word['word'][9], round(top_word['total_count'][9] / sum(top_word['total_count']) * 100, 1))
-    word_pie.value_formatter = lambda x: '%.1f%%' % x if x is not None else '∅'
-    word_pie = word_pie.render_data_uri()
-
-    word_bar = pygal.StackedBar(range=(0, 100),
-                                stack_from_top=True,
-                                style=stack_bar_chart_style,
-                                legend_at_bottom=True,
-                                legend_at_bottom_columns=5,
-                                max_scale=1,
-                                inverse_y_axis=True,
-                                value_formatter=lambda x: '{}%'.format(x),
-                                tooltip_border_radius=20,
-                                x_label_rotation=20)
-    word_bar.title = 'Top Word Stars (%)'
-    word_bar.x_labels = map(str, top_word['word'])
-    word_bar.add('1 star', top_word['r1_count'] / top_word['total_count'] * 100)
-    word_bar.add('2 star', top_word['r2_count'] / top_word['total_count'] * 100)
-    word_bar.add('3 star', top_word['r3_count'] / top_word['total_count'] * 100)
-    word_bar.add('4 star', top_word['r4_count'] / top_word['total_count'] * 100)
-    word_bar.add('5 star', top_word['r5_count'] / top_word['total_count'] * 100)
-    word_bar.value_formatter = lambda x: '%.1f%%' % x if x is not None else '∅'
-    word_bar = word_bar.render_data_uri()
-
-    return HttpResponse(template.render({'word_pie': word_pie, 'word_bar': word_bar, 'version':version_list}))

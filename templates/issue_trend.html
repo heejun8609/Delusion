@@ -29,18 +29,6 @@
                 </select>
                </td>
                 <td>
-                    Date:
-                     <select name="days">
-                        <option  value="" selected="selected">All</option>
-                        <option value="7d">Last 7 Days</option>
-                        <option value="14d">Last 14 Days</option>
-                        <option value="1m">Last 30 Days</option>
-                        <option value="3m">Last 90 Days</option>
-                        <option value="6m">Last 180 Days</option>
-                        <option value="1y">Last 365 Days</option>
-                    </select>
-                </td>
-                <td>
                     Custom Date: <input name="sta_date" size="7" type="text" id="StartDate"> - <input name="end_date" size="7" type="text" id="EndDate">
                 </td>
             </tr>
@@ -52,12 +40,9 @@
 
     <div align="center">
         <embed width="45%" type="image/svg+xml" src= {{ L_line|safe }} />
-        <embed width="45%" type="image/svg+xml" src= {{ L_bar|safe }} />
         <div id="comment_i">
             <span style="font-weight:bold; font-size:14px">
                 * Issue Word = (A Issue Word Count / Total Word Count) * 100
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                * Issue Word = (A Issue Word Count / Total Issue Word Count) * 100
             </span>
         </div>
          <form method=get action="/word_2_vec">{% csrf_token %}

@@ -1,0 +1,866 @@
+en ios
+tot_page:  9 page:  1 total_reviews:  85
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x80' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+tot_page:  9 page:  2 total_reviews:  85
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xAD\\xF0\\x9F...' for column 'title' at row 1")
+en ios
+tot_page:  9 page:  3 total_reviews:  85
+SQL error_message: (1062, "Duplicate entry 'ed3b7cfb4661cf64dc34844a2a67709d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '091251e11b649708eae5f224ea2ee8eb' for key 'PRIMARY'")
+en ios
+tot_page:  9 page:  4 total_reviews:  85
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x99\\x83' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\xA4\\xA2\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+tot_page:  9 page:  5 total_reviews:  85
+SQL error_message: (1062, "Duplicate entry 'ab55f7d337e9ede57395ab01c138719f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+en ios
+tot_page:  9 page:  6 total_reviews:  85
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'title' at row 1")
+en ios
+tot_page:  9 page:  7 total_reviews:  85
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D' for column 'content' at row 1")
+en ios
+tot_page:  9 page:  8 total_reviews:  85
+SQL error_message: (1062, "Duplicate entry 'a0f190ea61ba40ecca6306fa0675853c' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8C\\xF0\\x9F...' for column 'title' at row 1")
+en ios
+tot_page:  9 page:  9 total_reviews:  85
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+API connection error_message: 'reviews'
+en android
+tot_page:  1 page:  1 total_reviews:  3
+en android
+API connection error_message: 'reviews'
+Complete Stacking, 72건 성공, 2017-07-28 17:19:09.814143
+en ios
+tot_page:  14 page:  1 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry '184b8dfdcb0bde9faa8ac46c8a804ab7' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  2 total_reviews:  140
+en ios
+tot_page:  14 page:  3 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry '3450e6f6fd33278ea24b71b174d477a5' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ce09c862f2174f0b3805ea5e0a4d890a' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  4 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry '0f58e04f4353cfd761fdcac1334546a8' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81\\xE2\\x80...' for column 'content' at row 1")
+en ios
+tot_page:  14 page:  5 total_reviews:  140
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x8E\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\xA4\\xA2\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+tot_page:  14 page:  6 total_reviews:  140
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\xA4\\x9E\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x96\\x95\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '81dea0de39d73e61857cc4893934f597' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '99f0d83f8b9718f60f0a0a3aeb7802af' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b65aa85dfa5c57fe42e0e205e579a94a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5a78e864011f17e4013d1b801714f181' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  7 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry 'b12104d298086cd0679e99702898c147' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6277fb5f80f4af3ecc666e812399e912' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x80' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '4e4f451852afaefa9c62aacb62dac07f' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'fdd485d92f2e05b47fb34a2a86fc910f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0f995c6d889a36760cca51c705773893' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xAD\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry 'f38fb29cfc9b1c816f989e11d9614c37' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fbc4f8ea04428c02ef3b29f02a4d65f4' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  8 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry 'e6ccfeff94d2c73272fa1cad16f2db97' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '09e762f58f1b2590a5b9bacff946ae49' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '571be0b8581299d8993bfcb42341b542' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '089b379caf1e4d6d836ddad2d79b2408' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0c60db93cc605f4bd4977f85b12e7dc3' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8a0b67a090c8aa90d7b19321913ece73' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '2681ef9c4178d60adfeb06d308b50934' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c4d5227d9a23f134dc1421cc6706d072' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b61537c1e96175e9179007021a536529' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '993d0cbf23b475ca8dc047e17b829db9' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  9 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry 'ed3b7cfb4661cf64dc34844a2a67709d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5665f06e5e7ab46001a714c2dd894509' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fc190019c6325c2013334dcedb0f3aaa' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f1fc4526aab0a3ef53dd4769659aeec7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '091251e11b649708eae5f224ea2ee8eb' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'db3671596bd05b7df46c740b4bd3f4a7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd96abe3507f2c6217b0ebcf90623f608' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '50faeb67a297d0c3a0aabc50afe4cf76' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7fa465c6c4d2677fa60fd9e85bd21c51' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '698162eefffbd235613c21c950610bb0' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  10 total_reviews:  140
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x99\\x83' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'f1f0dd7198200514e7a01b2b2e345ddb' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\xA4\\xA2\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '9c651a5aa05a0c5dce921b16255977fd' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fe1e298e584b1744260b5ca3a903390b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a01a0ff1ab5784a7c30c6c4d57cdf990' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5df43dd26dfc0001d4d86c2c2c4c74c1' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ab55f7d337e9ede57395ab01c138719f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e487339f758d7a18d9c2a84b8ac68352' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  11 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry 'b0667f6a04ebeac50efbf94877ecc4b8' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '450806f8b4fdd50a76c13c2e56c5ab3f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c07e6ddedf137c30546f20a8edd688c3' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'bb502bfce2fea53a9905766571287ff9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fe8a27880e3f36d35264db59159b7261' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd1556e73dd7e0395359a5c0b7c2c83b7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '61be1fbcb6b9890e475bbc85c6d6c181' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '95f14db6c1149e393183129b3539a0d0' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '55e4efda58dc6cfa83352311ce4a06cd' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  12 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry 'b69a2f3162c0da13fac699a58f20062e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '66ed3e5d22c8e332685e1793056fe1f7' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '6fc7388c94a3221e8db695ea0222037c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c4a15087abcfd0d45875b53d4f9dea78' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'bff465499656290cc641a38e35f90c18' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f43627c00c8962b084570fd4602060e8' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e3201630b3db84cad836863c3e1e0031' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7fe143b032a39949ee786b36ebf0a12c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '82439c86da4ea68bab59e27f86c02f82' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  13 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry '18d0e5236600ff2105c7376659c3c02f' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '923ab5fbdea1e6edef1a0778475b1129' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f002b17670754fe2debddc3ea32ec831' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9afec8b96c0a41e0134dd440f8114792' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '31667b4acdac9700b5044e5beb259214' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e846c2ef235d43e73f45abfab270ec1b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a0f190ea61ba40ecca6306fa0675853c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5fb8c0aba7a73b70789127dad625a57b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '1f275cba2cc7a8e5dc25499597f5266a' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  14 total_reviews:  140
+SQL error_message: (1062, "Duplicate entry '4a10a9ed76e2e7fa756446cd27ce0357' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0fa0ce09891cc26d774fb3b8bafdcb8b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ee2e1be6e68344cfb3ae426a127114ec' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8C\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry 'fa8607916caafbe14c57c957955eaa82' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c48d9b650614cb66dbe994ab029b06bd' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '222d50c9104df87a0cf0f4ca37e0ee6f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c93a649ca5eee9c635cc758f8e146630' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0602c76b69b95521b73d2c8e90ec5bb7' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+API connection error_message: 'reviews'
+en android
+tot_page:  1 page:  1 total_reviews:  6
+SQL error_message: (1062, "Duplicate entry '4685260d9fb18a0bbc64e197aee638f9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '941ad1a07ba36ef6eaf8d9eb395f06d9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '2a9fa8a37ddc60e3fa379ed496dfcc0d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f325dbc172304a81d99a6eb3cf698266' for key 'PRIMARY'")
+en android
+API connection error_message: 'reviews'
+Complete Stacking, 48건 성공, 2017-07-29 08:00:11.592572
+en ios
+tot_page:  16 page:  1 total_reviews:  159
+en ios
+tot_page:  16 page:  2 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  3 total_reviews:  159
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xAD\\xF0\\x9F...' for column 'title' at row 1")
+en ios
+tot_page:  16 page:  4 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry 'b03540f1db51d8f076c5e9e6493dc69e' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  5 total_reviews:  159
+en ios
+tot_page:  16 page:  6 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c62b27c861ad5acc73924b6158259c81' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+tot_page:  16 page:  7 total_reviews:  159
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x83\\xF0\\x9F...' for column 'title' at row 1")
+en ios
+tot_page:  16 page:  8 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry 'e8e8961eef5e1d087bac5a68259962ad' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  9 total_reviews:  159
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8E\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '9d5bf8e00ef418afec912b5254004917' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '184b8dfdcb0bde9faa8ac46c8a804ab7' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  10 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry 'abb061a7831b8af64b9764b5b04c3f3f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a8a0460cf44898978a4c221b1d067cb8' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5205ea3e842c3af6aa5e5767511977c2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'df81dbd24ba8719ace543ade59cebfd8' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd837081879c74da342b30d0b900dc40f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '380c0945eb978f67ecf3ca1ce6a620a2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'eb687994ab82885be289e8da1cfd83c7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'af68f852679758b1c9f939e655d9a54c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7fb7fc2819dcee6a14dcd05ced2cb491' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f47373df5ff4135ee8e7e48868117e94' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  11 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry '5d0428c2e49c3ae1bc809d42e790f87f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'db316cf89d2adcf4f2343c2a52d1ae75' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3b79f22c8854d93ae08fcb25b7f04aa2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f0ef3126da546872e89a077e096fa6bc' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0224d4d3202b5e63fbc4dfe78c19d3eb' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fbe09df5c15b4eccc20d885744ca858e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6378f304f2d445a841aa98a789f84c1e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b7d6f8a36fc31f4951596be78b3379a7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6def63bd7b7f421f90dad6405f04044b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fb4d461b74d43da1d3347ede83a01a97' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  12 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry '219982815f26cce3168e59deb404cf8a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'bed8b1c9265a24f269f6c95515ade522' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0f56ba0c8d7bb1fe972f8415e102cd1d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd47809840eb89a65c8e1502bcadaf098' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3450e6f6fd33278ea24b71b174d477a5' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ce09c862f2174f0b3805ea5e0a4d890a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c9990ac57fe11e8838d22c9e71ba283e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '98be4294cc03c4ebcd59bb07f2b30474' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4be98cf7e54e8ee32fbf93ee463103ab' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0f58e04f4353cfd761fdcac1334546a8' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  13 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry '0674f0c4ea15bf6b87674edc8add39d6' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81\\xE2\\x80...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'ea8c0fce106b7f9a4931248d6223012a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'da4df973eaca9118b3da557432953c00' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '11717d9b96d9d8170200745069de61bc' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a2b691d0735dc6ad0c78c821c1635429' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5d03ed9d27955d7b2d8287796b8edf2c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b93725f16cef75f97ef01041b7418ed0' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a62e409c5bb3dd9c70175e5d73e72f10' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4446386f09e9655d198971b3b45f88f2' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  14 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry '0e73c683ff4da109a3ef652637ca9548' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '12c5b9c6099483e781c12b58059f1e43' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x8E\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'ef3e3a683a7ee6b1b8582a3e49aa506a' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\xA4\\xA2\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '6f81c4d9cf157d25cb3e34a1aaa9a507' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9b96ff1843913f01d12432eac6bbda23' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fd6edb6953abce87071db09c78c5faae' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\xA4\\x9E\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x96\\x95\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+tot_page:  16 page:  15 total_reviews:  159
+SQL error_message: (1062, "Duplicate entry '9bd545e287ade794ed33e1d599f84bd6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '765507fa937f96fe6992464afcea0a0d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a861a7294c7ff5254d7fa064ea7d1608' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '81dea0de39d73e61857cc4893934f597' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '99f0d83f8b9718f60f0a0a3aeb7802af' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b65aa85dfa5c57fe42e0e205e579a94a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5a78e864011f17e4013d1b801714f181' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b12104d298086cd0679e99702898c147' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6277fb5f80f4af3ecc666e812399e912' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  16 total_reviews:  159
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x80' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '4e4f451852afaefa9c62aacb62dac07f' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'fdd485d92f2e05b47fb34a2a86fc910f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0f995c6d889a36760cca51c705773893' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xAD\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry 'f38fb29cfc9b1c816f989e11d9614c37' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fbc4f8ea04428c02ef3b29f02a4d65f4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e6ccfeff94d2c73272fa1cad16f2db97' for key 'PRIMARY'")
+en ios
+API connection error_message: 'reviews'
+en android
+tot_page:  1 page:  1 total_reviews:  1
+SQL error_message: (1062, "Duplicate entry '07664e022e4eb1e655d4d79124b70478' for key 'PRIMARY'")
+en android
+API connection error_message: 'reviews'
+Complete Stacking, 79건 성공, 2017-07-30 08:00:09.284466
+en ios
+tot_page:  18 page:  1 total_reviews:  175
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '9bd545e287ade794ed33e1d599f84bd6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '700e6c88704fdec5152bd626a28b4eb4' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  2 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x92\\xAF\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'ffef1fd61dd46ee51c948e4ef09fe8b0' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  3 total_reviews:  175
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xAD\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+tot_page:  18 page:  4 total_reviews:  175
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81' for column 'title' at row 1")
+en ios
+tot_page:  18 page:  5 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry 'd4ae0b1e814faa4bcbb840872f591cc9' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  6 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry 'b6522700d4bec0822f78edea3bd58c75' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  7 total_reviews:  175
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x8F \\x0A...' for column 'content' at row 1")
+en ios
+tot_page:  18 page:  8 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry 'c0bb5ed3d42a068e21fe25b38af9ca86' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3c5bca750afe9b32391d94b788f02533' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  9 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry 'e5590438e954e661bfd703ea3fde8bc1' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f988f231b05bb157c1367f04dba56123' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '828aaf1a44d086d1855e0f28d6749b66' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  10 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry '9722244ecfe13a82940e3f052043d28b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a1122d584273744ed58735ad844ead6a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c6f402af74980118479c0ffcc7d062f9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '1736c0c4fd87682eb00ebf057831918c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '267032854506b2c20904323b9732ed52' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a6b27a72c24a397be155540feb922f06' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '033bb0006bda4c6a8c7b3dbc999db140' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '47340f7677de2cdaa6061e600c40aaa9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd59ade15c9e885cee725f8d4e116cd48' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '216831be5d9092a93d56494acd7c751c' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  11 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry 'aeabdd9808968765c10f4b132a23cb16' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd1abadf89b948c8d97a29e91f49edf60' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '170caea1ce93c54c64dc359bac3481a7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '839008d55d6c67312f8ad7956e7db2b7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9df696447800d2f2f3f6cde8d43ac205' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b8910e0bb58ad3a7865089cba74c7c75' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c9ac54f349678f4e63c53cebe2ba4e9b' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xAD\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry 'fa284d37924275da08fc1c4bd2fec0bf' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  12 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry '2caca331736d5ff7cdab1c54f45f518c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f1d58d9f7dc994590a994c6ce7ec05d8' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'af34cf26522304e8418e9820e6806e18' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a9c753aae57b688e44e4e7a88e324f29' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5a57e402e4084fcf4551fc7a32625580' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7e0ba5306d84221d8d88b4b8b2d360ce' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c312bbb5635072ea0281954b3ac1fdcb' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '39d67eeb7e03f4bd60055382c59d4d43' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b03540f1db51d8f076c5e9e6493dc69e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6dc1e4690f28f463dc959356aa3a4ab7' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  13 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry '5bffaafa31c602dd88ecc6bb6a9a839c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ecd3d6220ed94ffe91b23884d412f9d5' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '190095f93199fb70590d27dae0ab7bea' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e96527a6103cc26c87d0a278959ba47a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '31a3aa6ea0b5f3b9d7583f322c38db3d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '849e31f8b0726f3fa227398623d1861c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '12becbb9c6407e4e74e1f61d6b493429' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fd469a144d08ab1b9e57bccae0d33fb8' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0f693f02a164cfd7262752a7f9f32c18' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd97c11c5fa10ff68d044f8ef9ed77ec1' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  14 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry '692792bb5bc1f07954042b3a87fced67' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8491a4bbf5e0d3028d07ac7c515f054b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9419387d266815f7c80fba6cf9c72e51' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '70c807a3ee50dce7fda5a56b31ddf00b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3f14e2da050ddfcb82a6b8f5fe4549bc' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '1367d63aaa0ca59faf8fd3bcdb08c6b9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'af46ef42eeebb47eb437b89315d49daf' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c62b27c861ad5acc73924b6158259c81' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81\\xF0\\x9F...' for column 'content' at row 1")
+en ios
+tot_page:  18 page:  15 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry '75859b7c01a9ea6cf672814767d1929c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ab917c123b0eee1eaea902434bd5d836' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '663b0502d89250df9b7005de3a55bc7e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fb3bfa8559a202b8dbe92ca758b222b6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '493f9ae82291b87bfc6ca9c07b960da4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '28eed397e1f41ff1d56b8ee5780c98d9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ae7baadbcce92a79f81e745682328821' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ea15fe7cfea630942c3e8777f397adf3' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd2e6a8ba5f5ee03119a6045607786bee' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '62bf2cfdec771b0332b9ac0410f3ffd1' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  16 total_reviews:  175
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x83\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '1acb54817f5ce3071060e9e4cad2c52c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '238d42c03ae83269a520abd7c17e7f33' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd1ee089f3445542f943a095369af541d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'cbc817d37bbd096e2b0dcbf944aa7193' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3d22ea2116489fbc7aff5010375ed554' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '117ec767735a3798f4082eefe8de43f5' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'cfa02cbe1bdb7e9ac0a7b504eea5d42b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b290a97c03c728a8d0ef3e725aad18e0' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '167c4291a4b8793fb64e2bca155c4d13' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  17 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry '3642c384c264c94e3daac77e65205d85' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '062fff62e130e38f05e2e449ccc13f49' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6eababfc1c30dfbfdb716b2588e58632' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd918e99101e89b08d44ce4d5721633f3' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '15ddb0549802ec8f50c62d1c7c479093' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3d7791ec1d4dbb4324135340a84a1c2b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e8e8961eef5e1d087bac5a68259962ad' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ce73dd82aa0bec7622a40edd1cbe4b73' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8E\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '7699d54be42cd4fdad4b018fb9f4dbd3' for key 'PRIMARY'")
+en ios
+tot_page:  18 page:  18 total_reviews:  175
+SQL error_message: (1062, "Duplicate entry 'cad57c239646fb01669ad2cb1414020f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '389753825592b7f8e96b8a1e1d2fa59f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b56e2525bbcc7e41e2a74500ae02ccc2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ad8689755ed6f91eebfacc8b855f0aab' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7953ce45318ccbd8616f84472ef94345' for key 'PRIMARY'")
+en ios
+API connection error_message: 'reviews'
+en android
+tot_page:  1 page:  1 total_reviews:  7
+SQL error_message: (1062, "Duplicate entry 'a589be32fe00c527b8587704abf85e37' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xB6' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '7d331f49a89744fc4799dc914798cf81' for key 'PRIMARY'")
+en android
+API connection error_message: 'reviews'
+Complete Stacking, 78건 성공, 2017-07-31 08:00:07.635619
+en ios
+tot_page:  14 page:  1 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry '2f95154718ff9d86cb2c4ceb1202e386' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  2 total_reviews:  139
+en ios
+tot_page:  14 page:  3 total_reviews:  139
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x92\\xA9\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'ab2df4c6e42b7ab75bfc6634ea1ea6d6' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  4 total_reviews:  139
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xE2\\x9D...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry 'fb4d461b74d43da1d3347ede83a01a97' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  5 total_reviews:  139
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81)' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\xA4\\xB7\\xE2\\x80...' for column 'content' at row 1")
+en ios
+tot_page:  14 page:  6 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry '2083f93614d5ee2b1f386cb28a337d6e' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '995a0f118d74f10e073edf4efebb7ca2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9bd545e287ade794ed33e1d599f84bd6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4a6f19c20cff6376d883269f01dba1a2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'cd4c4764d88a032249ea0eb6fddbb867' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '700e6c88704fdec5152bd626a28b4eb4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'be70ace4418d41ddf4c20f00d13d0936' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  7 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry 'abe34b1bfb9a69b0810af214cf818ae4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8aa6b8f5e60faf15e2f5e43141ad9f3f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '28e56bb3bd21475bef31c08dae1519d7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '50aa72ed34313e9760282ca8fdedcbce' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '2e1bc0120339450ddba2369df42326c2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '1cc8ed4d9b2d5843ddb8a37dc880da2a' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x92\\xAF\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'ffef1fd61dd46ee51c948e4ef09fe8b0' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b1187cb1edcc3243443e161905fae808' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  8 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry '48a53e61a66705569e47986008ae95ff' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7bb21dbc71176350e9ee13d77862afa4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b3e76a4c0bbd0f90bacb448ec79ff54a' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xAD\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '30b4f4e28863af2b9c69b8b76eb493d6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7f5c0a245e03b86458e84891bc6002ca' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9b253cb6814fe25243fff1fa4092d696' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e4f85f382df7610e10370b943fb6e0ca' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '80f58d309e5d06578dd1ce9d374e0513' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '48f1357b4b3ad5e7bc5083f44044382a' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  9 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry 'dbcc696990d7b4b174728270ebaf8e4b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0fe4566cb7561b6facc50b59b02b5baa' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '81a3b2629c8ed8e7ee23ab673aa881ca' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e644fc875f04ff94f1dd4c1189b2764c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '364d496129a2056fa14618c5cf7c3f08' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8a4a31884676e3415364608480d9a0c4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '08721ae21c55154086b5089e002ac3a4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '67b184a1fe6ba15fc7b2f02dc145d516' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '8f26ac1d4b2707bb9f54ab111227939d' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  10 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry '6b37c04e1084da440d3dfdd8260d41dc' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a3697854d84cd10814ad908d57cb3339' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '06463b5dfce9887a588caeda11f456eb' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '98364f37d1a71a5e4d72ad33e93d472d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '23fa78433f8d0d2a43d907db080a2ffa' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f2e1c5787a83092db63a229a3ece5fc5' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd4ae0b1e814faa4bcbb840872f591cc9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6796c3d418ab7672c9b958264addd9bc' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '23dc3b78432389be4805100435f4a775' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a28adf7b4bb2a69004f0599386b8f34b' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  11 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry '4cfeb085ad9997dd8251a65165a75ae8' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '68dcff4fe30e707d35d1a779c2590b26' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '26b85c59efe6a57ec197e40cf6c385ca' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a948f9b081da36c564c08215a375efe6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '10d819bcf2fc4dd69f36383981eb6a42' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f182d53411be8a19059371d27d31c8a6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0b7ed9d6b10d5ae09dff0f709a6b37bf' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '060e3ebb97236503829b99455095e234' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '1999186dc21caf903a79526ee10acf12' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'cac5d667e734d62b78b6511af8bf143e' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  12 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry '715916d6102cb75df18639b44930f5f6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b6522700d4bec0822f78edea3bd58c75' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '21ea3057f85544742ae933cba492c5e7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '04fbb2dfba65ac3c960fe90df67bf861' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x8F \\x0A...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '839758488ecb967c6a5d8bda7ec887c6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ed2856e81ae4762c3c50a64294cf876e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '45539b3318bd20028ff9409a44d9be2a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ea877e96af87268672bfe2d35f12bb83' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f52fe8b0a6718fe37a1b85411799348c' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  13 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry 'a518cffa401e3fe134257858771bf521' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fecbcc2624fa03eb5605aab2b2745041' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c0bb5ed3d42a068e21fe25b38af9ca86' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '26d4be4e95d606c5fde2015ad83b04ce' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '1a666e5c0dc4f81b9a5965fc95562640' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fd99fa457c3c918a8a2d84a3043d13f4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4a3f8290ae6bf94a1c77702c374d0af2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3c5bca750afe9b32391d94b788f02533' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6f15e5d6543f2aa1dccfed7edb2454e4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b8f96674761e3bbb5c9793e534023e6e' for key 'PRIMARY'")
+en ios
+tot_page:  14 page:  14 total_reviews:  139
+SQL error_message: (1062, "Duplicate entry '4d715606c24e111eb3d74665905e20db' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5d4bf9f2a8042cbce3bd723c9d774ef6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '495757cd80d0d5f93c619be852025eb5' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '387f887b6a8e1fd98ec60a298dd55b28' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '1dcc144958ebb82ca8dbaa50af39bfde' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6b4e8c7efeb200a6b75e63432c7f22fb' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '41ec0190e5225d8184738832f8162fc3' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ed535c8eb278323d279b5e8510de06f9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '98018807c48623d7900f5bc374e3eb22' for key 'PRIMARY'")
+en ios
+API connection error_message: 'reviews'
+en android
+tot_page:  1 page:  1 total_reviews:  3
+SQL error_message: (1062, "Duplicate entry 'a589be32fe00c527b8587704abf85e37' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7649e61e28596241fd2f9e7625d39107' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '11a9ba5d71c4a94cde763ee4a3b821af' for key 'PRIMARY'")
+en android
+API connection error_message: 'reviews'
+Complete Stacking, 44건 성공, 2017-08-01 08:00:09.173747
+en ios
+tot_page:  16 page:  1 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry '6e0d94da7fb8c4832a63b5010add14c2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8598b0e5be95f73efda9cde41777a9e1' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x8E' for column 'title' at row 1")
+en ios
+tot_page:  16 page:  2 total_reviews:  155
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8F\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1' for column 'content' at row 1")
+en ios
+tot_page:  16 page:  3 total_reviews:  155
+en ios
+tot_page:  16 page:  4 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry 'c62b27c861ad5acc73924b6158259c81' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  5 total_reviews:  155
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xBC' for column 'title' at row 1")
+en ios
+tot_page:  16 page:  6 total_reviews:  155
+en ios
+tot_page:  16 page:  7 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '05127c0bfe2c69a4ee78c551c00cd114' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8C\\xF0\\x9F...' for column 'title' at row 1")
+en ios
+tot_page:  16 page:  8 total_reviews:  155
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x80' for column 'title' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x82' for column 'content' at row 1")
+en ios
+tot_page:  16 page:  9 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry '0f820c55426d3d7965dfbd02f9efac8e' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  10 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry '6bf4542e631e68f929cb45819973f21d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5a02954111b6f409c9d4200f4462f186' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4a1a3641f750d3aae70f4e0a7adc282f' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  11 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry 'd4f9bdab88c68f2e4a4cb7e34122b321' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'eee88aed79eddcb740ce9f80e1464572' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5dc5c512f254ce56f6289f3a3b36f866' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0af6b5b82dd41dbd53b7a082b5cddb22' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6212ff94f9063b8570c0c42276268db1' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f0b1c413a5385ffb483a8260819518f8' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fc4c3d6f3b9893745472c6b4c958d7b8' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  12 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry 'd498e38a3e8ecd9767499235febe804b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e76e803f4101de8f4647e48b7d56d0f1' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '2f95154718ff9d86cb2c4ceb1202e386' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e5e74a4ac1d2a7300d7b84ccea31f52f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f61cab92a0b49abe492d47f5d902ff42' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a1135b2968e83b42c1cebcb62092fa3a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7181cc7fab5650b8736866668c962f9d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '20e4d8db54fea8051133982947d9453f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b15226be3d826ac5d77189c38db65b86' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd55f129381b8b4eed69bec31a8783d95' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  13 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry 'b0ec8176953cc4f2a822ae2d6ced11b7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8fe257c994472fcfed651232c9aaeb4c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ced1ddaed8998e36776d5fcab0e1c24d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '77bd0a71980135d21f91114ab9274f0c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '481dd861c33d39cabcd9c7d6efaa5fe0' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '1c10279c1aa332ef0a910cb4b366b569' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '554e21adce5d6c9ff58f2a93582da00f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '63d352d7f25514f5427f85b371b3e533' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x92\\xA9\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '2f5898798675ad8c457eef829bc98f46' for key 'PRIMARY'")
+en ios
+tot_page:  16 page:  14 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry 'ab2df4c6e42b7ab75bfc6634ea1ea6d6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e293eefc2f7b7ba0946dd9de1968baa0' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6d04687e7958306497d3ecefa5d09293' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd122770525fc9b6c43ca81a0a0dbd0dc' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '07b3918676dc95d77dfd603714cca813' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c59d039b33c1bffaf0ab54121a951e40' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry 'f49999b952a3f0a8f997244ec08518be' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8c0727190d022a3cce53324f797206a4' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xE2\\x9D...' for column 'title' at row 1")
+en ios
+tot_page:  16 page:  15 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry 'fb4d461b74d43da1d3347ede83a01a97' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '631deca9455fe32fa301955df31c88e1' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f100db94b08bd9f7919ff7a5b3ea1e6b' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81)' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'b69075bd7bb9845410d8d9a611b367c2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a2352bb529a5175ff32de79e5fb57f8f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd44697dfcfe245ee4f67d9d853556d2d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ba5b17e221d9ffdbd77a0b0e982866ce' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8129f5b3f47d2d335c2e696ddc2b427d' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\xA4\\xB7\\xE2\\x80...' for column 'content' at row 1")
+en ios
+tot_page:  16 page:  16 total_reviews:  155
+SQL error_message: (1062, "Duplicate entry '55c9a887f0074d226a09a0bad6a4b644' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8e955a5dff28f425456be80ded14e405' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '52f47e5b48457b71f8c2412ca3e560e4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ede4e3e8c0f1e47c33215276bace3c31' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3aa50420d739d05f98c14a327c64ddba' for key 'PRIMARY'")
+en ios
+API connection error_message: 'reviews'
+en android
+tot_page:  1 page:  1 total_reviews:  9
+SQL error_message: (1062, "Duplicate entry 'c1c18f9bd345558f3c1a12c678af10d6' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x83' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '48739076a1cf57cba595cf5ae1179362' for key 'PRIMARY'")
+en android
+API connection error_message: 'reviews'
+Complete Stacking, 93건 성공, 2017-08-02 08:00:04.070339
+en ios
+tot_page:  24 page:  1 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '6df7cfc8042fa82d2934dfc4a17b995c' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  2 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '091251e11b649708eae5f224ea2ee8eb' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  3 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '83d889de3103e21df0b0f7777215f837' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  4 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '3043783d6c262391a0c096226d9c30aa' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  5 total_reviews:  234
+en ios
+tot_page:  24 page:  6 total_reviews:  234
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x8D' for column 'title' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8E W...' for column 'title' at row 1")
+en ios
+tot_page:  24 page:  7 total_reviews:  234
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x92\\xAF\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x92\\xAF\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry 'bedbb4a2a5e33a501993ac75943cdcde' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  8 total_reviews:  234
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x81' for column 'content' at row 1")
+en ios
+tot_page:  24 page:  9 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '6df7cfc8042fa82d2934dfc4a17b995c' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  10 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  11 total_reviews:  234
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x82 a...' for column 'content' at row 1")
+en ios
+tot_page:  24 page:  12 total_reviews:  234
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8F\\xF0\\x9F...' for column 'content' at row 1")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x94\\xA5' for column 'title' at row 1")
+en ios
+tot_page:  24 page:  13 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry 'caaee99cb4823aeb28104656dc42de24' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1. ...' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry 'a8de3d7398085dc7e7ae4a8963803556' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  14 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry 'e8d30e230cc3dffb274ee09baf66f630' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8cf0b798588ced5b33c5548d045d4b5a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5756e68e45df891f1bf7a4583e5843d0' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ebcc70f9b027ff22ebd11d2ab3d79cb9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6e0d94da7fb8c4832a63b5010add14c2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'a95a95a44a6b49470bc3f997e3351fe4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8598b0e5be95f73efda9cde41777a9e1' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x8E' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '6e67ed67319825d3be34a247d0aaf1f7' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  15 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '420c016ed288f6054232c967d35c99b9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '28843cbbc4e5191a1e77719ae6e699f7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e8043d39e81489f2f78047a1942cb01b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'e835291f43dd67e8f062d23f4c24fa86' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8F\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '742aeb0d39018e596e1b087e9dd2aa59' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xA1' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '7dc28a08657f780b7460edf614202f8f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '2de17b99eee1a7d6784205da04396dcf' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fbeb12529165f00353cb59578ef77d17' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  16 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '26ca1e9e9f26047fa15a7142d347e307' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3a8b2560211a2c1d2d80abec4b300592' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '68a0d630e87d7e0752aa33b79156fa7f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '18d4ce0e655aad289c1286877321c265' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '146dacea504f08fa45d46795061f71fb' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '0f47413afa91fed668bfbb6ad567d2a7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '26f46248ee057ec86f257b03ae89a8df' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '802eb6122b6aacdffd972c1597a0b7cf' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'be92394e25ae4a59696b835b59cf1228' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'beb98aabc63267b3cc8f336d837dc0b7' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  17 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '555fd785080c532d41586633486dd9b6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'cae0dd0a3be5587d79dd615d5ac72004' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '15e3cd58c76fb1c919206e3171379085' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7eb812e7cc73ae472902c69701cc0d24' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '529e93bc7e09f2499d82a8f9e55b1758' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c62b27c861ad5acc73924b6158259c81' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fbc60b112e50ea76c7a0457b6c483878' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3f52ff640279f1b3948161315e5c00ac' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b39f264e878fcc222691ce91ad5a4b81' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '66b59f597d34cfc5b29555c2479708c2' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  18 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '94d624553ef4111e5dcf47513d87b825' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '98fe2d028aeee2b9922340a6b81639b9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3c0ec649e9e01b1502d6683a981bcbf7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '82290755f8dc24dbb5cd1e54258ad4c4' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '915adf1eead954821817f72bbe5e7920' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '83aa116f5ae1bd5ca60ee774bca55183' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7b86207550d364dd15a787b17570309a' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\xBC' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '55a572ae789263506adfdb521222d538' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4bd08c0bb8d7c37542ae2fa9b40daea5' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  19 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry 'ab208186d963ba4cc55992e0abf612b0' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'df86b27d32cb0c54d7abdfc748ead43b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9daf9025dfe8d504d8c2090996273f03' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9cd2d69b7ece5dfd5b442870d56d5879' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '146fba0c86acfa87b2d1fd02a207cdec' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4e7b6f2cf95239a4638f12e6013892f7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '37df3810e2ec83ac7040f2e6fff83000' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'bfccd59c9d38caa4a378d7c329569201' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '2ad338ee7073659ba12337a3e60ccfb7' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '19faacfcbf5420a49d6c7ab5d4f3ce4b' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  20 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '974ef4e4ff4a5c8b0743211f31c56dd9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '23a5d5fef444f8b4a2c84fd698b9d688' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5dea1a20d8e426b5c1f0505802429250' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '05127c0bfe2c69a4ee78c551c00cd114' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9bbce9245d5c8045e657c208ba7ed6ab' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '760540855a3b8b27ad6cc7ae4008052e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ad444fcc6fdda17fe882ffb74485f13a' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8C\\xF0\\x9F...' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry 'de3e65aee302f1b081ded1c1dd6bea28' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5cee2af089a8f6b40596e54ba3fadb99' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  21 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '7e313d4486d34d8070616f46156e5130' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'fea11bf7c8cddd3d92a53c463485e041' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x80' for column 'title' at row 1")
+SQL error_message: (1062, "Duplicate entry '4d857cf50b67e6cff6ea0d5dafcb58f9' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f9b1ee6271084a14a19bd83e6a44b669' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'ffeacf07b78f4542e6e875de558a84d8' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x82' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '774585b549826ddefdb5221610af1395' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd115d3281002ee3643816f98b05c25e2' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '3d192a0add9327d7808d62e71a1b3eb0' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  22 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '7bf1c4509ff5a2bb05d29336ec1b969a' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6d81e98cef56917b18d7ec0e5939f763' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '88ae3c10f7b55b62b1021d0ac0f555a3' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '2a4b55f6b5686de75d5eb05fa764e403' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b6a5a3f4c4a61f4c17cb9f7cddcc8ce5' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'b993db9e01104387c279cf2f6f72290f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '8f1a5552df3dda05bbd31390cf973839' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '63d501065766ea524a0e9d241f5ccedd' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '995638a0fb8da07deb2326a910e30ec3' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f0cead3be6d941a2b9735eed12b7875a' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  23 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '0f820c55426d3d7965dfbd02f9efac8e' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6bf4542e631e68f929cb45819973f21d' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '6e45a12c0324189e017bf3a2f86a177b' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'f4574c24735635544bab14e6706a9f06' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4b4a775d4e078cdace3dd104592f0b79' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7fca81614c082536b68e5ccc296e2e69' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'c12840cd452d1ba259e1ec152a59e211' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '7fecd9efb0b7562924b2f2cd7ac6fc34' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '5a02954111b6f409c9d4200f4462f186' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '9cba03128a61cf0975a6ab1b28eb15b8' for key 'PRIMARY'")
+en ios
+tot_page:  24 page:  24 total_reviews:  234
+SQL error_message: (1062, "Duplicate entry '4a1a3641f750d3aae70f4e0a7adc282f' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '643b187274580b1725bbcfc2f910b9e6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'd29f47255c1941052356f254bc9fc4b5' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry 'adfa38b9a9848f4e13b7d71a80584f95' for key 'PRIMARY'")
+en ios
+API connection error_message: 'reviews'
+en android
+tot_page:  1 page:  1 total_reviews:  7
+SQL error_message: (1062, "Duplicate entry 'c1c18f9bd345558f3c1a12c678af10d6' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '2b50274ad44b958a5f8dcb9b4608e0c3' for key 'PRIMARY'")
+SQL error_message: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x83' for column 'content' at row 1")
+SQL error_message: (1062, "Duplicate entry '5c25a71ca6880295858fba35247942ed' for key 'PRIMARY'")
+SQL error_message: (1062, "Duplicate entry '4c068bae00359395cbac1182da2514a5' for key 'PRIMARY'")
+en android
+API connection error_message: 'reviews'
+Complete Stacking, 114건 성공, 2017-08-03 08:00:06.878724
