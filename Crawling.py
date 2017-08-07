@@ -1,30 +1,28 @@
-import pandas as pd
-import requests
+from selenium import webdriver
+from bs4 import BeautifulSoup
+import time
 import datetime
-import pymysql
+import pandas as pd
+import re
+
 import nltk
 from nltk.stem.porter import *
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-import re
 
 def YMD(x):
     return str(x)[:10]
 
-
 def MD(x):
     return x[5:]
 
-
 stemmer = PorterStemmer()
-
 
 def stem_tokens(tokens, stemmer):
     stemmed = []
     for item in tokens:
         stemmed.append(stemmer.stem(item))
     return stemmed
-
 
 def tokenizer(doc):
     eng = re.compile('[^ A-Za-z]+')
@@ -37,116 +35,136 @@ def tokenizer(doc):
             POS.append(x[0])
     return ','.join(POS)
 
-
-app = [{'ios': 'id=1053012308'}, {'android': 'p=com.supercell.clashroyale'}]
-# lang = ['ko', 'en']
-lang = ['en']
-
-
 def job():
-    now = datetime.datetime.now()
+    # 크롬 드라이버 호출
+    driver = webdriver.Chrome()
+    time.sleep(1)
+
+    # 자동화 웹페이지 호출
+    driver.get("https://play.google.com/store/apps/details?id=com.epicactiononline.ffxv.ane&hl=en")
+    time.sleep(1)
+
+    # 웹페이지 긁어오기
+    html = driver.page_source
+    time.sleep(1)
+
+    # 확장 버튼 클릭
+    driver.find_element_by_xpath("//div[@class='details-section reviews']//button[@aria-label='See More']").click()
+    time.sleep(1)
+
+    # 최신 순 정렬
+    driver.find_element_by_xpath("//div[@class='details-section reviews']//button[@class='dropdown-menu']").click()
+    time.sleep(1)
+    driver.find_element_by_xpath("//div[@class='details-section reviews']//button[@class='dropdown-child']").click()
+    time.sleep(1)
+
+    # 페이지 긁어오기
+    html = driver.page_source
+    soup = BeautifulSoup(html, "html.parser")
+
+    # 목표 날짜
+    custom_date = datetime.date.today() - datetime.timedelta(days=1)
+
+    temp_date = []
+
+    for x in soup.find_all(class_='review-date'):
+        temp_date.append(str(pd.to_datetime(x.get_text()))[:10])
+
+    # 목표 날짜까지 확장버튼 클릭
+    while True:
+        try:
+            for x in range(10):
+                driver.find_element_by_xpath(
+                    "//div[@class='details-section reviews']//button[@aria-label='See More']").click()
+                time.sleep(1)
+        except:
+            continue
+            print(temp_date)
+
+        html = driver.page_source
+        soup = BeautifulSoup(html, "html.parser")
+
+        for x in soup.find_all(class_='review-date'):
+            temp_date.append(str(pd.to_datetime(x.get_text()))[:10])
+
+        if str(custom_date) in temp_date:
+            break
+
+    # 항목별 리스트 만들기
+    auth = []
+    date = []
+    rate = []
+    rev = []
+    for elem in soup.find_all(class_='single-review'):
+
+        auth.append(elem.find(class_='author-name').get_text())
+
+        date.append(str(pd.to_datetime(elem.find(class_='review-date').get_text()))[:10])
+
+        rev.append(elem.find(class_='review-body with-review-wrapper').get_text()[:-15])
+
+        m = re.search(r'[0-9]+', elem.find(class_='current-rating')['style'])
+        num = m.group()
+        if int(num) < 30:
+            rate.append(1)
+        elif int(num) > 30 and int(num) < 50:
+            rate.append(2)
+        elif int(num) > 50 and int(num) <= 70:
+            rate.append(3)
+        elif int(num) > 70 and int(num) <= 90:
+            rate.append(4)
+        elif int(num) > 90:
+            rate.append(5)
+
+    df = pd.concat([pd.DataFrame(auth, columns=['author']), pd.DataFrame(date, columns=['date']),
+                    pd.DataFrame(rev, columns=['review']), pd.DataFrame(rate, columns=['rating'])], axis=1)
+
+    import pymysql
+    connection = pymysql.connect(user='root', passwd='0000', db='app', charset='utf8')
     success_count = 0
+    for row in df.iterrows():
+        try:
+            with connection.cursor() as cur:
+                row[1]['date'] = str(pd.to_datetime(row[1]['date']) + datetime.timedelta(seconds=success_count))
+                if row[1]['author'] != '':
+                    data = (
+                    'android', re.sub('[-:]', '', row[1]['date']), row[1]['date'], row[1]['review'], row[1]['rating'],
+                    'en')
+                    sql = """insert into 
+                                app.fantasy (app, id, date, content, rating, lang)
+                                values (%s, %s, %s, %s, %s, %s)"""
 
-    for con in app:
-        access = []
-        for soft, acc in con.items():
-            if soft == 'android':
-                access.append('android')
-                access.append(acc)
-            elif soft == 'ios':
-                access.append('ios')
-                access.append(acc)
+                    cur.execute(sql, data)
 
-        for lan in lang:
-            page = 1
-            tot_page = 10000
+                    data = (re.sub('[-:]', '', row[1]['date']), tokenizer(row[1]['review']))
+                    sql = """insert into
+                                app.fantasy_text (id, context)
+                                values(%s, %s)"""
+                    cur.execute(sql, data)
 
-            for i in range(1, tot_page):
-                try:
-                    print(lan, access[0])
-                    movieIdListURL = "https://data.42matters.com/api/v2.0/" + access[0] + "/apps/reviews.json?\
-                                        " + access[1] + "&\
-                                        access_token=fdcdb4c9ec8c81e2ba0b4d00ab2eb0e80e310fd4&\
-                                        days=1&\
-                                        lang=" + lan + "&\
-                                        page=" + str(page)
+                    connection.commit()
+                    success_count += 1
+                else:
+                    data = ('android', row[1]['author'], row[1]['date'], row[1]['review'], row[1]['rating'], 'en',
+                            'android', row[1]['author'], row[1]['date'], row[1]['review'], row[1]['rating'], 'en')
+                    sql = """insert into 
+                                app.fantasy (app, id, date, content, rating, lang)
+                                values (%s, %s, %s, %s, %s, %s)
+                                on duplicate key update app=%s, id=%s, date=%s, content=%s, rating=%s, lang=%s"""
 
-                    moviewIdPage = requests.post(movieIdListURL)
-                    json = moviewIdPage.json()
-                    connection = pymysql.connect(user='root', passwd='0000', db='app', charset='utf8')
-                    reviews = json['reviews']
-                    tot_page = json['total_pages']
-                    total_reviews = json['total_reviews']
-                    print('tot_page: ', tot_page, 'page: ', page, 'total_reviews: ', total_reviews)
-                except Exception as e:
-                    print('API connection error_message: ' + str(e))
-                    break
+                    cur.execute(sql, data)
 
-                if tot_page + 1 == page:
-                    page = 1
-                    break
+                    data = (row[1]['author'], tokenizer(row[1]['review']),
+                            row[1]['author'], tokenizer(row[1]['review']))
+                    sql = """insert into
+                                app.fantasy_text (id, context)
+                                values(%s, %s) on duplicate key update id=%s, context=%s"""
+                    cur.execute(sql, data)
 
-                if access[0] == 'ios':
-                    for rev in reviews:
-                        try:
-                            with connection.cursor() as cur:
-
-                                rev['date'] = str(
-                                    pd.to_datetime(rev['date']) + datetime.timedelta(seconds=success_count))
-
-                                data = (access[0], rev['app_version'], rev['author_id'], rev['title'], rev['content'],
-                                        rev['date'], rev['rating'], rev['lang'])
-                                sql = """insert into 
-                                            app.app (app, version, id, title, content, date, rating, lang)
-                                            values (%s, %s, %s, %s, %s, %s, %s, %s)"""
-                                cur.execute(sql, data)
-
-                                data = (rev['author_id'], tokenizer(rev['title'] + ' ' + rev['content']))
-                                sql = """insert into
-                                            app.app_text (id, context)
-                                            values(%s, %s)"""
-                                cur.execute(sql, data)
-
-                                connection.commit()
-                                success_count += 1
-                        except Exception as e:
-                            print('SQL error_message: ' + str(e))
-                            if 'total_pages' in str(e):
-                                break
-                            pass
-
-                    page += 1
-
-
-
-
-                elif access[0] == 'android':
-                    for rev in reviews:
-                        try:
-                            with connection.cursor() as cur:
-                                data = (access[0], rev['app_version'], rev['author_id'], rev['content'], rev['date'],
-                                        rev['rating'], rev['lang'])
-
-                                sql = """insert into 
-                                            app.app (app, version, id, content, date, rating, lang)
-                                            values (%s, %s, %s, %s, %s, %s, %s)"""
-                                cur.execute(sql, data)
-
-                                data = (rev['author_id'], tokenizer(rev['content']))
-                                sql = """insert into
-                                            app.app_text (id, context)
-                                            values(%s, %s)"""
-                                cur.execute(sql, data)
-
-                                connection.commit()
-                                success_count += 1
-
-                        except Exception as e:
-                            print('SQL error_message: ' + str(e))
-                            if 'total_pages' in str(e):
-                                break
-                            pass
-
-                    page += 1
-    print("Complete Stacking, " + str(success_count) + "건 성공, " + str(now))
-job()
+                    connection.commit()
+                    success_count += 1
+        except Exception as e:
+            print('SQL error_message: ' + str(e))
+            pass
+    connection.close()
+    print("Complete Stacking, " + str(success_count) + "건 성공, " + str(datetime.datetime.now()))

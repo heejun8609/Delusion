@@ -30,6 +30,20 @@
             useCurrent: false,
             useDefault: false
         })
+        $( "#IssueDate" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            defaultDate: null,
+            useCurrent: false,
+            useDefault: false
+        })
+        $( "#IssueDate2" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            defaultDate: null,
+            useCurrent: false,
+            useDefault: false
+        })
       });
 
       </script>
@@ -49,6 +63,8 @@
 
         tbody>tr>td {
             padding: 6px;
+            border-spacing: 10px;
+            border-collapse: separate;
         }
 
         body {
@@ -74,7 +90,7 @@
 
         div#search_word1{
             margin-top: 1cm;
-            margin-right: 4cm;
+            text-align: center;
         }
 
         div#search_word2{
@@ -110,8 +126,8 @@
         }
 
         div#comment_i {
-            text-align: left;
-            margin-left: 3.5cm;
+            margin-top: 0.3cm;
+            text-align: center;
         }
 
         div#comment_w {
@@ -125,12 +141,9 @@
 <body background="{% static "img/delusion_logo5.jpg" %}">
     <div id="header-container">
         <a href="{%  url 'index' %}">Home</a> &nbsp; | &nbsp;
-        <a href="{%  url 'simple_list' %}">Reviews</a> &nbsp; | &nbsp;
-        <a href="{%  url 'review_star_trend' %}">Low Ratings</a> &nbsp; |&nbsp;
-        <a href="{%  url 'card_trend' %}">Card</a> &nbsp; |&nbsp;
-        <a href="{%  url 'issue_trend' %}">Issue</a> &nbsp; |&nbsp;
-        <a href="{%  url 'word_2_vec' %}">Custom</a> &nbsp; | &nbsp;
-
+        <a href="{%  url 'issue_trend' %}">Big Issue Trend</a> &nbsp; |&nbsp;
+        <a href="{%  url 'issue_table' %}">Issue Word Table</a> &nbsp; |&nbsp;
+        <a href="{%  url 'simple_list' %}">Reviews</a>
     </div>
 
     {%  block content %}

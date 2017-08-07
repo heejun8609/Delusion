@@ -20,11 +20,9 @@ from viz import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),  # main index view 연결
-    url(r'^simple_list/?', views.simple_list, name='simple_list'),
-    url(r'^review_star_trend/?', views.review_star_trend, name='review_star_trend'),
-    url(r'^card_trend/?', views.card_trend, name='card_trend'),
     url(r'^issue_trend/?', views.issue_trend, name='issue_trend'),
-    url(r'^word_2_vec/?', views.word_2_vec, name='word_2_vec'),
+    url(r'^issue_table/?', views.issue_table, name='issue_table'),
+    url(r'^simple_list/?', views.simple_list, name='simple_list'),
     url(r'^search/?', views.simple_list, name='search'),
 
 ]
