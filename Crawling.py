@@ -4,25 +4,34 @@ import time
 import datetime
 import pandas as pd
 import re
+import pymysql
 
 import nltk
 from nltk.stem.porter import *
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.triggers.cron import CronTrigger
+from apscheduler.triggers.interval import IntervalTrigger
+
 
 def YMD(x):
     return str(x)[:10]
 
+
 def MD(x):
     return x[5:]
 
+
 stemmer = PorterStemmer()
+
 
 def stem_tokens(tokens, stemmer):
     stemmed = []
     for item in tokens:
         stemmed.append(stemmer.stem(item))
     return stemmed
+
 
 def tokenizer(doc):
     eng = re.compile('[^ A-Za-z]+')
@@ -34,6 +43,7 @@ def tokenizer(doc):
         if x[1] in ['NN', 'NNS', 'VBN', 'VB', 'VBP', 'VBZ', 'VBD', 'JJ', 'JJS', 'JJR', 'RB', 'RBR', 'RP']:
             POS.append(x[0])
     return ','.join(POS)
+
 
 def job():
     # 크롬 드라이버 호출
@@ -52,25 +62,22 @@ def job():
     driver.find_element_by_xpath("//div[@class='details-section reviews']//button[@aria-label='See More']").click()
     time.sleep(1)
 
-    # 최신 순 정렬
     driver.find_element_by_xpath("//div[@class='details-section reviews']//button[@class='dropdown-menu']").click()
     time.sleep(1)
+
     driver.find_element_by_xpath("//div[@class='details-section reviews']//button[@class='dropdown-child']").click()
     time.sleep(1)
 
-    # 페이지 긁어오기
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
 
-    # 목표 날짜
-    custom_date = datetime.date.today() - datetime.timedelta(days=1)
+    custom_date = datetime.date.today() - datetime.timedelta(days=2)
 
     temp_date = []
 
     for x in soup.find_all(class_='review-date'):
         temp_date.append(str(pd.to_datetime(x.get_text()))[:10])
 
-    # 목표 날짜까지 확장버튼 클릭
     while True:
         try:
             for x in range(10):
@@ -90,7 +97,6 @@ def job():
         if str(custom_date) in temp_date:
             break
 
-    # 항목별 리스트 만들기
     auth = []
     date = []
     rate = []
@@ -119,27 +125,31 @@ def job():
     df = pd.concat([pd.DataFrame(auth, columns=['author']), pd.DataFrame(date, columns=['date']),
                     pd.DataFrame(rev, columns=['review']), pd.DataFrame(rate, columns=['rating'])], axis=1)
 
-    import pymysql
     connection = pymysql.connect(user='root', passwd='0000', db='app', charset='utf8')
+
     success_count = 0
     for row in df.iterrows():
         try:
             with connection.cursor() as cur:
                 row[1]['date'] = str(pd.to_datetime(row[1]['date']) + datetime.timedelta(seconds=success_count))
-                if row[1]['author'] != '':
+                if row[1]['author'] == '':
                     data = (
+                    'android', re.sub('[-:]', '', row[1]['date']), row[1]['date'], row[1]['review'], row[1]['rating'],
+                    'en',
                     'android', re.sub('[-:]', '', row[1]['date']), row[1]['date'], row[1]['review'], row[1]['rating'],
                     'en')
                     sql = """insert into 
                                 app.fantasy (app, id, date, content, rating, lang)
-                                values (%s, %s, %s, %s, %s, %s)"""
+                                values (%s, %s, %s, %s, %s, %s)
+                                on duplicate key update app=%s, id=%s, date=%s, content=%s, rating=%s, lang=%s"""
 
                     cur.execute(sql, data)
 
-                    data = (re.sub('[-:]', '', row[1]['date']), tokenizer(row[1]['review']))
+                    data = (re.sub('[-:]', '', row[1]['date']), tokenizer(row[1]['review']),
+                            re.sub('[-:]', '', row[1]['date']), tokenizer(row[1]['review']))
                     sql = """insert into
                                 app.fantasy_text (id, context)
-                                values(%s, %s)"""
+                                values(%s, %s) on duplicate key update id=%s, context=%s"""
                     cur.execute(sql, data)
 
                     connection.commit()
@@ -168,3 +178,26 @@ def job():
             pass
     connection.close()
     print("Complete Stacking, " + str(success_count) + "건 성공, " + str(datetime.datetime.now()))
+    driver.quit()
+
+
+class Scheduler():
+    # 클래스 생성시 스케쥴러 데몬을 생성합니다.
+    def __init__(self):
+        self.sched = BlockingScheduler()
+
+    # 스케쥴러입니다. 스케쥴러가 실행되면서 hello를 실행시키는 쓰레드가 생성되어집니다.
+    # 그리고 다음 함수는 type 인수 값에 따라 cron과 interval 형식으로 지정할 수 있습니다.
+    # 인수값이 cron일 경우, 날짜, 요일, 시간, 분, 초 등의 형식으로 지정하여,
+    # 특정 시각에 실행되도록 합니다.(cron과 동일)
+    # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
+    def scheduler(self):
+        #         trigger = IntervalTrigger(hours=1)
+        trigger = CronTrigger(day_of_week='mon-fri', hour='9', minute='55')
+        self.sched.add_job(job, trigger)
+        self.sched.start()
+
+
+if __name__ == '__main__':
+    scheduler = Scheduler()
+    scheduler.scheduler()

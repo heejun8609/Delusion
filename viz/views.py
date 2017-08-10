@@ -4,20 +4,13 @@ import datetime
 from django.shortcuts import render
 from django.template.loader import get_template
 from django.http.response import HttpResponse
-from viz.models import Raw, Fantasy, Fantasy_count
+from viz.models import Raw, Fantasy, Fantasy_count, CastleBurn, CastleBurn_count
 from django.db import connection
 
 import pygal
 from pygal.style import Style
 
-from gensim import models
-
 import django_tables2 as tables
-
-# test
-def test(request):
-    template = get_template('test.html')
-    return HttpResponse(template.render())
 
 # 차트 기본 디자인
 
@@ -162,8 +155,6 @@ def db():
 
     return res, star_1, star_2, star_3, star_4, star_5, text_all, pat
 
-res, star_1, star_2, star_3, star_4, star_5,  text_all, pat = db()
-
 def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
 
     patch = []
@@ -175,13 +166,13 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
     text = []
     for x in text_all:
         text.append(x)
-    df_text = pd.DataFrame(text, columns=['date', 'text'])
+    df_text = pd.DataFrame(text, columns=['id', 'text'])
 
     row = []
     for x in res:
         row.append(x)
     df = pd.DataFrame(row, columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    df = pd.merge(df, df_text, on='date')
+    df = pd.merge(df, df_text, on='id')
     df['date'] = df['date'].apply(YMD)
 
     rating_1 = []
@@ -189,7 +180,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_1.append(x)
     rating_1 = pd.DataFrame(rating_1,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_1 = pd.merge(rating_1, df_text, on='date')
+    rating_1 = pd.merge(rating_1, df_text, on='id')
     rating_1['date'] = rating_1['date'].apply(YMD)
 
     rating_2 = []
@@ -197,7 +188,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_2.append(x)
     rating_2 = pd.DataFrame(rating_2,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_2 = pd.merge(rating_2, df_text, on='date')
+    rating_2 = pd.merge(rating_2, df_text, on='id')
     rating_2['date'] = rating_2['date'].apply(YMD)
 
     rating_3 = []
@@ -205,7 +196,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_3.append(x)
     rating_3 = pd.DataFrame(rating_3,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_3 = pd.merge(rating_3, df_text, on='date')
+    rating_3 = pd.merge(rating_3, df_text, on='id')
     rating_3['date'] = rating_3['date'].apply(YMD)
 
     rating_4 = []
@@ -213,7 +204,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_4.append(x)
     rating_4 = pd.DataFrame(rating_4,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_4 = pd.merge(rating_4, df_text, on='date')
+    rating_4 = pd.merge(rating_4, df_text, on='id')
     rating_4['date'] = rating_4['date'].apply(YMD)
 
     rating_5 = []
@@ -221,7 +212,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_5.append(x)
     rating_5 = pd.DataFrame(rating_5,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_5 = pd.merge(rating_5, df_text, on='date')
+    rating_5 = pd.merge(rating_5, df_text, on='id')
     rating_5['date'] = rating_5['date'].apply(YMD)
 
     # 긍정, 부정 구분
@@ -310,8 +301,6 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         df_count = mer_date_word(df_count, r)
     df_count = df_count.fillna(0)
 
-    df_count['date'] = df_count['date'] + ' 00:00:00'
-
     word_list = []
     for x in df_count.iterrows():
         word_list.append(x[1])
@@ -336,6 +325,213 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
 
 def index(request):
 	return render(request, 'index.html')
+
+
+# Issue trend
+def issue_trend(request):
+
+    template = get_template('issue_trend.html')
+    app = ''
+    lang =''
+    days1 = datetime.date.today() - datetime.timedelta(days=1)
+    days2 = days1 - datetime.timedelta(days=30)
+
+    if 'app' in request.GET:
+        app = request.GET['app']
+    if 'rating' in request.GET:
+        rating = request.GET['rating']
+    if 'lang' in request.GET:
+        lang = request.GET['lang']
+    if 'sta_date' in request.GET:
+        d2 = request.GET['sta_date']
+        days2 = pd.to_datetime(d2)
+        if d2 == '':
+            days2 = datetime.date.today() - datetime.timedelta(days=30)
+    if 'end_date' in request.GET:
+        d1 = request.GET['end_date']
+        days1 = pd.to_datetime(d1)
+        if d1 == '':
+             days1 = datetime.date.today() - datetime.timedelta(days=1)
+
+    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
+
+    res = list(Fantasy.objects.filter(date__gte=days2, date__lte=days1).values('app', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+
+    if request.GET:
+        print('app:',app, 'lang:',lang, 'days:', days2, days1)
+        res = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_1 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_2 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_3 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_4 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_5 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+
+    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
+    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
+
+    # 이슈 Count
+
+    neg_dic = {}
+    for x in neg_word:
+        neg_count = word_count[word_count['word'] == x]
+        neg_dic[x] = neg_count
+
+    env_dic = {}
+    for x in env_word:
+        env_count = word_count[word_count['word'] == x]
+        env_dic[x] = env_count
+
+    pay_dic = {}
+    for x in pay_word:
+        pay_count = word_count[word_count['word'] == x]
+        pay_dic[x] = pay_count
+
+    neg = neg_dic[neg_word[0]][['date', 'total_count']]
+    for n in neg_word[1:]:
+        neg = mer_date(neg, neg_dic[n][['date', 'total_count']])
+    neg['N_total'] = neg.sum(axis=1)
+    total_neg = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
+                           pd.DataFrame(neg[['date', 'N_total']]), on='date', how='outer')
+    total_neg = mer_date(total_neg, df_patch)
+    neg_max = round(total_neg['total_count']/100, 2).max()
+    total_neg['patch'] = total_neg['patch'].fillna(
+        -neg_max / 20)
+    total_neg = total_neg.fillna(0)
+    total_neg['N_total'] = total_neg['N_total'].apply(int)
+    total_neg = total_neg.sort_values(by='date')
+
+    env = env_dic[env_word[0]][['date', 'total_count']]
+    for n in env_word[1:]:
+        env = mer_date(env, neg_dic[n][['date', 'total_count']])
+    env['E_total'] = env.sum(axis=1)
+    total_env = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
+                               pd.DataFrame(env[['date', 'E_total']]), on='date', how='outer')
+    total_env = mer_date(total_env, df_patch)
+    total_env['patch'] = total_env['patch'].fillna(
+        -neg_max / 20)
+    total_env = total_env.fillna(0)
+    total_env['E_total'] = total_env['E_total'].apply(int)
+    total_env = total_env.sort_values(by='date')
+
+    pay = pay_dic[pay_word[0]][['date', 'total_count']]
+    for n in pay_word[1:]:
+        pay = mer_date(pay, neg_dic[n][['date', 'total_count']])
+    pay['P_total'] = pay.sum(axis=1)
+    total_pay = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
+                           pd.DataFrame(pay[['date', 'P_total']]), on='date', how='outer')
+    total_pay = mer_date(total_pay, df_patch)
+    total_pay['patch'] = total_pay['patch'].fillna(
+        -neg_max / 20)
+    total_pay = total_pay.fillna(0)
+    total_pay['P_total'] = total_pay['P_total'].apply(int)
+    total_pay = total_pay.sort_values(by='date')
+
+    for x in neg_dic:
+        for x, y in neg_dic[x].iterrows():
+            try:
+                with connection.cursor() as cur:
+                    data = (
+                    y['date'], y['word'], y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'], y['r4_count'],
+                    y['r5_count'])
+                    sql = "insert into app.fantasy_count (date, word, total_count, r1_count, r2_count, r3_count, r4_count, r5_count) \
+                            values (%s, %s, %s, %s, %s, %s, %s, %s)"
+                    cur.execute(sql, data)
+                    connection.commit()
+
+            except Exception as e:
+                print('SQL error_message: ' + str(e))
+                pass
+    connection.close()
+
+
+    L_line = pygal.Line(style=issue_chart_style,
+                        dots_size=1,
+                        max_scale=1,
+                        legend_at_bottom=True,
+                        legend_at_bottom_columns=6,
+                        tooltip_border_radius=20,
+                        interpolate='cubic',
+                        stroke_style={'width': 1, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
+                        show_minor_x_labels=False,
+                        truncate_label=-1,
+                        truncate_legend=15,
+                        x_label_rotation = 5)
+
+    L_line.title = 'Issue Keyword Timeline (%)'
+    L_line.y_labels = 0, neg_max*3/8, neg_max*3/4
+    L_line.x_labels = map(str, total_neg['date'])
+    L_line.x_labels_major = [total_neg['date'].values[0],
+                             total_neg['date'].values[int((len(total_neg['date']) - 1) / 2)],
+                             total_neg['date'].values[-1]]
+
+    L_line.add('Negative', round(total_neg['N_total'] / total_neg['total_count'] * 100, 2))
+    L_line.add('Environment', round(total_env['E_total'] / total_env['total_count'] * 100, 2))
+    L_line.add('Payments', round(total_pay['P_total'] / total_pay['total_count'] * 100, 2))
+    L_line.add('Patch', total_neg['patch'], dots_size=4)
+    L_line = L_line.render_data_uri()
+
+    context = {'L_line': L_line}
+
+    return HttpResponse(template.render(context))
+
+class DateColumn(tables.Column):
+    def render(self, value):
+        return str(value)[:10]
+
+class IssueTable(tables.Table):
+    date = DateColumn()
+    class Meta:
+        model = Fantasy_count
+        fields = ('date', 'word', 'total_count')
+        attrs = {
+                "th":{"align":"center"},
+                "td": {"align": "center"}
+                 }
+
+# Issue Count
+def issue_table(request):
+
+    queryset = Fantasy_count.objects.all().values('date', 'word', 'total_count')
+    template = get_template('issue_table.html')
+
+    app = ''
+    lang =''
+    i_date = datetime.date.today() - datetime.timedelta(days=1)
+
+    if 'app' in request.GET:
+        app = request.GET['app']
+    if 'rating' in request.GET:
+        rating = request.GET['rating']
+    if 'lang' in request.GET:
+        lang = request.GET['lang']
+    if 'issue_date' in request.GET:
+        d3 = request.GET['issue_date']
+        i_date = pd.to_datetime(d3)
+
+    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
+
+    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
+
+
+    if 'issue' in request.GET:
+        if 'neg' == request.GET['issue']:
+            queryset = Fantasy_count.objects.filter(word__in=neg_word, date__gte=i_date, date__lte=i_date).values('date',
+                                                                                                                 'word',
+                                                                                                                 'total_count')
+        elif 'env' == request.GET['issue']:
+            queryset = Fantasy_count.objects.filter(word__in=env_word, date__gte=i_date, date__lte=i_date).values('date',
+                                                                                                                 'word',
+                                                                                                                 'total_count')
+        else:
+            queryset = Fantasy_count.objects.filter(word__in=pay_word, date__gte=i_date, date__lte=i_date).values('date',
+                                                                                                                 'word',
+                                                                                                                 'total_count')
+
+    table = IssueTable(queryset.order_by('-date').order_by("-total_count"))
+    table.paginate(page=request.GET.get('page', 1), per_page=20)
+    return render(request, 'issue_table.html', {'table': table})
+
+    return HttpResponse(template.render(context))
 
 # REVIEWS
 
@@ -437,210 +633,3 @@ def simple_list(request):
     table = SimpleTable(queryset.order_by('-date').order_by('rating'))
     table.paginate(page=request.GET.get('page', 1), per_page=10)
     return render(request, 'simple_list.html', {'table': table, 'query':query, })
-
-# Issue trend
-def issue_trend(request):
-
-    template = get_template('issue_trend.html')
-    app = ''
-    lang =''
-    days1 = datetime.date.today() - datetime.timedelta(days=1)
-    days2 = days1 - datetime.timedelta(days=30)
-
-    if 'app' in request.GET:
-        app = request.GET['app']
-    if 'rating' in request.GET:
-        rating = request.GET['rating']
-    if 'lang' in request.GET:
-        lang = request.GET['lang']
-    if 'sta_date' in request.GET:
-        d2 = request.GET['sta_date']
-        days2 = pd.to_datetime(d2)
-        if d2 == '':
-            days2 = datetime.date.today() - datetime.timedelta(days=30)
-    if 'end_date' in request.GET:
-        d1 = request.GET['end_date']
-        days1 = pd.to_datetime(d1)
-        if d1 == '':
-             days1 = datetime.date.today() - datetime.timedelta(days=1)
-
-    global res, star_1, star_2, star_3, star_4, star_5, text_all, pat
-
-    res = list(Fantasy.objects.filter(date__gte=days2, date__lte=days1).values('app', 'id', 'title', 'content', 'date', 'rating', 'lang'))
-
-    if request.GET:
-        print('app:',app, 'lang:',lang, 'days:', days2, days1)
-        res = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_1 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_2 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_3 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_4 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_5 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-
-    df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
-    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
-
-    # 이슈 Count
-
-    neg_dic = {}
-    for x in neg_word:
-        neg_count = word_count[word_count['word'] == x]
-        neg_dic[x] = neg_count
-
-    env_dic = {}
-    for x in env_word:
-        env_count = word_count[word_count['word'] == x]
-        env_dic[x] = env_count
-
-    pay_dic = {}
-    for x in pay_word:
-        pay_count = word_count[word_count['word'] == x]
-        pay_dic[x] = pay_count
-
-    neg = neg_dic[neg_word[0]][['date', 'total_count']]
-    for n in neg_word[1:]:
-        neg = mer_date(neg, neg_dic[n][['date', 'total_count']])
-    neg['N_total'] = neg.sum(axis=1)
-    total_neg = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
-                           pd.DataFrame(neg[['date', 'N_total']]), on='date', how='outer')
-    total_neg = mer_date(total_neg, df_patch)
-    neg_max = round(total_neg['total_count']/100, 2).max()
-    total_neg['patch'] = total_neg['patch'].fillna(
-        -neg_max / 20)
-    total_neg = total_neg.fillna(0)
-    total_neg['N_total'] = total_neg['N_total'].apply(int)
-    total_neg = total_neg.sort_values(by='date')
-
-    env = env_dic[env_word[0]][['date', 'total_count']]
-    for n in env_word[1:]:
-        env = mer_date(env, neg_dic[n][['date', 'total_count']])
-    env['E_total'] = env.sum(axis=1)
-    total_env = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
-                               pd.DataFrame(env[['date', 'E_total']]), on='date', how='outer')
-    total_env = mer_date(total_env, df_patch)
-    total_env['patch'] = total_env['patch'].fillna(
-        -neg_max / 20)
-    total_env = total_env.fillna(0)
-    total_env['E_total'] = total_env['E_total'].apply(int)
-    total_env = total_env.sort_values(by='date')
-
-    pay = pay_dic[pay_word[0]][['date', 'total_count']]
-    for n in pay_word[1:]:
-        pay = mer_date(pay, neg_dic[n][['date', 'total_count']])
-    pay['P_total'] = pay.sum(axis=1)
-    total_pay = pd.merge(word_count.groupby('date')['total_count'].sum().reset_index(),
-                           pd.DataFrame(pay[['date', 'P_total']]), on='date', how='outer')
-    total_pay = mer_date(total_pay, df_patch)
-    total_pay['patch'] = total_pay['patch'].fillna(
-        -neg_max / 20)
-    total_pay = total_pay.fillna(0)
-    total_pay['P_total'] = total_pay['P_total'].apply(int)
-    total_pay = total_pay.sort_values(by='date')
-
-    for x, y in neg_count.iterrows():
-        #     try:
-        # SELECT
-        with connection.cursor() as curs:
-            data = (y['date'], y['word'], y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'], y['r4_count'],
-                    y['r5_count'])
-            sql = "insert into app.fantasy_count (date, word, total_count, r1_count, r2_count, r3_count, r4_count, r5_count) \
-                    values (%s, %s, %s, %s, %s, %s, %s, %s) \
-                    on duplicate key update total_count=total_count, \
-                    r1_count=r1_count, r2_count=r2_count, r3_count=r3_count, r4_count=r4_count, r5_count=r5_count"
-            curs.execute(sql, data)
-            connection.commit()
-    # except:
-    #         continue
-    #     finally:
-        connection.close()
-
-
-    L_line = pygal.Line(style=issue_chart_style,
-                        dots_size=1,
-                        max_scale=1,
-                        legend_at_bottom=True,
-                        legend_at_bottom_columns=6,
-                        tooltip_border_radius=20,
-                        interpolate='cubic',
-                        stroke_style={'width': 1, 'dasharray': '3', 'linecap': 'round', 'linejoin': 'round'},
-                        show_minor_x_labels=False,
-                        truncate_label=-1,
-                        truncate_legend=15,
-                        x_label_rotation = 5)
-
-    L_line.title = 'Issue Keyword Timeline (%)'
-    L_line.y_labels = 0, neg_max*3/8, neg_max*3/4
-    L_line.x_labels = map(str, total_neg['date'])
-    L_line.x_labels_major = [total_neg['date'].values[0],
-                             total_neg['date'].values[int((len(total_neg['date']) - 1) / 2)],
-                             total_neg['date'].values[-1]]
-
-    L_line.add('Negative', round(total_neg['N_total'] / total_neg['total_count'] * 100, 2))
-    L_line.add('Environment', round(total_env['E_total'] / total_env['total_count'] * 100, 2))
-    L_line.add('Payments', round(total_pay['P_total'] / total_pay['total_count'] * 100, 2))
-    L_line.add('Patch', total_neg['patch'], dots_size=4)
-    L_line = L_line.render_data_uri()
-
-    context = {'L_line': L_line}
-
-    return HttpResponse(template.render(context))
-
-class DateColumn(tables.Column):
-    def render(self, value):
-        return str(value)[:10]
-
-class IssueTable(tables.Table):
-    date = DateColumn()
-    class Meta:
-        model = Fantasy_count
-        fields = ('date', 'word', 'total_count')
-        attrs = {
-                "th":{"align":"center"},
-                "td": {"align": "center"}
-                 }
-
-# Issue Count
-def issue_table(request):
-
-    queryset = Fantasy_count.objects.all().values('date', 'word', 'total_count')
-    template = get_template('issue_table.html')
-
-    app = ''
-    lang =''
-    i_date = datetime.date.today() - datetime.timedelta(days=1)
-
-    if 'app' in request.GET:
-        app = request.GET['app']
-    if 'rating' in request.GET:
-        rating = request.GET['rating']
-    if 'lang' in request.GET:
-        lang = request.GET['lang']
-    if 'issue_date' in request.GET:
-        d3 = request.GET['issue_date']
-        i_date = pd.to_datetime(d3)
-
-
-    global res, star_1, star_2, star_3, star_4, star_5, text_all, pat
-
-    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
-
-
-    if 'issue' in request.GET:
-        if 'neg' == request.GET['issue']:
-            queryset = Fantasy_count.objects.filter(word__in=neg_word, date__gte=i_date, date__lte=i_date).values('date',
-                                                                                                                 'word',
-                                                                                                                 'total_count')
-        elif 'env' == request.GET['issue']:
-            queryset = Fantasy_count.objects.filter(word__in=env_word, date__gte=i_date, date__lte=i_date).values('date',
-                                                                                                                 'word',
-                                                                                                                 'total_count')
-        else:
-            queryset = Fantasy_count.objects.filter(word__in=pay_word, date__gte=i_date, date__lte=i_date).values('date',
-                                                                                                                 'word',
-                                                                                                                 'total_count')
-
-    table = IssueTable(queryset.order_by('-date').order_by("-total_count"))
-    table.paginate(page=request.GET.get('page', 1), per_page=20)
-    return render(request, 'issue_table.html', {'table': table})
-
-    return HttpResponse(template.render(context))
