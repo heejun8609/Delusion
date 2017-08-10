@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="" />
+    <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Delusion.iml" afterPath="$PROJECT_DIR$/.idea/Delusion.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crawling.py" afterPath="$PROJECT_DIR$/Crawling.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/views.py" afterPath="$PROJECT_DIR$/viz/views.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,12 +33,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11186">
-              <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="698">
+              <caret line="633" column="70" lean-forward="true" selection-start-line="633" selection-start-column="70" selection-end-line="633" selection-end-column="70" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Crawling.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Crawling.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Crawling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3838">
-              <caret line="202" column="25" lean-forward="false" selection-start-line="202" selection-start-column="25" selection-end-line="202" selection-end-column="25" />
+            <state relative-caret-position="641">
+              <caret line="195" column="37" lean-forward="false" selection-start-line="195" selection-start-column="37" selection-end-line="195" selection-end-column="37" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -198,8 +206,8 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/issue_table.html" />
         <option value="$PROJECT_DIR$/viz/models.py" />
-        <option value="$PROJECT_DIR$/Crawling.py" />
         <option value="$PROJECT_DIR$/viz/views.py" />
+        <option value="$PROJECT_DIR$/Crawling.py" />
       </list>
     </option>
   </component>
@@ -511,7 +519,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1515625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -547,7 +555,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/viz/views.py</url>
-          <line>332</line>
+          <line>333</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -561,7 +569,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -753,21 +763,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Crawling.py">
+    <entry file="file://$PROJECT_DIR$/viz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3838">
-          <caret line="202" column="25" lean-forward="false" selection-start-line="202" selection-start-column="25" selection-end-line="202" selection-end-column="25" />
+        <state relative-caret-position="698">
+          <caret line="633" column="70" lean-forward="true" selection-start-line="633" selection-start-column="70" selection-end-line="633" selection-end-column="70" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viz/views.py">
+    <entry file="file://$PROJECT_DIR$/Crawling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11186">
-          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="641">
+          <caret line="195" column="37" lean-forward="false" selection-start-line="195" selection-start-column="37" selection-end-line="195" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

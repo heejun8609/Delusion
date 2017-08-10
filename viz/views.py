@@ -6,6 +6,7 @@ from django.template.loader import get_template
 from django.http.response import HttpResponse
 from viz.models import Raw, Fantasy, Fantasy_count, CastleBurn, CastleBurn_count
 from django.db import connection
+import Crawling
 
 import pygal
 from pygal.style import Style
@@ -633,3 +634,5 @@ def simple_list(request):
     table = SimpleTable(queryset.order_by('-date').order_by('rating'))
     table.paginate(page=request.GET.get('page', 1), per_page=10)
     return render(request, 'simple_list.html', {'table': table, 'query':query, })
+
+Crawling.Scheduler()

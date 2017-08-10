@@ -193,7 +193,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-fri', hour='9', minute='55')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='11', minute='22')
         self.sched.add_job(job, trigger)
         self.sched.start()
 
