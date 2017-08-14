@@ -51,7 +51,7 @@ def job():
     time.sleep(1)
 
     # 자동화 웹페이지 호출
-    driver.get("https://play.google.com/store/apps/details?id=net.delusionstudio.castleburn")
+    driver.get("https://play.google.com/store/apps/details?id=net.delusionstudio.castleburn&hl=en")
     time.sleep(1)
 
     # 웹페이지 긁어오기
@@ -71,9 +71,10 @@ def job():
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
 
-    custom_date = datetime.date.today() - datetime.timedelta(days=2)
+    custom_date = datetime.date.today() - datetime.timedelta(days=4)
 
     temp_date = []
+    temp_auth = []
 
     for x in soup.find_all(class_='review-date'):
         temp_date.append(str(pd.to_datetime(x.get_text()))[:10])
@@ -83,7 +84,7 @@ def job():
             for x in range(1):
                 driver.find_element_by_xpath(
                     "//div[@class='details-section reviews']//button[@aria-label='See More']").click()
-                time.sleep(1)
+                time.sleep(1.5)
         except:
             continue
             print(temp_date)
@@ -94,6 +95,12 @@ def job():
         for x in soup.find_all(class_='review-date'):
             temp_date.append(str(pd.to_datetime(x.get_text()))[:10])
 
+        for x in soup.find_all(class_='author-name'):
+            temp_auth.append(x.get_text().strip())
+
+        if 'Junnel Arabiana' in temp_auth:
+            break
+
         if str(custom_date) in temp_date:
             break
 
@@ -101,6 +108,7 @@ def job():
     date = []
     rate = []
     rev = []
+    print('end2')
     for elem in soup.find_all(class_='single-review'):
 
         auth.append(elem.find(class_='author-name').get_text())
