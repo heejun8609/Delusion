@@ -427,8 +427,13 @@ def issue_trend(request):
     total_pay['P_total'] = total_pay['P_total'].apply(int)
     total_pay = total_pay.sort_values(by='date')
 
+    total_dic = {}
+    for x in neg_word:
+        x_count = word_count[word_count['word'] == x]
+        total_dic[x] = x_count
+
     for x in neg_dic:
-        for x, y in neg_dic[x].iterrows():
+        for x, y in total_dic[x].iterrows():
             try:
                 with connection.cursor() as cur:
                     date_word = str(y['date'])[:10]+' '+y['word']
