@@ -431,11 +431,12 @@ def issue_trend(request):
         for x, y in neg_dic[x].iterrows():
             try:
                 with connection.cursor() as cur:
-                    data = (
-                    y['date'], y['word'], y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'], y['r4_count'],
-                    y['r5_count'])
-                    sql = "insert into app.castleburn_count (date, word, total_count, r1_count, r2_count, r3_count, r4_count, r5_count) \
-                            values (%s, %s, %s, %s, %s, %s, %s, %s)"
+                    date_word = str(y['date'])[:10]+' '+y['word']
+                    data = (date_word, y['date'], y['word'], y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'], y['r4_count'], y['r5_count'],
+                            y['date'], y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'], y['r4_count'], y['r5_count'])
+                    sql = "insert into app.castleburn_count (date_word, date, word, total_count, r1_count, r2_count, r3_count, r4_count, r5_count) \
+                            values (%s, %s, %s, %s, %s, %s, %s, %s, %s) on duplicate key update date=%s, total_count=%s, \
+                            r1_count=%s, r2_count=%s, r3_count=%s, r4_count=%s, r5_count=%s"
                     cur.execute(sql, data)
                     connection.commit()
 
