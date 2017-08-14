@@ -4,7 +4,7 @@ import datetime
 from django.shortcuts import render
 from django.template.loader import get_template
 from django.http.response import HttpResponse
-from viz.models import Raw, Fantasy, Fantasy_count, CastleBurn, CastleBurn_count
+from viz.models import CastleBurn, CastleBurn_count
 from django.db import connection
 import Crawling
 
@@ -126,15 +126,15 @@ def db():
     # con = (app, version, lang, days1, days2)
     try:
         with connection.cursor() as curs:
-            sql = "select * From app.fantasy_text"
+            sql = "select * From app.castleburn_text"
             curs.execute(sql)
             text_all = curs.fetchall()
 
-            sql = "select * FROM app.fantasy"
+            sql = "select * FROM app.castleburn"
             curs.execute(sql)
             res = curs.fetchall()
 
-            sql = "select * FROM app.fantasy where rating =%s"
+            sql = "select * FROM app.castleburn where rating =%s"
             curs.execute(sql, [1])
             star_1 = curs.fetchall()
             curs.execute(sql, [2])
@@ -356,16 +356,16 @@ def issue_trend(request):
 
     res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
 
-    res = list(Fantasy.objects.filter(date__gte=days2, date__lte=days1).values('app', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+    res = list(CastleBurn.objects.filter(date__gte=days2, date__lte=days1).values('app', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
     if request.GET:
         print('app:',app, 'lang:',lang, 'days:', days2, days1)
-        res = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_1 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_2 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_3 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_4 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
-        star_5 = list(Fantasy.objects.filter(app__contains=app, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        res = list(CastleBurn.objects.filter(app__contains=app, lang__contains=lang, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_1 = list(CastleBurn.objects.filter(app__contains=app, lang__contains=lang, rating=1, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_2 = list(CastleBurn.objects.filter(app__contains=app, lang__contains=lang, rating=2, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_3 = list(CastleBurn.objects.filter(app__contains=app, lang__contains=lang, rating=3, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_4 = list(CastleBurn.objects.filter(app__contains=app, lang__contains=lang, rating=4, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
+        star_5 = list(CastleBurn.objects.filter(app__contains=app, lang__contains=lang, rating=5, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content', 'rating', 'lang'))
 
     df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']
     word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
@@ -434,7 +434,7 @@ def issue_trend(request):
                     data = (
                     y['date'], y['word'], y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'], y['r4_count'],
                     y['r5_count'])
-                    sql = "insert into app.fantasy_count (date, word, total_count, r1_count, r2_count, r3_count, r4_count, r5_count) \
+                    sql = "insert into app.castleburn_count (date, word, total_count, r1_count, r2_count, r3_count, r4_count, r5_count) \
                             values (%s, %s, %s, %s, %s, %s, %s, %s)"
                     cur.execute(sql, data)
                     connection.commit()
@@ -482,7 +482,7 @@ class DateColumn(tables.Column):
 class IssueTable(tables.Table):
     date = DateColumn()
     class Meta:
-        model = Fantasy_count
+        model = CastleBurn_count
         fields = ('date', 'word', 'total_count')
         attrs = {
                 "th":{"align":"center"},
@@ -492,7 +492,7 @@ class IssueTable(tables.Table):
 # Issue Count
 def issue_table(request):
 
-    queryset = Fantasy_count.objects.all().values('date', 'word', 'total_count')
+    queryset = CastleBurn_count.objects.all().values('date', 'word', 'total_count')
     template = get_template('issue_table.html')
 
     app = ''
@@ -516,15 +516,15 @@ def issue_table(request):
 
     if 'issue' in request.GET:
         if 'neg' == request.GET['issue']:
-            queryset = Fantasy_count.objects.filter(word__in=neg_word, date__gte=i_date, date__lte=i_date).values('date',
+            queryset = CastleBurn_count.objects.filter(word__in=neg_word, date__gte=i_date, date__lte=i_date).values('date',
                                                                                                                  'word',
                                                                                                                  'total_count')
         elif 'env' == request.GET['issue']:
-            queryset = Fantasy_count.objects.filter(word__in=env_word, date__gte=i_date, date__lte=i_date).values('date',
+            queryset = CastleBurn_count.objects.filter(word__in=env_word, date__gte=i_date, date__lte=i_date).values('date',
                                                                                                                  'word',
                                                                                                                  'total_count')
         else:
-            queryset = Fantasy_count.objects.filter(word__in=pay_word, date__gte=i_date, date__lte=i_date).values('date',
+            queryset = CastleBurn_count.objects.filter(word__in=pay_word, date__gte=i_date, date__lte=i_date).values('date',
                                                                                                                  'word',
                                                                                                                  'total_count')
 
@@ -544,14 +544,14 @@ class SimpleTable(tables.Table):
     date = DateColumn()
     class Meta:
         order_by = '-date'
-        model = Fantasy
+        model = CastleBurn
         attrs = {
                 "td": {"align": "left"}
                  }
 
 
 def simple_list(request):
-    queryset = Fantasy.objects.all().values('app', 'id', 'date', 'title', 'content',  'rating', 'lang')
+    queryset = CastleBurn.objects.all().values('app', 'id', 'date', 'title', 'content',  'rating', 'lang')
 
     query = ''
     app = ''
@@ -629,7 +629,7 @@ def simple_list(request):
 
     if request.GET:
         print(query, days2, days1)
-        queryset = Fantasy.objects.filter(content__icontains=query, app__contains=app, lang__contains=lang, rating__range=rating, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content',  'rating', 'lang')
+        queryset = CastleBurn.objects.filter(content__icontains=query, app__contains=app, lang__contains=lang, rating__range=rating, date__gte=days2, date__lte=days1).values('app', 'id', 'date', 'title', 'content',  'rating', 'lang')
 
     table = SimpleTable(queryset.order_by('-date').order_by('rating'))
     table.paginate(page=request.GET.get('page', 1), per_page=10)

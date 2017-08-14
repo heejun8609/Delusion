@@ -51,7 +51,7 @@ def job():
     time.sleep(1)
 
     # 자동화 웹페이지 호출
-    driver.get("https://play.google.com/store/apps/details?id=com.epicactiononline.ffxv.ane&hl=en")
+    driver.get("https://play.google.com/store/apps/details?id=net.delusionstudio.castleburn")
     time.sleep(1)
 
     # 웹페이지 긁어오기
@@ -80,7 +80,7 @@ def job():
 
     while True:
         try:
-            for x in range(10):
+            for x in range(1):
                 driver.find_element_by_xpath(
                     "//div[@class='details-section reviews']//button[@aria-label='See More']").click()
                 time.sleep(1)
@@ -193,7 +193,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-sun', hour='11', minute='22')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='8', minute='1')
         self.sched.add_job(job, trigger)
         self.sched.start()
 
