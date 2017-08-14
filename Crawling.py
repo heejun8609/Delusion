@@ -140,7 +140,7 @@ def job():
         try:
             with connection.cursor() as cur:
                 row[1]['date'] = str(pd.to_datetime(row[1]['date']) + datetime.timedelta(seconds=success_count))
-                if row[1]['author'] == '':
+                if row[1]['author'].strip() == '':
                     data = (
                     'android', re.sub('[-:]', '', row[1]['date']), row[1]['date'], row[1]['review'], row[1]['rating'],
                     'en',
@@ -163,8 +163,8 @@ def job():
                     connection.commit()
                     success_count += 1
                 else:
-                    data = ('android', row[1]['author'], row[1]['date'], row[1]['review'], row[1]['rating'], 'en',
-                            'android', row[1]['author'], row[1]['date'], row[1]['review'], row[1]['rating'], 'en')
+                    data = ('android', row[1]['author'].strip(), row[1]['date'], row[1]['review'], row[1]['rating'], 'en',
+                            'android', row[1]['author'].strip(), row[1]['date'], row[1]['review'], row[1]['rating'], 'en')
                     sql = """insert into 
                                 app.castleburn (app, id, date, content, rating, lang)
                                 values (%s, %s, %s, %s, %s, %s)
@@ -172,8 +172,8 @@ def job():
 
                     cur.execute(sql, data)
 
-                    data = (row[1]['author'], tokenizer(row[1]['review']),
-                            row[1]['author'], tokenizer(row[1]['review']))
+                    data = (row[1]['author'].strip(), tokenizer(row[1]['review']),
+                            row[1]['author'].strip(), tokenizer(row[1]['review']))
                     sql = """insert into
                                 app.castleburn_text (id, context)
                                 values(%s, %s) on duplicate key update id=%s, context=%s"""

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="" />
+    <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crawling.py" afterPath="$PROJECT_DIR$/Crawling.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/delusion.sql" afterPath="$PROJECT_DIR$/delusion.sql" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="427" column="48" lean-forward="false" selection-start-line="427" selection-start-column="48" selection-end-line="427" selection-end-column="48" />
+            <state relative-caret-position="-2687">
+              <caret line="83" column="39" lean-forward="false" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -47,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Crawling.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Crawling.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Crawling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="169" column="63" lean-forward="true" selection-start-line="169" selection-start-column="63" selection-end-line="169" selection-end-column="63" />
+            <state relative-caret-position="68">
+              <caret line="175" column="52" lean-forward="false" selection-start-line="175" selection-start-column="52" selection-end-line="175" selection-end-column="52" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -144,8 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>res, star_1, star_2, star_3, star_4, star_5,  text_all, pat = db()</find>
-      <find>preprocess</find>
       <find>df_patch = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['df_patch']</find>
       <find>db()</find>
       <find>star_1</find>
@@ -174,6 +175,8 @@
       <find>raw</find>
       <find>fantasy</find>
       <find>castleburn_count</find>
+      <find>castleburn_text</find>
+      <find>win</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -208,8 +211,8 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/issue_table.html" />
         <option value="$PROJECT_DIR$/viz/models.py" />
-        <option value="$PROJECT_DIR$/Crawling.py" />
         <option value="$PROJECT_DIR$/viz/views.py" />
+        <option value="$PROJECT_DIR$/Crawling.py" />
       </list>
     </option>
   </component>
@@ -471,7 +474,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15104167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -785,21 +788,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Crawling.py">
+    <entry file="file://$PROJECT_DIR$/viz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="169" column="63" lean-forward="true" selection-start-line="169" selection-start-column="63" selection-end-line="169" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2687">
+          <caret line="83" column="39" lean-forward="false" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viz/views.py">
+    <entry file="file://$PROJECT_DIR$/Crawling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="427" column="48" lean-forward="false" selection-start-line="427" selection-start-column="48" selection-end-line="427" selection-end-column="48" />
-          <folding />
+        <state relative-caret-position="68">
+          <caret line="175" column="52" lean-forward="false" selection-start-line="175" selection-start-column="52" selection-end-line="175" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
