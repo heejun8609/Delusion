@@ -71,7 +71,7 @@ def job():
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
 
-    custom_date = datetime.date.today() - datetime.timedelta(days=4)
+    custom_date = datetime.date.today() - datetime.timedelta(days=2)
 
     temp_date = []
     temp_auth = []
@@ -98,8 +98,8 @@ def job():
         for x in soup.find_all(class_='author-name'):
             temp_auth.append(x.get_text().strip())
 
-        if 'Junnel Arabiana' in temp_auth:
-            break
+        # if 'Junnel Arabiana' in temp_auth:
+        #     break
 
         if str(custom_date) in temp_date:
             break
@@ -108,7 +108,7 @@ def job():
     date = []
     rate = []
     rev = []
-    print('end2')
+
     for elem in soup.find_all(class_='single-review'):
 
         auth.append(elem.find(class_='author-name').get_text())
@@ -147,7 +147,7 @@ def job():
                     'android', re.sub('[-:]', '', row[1]['date']), row[1]['date'], row[1]['review'], row[1]['rating'],
                     'en')
                     sql = """insert into 
-                                app.fantasy (app, id, date, content, rating, lang)
+                                app.castleburn (app, id, date, content, rating, lang)
                                 values (%s, %s, %s, %s, %s, %s)
                                 on duplicate key update app=%s, id=%s, date=%s, content=%s, rating=%s, lang=%s"""
 
@@ -156,7 +156,7 @@ def job():
                     data = (re.sub('[-:]', '', row[1]['date']), tokenizer(row[1]['review']),
                             re.sub('[-:]', '', row[1]['date']), tokenizer(row[1]['review']))
                     sql = """insert into
-                                app.fantasy_text (id, context)
+                                app.castleburn_text (id, context)
                                 values(%s, %s) on duplicate key update id=%s, context=%s"""
                     cur.execute(sql, data)
 
@@ -166,7 +166,7 @@ def job():
                     data = ('android', row[1]['author'], row[1]['date'], row[1]['review'], row[1]['rating'], 'en',
                             'android', row[1]['author'], row[1]['date'], row[1]['review'], row[1]['rating'], 'en')
                     sql = """insert into 
-                                app.fantasy (app, id, date, content, rating, lang)
+                                app.castleburn (app, id, date, content, rating, lang)
                                 values (%s, %s, %s, %s, %s, %s)
                                 on duplicate key update app=%s, id=%s, date=%s, content=%s, rating=%s, lang=%s"""
 
@@ -175,7 +175,7 @@ def job():
                     data = (row[1]['author'], tokenizer(row[1]['review']),
                             row[1]['author'], tokenizer(row[1]['review']))
                     sql = """insert into
-                                app.fantasy_text (id, context)
+                                app.castleburn_text (id, context)
                                 values(%s, %s) on duplicate key update id=%s, context=%s"""
                     cur.execute(sql, data)
 
