@@ -111,11 +111,11 @@ def job():
 
     for elem in soup.find_all(class_='single-review'):
 
-        auth.append(elem.find(class_='author-name').get_text())
+        auth.append(elem.find(class_='author-name').get_text().strip())
 
-        date.append(str(pd.to_datetime(elem.find(class_='review-date').get_text()))[:10])
+        date.append(str(pd.to_datetime(elem.find(class_='review-date').get_text().strip()))[:10])
 
-        rev.append(elem.find(class_='review-body with-review-wrapper').get_text()[:-15])
+        rev.append(elem.find(class_='review-body with-review-wrapper').get_text()[:-15].strip())
 
         m = re.search(r'[0-9]+', elem.find(class_='current-rating')['style'])
         num = m.group()
@@ -136,11 +136,12 @@ def job():
     connection = pymysql.connect(user='root', passwd='0000', db='app', charset='utf8')
 
     success_count = 0
+    sec = 0
     for row in df.iterrows():
         try:
             with connection.cursor() as cur:
-                row[1]['date'] = str(pd.to_datetime(row[1]['date']) + datetime.timedelta(seconds=success_count))
-                if row[1]['author'].strip() == '':
+                row[1]['date'] = str(pd.to_datetime(row[1]['date']) + datetime.timedelta(seconds=sec))
+                if row[1]['author']== '':
                     data = (
                     'android', re.sub('[-:]', '', row[1]['date']), row[1]['date'], row[1]['review'], row[1]['rating'],
                     'en',
@@ -162,9 +163,10 @@ def job():
 
                     connection.commit()
                     success_count += 1
+                    sec += 1
                 else:
-                    data = ('android', row[1]['author'].strip(), row[1]['date'], row[1]['review'], row[1]['rating'], 'en',
-                            'android', row[1]['author'].strip(), row[1]['date'], row[1]['review'], row[1]['rating'], 'en')
+                    data = ('android', row[1]['author'], row[1]['date'], row[1]['review'], row[1]['rating'], 'en',
+                            'android', row[1]['author'], row[1]['date'], row[1]['review'], row[1]['rating'], 'en')
                     sql = """insert into 
                                 app.castleburn (app, id, date, content, rating, lang)
                                 values (%s, %s, %s, %s, %s, %s)
@@ -172,8 +174,8 @@ def job():
 
                     cur.execute(sql, data)
 
-                    data = (row[1]['author'].strip(), tokenizer(row[1]['review']),
-                            row[1]['author'].strip(), tokenizer(row[1]['review']))
+                    data = (row[1]['author'], tokenizer(row[1]['review']),
+                            row[1]['author'], tokenizer(row[1]['review']))
                     sql = """insert into
                                 app.castleburn_text (id, context)
                                 values(%s, %s) on duplicate key update id=%s, context=%s"""
@@ -181,6 +183,7 @@ def job():
 
                     connection.commit()
                     success_count += 1
+                    sec += 1
         except Exception as e:
             print('SQL error_message: ' + str(e))
             pass
@@ -201,7 +204,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-sun', hour='15', minute='31')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='11', minute='41')
         self.sched.add_job(job, trigger)
         self.sched.start()
 
