@@ -46,28 +46,48 @@
             </tr>
             <tr>
                 <td>
-                 <input name='issue' type="radio" value="neg"/>Negative
+                 <input name='issue' type="radio" value="neg" data-toggle="tooltip"
+                        title="'Env word' + 'Pay word' +
+                        complain, complaint, request, fix, work, claim, suggest, wrong, wors, worst,
+                        bad, issu, disappoint, ignor, annoy, suck, fuck, motherfuck, hate, terribl,
+                        horribl, anger, angri, stupid, absurd, frustrat, disgust, idiot, ridicul, screw,
+                        bitch, scam, pathet, garbag, wast, delet, support, care, imposs, hell,
+                        serious, bull, uninstal, worthless, rob, bias, poor, flaw, dislik, unplay,
+                        rubbish, obnoxi, crap, mad, disgrac, horrend, gross, atrocious, greedi, greed,
+                        futil, asap, wtf, useless, quit, abandon, problem, solv, resolv, remov,
+                        confus, rip, ripoff, trash, unsatisf, stop, awful, bore, churn, stale,
+                        troubl, silli, difficult, difficulti, unacceptabl, sick, piss, desperat, dumb, forc,
+                        spend, spent, repeat, too, balanc, imbalanc, unbalanc, outbalanc, rebalanc, match,
+                        matchmak, matchup, fair, unfair, fairli, win, lose, lopsid, nerf, overpow,
+                        op, odd, rig, chanc, uneven, buff, smurf, broken, broke, close"/>Negative
+
                 </td>
                 <td height="90%" rowspan="3">
                     날짜 선택:
-                    <input name="issue_date" size="10" type="text" id="IssueDate">
+                    <input name="issue_date" size="10" type="text" id="IssueDate"/>
                     <button type="submit">Search</button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input name='issue' type="radio" value="env"/>Environment
+                    <input name='issue' type="radio" value="env" data-toggle="tooltip"
+                           title="system, error, devic, account, log, login, server, load, lag, network, internet,
+                            connect, disconnect, glitch, crash, hacker, hack, delay, screen, bug, unstable,
+                            ban, wifi, sign, lte, latenc, ping, freez, stuck, respons, respond,
+                            irrespons, batteri, wait, fail, failur, unabl, cant, cheat, cheater, elaps,
+                            drain">Environment</input>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input name='issue' type="radio" value="pay "/>Payments
+                    <input name='issue' type="radio" value="pay " data-toggle="tooltip"
+                           title="pay, payment, paytowin, payoff, refund, money, cash, ruby, currenc, transact,
+                           price, lost, bill, fraud, IAP, purchas, inapp"/>Payments
                 </td>
             </tr>
             </form>
         </table>
         </div>
     </div>
-
 
 {% endblock %}
