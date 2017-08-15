@@ -137,7 +137,10 @@ def job():
 
     success_count = 0
     sec = 0
+    dat =''
     for row in df.iterrows():
+        if dat != str(pd.to_datetime(row[1]['date']))[:10]:
+            sec = 0
         try:
             with connection.cursor() as cur:
                 row[1]['date'] = str(pd.to_datetime(row[1]['date']) + datetime.timedelta(seconds=sec))
@@ -184,6 +187,7 @@ def job():
                     connection.commit()
                     success_count += 1
                     sec += 1
+                dat = str(pd.to_datetime(row[1]['date']))[:10]
         except Exception as e:
             print('SQL error_message: ' + str(e))
             pass
