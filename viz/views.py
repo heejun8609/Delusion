@@ -80,7 +80,7 @@ env_word = ['system', 'error', 'devic', 'account', 'log', 'login', 'server', 'lo
             'internet', 'connect', 'disconnect', 'glitch', 'crash', 'hacker', 'hack', 'delay', 'screen',
             'bug', 'unstable', 'ban', 'wifi', 'sign', 'lte', 'latenc', 'ping', 'freez', 'stuck',
             'respons', 'respond', 'irrespons', 'batteri', 'wait', 'fail', 'failur', 'unabl', 'cant', 'cheat',
-            'cheater', 'elaps']
+            'cheater', 'elaps', 'drain']
 pay_word = ['pay', 'payment', 'paytowin', 'payoff', 'refund', 'money', 'cash', 'ruby', 'currenc',
             'transact', 'price', 'lost', 'bill', 'fraud', 'IAP', 'purchas', 'inapp']
 neg_word = env_word + pay_word + ['complain', 'complaint', 'request', 'fix', 'work', 'claim', 'suggest', 'wrong',
@@ -104,7 +104,7 @@ neg_word = env_word + pay_word + ['complain', 'complaint', 'request', 'fix', 'wo
                                   'outbalanc',
                                   'rebalanc', 'match', 'matchmak', 'matchup', 'fair', 'unfair', 'fairli', 'win', 'lose',
                                   'lopsid', 'nerf',
-                                  'overpow', 'op', 'odd', 'rig', 'chanc', 'uneven', 'buff', 'smurf', 'broken', 'broke']
+                                  'overpow', 'op', 'odd', 'rig', 'chanc', 'uneven', 'buff', 'smurf', 'broken', 'broke', 'close']
 
 
 # Preprocessing Function
@@ -167,13 +167,13 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
     text = []
     for x in text_all:
         text.append(x)
-    df_text = pd.DataFrame(text, columns=['id', 'text'])
+    df_text = pd.DataFrame(text, columns=['date', 'text'])
 
     row = []
     for x in res:
         row.append(x)
     df = pd.DataFrame(row, columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    df = pd.merge(df, df_text, on='id')
+    df = pd.merge(df, df_text, on='date')
     df['date'] = df['date'].apply(YMD)
 
     rating_1 = []
@@ -181,7 +181,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_1.append(x)
     rating_1 = pd.DataFrame(rating_1,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_1 = pd.merge(rating_1, df_text, on='id')
+    rating_1 = pd.merge(rating_1, df_text, on='date')
     rating_1['date'] = rating_1['date'].apply(YMD)
 
     rating_2 = []
@@ -189,7 +189,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_2.append(x)
     rating_2 = pd.DataFrame(rating_2,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_2 = pd.merge(rating_2, df_text, on='id')
+    rating_2 = pd.merge(rating_2, df_text, on='date')
     rating_2['date'] = rating_2['date'].apply(YMD)
 
     rating_3 = []
@@ -197,7 +197,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_3.append(x)
     rating_3 = pd.DataFrame(rating_3,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_3 = pd.merge(rating_3, df_text, on='id')
+    rating_3 = pd.merge(rating_3, df_text, on='date')
     rating_3['date'] = rating_3['date'].apply(YMD)
 
     rating_4 = []
@@ -205,7 +205,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_4.append(x)
     rating_4 = pd.DataFrame(rating_4,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_4 = pd.merge(rating_4, df_text, on='id')
+    rating_4 = pd.merge(rating_4, df_text, on='date')
     rating_4['date'] = rating_4['date'].apply(YMD)
 
     rating_5 = []
@@ -213,7 +213,7 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
         rating_5.append(x)
     rating_5 = pd.DataFrame(rating_5,
                             columns=['app', 'id', 'date', 'title', 'content', 'rating', 'lang'])
-    rating_5 = pd.merge(rating_5, df_text, on='id')
+    rating_5 = pd.merge(rating_5, df_text, on='date')
     rating_5['date'] = rating_5['date'].apply(YMD)
 
     # 긍정, 부정 구분
@@ -323,7 +323,6 @@ def preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat):
             }
 
 # INDEX
-
 def index(request):
 	return render(request, 'index.html')
 
@@ -454,7 +453,7 @@ def issue_trend(request):
 
 
     L_line = pygal.Line(style=issue_chart_style,
-                        dots_size=1,
+                        dots_size=2,
                         max_scale=1,
                         legend_at_bottom=True,
                         legend_at_bottom_columns=6,

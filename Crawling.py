@@ -130,6 +130,11 @@ def job():
         elif int(num) > 90:
             rate.append(5)
 
+    auth.reverse()
+    rev.reverse()
+    date.reverse()
+    rate.reverse()
+
     df = pd.concat([pd.DataFrame(auth, columns=['author']), pd.DataFrame(date, columns=['date']),
                     pd.DataFrame(rev, columns=['review']), pd.DataFrame(rate, columns=['rating'])], axis=1)
 
@@ -177,11 +182,11 @@ def job():
 
                     cur.execute(sql, data)
 
-                    data = (row[1]['author'], tokenizer(row[1]['review']),
-                            row[1]['author'], tokenizer(row[1]['review']))
+                    data = (row[1]['date'], tokenizer(row[1]['review']),
+                            row[1]['date'], tokenizer(row[1]['review']))
                     sql = """insert into
-                                app.castleburn_text (id, context)
-                                values(%s, %s) on duplicate key update id=%s, context=%s"""
+                                app.castleburn_text (date, context)
+                                values(%s, %s) on duplicate key update date=%s, context=%s"""
                     cur.execute(sql, data)
 
                     connection.commit()
@@ -208,7 +213,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-sun', hour='11', minute='41')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='10', minute='21')
         self.sched.add_job(job, trigger)
         self.sched.start()
 
