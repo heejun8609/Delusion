@@ -355,7 +355,7 @@ def issue_trend(request):
 
     res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
 
-    res = list(CastleBurn.objects.filter(date__gte=days2, date__lte=days1).values('app', 'id', 'title', 'content', 'date', 'rating', 'lang'))
+    # res = list(CastleBurn.objects.filter(date__gte=days2, date__lte=days1).values('app', 'id', 'title', 'content', 'date', 'rating', 'lang'))
 
     if request.GET:
         print('app:',app, 'lang:',lang, 'days:', days2, days1)
@@ -394,7 +394,7 @@ def issue_trend(request):
                            pd.DataFrame(neg[['date', 'N_total']]), on='date', how='outer')
     total_neg = mer_date(total_neg, df_patch)
     neg_max = round(total_neg['total_count']/100, 2).max()
-    patch_max = -neg_max / 2
+    patch_max = -neg_max
     total_neg['patch'] = total_neg['patch'].fillna(
         patch_max)
     total_neg = total_neg.fillna(0)
@@ -431,19 +431,16 @@ def issue_trend(request):
     for x in neg_word:
         x_count = word_count[word_count['word'] == x]
         total_dic[x] = x_count
-    print(total_neg)
+
     for x in neg_dic:
         for x, y in total_dic[x].iterrows():
             try:
                 with connection.cursor() as cur:
                     date_word = str(y['date'])[:10] + ' ' + y['word']
                     data = (
-                    date_word, y['date'], y['word'], y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'],
-                    y['r4_count'], y['r5_count'],
-                    y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'], y['r4_count'], y['r5_count'])
+                    date_word, y['date'], y['word'], y['total_count'], y['r1_count'], y['r2_count'], y['r3_count'], y['r4_count'], y['r5_count'])
                     sql = "insert into app.castleburn_count (date_word, date, word, total_count, r1_count, r2_count, r3_count, r4_count, r5_count) \
-                            values (%s, %s, %s, %s, %s, %s, %s, %s, %s) on duplicate key update total_count=%s, \
-                            r1_count=%s, r2_count=%s, r3_count=%s, r4_count=%s, r5_count=%s"
+                            values (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
                     cur.execute(sql, data)
                     connection.commit()
 
@@ -501,10 +498,7 @@ class IssueTable(tables.Table):
 def issue_table(request):
 
     queryset = CastleBurn_count.objects.all().values('date', 'word', 'total_count')
-    template = get_template('issue_table.html')
 
-    app = ''
-    lang =''
     i_date = datetime.date.today() - datetime.timedelta(days=1)
 
     if 'app' in request.GET:
@@ -516,11 +510,6 @@ def issue_table(request):
     if 'issue_date' in request.GET:
         d3 = request.GET['issue_date']
         i_date = pd.to_datetime(d3)
-
-    res, star_1, star_2, star_3, star_4, star_5, text_all, pat = db()
-
-    word_count = preprocess(res, star_1, star_2, star_3, star_4, star_5, text_all, pat)['word_count']
-
 
     if 'issue' in request.GET:
         if 'neg' == request.GET['issue']:
@@ -538,9 +527,8 @@ def issue_table(request):
 
     table = IssueTable(queryset.order_by('-date').order_by("-total_count"))
     table.paginate(page=request.GET.get('page', 1), per_page=20)
-    return render(request, 'issue_table.html', {'table': table})
 
-    return HttpResponse(template.render(context))
+    return render(request, 'issue_table.html', {'table': table})
 
 # REVIEWS
 

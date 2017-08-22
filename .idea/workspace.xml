@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crawling.py" afterPath="$PROJECT_DIR$/Crawling.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/views.py" afterPath="$PROJECT_DIR$/viz/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +32,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="461" column="34" lean-forward="false" selection-start-line="461" selection-start-column="34" selection-end-line="461" selection-end-column="34" />
+            <state relative-caret-position="279">
+              <caret line="396" column="24" lean-forward="false" selection-start-line="396" selection-start-column="24" selection-end-line="396" selection-end-column="24" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -147,8 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Fantasy</find>
-      <find>isin</find>
       <find>order</find>
       <find>queryset</find>
       <find>query</find>
@@ -173,10 +170,12 @@
       <find>win</find>
       <find>author</find>
       <find>batt</find>
-      <find>castleburn_count</find>
       <find>succes</find>
       <find>path</find>
       <find>patch</find>
+      <find>castleburn_count</find>
+      <find>PRINT</find>
+      <find>NEG_MAX</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -830,8 +829,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/viz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="461" column="34" lean-forward="false" selection-start-line="461" selection-start-column="34" selection-end-line="461" selection-end-column="34" />
+        <state relative-caret-position="279">
+          <caret line="396" column="24" lean-forward="false" selection-start-line="396" selection-start-column="24" selection-end-line="396" selection-end-column="24" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
