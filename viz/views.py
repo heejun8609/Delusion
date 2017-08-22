@@ -394,8 +394,9 @@ def issue_trend(request):
                            pd.DataFrame(neg[['date', 'N_total']]), on='date', how='outer')
     total_neg = mer_date(total_neg, df_patch)
     neg_max = round(total_neg['total_count']/100, 2).max()
+    patch_max = -neg_max / 2
     total_neg['patch'] = total_neg['patch'].fillna(
-        -neg_max / 20)
+        patch_max)
     total_neg = total_neg.fillna(0)
     total_neg['N_total'] = total_neg['N_total'].apply(int)
     total_neg = total_neg.sort_values(by='date')
@@ -408,7 +409,7 @@ def issue_trend(request):
                                pd.DataFrame(env[['date', 'E_total']]), on='date', how='outer')
     total_env = mer_date(total_env, df_patch)
     total_env['patch'] = total_env['patch'].fillna(
-        -neg_max / 20)
+        patch_max)
     total_env = total_env.fillna(0)
     total_env['E_total'] = total_env['E_total'].apply(int)
     total_env = total_env.sort_values(by='date')
@@ -421,7 +422,7 @@ def issue_trend(request):
                            pd.DataFrame(pay[['date', 'P_total']]), on='date', how='outer')
     total_pay = mer_date(total_pay, df_patch)
     total_pay['patch'] = total_pay['patch'].fillna(
-        -neg_max / 20)
+        patch_max)
     total_pay = total_pay.fillna(0)
     total_pay['P_total'] = total_pay['P_total'].apply(int)
     total_pay = total_pay.sort_values(by='date')
@@ -430,7 +431,7 @@ def issue_trend(request):
     for x in neg_word:
         x_count = word_count[word_count['word'] == x]
         total_dic[x] = x_count
-
+    print(total_neg)
     for x in neg_dic:
         for x, y in total_dic[x].iterrows():
             try:

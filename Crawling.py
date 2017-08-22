@@ -71,7 +71,8 @@ def job():
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
 
-    custom_date = datetime.date.today() - datetime.timedelta(days=2)
+    custom_date3 = datetime.date.today() - datetime.timedelta(days=3)
+    custom_date2 = datetime.date.today() - datetime.timedelta(days=2)
 
     temp_date = []
     temp_auth = []
@@ -101,7 +102,7 @@ def job():
         # if 'Junnel Arabiana' in temp_auth:
         #     break
 
-        if str(custom_date) in temp_date:
+        if str(custom_date2) in temp_date or str(custom_date3) in temp_date:
             break
 
     auth = []
@@ -213,7 +214,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-sun', hour='10', minute='21')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='8', minute='1')
         self.sched.add_job(job, trigger)
         self.sched.start()
 
