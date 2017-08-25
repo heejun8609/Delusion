@@ -997,8 +997,8 @@ def job():
                         ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) & # 타운홀 파괴(2), 항복(6)
                         (ml_temp['point'] >= 600) & # 600점 이상
                         (ml_temp['castle_level'] >= 3) &
-                        (ml_temp['event_time'] >= '2017-08-22') &
-                        (ml_temp['event_time'] < '2017-08-23')].loc[:, ['user_id', 'win', 'opponent_id', 'castle_level', 'hero',
+                        (ml_temp['event_time'] >= yester) &
+                        (ml_temp['event_time'] < str(today))].loc[:, ['user_id', 'win', 'opponent_id', 'castle_level', 'hero',
                                                                       'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
                                                                       'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']]
 
@@ -1313,7 +1313,9 @@ def job():
             # Encode the payload using Base64
             encoders.encode_base64(msg)
         # Set the filename parameter
-        msg.add_header('Content-Disposition', 'attachment', filename=filename)
+        date_reg_exp = re.compile(r'\d{4}[-/]\d{2}[-/]\d{2}')
+        file_num = re.search(date_reg_exp,filename).span()
+        msg.add_header('Content-Disposition', 'attachment', filename=filename[file_num[0]:])
         outer.attach(msg)
 
     with smtplib.SMTP_SSL('smtp.naver.com', 465) as server:
