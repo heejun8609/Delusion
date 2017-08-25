@@ -2,6 +2,7 @@ import pymysql
 import pandas as pd
 import numpy as np
 import datetime
+import re
 
 import os
 import sys
@@ -812,14 +813,15 @@ def job():
     #### 매칭 대기시간
     wait_time_sec = user_match_log_begin[(user_match_log_begin['event_time'] >= yester) &
                                          (user_match_log_begin['event_time'] < str(today)) &
-                                         (user_match_log_begin['match_type'] == 1)].loc[:,['user_id','opponent_id', 'wait_time_sec']]
-    cat_le_res = all_cat_le.groupby('user_id')['cur_point_cat'].all().reset_index()
+                                         (user_match_log_begin['match_type'] == 1)].loc[:,
+                    ['user_id', 'opponent_id', 'point', 'wait_time_sec']]
+    wait_time_sec = wait_time_sec.rename(columns={'point': 'cur_point'})
+    wait_time_sec['cur_point_cat'] = wait_time_sec.apply(CP, axis=1)
 
-    cat_le_wait = pd.merge(wait_time_sec, cat_le_res, on='user_id', how='left')
-    le_wait_ai = cat_le_wait[cat_le_wait['opponent_id'] == 0]
-    le_wait_user = cat_le_wait[cat_le_wait['opponent_id'] != 0]
+    le_wait_ai = wait_time_sec[wait_time_sec['opponent_id'] == 0]
+    le_wait_user = wait_time_sec[wait_time_sec['opponent_id'] != 0]
 
-    all_wait = round(cat_le_wait.groupby('cur_point_cat')['wait_time_sec'].mean(), 1).reset_index()
+    all_wait = round(wait_time_sec.groupby('cur_point_cat')['wait_time_sec'].mean(), 1).reset_index()
     ai_wait = round(le_wait_ai.groupby('cur_point_cat')['wait_time_sec'].mean(), 1).reset_index()
     user_wait = round(le_wait_user.groupby('cur_point_cat')['wait_time_sec'].mean(), 1).reset_index()
 
@@ -827,50 +829,77 @@ def job():
     ai_wait.columns = ['cur_point_cat', 'wait_time_sec_ai']
     user_wait.columns = ['cur_point_cat', 'wait_time_sec_user']
 
-    ai_user = ai_wait.merge(user_wait, on='cur_point_cat', how='outer')
-    ai_user_all = ai_user.merge(all_wait, on='cur_point_cat',  how='outer')
+    all_wait = all_wait.merge(ai_wait, on='cur_point_cat', how='outer')
+    ai_user_all = all_wait.merge(user_wait, on='cur_point_cat', how='outer')
 
     #### 매칭 성공률
-    match_try = pd.DataFrame(user_game_log[(user_game_log['event_time'] >= yester) &
-                                         (user_game_log['event_time'] < str(today)) &
-                                         (user_game_log['event_type'] == 10)]['user_id'])
+    match_try = pd.DataFrame(user_game_log[(user_game_log['event_time'] >= str(today - datetime.timedelta(days=2))) &
+                                           (user_game_log['event_time'] < str(today)) &
+                                           (user_game_log['event_type'] == 10) &
+                                           (user_game_log['param1'] == 1)].loc[:, ['user_id', 'event_time']])
 
-    match_succ = pd.DataFrame(user_match_log_begin[(user_match_log_begin['event_time'] >= yester) &
-                                         (user_match_log_begin['event_time'] < str(today)) &
-                                         (user_match_log_begin['match_type'] == 1)]['user_id'])
+    match_succ = pd.DataFrame(
+        user_match_log_begin[(user_match_log_begin['event_time'] >= str(today - datetime.timedelta(days=2))) &
+                             (user_match_log_begin['event_time'] < str(today)) &
+                             (user_match_log_begin['match_type'] == 1)].loc[:, ['user_id', 'point', 'event_time']])
+    match_succ = match_succ.rename(columns={'point': 'cur_point'})
 
-    cat_le_try = pd.merge(match_try, cat_le_res, on='user_id', how='left')
-    cat_le_succ = pd.merge(match_succ, cat_le_res, on='user_id', how='left')
+    match_succ['match'] = 1
+    match_try['match'] = 0
 
-    match_success = round((cat_le_succ.groupby('cur_point_cat')['user_id'].size()/cat_le_try.groupby('cur_point_cat')['user_id'].size()).reset_index(), 2)
+    match_all = match_succ.append(match_try)
+    match_all = match_all.sort_values(['user_id', 'event_time'])
+
+    u_list = []
+    cp = ''
+    for x, y in match_all.iterrows():
+        if y['user_id'] not in u_list and y.isnull().any():
+            match_all.loc[x, 'cur_point'] = 0
+            cp = match_all.loc[x, 'cur_point']
+        elif y.isnull().any():
+            match_all.loc[x, 'cur_point'] = cp
+            cp = match_all.loc[x, 'cur_point']
+        else:
+            cp = y['cur_point']
+        u_list.append(y['user_id'])
+
+    match_all['cur_point_cat'] = match_all.apply(CP, axis=1)
+
+    match = match_all[(match_all['event_time'] >= yester) &
+                      (match_all['event_time'] < str(today))].loc[:, ['match', 'cur_point_cat']]
+    match_success = round((match[match['match'] == 1].groupby('cur_point_cat')['match'].size() /
+                           match[match['match'] == 0].groupby('cur_point_cat')['match'].size()).reset_index(), 2)
 
     #### CP 차이
     point = user_match_log_begin[(user_match_log_begin['event_time'] >= yester) &
-                                         (user_match_log_begin['event_time'] < str(today)) &
-                                         (user_match_log_begin['match_type'] == 1)].loc[:,['user_id','opponent_id','point','opponent_point']]
-    point['point_diff'] = abs(point['point']-point['opponent_point'])
-    point = point.loc[:,['user_id', 'opponent_id', 'point_diff']]
+                                 (user_match_log_begin['event_time'] < str(today)) &
+                                 (user_match_log_begin['match_type'] == 1)].loc[:,
+            ['user_id', 'opponent_id', 'point', 'opponent_point']]
+    point['point_diff'] = abs(point['point'] - point['opponent_point'])
+    point = point.loc[:, ['user_id', 'point', 'opponent_id', 'point_diff']]
+    point = point.rename(columns={'point': 'cur_point'})
+    point['cur_point_cat'] = point.apply(CP, axis=1)
     point_ai = point[point['opponent_id'] == 0]
     point_user = point[point['opponent_id'] != 0]
 
-    point_diff = pd.DataFrame(league_dr.merge(point, on='user_id', how='outer').groupby('cur_point_cat')['point_diff'].mean().round(1))
-    point_diff_ai = pd.DataFrame(league_dr.merge(point_ai, on='user_id', how='outer').groupby('cur_point_cat')['point_diff'].mean().round(1))
-    point_diff_user = pd.DataFrame(league_dr.merge(point_user, on='user_id', how='outer').groupby('cur_point_cat')['point_diff'].mean().round(1))
+    point_diff = pd.DataFrame(point.groupby('cur_point_cat')['point_diff'].mean().round(1))
+    point_diff_ai = pd.DataFrame(point_ai.groupby('cur_point_cat')['point_diff'].mean().round(1))
+    point_diff_user = pd.DataFrame(point_user.groupby('cur_point_cat')['point_diff'].mean().round(1))
 
     point_diff.columns = ['point_diff_all']
     point_diff_ai.columns = ['point_diff_ai']
     point_diff_user.columns = ['point_diff_user']
 
-    point_dif = point_diff_ai.join([point_diff_user, point_diff]).reset_index()
+    point_dif = point_diff.join([point_diff_ai, point_diff_user], ).reset_index()
 
     second_cp_diff = ai_user_all.merge(match_success, on='cur_point_cat', how='outer')
-
     final_cp_diff = second_cp_diff.merge(point_dif, on='cur_point_cat', how='outer')
-
+    final_cp_diff.columns = ['총 평균 매칭 시간', '평균 AI 매칭 시간', '평균 유저 매칭 시간',
+                             '매칭 성공률(%)', '총 평균 점수 차이', '평균 AI 점수 차이', '평균 유저 점수 차이']
+    final_cp_diff = ai_user_all.merge(point_dif, on='cur_point_cat', how='outer')
     final_cp_diff.set_index('cur_point_cat', inplace=True)
-
-    final_cp_diff.columns = ['평균 AI 매칭 시간', '평균 유저 매칭 시간', '총 평균 매칭 시간',
-                             '매칭 성공률(%)', '평균 AI 점수 차이', '평균 유저 점수 차이', '총 평균 점수 차이']
+    # final_cp_diff.columns = ['총 평균 매칭 시간', '평균 AI 매칭 시간', '평균 유저 매칭 시간',
+    #                          '총 평균 점수 차이', '평균 AI 점수 차이', '평균 유저 점수 차이']
 
     final_cp_diff.to_excel('./2. wait_cp/2) '+yester+'_wait_cpdiff.xlsx')
 
@@ -1097,11 +1126,11 @@ def job():
                                  'User Count': [len(no_tower.groupby('user_id')['win'].size()),
                                                 len(archer.groupby('user_id')['win'].size()),
                                                 len(cannon.groupby('user_id')['win'].size()),
-                                                len(tower.groupby('user_id')['win'].size()) - 1,
+                                                len(tower.groupby('user_id')['win'].size()),
                                                 len(no_tower.groupby('user_id')['win'].size()) +
                                                 len(archer.groupby('user_id')['win'].size()) +
                                                 len(cannon.groupby('user_id')['win'].size()) +
-                                                len(tower.groupby('user_id')['win'].size()) - 1]},
+                                                len(tower.groupby('user_id')['win'].size())]},
                                 index=['No Tower', 'Archer', 'Cannon', 'Towers', 'Sum'])
 
         if len(tower_all) == 0:
@@ -1155,11 +1184,11 @@ def job():
                                 'User Count': [len(no_spel.groupby('user_id')['win'].size()),
                                                len(boom.groupby('user_id')['win'].size()),
                                                len(fire.groupby('user_id')['win'].size()),
-                                               len(spel.groupby('user_id')['win'].size()) - 1,
+                                               len(spel.groupby('user_id')['win'].size()),
                                                len(no_spel.groupby('user_id')['win'].size()) +
                                                len(boom.groupby('user_id')['win'].size()) +
                                                len(fire.groupby('user_id')['win'].size()) +
-                                               len(spel.groupby('user_id')['win'].size()) - 1]},
+                                               len(spel.groupby('user_id')['win'].size())]},
                                index=['No Spell', 'Boom', 'Fire', 'Spells', 'Sum'])
         if len(spel_all) == 0:
             spel_all = spel_df
@@ -1338,7 +1367,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-sun', hour='18', minute='15')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='8', minute='25')
         self.sched.add_job(job, trigger)
         self.sched.start()
 
