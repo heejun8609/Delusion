@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Daily Statistics.py" afterPath="$PROJECT_DIR$/Daily Statistics.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,31 +33,12 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
+            <state relative-caret-position="9709">
               <caret line="524" column="35" lean-forward="false" selection-start-line="524" selection-start-column="35" selection-end-line="524" selection-end-column="35" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <marker date="1503564198909" expanded="true" signature="4936:4984" ph="..." />
                 <marker date="1503564198909" expanded="true" signature="20832:22293" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="20863:22085" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="20905:21279" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="21323:21697" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="21711:22085" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="22338:22398" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="22367:22398" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="22432:22603" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="22472:22603" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="22544:22602" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="22631:25757" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="23065:23247" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="23275:23457" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="23485:23667" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="23695:23877" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="23905:24087" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="24219:24848" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="24882:25064" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="25098:25247" ph="..." />
-                <marker date="1503564198909" expanded="true" signature="25269:25538" ph="..." />
               </folding>
             </state>
           </provider>
@@ -65,8 +47,8 @@
       <file leaf-file-name="Daily Statistics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Daily Statistics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="1369" column="73" lean-forward="false" selection-start-line="1369" selection-start-column="73" selection-end-line="1369" selection-end-column="73" />
+            <state relative-caret-position="381">
+              <caret line="899" column="85" lean-forward="false" selection-start-line="899" selection-start-column="85" selection-end-line="899" selection-end-column="85" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -278,7 +260,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -336,6 +317,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -554,25 +536,14 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40952381" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910052" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="manage.py@Delusion" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32804233" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.151357" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40952381" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -766,25 +737,6 @@
             <element signature="e#0#19#0" expanded="true" />
             <marker date="1503564198909" expanded="true" signature="4936:4984" ph="..." />
             <marker date="1503564198909" expanded="true" signature="20832:22293" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="20863:22085" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="20905:21279" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="21323:21697" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="21711:22085" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22338:22398" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22367:22398" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22432:22603" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22472:22603" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22544:22602" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22631:25757" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23065:23247" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23275:23457" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23485:23667" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23695:23877" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23905:24087" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="24219:24848" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="24882:25064" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="25098:25247" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="25269:25538" ph="..." />
           </folding>
         </state>
       </provider>
@@ -875,31 +827,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/viz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
+        <state relative-caret-position="9709">
           <caret line="524" column="35" lean-forward="false" selection-start-line="524" selection-start-column="35" selection-end-line="524" selection-end-column="35" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <marker date="1503564198909" expanded="true" signature="4936:4984" ph="..." />
             <marker date="1503564198909" expanded="true" signature="20832:22293" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="20863:22085" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="20905:21279" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="21323:21697" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="21711:22085" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22338:22398" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22367:22398" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22432:22603" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22472:22603" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22544:22602" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="22631:25757" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23065:23247" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23275:23457" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23485:23667" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23695:23877" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="23905:24087" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="24219:24848" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="24882:25064" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="25098:25247" ph="..." />
-            <marker date="1503564198909" expanded="true" signature="25269:25538" ph="..." />
           </folding>
         </state>
       </provider>
@@ -917,8 +850,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Daily Statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="1369" column="73" lean-forward="false" selection-start-line="1369" selection-start-column="73" selection-end-line="1369" selection-end-column="73" />
+        <state relative-caret-position="381">
+          <caret line="899" column="85" lean-forward="false" selection-start-line="899" selection-start-column="85" selection-end-line="899" selection-end-column="85" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

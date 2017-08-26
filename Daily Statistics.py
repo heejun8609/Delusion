@@ -894,12 +894,10 @@ def job():
 
     second_cp_diff = ai_user_all.merge(match_success, on='cur_point_cat', how='outer')
     final_cp_diff = second_cp_diff.merge(point_dif, on='cur_point_cat', how='outer')
+    final_cp_diff.set_index('cur_point_cat', inplace=True)
+
     final_cp_diff.columns = ['총 평균 매칭 시간', '평균 AI 매칭 시간', '평균 유저 매칭 시간',
                              '매칭 성공률(%)', '총 평균 점수 차이', '평균 AI 점수 차이', '평균 유저 점수 차이']
-    final_cp_diff = ai_user_all.merge(point_dif, on='cur_point_cat', how='outer')
-    final_cp_diff.set_index('cur_point_cat', inplace=True)
-    # final_cp_diff.columns = ['총 평균 매칭 시간', '평균 AI 매칭 시간', '평균 유저 매칭 시간',
-    #                          '총 평균 점수 차이', '평균 AI 점수 차이', '평균 유저 점수 차이']
 
     final_cp_diff.to_excel('./2. wait_cp/2) '+yester+'_wait_cpdiff.xlsx')
 
@@ -1367,7 +1365,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-sun', hour='8', minute='25')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='19', minute='17')
         self.sched.add_job(job, trigger)
         self.sched.start()
 
