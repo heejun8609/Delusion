@@ -1273,14 +1273,14 @@ def job():
     part1 = MIMEText(text, 'plain')
     outer = MIMEMultipart()
     outer['Subject'] = str(today) + ' Daily Statistics'
-    outer['To'] = 'vmurmurv@naver.com'
-    # outer['To'] = '곽웅섭 <palmblad@delusionstudio.net>,\
-    #             조대윤 <alsum@delusionstudio.net>, \
-    #             박신찬 <gatou@delusionstudio.net>, \
-    #             강문철 <smith@delusionstudio.net>, \
-    #             이재호 <jhdlee920@delusionstudio.net>, \
-    #             곽호신 <gorapa90@delusionstudio.net>, \
-    #             박희준 <heejun8609@delusionstudio.net'
+    # outer['To'] = 'vmurmurv@naver.com'
+    outer['To'] = '곽웅섭 <palmblad@delusionstudio.net>,\
+                조대윤 <alsum@delusionstudio.net>, \
+                박신찬 <gatou@delusionstudio.net>, \
+                강문철 <smith@delusionstudio.net>, \
+                이재호 <jhdlee920@delusionstudio.net>, \
+                곽호신 <gorapa90@delusionstudio.net>, \
+                박희준 <heejun8609@delusionstudio.net'
     outer['From'] = 'vmurmurv@naver.com'
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
@@ -1365,7 +1365,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-sun', hour='19', minute='17')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='8', minute='20')
         self.sched.add_job(job, trigger)
         self.sched.start()
 

@@ -80,7 +80,7 @@ env_word = ['system', 'error', 'devic', 'account', 'log', 'login', 'server', 'lo
             'internet', 'connect', 'disconnect', 'glitch', 'crash', 'hacker', 'hack', 'delay', 'screen',
             'bug', 'unstable', 'ban', 'wifi', 'sign', 'lte', 'latenc', 'ping', 'freez', 'stuck',
             'respons', 'respond', 'irrespons', 'batteri', 'wait', 'fail', 'failur', 'unabl', 'cant', 'cheat',
-            'cheater', 'elaps', 'drain']
+            'cheater', 'elaps', 'drain', 'shutdown']
 pay_word = ['pay', 'payment', 'paytowin', 'payoff', 'refund', 'money', 'cash', 'ruby', 'currenc',
             'transact', 'price', 'lost', 'bill', 'fraud', 'IAP', 'purchas', 'inapp']
 neg_word = env_word + pay_word + ['complain', 'complaint', 'request', 'fix', 'work', 'claim', 'suggest', 'wrong',
