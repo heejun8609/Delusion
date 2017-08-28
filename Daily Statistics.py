@@ -1142,6 +1142,7 @@ def job():
         spel_dic = {}
         boom_dic = {}
         fire_dic = {}
+        stone_dic = {}
         no_spel_dic = {}
         # zero_dic = {}
 
@@ -1153,13 +1154,19 @@ def job():
                                 'unlock_card_ref_id_3': np.nan,
                                 'unlock_card_ref_id_4': np.nan, 'unlock_card_ref_id_5': np.nan,
                                 'unlock_card_ref_id_6': np.nan}
-            if 400 in x[1].values[4:] and 401 in x[1].values[4:]:
+            if (400 in x[1].values[4:] and 401 in x[1].values[4:]) or (
+                    401 in x[1].values[4:] and 402 in x[1].values[4:]) or (
+                    400 in x[1].values[4:] and 402 in x[1].values[4:]):
                 spel_dic[x[0]] = x[1]
-            elif 400 in x[1].values[4:] and 401 not in x[1].values[4:]:
+            elif 400 in x[1].values[4:] and 401 not in x[1].values[4:] and not 402 in x[1].values[4:]:
                 boom_dic[x[0]] = x[1]
-            elif 400 not in x[1].values[4:] and 401 in x[1].values[4:]:
+            elif 400 not in x[1].values[4:] and 401 in x[1].values[4:] and not 402 in x[1].values[4:]:
                 fire_dic[x[0]] = x[1]
-            elif 400 not in x[1].values[4:] and 401 not in x[1].values[4:] and 0 != x[1].values[4:].sum():
+            elif 400 not in x[1].values[4:] and 401 not in x[1].values[4:] and 402 in x[1].values[4:]:
+                stone_dic[x[0]] = x[1]
+            elif 400 not in x[1].values[4:] and 401 not in x[1].values[4:] and not 402 in x[1].values[4:] and 0 != x[
+                                                                                                                       1].values[
+                                                                                                                   4:].sum():
                 no_spel_dic[x[0]] = x[1]
         # elif 0 == x[1].values[2:].sum():
         #         zero_dic[x[0]] = x[1]
@@ -1167,27 +1174,31 @@ def job():
         spel = pd.DataFrame(spel_dic).transpose()
         boom = pd.DataFrame(boom_dic).transpose()
         fire = pd.DataFrame(fire_dic).transpose()
+        stone = pd.DataFrame(stone_dic).transpose()
         no_spel = pd.DataFrame(no_spel_dic).transpose()
         # zero = pd.DataFrame(zero_dic).transpose()
 
         spel_win = round(len(spel[spel['win'] == 1]) / len(spel), 2)
         boom_win = round(len(boom[boom['win'] == 1]) / len(boom), 2)
         fire_win = round(len(fire[fire['win'] == 1]) / len(fire), 2)
+        stone_win = round(len(stone[stone['win'] == 1]) / len(stone), 2)
         no_spel_win = round(len(no_spel[no_spel['win'] == 1]) / len(no_spel), 2)
         # zero_win = round(len(zero[zero['win'] == 1])/len(zero), 2)
 
-        spel_df = pd.DataFrame({'Win Ratio(%)': [no_spel_win, boom_win, fire_win, spel_win, np.nan],
-                                'Battle Count': [len(no_spel), len(boom), len(fire), len(spel) - 1,
-                                                 len(no_spel) + len(boom) + len(fire) + len(spel) - 1],
+        spel_df = pd.DataFrame({'Win Ratio(%)': [no_spel_win, boom_win, fire_win, stone_win, spel_win, np.nan],
+                                'Battle Count': [len(no_spel), len(boom), len(fire), len(stone), len(spel) - 1,
+                                                 len(no_spel) + len(stone) + len(boom) + len(fire) + len(spel) - 1],
                                 'User Count': [len(no_spel.groupby('user_id')['win'].size()),
                                                len(boom.groupby('user_id')['win'].size()),
                                                len(fire.groupby('user_id')['win'].size()),
+                                               len(stone.groupby('user_id')['win'].size()),
                                                len(spel.groupby('user_id')['win'].size()),
                                                len(no_spel.groupby('user_id')['win'].size()) +
                                                len(boom.groupby('user_id')['win'].size()) +
                                                len(fire.groupby('user_id')['win'].size()) +
+                                               len(stone.groupby('user_id')['win'].size()) +
                                                len(spel.groupby('user_id')['win'].size())]},
-                               index=['No Spell', 'Boom', 'Fire', 'Spells', 'Sum'])
+                               index=['No Spell', 'Boom', 'Fire', 'Stone', 'Spells', 'Sum'])
         if len(spel_all) == 0:
             spel_all = spel_df
         else:
