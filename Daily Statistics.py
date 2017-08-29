@@ -1209,21 +1209,20 @@ def job():
     #### 마법사
     witch = user_game_log[(user_game_log['param_type'] == 20) &
                           (user_game_log['param1'] == 90) &
-                          (user_game_log['param2'] == 202)].loc[:, ['user_id','event_time']].sort_values('event_time')
+                          (user_game_log['param2'] == 202)].loc[:, ['user_id', 'event_time']].sort_values('event_time')
     witch = witch.groupby('user_id')['event_time'].apply(lambda x: str(x)[6:19].strip()).reset_index()
-
 
     wit_mat = ml_temp[(ml_temp['match_type'] == 1) &
                       ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
                       (ml_temp['point'] >= 600) &
                       (ml_temp['event_time'] >= yester) &
                       (ml_temp['event_time'] < str(today))].loc[:, ['user_id', 'win',
-                                                                                     'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
-                                                                                     'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
-                                                                                     'unlock_card_ref_id_5', 'unlock_card_ref_id_6']]
+                                                                    'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
+                                                                    'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
+                                                                    'unlock_card_ref_id_5', 'unlock_card_ref_id_6']]
 
-    witch_card = wit_mat.merge(witch, on ='user_id')
-    witch_card  = witch_card .drop('event_time', axis=1)
+    witch_card = wit_mat.merge(witch, on='user_id')
+    witch_card = witch_card.drop('event_time', axis=1)
 
     witch_dic = {}
 
@@ -1239,18 +1238,43 @@ def job():
     for card in pick_card:
         witch_df[card] = np.where(witch_df[card] == 202, 1, 0)
 
-    witch_df = witch_df.rename(columns = {'win':'마법사'})
-    witch_df  = witch_df.drop('user_id', axis=1)
+    witch_df = witch_df.rename(columns={'win': '마법사'})
+    witch_df = witch_df.drop('user_id', axis=1)
 
+    #### 통찰의 눈
+    eye_temp = ml_temp[(ml_temp['match_type'] == 1) &  # 랭크
+                       ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &  # 타운홀 파괴(2), 항복(6)
+                       (ml_temp['point'] >= 600) &  # 600점 이상
+                       (ml_temp['castle_level'] >= 5) &  # 캐슬레벨 5 이상
+                       (ml_temp['event_time'] >= yester) &
+                       (ml_temp['event_time'] < str(today))].loc[:,
+               ['user_id', 'win', 'opponent_id', 'castle_level', 'hero',
+                'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
+                'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']]
 
-    second = [witch_df]
+    eye_dic = {}
+
+    for x in eye_temp.iterrows():
+        if x[1].values[2:].sum() != 0:
+            eye_dic[x[0]] = x[1]
+    eye_df = pd.DataFrame(eye_dic).transpose()
+
+    for card in pick_card:
+        eye_df[card] = np.where(eye_df[card] == 407, 1, 0)
+
+    eye_df = eye_df.rename(columns={'win': '통찰의 눈'})
+    eye_df = eye_df.drop('user_id', axis=1)
+    eye_df = eye_df.drop(eye_df.columns[1:4], axis=1)
+
+    second = [witch_df, eye_df]
     s_dic = {}
     for x in second:
-        s_dic[x.columns[0]] = {'pick_rate(%)' : round(x.drop(x.columns[0], axis=1).sum(axis=0).sum() / len(x), 2),
-                               'win_rate(%)' : round(x[x[x.columns[0]] == 1].drop(x.columns[0], axis=1).sum(axis=0).sum() / x.drop(x.columns[0], axis=1).sum(axis=0).sum(), 2)}
+        s_dic[x.columns[0]] = {'pick_rate(%)': round(x.drop(x.columns[0], axis=1).sum(axis=0).sum() / len(x), 2),
+                               'win_rate(%)': round(
+                                   x[x[x.columns[0]] == 1].drop(x.columns[0], axis=1).sum(axis=0).sum() / x.drop(
+                                       x.columns[0], axis=1).sum(axis=0).sum(), 2)}
 
-    pd.DataFrame(s_dic).transpose().to_excel('./5. witch_use/5) '+yester+'_witch_pic_win_ratio.xlsx')
-
+    pd.DataFrame(s_dic).transpose().to_excel('./5. card_use_temp/5) ' + yester + '_witch_eye_pic_win_ratio.xlsx')
 
     # 이메일 발송
     # !/usr/bin/env python3
@@ -1301,7 +1325,7 @@ def job():
                      './2. wait_cp/2) ' + yester + '_wait_cpdiff.xlsx',
                      './3. match_ratio/3) ' + yester + '_match_ratio.xlsx',
                      './4. card_use/4) ' + yester + '_pick_win_ratio(hero, tower, spell).xlsx',
-                     './5. witch_use/5) ' + yester + '_witch_pic_win_ratio.xlsx']
+                     './5. card_use_temp/5) '+yester+'_witch_eye_pic_win_ratio.xlsx',]
 
     text = '''
     1. 유저 League & Castle Lv 분포

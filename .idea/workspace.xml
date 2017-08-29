@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/5. witch_use/5) 2017-08-23_witch_pic_win_ratio.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/5. witch_use/5) 2017-08-24_witch_pic_win_ratio.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/5. witch_use/5) 2017-08-26_witch_pic_win_ratio.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/5. witch_use/5) 2017-08-27_witch_pic_win_ratio.xlsx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Daily Statistics.py" afterPath="$PROJECT_DIR$/Daily Statistics.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -106,8 +110,8 @@
       <file leaf-file-name="Daily Statistics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Daily Statistics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="1205" column="0" lean-forward="true" selection-start-line="1205" selection-start-column="0" selection-end-line="1205" selection-end-column="0" />
+            <state relative-caret-position="622">
+              <caret line="1327" column="21" lean-forward="false" selection-start-line="1327" selection-start-column="21" selection-end-line="1327" selection-end-column="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -213,7 +217,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>query</find>
       <find>contains</find>
       <find>7d</find>
       <find>value</find>
@@ -243,6 +246,7 @@
       <find>le_Cat.loc</find>
       <find>NEG_MAX</find>
       <find>shut</find>
+      <find>stone</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1040,8 +1044,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Daily Statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="1205" column="0" lean-forward="true" selection-start-line="1205" selection-start-column="0" selection-end-line="1205" selection-end-column="0" />
+        <state relative-caret-position="622">
+          <caret line="1327" column="21" lean-forward="false" selection-start-line="1327" selection-start-column="21" selection-end-line="1327" selection-end-column="21" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
