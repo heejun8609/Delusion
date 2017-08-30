@@ -769,7 +769,7 @@ def job():
 
             # cat_le_cum = cat_le_count.pivot_table(index='cur_point_cat', columns='castle_cat', values='user_id').fillna(0).astype(int)[::-1].cumsum(axis=0)
 
-            y.to_excel('./1. league_castle/1.1) ' + yester + '_catle_league_' + con + '.xlsx')
+            y.to_excel('./1. league_castle/1) ' + yester + '_catle_league_' + con + '.xlsx')
             # cat_le_res.to_excel(str(today)+'_catle_league_day2_deact.xlsx')
             # cat_le_cum[::-1].to_excel(str(today)+'_catle_league_cumsum.xlsx')
 
@@ -794,19 +794,22 @@ def job():
     le_cat.loc['D-day'] = str(today - sta_date.date())[:7]
     le_cat = le_cat.reindex(index=le_cat.index[::-1])
 
-    cas_lv = castle_lv.groupby('castle_level')['user_id'].size().reset_index().set_index('castle_level')
+    day3_act_u = pd.DataFrame(day3_act_user.groupby('user_id')['user_id'].all())
+    castle_lv = castle_lv.set_index('user_id')
+    cas_lv = day3_act_u.join(castle_lv).drop('user_id', axis=1).reset_index().groupby('castle_level')[
+        'user_id'].size().reset_index().set_index('castle_level')
     cas_lv.loc['Total'] = cas_lv[0].sum(axis=0)
+
     def percent(row):
-        return row/row['Total']
-    cas_lv[yester] = cas_lv.apply(percent)
+        return row / row['Total']
+
     cas_lv[yester] = cas_lv.apply(percent)
     cas_lv = cas_lv.drop(0, axis=1)
     cas_lv = cas_lv.drop('Total')
-
     le_cas_lv = le_cat.append(cas_lv).transpose().rename({0:yester})
     le_cas_lv['Total'] = total_user
 
-    le_cas_lv.to_excel('./1. league_castle/1.2) '+yester + '_3day_league_castle_base.xlsx')
+    le_cas_lv.to_excel('./1. league_castle/1) '+yester + '_3day_league_castle_base.xlsx')
 
     ### 평균 매칭 대기 시간 & 평균 점수 차이(랭크)
 
@@ -1206,6 +1209,7 @@ def job():
 
     hero_all.append([tower_all, spel_all]).to_excel('./4. card_use/4) '+yester+'_pick_win_ratio(hero, tower, spell).xlsx')
 
+
     #### 마법사
     witch = user_game_log[(user_game_log['param_type'] == 20) &
                           (user_game_log['param1'] == 90) &
@@ -1276,6 +1280,109 @@ def job():
 
     pd.DataFrame(s_dic).transpose().to_excel('./5. card_use_temp/5) ' + yester + '_witch_eye_pic_win_ratio.xlsx')
 
+    ### 승리 vs 패배
+    win_lose = ml_temp[(ml_temp['opponent_id'] != 0) &
+                       (ml_temp['match_type'] == 1) &
+                       ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
+                       (ml_temp['point'] >= 600) &
+                       (ml_temp['event_time'] >= yester) &
+                       (ml_temp['event_time'] < str(today))]['win'].reset_index()
+    win_vs_lose = round(len(win_lose[win_lose['win'] == 1]) / len(win_lose[win_lose['win'] == 0]), 2)
+
+    ### 최근 3일 카드 픽률&승률
+    card_str = '''건물/궁수탑/1/일반/10
+    건물/포탑/1/일반/11
+    건물/투석기/2/일반/20
+    건물/발리스타/2/일반/21
+    건물/비전탑/3/희귀/30
+    유닛/고블린/1/일반/100
+    유닛/바이킹/1/일반/101
+    유닛/궁수/1/일반/102
+    유닛/냉기술사/2/전설/103
+    유닛/폭탄쥐/1/고급/104
+    유닛/마법고양이/1/고급/106
+    유닛/임프/2/일반/200
+    유닛/마법사/2/희귀/202
+    유닛/망치/2/고급/203
+    유닛/늑대/2/고급/206
+    유닛/라이플/2/고급/207
+    유닛/그리핀/3/희귀/208
+    유닛/고블린전차/3/희귀/300
+    유닛/드래곤/3/희귀/302
+    유닛/드레이크/3/희귀/303
+    유닛/미노타우로스/3/희귀/304
+    유닛/미니골렘/3/희귀/305
+    유닛/발키리/2/전설/306
+    스펠/폭탄/1/일반/400
+    스펠/불기둥/1/고급/401
+    스펠/암석/2/희귀/402
+    스펠/맹독/2/고급/403
+    스펠/통찰의눈/1/고급/407'''
+
+    card_dic = {}
+    for x in card_str.splitlines():
+        sp = x.split('/')
+        card_dic[sp[-1]] = sp[0:4]
+    card_dic_df = pd.DataFrame(card_dic).transpose().reset_index()
+    card_dic_df.columns = ['num', 'cate', 'name', 'tier', 'rare']
+
+    card_list = []
+    for x, y in card_dic_df.iterrows():
+        card = user_game_log[(user_game_log['param_type'] == 20) &
+                             (user_game_log['param1'] == 90) &
+                             (user_game_log['param2'] == int(y['num']))].loc[:, ['user_id', 'event_time']].sort_values(
+            'event_time')
+        card = witch.groupby('user_id')['event_time'].apply(lambda x: str(x)[6:19].strip()).reset_index()
+
+        card_mat = ml_temp[(ml_temp['match_type'] == 1) &
+                           ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
+                           (ml_temp['event_time'] >= str(today - datetime.timedelta(days=3))) &
+                           (ml_temp['event_time'] < str(today))].loc[:, ['user_id', 'win',
+                                                                         'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
+                                                                         'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
+                                                                         'unlock_card_ref_id_5',
+                                                                         'unlock_card_ref_id_6']]
+        card_all = card_mat.merge(card, on='user_id')
+        card_all = card_all.drop('event_time', axis=1)
+
+        card_dic = {}
+
+        for x in card_all.iterrows():
+            if x[1].values[2:].sum() != 0:
+                card_dic[x[0]] = x[1]
+
+        card_df = pd.DataFrame(card_dic).transpose()
+
+        pick_card = ['unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
+                     'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']
+
+        for card in pick_card:
+            card_df[card] = np.where(card_df[card] == int(y['num']), 1, 0)
+
+        card_df = card_df.rename(columns={'win': y['name']})
+        card_df = card_df.drop('user_id', axis=1)
+        card_list.append(card_df)
+
+    s_dic = {}
+    for x in card_list:
+        if x.drop(x.columns[0], axis=1).sum(axis=0).sum() != 0:
+            s_dic[x.columns[0]] = {'pick_rate(%)': round(x.drop(x.columns[0], axis=1).sum(axis=0).sum() / len(x), 2),
+                                   'win_rate(%)': round(
+                                       x[x[x.columns[0]] == 1].drop(x.columns[0], axis=1).sum(axis=0).sum() / x.drop(
+                                           x.columns[0], axis=1).sum(axis=0).sum(), 2)}
+        else:
+            s_dic[x.columns[0]] = {'pick_rate(%)': 0,
+                                   'win_rate(%)': 0}
+
+    pick_win = pd.DataFrame(s_dic).transpose().sort_values('pick_rate(%)', ascending=False).reset_index()
+
+    pick_win = pick_win.rename(columns={'index': 'name'})
+
+    pick_win = pick_win.merge(card_dic_df, on='name').drop('num', axis=1).set_index('name').sort_values(
+        by='pick_rate(%)', ascending=False)
+
+    pick_win.to_excel('./7. card_pick_win/7) ' + yester + '_card_pic_win_ratio.xlsx')
+
     # 이메일 발송
     # !/usr/bin/env python3
 
@@ -1319,28 +1426,35 @@ def job():
     outer['From'] = 'vmurmurv@naver.com'
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
-    filepath_list = ['./1. league_castle/1.1) ' + yester + '_catle_league_all.xlsx',
-                     './1. league_castle/1.1) ' + yester + '_catle_league_day3_act.xlsx',
-                     './1. league_castle/1.2) ' + yester + '_3day_league_castle_base.xlsx',
+    filepath_list = ['./1. league_castle/1) ' + yester + '_catle_league_all.xlsx',
+                     './1. league_castle/1) ' + yester + '_catle_league_day3_act.xlsx',
+                     './1. league_castle/1) ' + yester + '_3day_league_castle_base.xlsx',
                      './2. wait_cp/2) ' + yester + '_wait_cpdiff.xlsx',
                      './3. match_ratio/3) ' + yester + '_match_ratio.xlsx',
                      './4. card_use/4) ' + yester + '_pick_win_ratio(hero, tower, spell).xlsx',
-                     './5. card_use_temp/5) '+yester+'_witch_eye_pic_win_ratio.xlsx',]
+                     './5. card_use_temp/5) ' + yester + '_witch_eye_pic_win_ratio.xlsx',
+                     './7. card_pick_win/7) ' + yester + '_card_pic_win_ratio.xlsx']
 
     text = '''
-    1. 유저 League & Castle Lv 분포
-    
+    1. 유저 League & Castle Lv 분포(전체, 최근 3일)
+
     2. 전날 0 ~ 24시 동안의 랭크전 평균 매칭 대기 시간 & 평균 점수 차이
-    
+
     3. 전날 0 ~ 24시 동안의 매칭 비율
-    
-    4. 전날 0 ~ 24시 동안의 랭크전 주요 카드 사용 현황((1) Crown Point 600점 이상 / (2) Castle Level 3 이상 / (3) 랭크전)
-    
-    5. 전날 0 ~ 24시 동안의 마법사 픽률 & 승률
-    
+
+    4. 전날 0 ~ 24시 동안의 랭크전 주요 카드 사용 현황 (Crown Point 600점 이상 / Castle Level 3 이상 / 랭크)
+
+    5. 전날 0 ~ 24시 동안의 마법사 및 픽률 & 승률 (마법사를 보유한 600점 이상 / 2티어 이상의 유닛을 하나 이상 언락한 케이스 / 랭크)
+       전날 0 ~ 24시 동안의 통찰의 눈 픽률 & 승률 (캐슬 레벨 5 이상 / 아무 것도 언락하지 않은 게임 제외 / 랭크)
+
+    6. 전날 0 ~ 24시 동안의 600점 이상 유저의 랭크전 승리 : 패배 비율 (유저간 매칭) -> ''' + str(win_vs_lose) + ''' 
+
+    7. 직전 3일 동안의 카드 픽률 & 승률
+
     * 자세한 내용은 '원노트 기획 -> 박희준 -> 데이터 요청사항' 확인 요망
     https://onedrive.live.com/edit.aspx/%eb%ac%b8%ec%84%9c/%ec%ba%90%ec%8a%ac%eb%b2%88?cid=3d7703c304c2aa03&id=documents
     '''
+
     part = MIMEText(text, 'plain')
     outer.attach(part)
 
