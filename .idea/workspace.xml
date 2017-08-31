@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="" />
+    <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/7. card_pick_win/7) 2017-08-29_card_pic_win_ratio.xlsx" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Daily Statistics.py" afterPath="$PROJECT_DIR$/Daily Statistics.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,8 +47,8 @@
       <file leaf-file-name="Daily Statistics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Daily Statistics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1078">
-              <caret line="1425" column="40" lean-forward="true" selection-start-line="1425" selection-start-column="40" selection-end-line="1425" selection-end-column="40" />
+            <state relative-caret-position="470">
+              <caret line="1276" column="31" lean-forward="false" selection-start-line="1276" selection-start-column="31" selection-end-line="1276" selection-end-column="31" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -847,8 +850,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Daily Statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1078">
-          <caret line="1425" column="40" lean-forward="true" selection-start-line="1425" selection-start-column="40" selection-end-line="1425" selection-end-column="40" />
+        <state relative-caret-position="470">
+          <caret line="1276" column="31" lean-forward="false" selection-start-line="1276" selection-start-column="31" selection-end-line="1276" selection-end-column="31" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

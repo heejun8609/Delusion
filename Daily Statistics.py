@@ -1273,7 +1273,8 @@ def job():
     second = [witch_df, eye_df]
     s_dic = {}
     for x in second:
-        s_dic[x.columns[0]] = {'pick_rate(%)': round(x.drop(x.columns[0], axis=1).sum(axis=0).sum() / len(x), 2),
+        s_dic[x.columns[0]] = {'pick_count' : x.drop(x.columns[0], axis=1).sum(axis=0).sum(),
+                               'pick_rate(%)': round(x.drop(x.columns[0], axis=1).sum(axis=0).sum() / len(x), 2),
                                'win_rate(%)': round(
                                    x[x[x.columns[0]] == 1].drop(x.columns[0], axis=1).sum(axis=0).sum() / x.drop(
                                        x.columns[0], axis=1).sum(axis=0).sum(), 2)}
@@ -1433,7 +1434,7 @@ def job():
                      './3. match_ratio/3) ' + yester + '_match_ratio.xlsx',
                      './4. card_use/4) ' + yester + '_pick_win_ratio(hero, tower, spell).xlsx',
                      './5. card_use_temp/5) ' + yester + '_witch_eye_pic_win_ratio.xlsx',
-                     './7. card_pick_win/7) ' + yester + '_card_pic_win_ratio.xlsx']
+                     './8. card_pick_win/8) ' + yester + '_card_pic_win_ratio.xlsx']
 
     text = '''
     1. 유저 League & Castle Lv 분포(전체, 최근 3일)
@@ -1445,11 +1446,12 @@ def job():
     4. 전날 0 ~ 24시 동안의 랭크전 주요 카드 사용 현황 (Crown Point 600점 이상 / Castle Level 3 이상 / 랭크)
 
     5. 전날 0 ~ 24시 동안의 마법사 및 픽률 & 승률 (마법사를 보유한 600점 이상 / 2티어 이상의 유닛을 하나 이상 언락한 케이스 / 랭크)
-       전날 0 ~ 24시 동안의 통찰의 눈 픽률 & 승률 (캐슬 레벨 5 이상 / 아무 것도 언락하지 않은 게임 제외 / 랭크)
 
-    6. 전날 0 ~ 24시 동안의 600점 이상 유저의 랭크전 승리 : 패배 비율 (유저간 매칭) -> ''' + str(win_vs_lose) + ''' 
+    6. 전날 0 ~ 24시 동안의 통찰의 눈 픽률 & 승률 (캐슬 레벨 5 이상 / 아무 것도 언락하지 않은 게임 제외 / 랭크)
 
-    7. 직전 3일 동안의 카드 픽률 & 승률
+    7. 전날 0 ~ 24시 동안의 600점 이상 유저의 랭크전 승리 : 패배 비율 (유저간 매칭) -> ''' + str(win_vs_lose) + ''' 
+
+    8. 직전 3일 동안의 카드 픽률 & 승률
 
     * 자세한 내용은 '원노트 기획 -> 박희준 -> 데이터 요청사항' 확인 요망
     https://onedrive.live.com/edit.aspx/%eb%ac%b8%ec%84%9c/%ec%ba%90%ec%8a%ac%eb%b2%88?cid=3d7703c304c2aa03&id=documents
