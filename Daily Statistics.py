@@ -1015,283 +1015,24 @@ def job():
 
     match_rat()
 
-    ### 카드 픽률 및 승률
-
+    #최근 3일 카드 픽률&승률
     match_end = user_match_log_end.loc[:, ['user_id', 'match_id', 'event_time', 'end_reason', 'win',
-                               'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
-                               'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']]
-    match_begin = user_match_log_begin.loc[:, ['user_id', 'match_id', 'opponent_id', 'castle_level', 'match_type', 'point', 'hero']]
+                                           'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
+                                           'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6',
+                                           'opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
+                                           'opponent_unlock_card_ref_id_3',
+                                           'opponent_unlock_card_ref_id_4', 'opponent_unlock_card_ref_id_5',
+                                           'opponent_unlock_card_ref_id_6', ]]
+    match_begin = user_match_log_begin.loc[:,
+                  ['user_id', 'match_id', 'opponent_id', 'castle_level', 'match_type', 'point',
+                   'opponent_point', 'hero', 'hero_random', 'opponent_hero', 'opponent_hero_random']]
     ml_temp = match_begin.merge(match_end, on=['user_id', 'match_id'])
 
-    card_temp = ml_temp[(ml_temp['match_type'] == 1) & # 랭크
-                        ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) & # 타운홀 파괴(2), 항복(6)
-                        (ml_temp['point'] >= 600) & # 600점 이상
-                        (ml_temp['castle_level'] >= 3) &
-                        (ml_temp['event_time'] >= yester) &
-                        (ml_temp['event_time'] < str(today))].loc[:, ['user_id', 'win', 'opponent_id', 'castle_level', 'hero',
-                                                                      'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
-                                                                      'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']]
-
-    card_ai = card_temp[card_temp['opponent_id'] == 0]
-    card_user = card_temp[card_temp['opponent_id'] != 0]
-    card_all = [card_user, card_temp]
-
-    #### 영웅
-    hero_all = pd.DataFrame()
-    for card in card_all:
-        jea_dic = {}
-        mer_dic = {}
-        leo_dic = {}
-        ael_dic = {}
-        gru_dic = {}
-        lan_dic = {}
-
-        for x in card.iterrows():
-            if 1000 in x[1].values[4:]:
-                jea_dic[x[0]] = x[1]
-            elif 1001 in x[1].values[4:]:
-                mer_dic[x[0]] = x[1]
-            elif 1002 in x[1].values[4:]:
-                leo_dic[x[0]] = x[1]
-            elif 1003 in x[1].values[4:]:
-                ael_dic[x[0]] = x[1]
-            elif 1004 in x[1].values[4:]:
-                gru_dic[x[0]] = x[1]
-            elif 1005 in x[1].values[4:]:
-                lan_dic[x[0]] = x[1]
-
-        jea = pd.DataFrame(jea_dic).transpose()
-        leo = pd.DataFrame(leo_dic).transpose()
-        ael = pd.DataFrame(ael_dic).transpose()
-        gru = pd.DataFrame(gru_dic).transpose()
-
-        jea_win = round(len(jea[jea['win'] == 1]) / len(jea), 2)
-        leo_win = round(len(leo[leo['win'] == 1]) / len(leo), 2)
-        ael_win = round(len(ael[ael['win'] == 1]) / len(ael), 2)
-        gru_win = round(len(gru[gru['win'] == 1]) / len(gru), 2)
-
-        hero_df = pd.DataFrame({'Win Ratio(%)': [jea_win, leo_win, ael_win, gru_win, np.nan],
-                                'Battle Count': [len(jea), len(leo), len(ael), len(gru),
-                                                 len(jea) + len(leo) + len(ael) + len(gru)],
-                                'User Count': [len(jea.groupby('user_id')['win'].size()),
-                                               len(leo.groupby('user_id')['win'].size()),
-                                               len(ael.groupby('user_id')['win'].size()),
-                                               len(gru.groupby('user_id')['win'].size()),
-                                               len(jea.groupby('user_id')['win'].size()) +
-                                               len(leo.groupby('user_id')['win'].size()) +
-                                               len(ael.groupby('user_id')['win'].size()) +
-                                               len(gru.groupby('user_id')['win'].size())]},
-                               index=['Jeanne', 'Leon', 'Aella', 'Gruvo', 'Sum'])
-        if len(hero_all) == 0:
-            hero_all = hero_df
-        else:
-            hero_all = hero_all.join(hero_df, lsuffix='_User', rsuffix='_All')
-
-    #### 포탑
-    tower_all = pd.DataFrame()
-    for card in card_all:
-        tower_dic = {}
-        archer_dic = {}
-        cannon_dic = {}
-        no_tower_dic = {}
-
-        for x in card.iterrows():
-            tower_dic[np.nan] = {'user_id': np.nan, 'win': np.nan, 'opponent_id': np.nan, 'castle_level': np.nan,
-                                 'hero': np.nan,
-                                 'unlock_card_ref_id_1': np.nan, 'unlock_card_ref_id_2': np.nan,
-                                 'unlock_card_ref_id_3': np.nan,
-                                 'unlock_card_ref_id_4': np.nan, 'unlock_card_ref_id_5': np.nan,
-                                 'unlock_card_ref_id_6': np.nan}
-            if 10 in x[1].values[4:] and 11 in x[1].values[4:]:
-                tower_dic[x[0]] = x[1]
-            elif 10 in x[1].values[4:] and 11 not in x[1].values[4:]:
-                archer_dic[x[0]] = x[1]
-            elif 10 not in x[1].values[4:] and 11 in x[1].values[4:]:
-                cannon_dic[x[0]] = x[1]
-            elif 10 not in x[1].values[4:] and 11 not in x[1].values[4:] and 0 != x[1].values[4:].sum():
-                no_tower_dic[x[0]] = x[1]
-
-        tower = pd.DataFrame(tower_dic).transpose()
-        archer = pd.DataFrame(archer_dic).transpose()
-        cannon = pd.DataFrame(cannon_dic).transpose()
-        no_tower = pd.DataFrame(no_tower_dic).transpose()
-
-        tower_win = round(len(tower[tower['win'] == 1]) / len(tower), 2)
-        archer_win = round(len(archer[archer['win'] == 1]) / len(archer), 2)
-        cannon_win = round(len(cannon[cannon['win'] == 1]) / len(cannon), 2)
-        no_tower_win = round(len(no_tower[no_tower['win'] == 1]) / len(no_tower), 2)
-
-        tower_df = pd.DataFrame({'Win Ratio(%)': [no_tower_win, archer_win, cannon_win, tower_win, np.nan],
-                                 'Battle Count': [len(no_tower), len(archer), len(cannon), len(tower) - 1,
-                                                  len(no_tower) + len(archer) + len(cannon) + len(tower) - 1],
-                                 'User Count': [len(no_tower.groupby('user_id')['win'].size()),
-                                                len(archer.groupby('user_id')['win'].size()),
-                                                len(cannon.groupby('user_id')['win'].size()),
-                                                len(tower.groupby('user_id')['win'].size()),
-                                                len(no_tower.groupby('user_id')['win'].size()) +
-                                                len(archer.groupby('user_id')['win'].size()) +
-                                                len(cannon.groupby('user_id')['win'].size()) +
-                                                len(tower.groupby('user_id')['win'].size())]},
-                                index=['No Tower', 'Archer', 'Cannon', 'Towers', 'Sum'])
-
-        if len(tower_all) == 0:
-            tower_all = tower_df
-        else:
-            tower_all = tower_all.join(tower_df, lsuffix='_User', rsuffix='_All')
-
-    #### 스펠
-    spel_all = pd.DataFrame()
-    for card in card_all:
-        spel_dic = {}
-        boom_dic = {}
-        fire_dic = {}
-        stone_dic = {}
-        no_spel_dic = {}
-        # zero_dic = {}
-
-
-        for x in card.iterrows():
-            spel_dic[np.nan] = {'user_id': np.nan, 'win': np.nan, 'opponent_id': np.nan, 'castle_level': np.nan,
-                                'hero': np.nan,
-                                'unlock_card_ref_id_1': np.nan, 'unlock_card_ref_id_2': np.nan,
-                                'unlock_card_ref_id_3': np.nan,
-                                'unlock_card_ref_id_4': np.nan, 'unlock_card_ref_id_5': np.nan,
-                                'unlock_card_ref_id_6': np.nan}
-            if (400 in x[1].values[4:] and 401 in x[1].values[4:]) or (
-                    401 in x[1].values[4:] and 402 in x[1].values[4:]) or (
-                    400 in x[1].values[4:] and 402 in x[1].values[4:]):
-                spel_dic[x[0]] = x[1]
-            elif 400 in x[1].values[4:] and 401 not in x[1].values[4:] and not 402 in x[1].values[4:]:
-                boom_dic[x[0]] = x[1]
-            elif 400 not in x[1].values[4:] and 401 in x[1].values[4:] and not 402 in x[1].values[4:]:
-                fire_dic[x[0]] = x[1]
-            elif 400 not in x[1].values[4:] and 401 not in x[1].values[4:] and 402 in x[1].values[4:]:
-                stone_dic[x[0]] = x[1]
-            elif 400 not in x[1].values[4:] and 401 not in x[1].values[4:] and not 402 in x[1].values[4:] and 0 != x[
-                                                                                                                       1].values[
-                                                                                                                   4:].sum():
-                no_spel_dic[x[0]] = x[1]
-        # elif 0 == x[1].values[2:].sum():
-        #         zero_dic[x[0]] = x[1]
-
-        spel = pd.DataFrame(spel_dic).transpose()
-        boom = pd.DataFrame(boom_dic).transpose()
-        fire = pd.DataFrame(fire_dic).transpose()
-        stone = pd.DataFrame(stone_dic).transpose()
-        no_spel = pd.DataFrame(no_spel_dic).transpose()
-        # zero = pd.DataFrame(zero_dic).transpose()
-
-        spel_win = round(len(spel[spel['win'] == 1]) / len(spel), 2)
-        boom_win = round(len(boom[boom['win'] == 1]) / len(boom), 2)
-        fire_win = round(len(fire[fire['win'] == 1]) / len(fire), 2)
-        stone_win = round(len(stone[stone['win'] == 1]) / len(stone), 2)
-        no_spel_win = round(len(no_spel[no_spel['win'] == 1]) / len(no_spel), 2)
-        # zero_win = round(len(zero[zero['win'] == 1])/len(zero), 2)
-
-        spel_df = pd.DataFrame({'Win Ratio(%)': [no_spel_win, boom_win, fire_win, stone_win, spel_win, np.nan],
-                                'Battle Count': [len(no_spel), len(boom), len(fire), len(stone), len(spel) - 1,
-                                                 len(no_spel) + len(stone) + len(boom) + len(fire) + len(spel) - 1],
-                                'User Count': [len(no_spel.groupby('user_id')['win'].size()),
-                                               len(boom.groupby('user_id')['win'].size()),
-                                               len(fire.groupby('user_id')['win'].size()),
-                                               len(stone.groupby('user_id')['win'].size()),
-                                               len(spel.groupby('user_id')['win'].size()),
-                                               len(no_spel.groupby('user_id')['win'].size()) +
-                                               len(boom.groupby('user_id')['win'].size()) +
-                                               len(fire.groupby('user_id')['win'].size()) +
-                                               len(stone.groupby('user_id')['win'].size()) +
-                                               len(spel.groupby('user_id')['win'].size())]},
-                               index=['No Spell', 'Boom', 'Fire', 'Stone', 'Spells', 'Sum'])
-        if len(spel_all) == 0:
-            spel_all = spel_df
-        else:
-            spel_all = spel_all.join(spel_df, lsuffix='_User', rsuffix='_All')
-
-    hero_all.append([tower_all, spel_all]).to_excel('./4. card_use/4) '+yester+'_pick_win_ratio(hero, tower, spell).xlsx')
-
-
-    #### 마법사
-    witch = user_game_log[(user_game_log['param_type'] == 20) &
-                          (user_game_log['param1'] == 90) &
-                          (user_game_log['param2'] == 202)].loc[:, ['user_id', 'event_time']].sort_values('event_time')
-    witch = witch.groupby('user_id')['event_time'].apply(lambda x: str(x)[6:19].strip()).reset_index()
-
-    wit_mat = ml_temp[(ml_temp['match_type'] == 1) &
-                      ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
-                      (ml_temp['point'] >= 600) &
-                      (ml_temp['event_time'] >= yester) &
-                      (ml_temp['event_time'] < str(today))].loc[:, ['user_id', 'win',
-                                                                    'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
-                                                                    'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
-                                                                    'unlock_card_ref_id_5', 'unlock_card_ref_id_6']]
-
-    witch_card = wit_mat.merge(witch, on='user_id')
-    witch_card = witch_card.drop('event_time', axis=1)
-
-    witch_dic = {}
-
-    for x in witch_card.iterrows():
-        if x[1].values[2:].sum() != 0:
-            witch_dic[x[0]] = x[1]
-
-    witch_df = pd.DataFrame(witch_dic).transpose()
-
-    pick_card = ['unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
-                 'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']
-
-    for card in pick_card:
-        witch_df[card] = np.where(witch_df[card] == 202, 1, 0)
-
-    witch_df = witch_df.rename(columns={'win': '마법사'})
-    witch_df = witch_df.drop('user_id', axis=1)
-
-    #### 통찰의 눈
-    eye_temp = ml_temp[(ml_temp['match_type'] == 1) &  # 랭크
-                       ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &  # 타운홀 파괴(2), 항복(6)
-                       (ml_temp['point'] >= 600) &  # 600점 이상
-                       (ml_temp['castle_level'] >= 5) &  # 캐슬레벨 5 이상
-                       (ml_temp['event_time'] >= yester) &
-                       (ml_temp['event_time'] < str(today))].loc[:,
-               ['user_id', 'win', 'opponent_id', 'castle_level', 'hero',
-                'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
-                'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']]
-
-    eye_dic = {}
-
-    for x in eye_temp.iterrows():
-        if x[1].values[2:].sum() != 0:
-            eye_dic[x[0]] = x[1]
-    eye_df = pd.DataFrame(eye_dic).transpose()
-
-    for card in pick_card:
-        eye_df[card] = np.where(eye_df[card] == 407, 1, 0)
-
-    eye_df = eye_df.rename(columns={'win': '통찰의 눈'})
-    eye_df = eye_df.drop('user_id', axis=1)
-    eye_df = eye_df.drop(eye_df.columns[1:4], axis=1)
-
-    second = [witch_df, eye_df]
-    s_dic = {}
-    for x in second:
-        s_dic[x.columns[0]] = {'pick_count' : x.drop(x.columns[0], axis=1).sum(axis=0).sum(),
-                               'pick_rate(%)': round(x.drop(x.columns[0], axis=1).sum(axis=0).sum() / len(x), 2),
-                               'win_rate(%)': round(
-                                   x[x[x.columns[0]] == 1].drop(x.columns[0], axis=1).sum(axis=0).sum() / x.drop(
-                                       x.columns[0], axis=1).sum(axis=0).sum(), 2)}
-
-    pd.DataFrame(s_dic).transpose().to_excel('./5. card_use_temp/5) ' + yester + '_witch_eye_pic_win_ratio.xlsx')
-
-    ### 승리 vs 패배
-    win_lose = ml_temp[(ml_temp['opponent_id'] != 0) &
-                       (ml_temp['match_type'] == 1) &
-                       ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
-                       (ml_temp['point'] >= 600) &
-                       (ml_temp['event_time'] >= yester) &
-                       (ml_temp['event_time'] < str(today))]['win'].reset_index()
-    win_vs_lose = round(len(win_lose[win_lose['win'] == 1]) / len(win_lose[win_lose['win'] == 0]), 2)
-
-    ### 최근 3일 카드 픽률&승률
-    card_str = '''건물/궁수탑/1/일반/10
+    card_str = '''영웅/쟌느/0/영웅/1000
+    영웅/레온/0/영웅/1002
+    영웅/에일라/0/영웅/1003
+    영웅/그루보/0/영웅/1004
+    건물/궁수탑/1/일반/10
     건물/포탑/1/일반/11
     건물/투석기/2/일반/20
     건물/발리스타/2/일반/21
@@ -1327,62 +1068,116 @@ def job():
     card_dic_df = pd.DataFrame(card_dic).transpose().reset_index()
     card_dic_df.columns = ['num', 'cate', 'name', 'tier', 'rare']
 
-    card_list = []
-    for x, y in card_dic_df.iterrows():
-        card = user_game_log[(user_game_log['param_type'] == 20) &
-                             (user_game_log['param1'] == 90) &
-                             (user_game_log['param2'] == int(y['num']))].loc[:, ['user_id', 'event_time']].sort_values(
-            'event_time')
-        card = witch.groupby('user_id')['event_time'].apply(lambda x: str(x)[6:19].strip()).reset_index()
+    daeyun = ml_temp[(ml_temp['match_type'] == 1) &
+                     ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
+                     (ml_temp['event_time'] >= str(today - datetime.timedelta(days=3))) &
+                     (ml_temp['event_time'] < str(today)) &
+                     (ml_temp['opponent_unlock_card_ref_id_1'] != 0 &
+                      (ml_temp['win'] == 1))].loc[:, ['user_id', 'win', 'hero', 'hero_random',
+                                                      'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
+                                                      'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
+                                                      'unlock_card_ref_id_5', 'unlock_card_ref_id_6',
+                                                      'opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
+                                                      'opponent_unlock_card_ref_id_3', 'opponent_unlock_card_ref_id_4',
+                                                      'opponent_unlock_card_ref_id_5', 'opponent_unlock_card_ref_id_6',
+                                                      'opponent_hero', 'opponent_hero_random']]
 
-        card_mat = ml_temp[(ml_temp['match_type'] == 1) &
-                           ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
-                           (ml_temp['event_time'] >= str(today - datetime.timedelta(days=3))) &
-                           (ml_temp['event_time'] < str(today))].loc[:, ['user_id', 'win',
-                                                                         'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
-                                                                         'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
-                                                                         'unlock_card_ref_id_5',
-                                                                         'unlock_card_ref_id_6']]
-        card_all = card_mat.merge(card, on='user_id')
-        card_all = card_all.drop('event_time', axis=1)
+    wungsub = ml_temp[(ml_temp['match_type'] == 1) &
+                      ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
+                      (ml_temp['opponent_id'] != 0) &
+                      (ml_temp['point'] >= 600) &
+                      (ml_temp['opponent_point'] >= 600) &
+                      (ml_temp['event_time'] >= str(today - datetime.timedelta(days=3))) &
+                      (ml_temp['event_time'] < str(today)) &
+                      (ml_temp['opponent_unlock_card_ref_id_1'] != 0) &
+                      (ml_temp['win'] == 1)].loc[:, ['user_id', 'win', 'hero', 'hero_random',
+                                                     'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
+                                                     'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
+                                                     'unlock_card_ref_id_5', 'unlock_card_ref_id_6',
+                                                     'opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
+                                                     'opponent_unlock_card_ref_id_3', 'opponent_unlock_card_ref_id_4',
+                                                     'opponent_unlock_card_ref_id_5', 'opponent_unlock_card_ref_id_6',
+                                                     'opponent_hero', 'opponent_hero_random']]
 
-        card_dic = {}
+    work_list = [daeyun, wungsub]
+    work_name = ['daeyun', 'wungsub']
+    cc = 0
 
-        for x in card_all.iterrows():
-            if x[1].values[2:].sum() != 0:
-                card_dic[x[0]] = x[1]
+    for card_mat in work_list:
+        tier1 = 0
+        tier2 = 0
+        tier3 = 0
+        card_list = []
+        for x, y in card_dic_df.iterrows():
+            card = user_game_log[(user_game_log['param_type'] == 20) &
+                                 (user_game_log['param1'] == 90) &
+                                 (user_game_log['param2'] == 101)].loc[:, ['user_id', 'event_time']].sort_values(
+                'event_time')
+            card = card.groupby('user_id')['event_time'].apply(lambda x: str(x)[6:19].strip()).reset_index()
+            card_all = card_mat.merge(card, on='user_id')
+            card_df = card_all.drop('event_time', axis=1)
 
-        card_df = pd.DataFrame(card_dic).transpose()
+            for i, v in card_df.iterrows():
+                if v.isin(list(card_dic_df[card_dic_df['tier'] == '1']['num'].values.astype(int))).any():
+                    tier1 += 1
 
-        pick_card = ['unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
-                     'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']
+                if v.isin(list(card_dic_df[card_dic_df['tier'] == '2']['num'].values.astype(int))).any():
+                    tier2 += 1
 
-        for card in pick_card:
-            card_df[card] = np.where(card_df[card] == int(y['num']), 1, 0)
+                if v.isin(list(card_dic_df[card_dic_df['tier'] == '3']['num'].values.astype(int))).any():
+                    tier3 += 1
 
-        card_df = card_df.rename(columns={'win': y['name']})
-        card_df = card_df.drop('user_id', axis=1)
-        card_list.append(card_df)
+            if not card_df.empty:
 
-    s_dic = {}
-    for x in card_list:
-        if x.drop(x.columns[0], axis=1).sum(axis=0).sum() != 0:
-            s_dic[x.columns[0]] = {'pick_rate(%)': round(x.drop(x.columns[0], axis=1).sum(axis=0).sum() / len(x), 2),
-                                   'win_rate(%)': round(
-                                       x[x[x.columns[0]] == 1].drop(x.columns[0], axis=1).sum(axis=0).sum() / x.drop(
-                                           x.columns[0], axis=1).sum(axis=0).sum(), 2)}
-        else:
-            s_dic[x.columns[0]] = {'pick_rate(%)': 0,
-                                   'win_rate(%)': 0}
+                my_card = ['hero', 'hero_random',
+                           'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
+                           'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']
+                opp_card = ['opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
+                            'opponent_unlock_card_ref_id_3', 'opponent_unlock_card_ref_id_4',
+                            'opponent_unlock_card_ref_id_5', 'opponent_unlock_card_ref_id_6',
+                            'opponent_hero', 'opponent_hero_random']
 
-    pick_win = pd.DataFrame(s_dic).transpose().sort_values('pick_rate(%)', ascending=False).reset_index()
+                pick_card = my_card + opp_card
 
-    pick_win = pick_win.rename(columns={'index': 'name'})
+                for card in pick_card:
+                    card_df[card] = np.where(card_df[card] == int(y['num']), 1, 0)
 
-    pick_win = pick_win.merge(card_dic_df, on='name').drop('num', axis=1).set_index('name').sort_values(
-        by='pick_rate(%)', ascending=False)
+                card_df = card_df.rename(columns={'win': y['name']})
+                card_df = card_df.drop('user_id', axis=1)
+                cols = card_df.columns.tolist()
+                cols = cols[1:] + cols[0:1]
+                card_df = card_df[cols]
+                card_list.append(card_df)
 
-    pick_win.to_excel('./7. card_pick_win/7) ' + yester + '_card_pic_win_ratio.xlsx')
+        s_dic = {}
+        for x in card_list:
+            if x.drop(x.columns[-1], axis=1).sum(axis=0).sum() != 0:
+                s_dic[x.columns[-1]] = {'pick_count': x.drop(x.columns[-1], axis=1).sum(axis=0).sum(),
+                                        'pick_rate(%)': round(
+                                            x.drop(x.columns[-1], axis=1).sum(axis=0).sum() / (len(x) * 2), 2),
+                                        'win_rate(%)': round(
+                                            x.ix[:, 0:8].sum(axis=0).sum() / x.drop(x.columns[-1], axis=1).sum(
+                                                axis=0).sum(), 4)}
+            else:
+                s_dic[x.columns[-1]] = {'pick_count': 0,
+                                        'pick_rate(%)': 0,
+                                        'win_rate(%)': 0}
+
+        pick_win = pd.DataFrame(s_dic).transpose().sort_values('pick_rate(%)', ascending=False).reset_index()
+
+        pick_win = pick_win.rename(columns={'index': 'name'})
+
+        pick_win = pick_win.merge(card_dic_df, on='name').drop('num', axis=1).set_index('name').sort_values(
+            by='pick_rate(%)', ascending=False)
+        writer = pd.ExcelWriter('./4. card_pick_win/4) ' + yester + '_card_pic_win_ratio_' + work_name[cc] + '.xlsx')
+        pick_win.to_excel(writer, '카드 픽률&승률')
+        pd.DataFrame({'tier1': tier1, 'tier2': tier2, 'tier3': tier3}, index=['tier_count']).to_excel(writer,
+                                                                                                      'Tier Count')
+        writer.save()
+        cc += 1
+    game_count = 0
+    for x in card_dic_df[card_dic_df['tier'] == '0']['name']:
+        game_count += pick_win.ix[x]['pick_count']
 
     # 이메일 발송
     # !/usr/bin/env python3
@@ -1416,14 +1211,15 @@ def job():
     part1 = MIMEText(text, 'plain')
     outer = MIMEMultipart()
     outer['Subject'] = str(today) + ' Daily Statistics'
-    # outer['To'] = 'vmurmurv@naver.com'
+    #     outer['To'] = 'vmurmurv@naver.com'
     outer['To'] = '곽웅섭 <palmblad@delusionstudio.net>,\
-                조대윤 <alsum@delusionstudio.net>, \
-                박신찬 <gatou@delusionstudio.net>, \
-                강문철 <smith@delusionstudio.net>, \
-                이재호 <jhdlee920@delusionstudio.net>, \
-                곽호신 <gorapa90@delusionstudio.net>, \
-                박희준 <heejun8609@delusionstudio.net'
+                        조대윤 <alsum@delusionstudio.net>, \
+                        박신찬 <gatou@delusionstudio.net>, \
+                        강문철 <smith@delusionstudio.net>, \
+                        이재호 <jhdlee920@delusionstudio.net>, \
+                        곽호신 <gorapa90@delusionstudio.net> \
+                        박희준 <heejun8609@delusionstudio.net'
+
     outer['From'] = 'vmurmurv@naver.com'
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
@@ -1432,30 +1228,23 @@ def job():
                      './1. league_castle/1) ' + yester + '_3day_league_castle_base.xlsx',
                      './2. wait_cp/2) ' + yester + '_wait_cpdiff.xlsx',
                      './3. match_ratio/3) ' + yester + '_match_ratio.xlsx',
-                     './4. card_use/4) ' + yester + '_pick_win_ratio(hero, tower, spell).xlsx',
-                     './5. card_use_temp/5) ' + yester + '_witch_eye_pic_win_ratio.xlsx',
-                     './8. card_pick_win/8) ' + yester + '_card_pic_win_ratio.xlsx']
+                     './4. card_pick_win/4) ' + yester + '_card_pic_win_ratio_daeyun.xlsx',
+                     './4. card_pick_win/4) ' + yester + '_card_pic_win_ratio_wungsub.xlsx']
 
     text = '''
-    1. 유저 League & Castle Lv 분포(전체, 최근 3일)
+        1. 유저 League & Castle Lv 분포(전체, 최근 3일)
 
-    2. 전날 0 ~ 24시 동안의 랭크전 평균 매칭 대기 시간 & 평균 점수 차이
+        2. 전날 0 ~ 24시 동안의 랭크전 평균 매칭 대기 시간 & 평균 점수 차이
 
-    3. 전날 0 ~ 24시 동안의 매칭 비율
+        3. 전날 0 ~ 24시 동안의 매칭 비율
 
-    4. 전날 0 ~ 24시 동안의 랭크전 주요 카드 사용 현황 (Crown Point 600점 이상 / Castle Level 3 이상 / 랭크)
+        4. (대윤님)직전 3일 동안의 카드 픽률 & 승률(랭크, User+AI)
 
-    5. 전날 0 ~ 24시 동안의 마법사 및 픽률 & 승률 (마법사를 보유한 600점 이상 / 2티어 이상의 유닛을 하나 이상 언락한 케이스 / 랭크)
+        4. (웅섭님)직전 3일 동안의 카드 픽률 & 승률(랭크, User, Users CP 600이상) -> 게임수: ''' + game_count + ''' 
 
-    6. 전날 0 ~ 24시 동안의 통찰의 눈 픽률 & 승률 (캐슬 레벨 5 이상 / 아무 것도 언락하지 않은 게임 제외 / 랭크)
-
-    7. 전날 0 ~ 24시 동안의 600점 이상 유저의 랭크전 승리 : 패배 비율 (유저간 매칭) -> ''' + str(win_vs_lose) + ''' 
-
-    8. 직전 3일 동안의 카드 픽률 & 승률
-
-    * 자세한 내용은 '원노트 기획 -> 박희준 -> 데이터 요청사항' 확인 요망
-    https://onedrive.live.com/edit.aspx/%eb%ac%b8%ec%84%9c/%ec%ba%90%ec%8a%ac%eb%b2%88?cid=3d7703c304c2aa03&id=documents
-    '''
+        * 자세한 내용은 '원노트 기획 -> 박희준 -> 데이터 요청사항' 확인 요망
+        https://onedrive.live.com/edit.aspx/%eb%ac%b8%ec%84%9c/%ec%ba%90%ec%8a%ac%eb%b2%88?cid=3d7703c304c2aa03&id=documents
+        '''
 
     part = MIMEText(text, 'plain')
     outer.attach(part)
