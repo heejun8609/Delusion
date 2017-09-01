@@ -1103,21 +1103,43 @@ def job():
     work_name = ['daeyun', 'wungsub']
     cc = 0
 
+    pick_card = ['hero', 'hero_random',
+                 'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
+                 'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']
+
     for card_mat in work_list:
+
+        card = user_game_log[(user_game_log['param_type'] == 20) &
+                             (user_game_log['param1'] == 90) &
+                             (user_game_log['param2'] == 101)].loc[:, ['user_id', 'event_time']].sort_values(
+            'event_time')
+        card = card.groupby('user_id')['event_time'].apply(lambda x: str(x)[6:19].strip()).reset_index()
+        card_all = card_mat.merge(card, on='user_id')
+        card_df = card_all.drop(['event_time', 'user_id'], axis=1)
+
+        mine = card_df.drop('opponent_id', axis=1).ix[:, :9]
+        opp = card_df[card_df['opponent_id'] != 0].ix[:, 10:]
+        opp['opponent_win'] = 0
+        cols = opp.columns.tolist()
+        cols = cols[-1:] + cols[0:-1]
+        opp = opp[cols]
+
+        opp = opp.rename(columns={'opponent_win': 'win', 'opponent_hero': 'hero', 'opponent_hero_random': 'hero_random',
+                                  'opponent_unlock_card_ref_id_1': 'unlock_card_ref_id_1',
+                                  'opponent_unlock_card_ref_id_2': 'unlock_card_ref_id_2',
+                                  'opponent_unlock_card_ref_id_3': 'unlock_card_ref_id_3',
+                                  'opponent_unlock_card_ref_id_4': 'unlock_card_ref_id_4',
+                                  'opponent_unlock_card_ref_id_5': 'unlock_card_ref_id_5',
+                                  'opponent_unlock_card_ref_id_6': 'unlock_card_ref_id_6'})
+
+        all_card = mine.append(opp)
+
         tier1 = 0
         tier2 = 0
         tier3 = 0
         card_list = []
         for x, y in card_dic_df.iterrows():
-            card = user_game_log[(user_game_log['param_type'] == 20) &
-                                 (user_game_log['param1'] == 90) &
-                                 (user_game_log['param2'] == 101)].loc[:, ['user_id', 'event_time']].sort_values(
-                'event_time')
-            card = card.groupby('user_id')['event_time'].apply(lambda x: str(x)[6:19].strip()).reset_index()
-            card_all = card_mat.merge(card, on='user_id')
-            card_df = card_all.drop('event_time', axis=1)
-
-            for i, v in card_df.iterrows():
+            for i, v in all_card.iterrows():
                 if v.isin(list(card_dic_df[card_dic_df['tier'] == '1']['num'].values.astype(int))).any():
                     tier1 += 1
 
@@ -1127,37 +1149,25 @@ def job():
                 if v.isin(list(card_dic_df[card_dic_df['tier'] == '3']['num'].values.astype(int))).any():
                     tier3 += 1
 
-            if not card_df.empty:
-
-                my_card = ['hero', 'hero_random',
-                           'unlock_card_ref_id_1', 'unlock_card_ref_id_2', 'unlock_card_ref_id_3',
-                           'unlock_card_ref_id_4', 'unlock_card_ref_id_5', 'unlock_card_ref_id_6']
-                opp_card = ['opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
-                            'opponent_unlock_card_ref_id_3', 'opponent_unlock_card_ref_id_4',
-                            'opponent_unlock_card_ref_id_5', 'opponent_unlock_card_ref_id_6',
-                            'opponent_hero', 'opponent_hero_random']
-
-                pick_card = my_card + opp_card
-
+            ac = all_card.copy()
+            if not all_card.empty:
                 for card in pick_card:
-                    card_df[card] = np.where(card_df[card] == int(y['num']), 1, 0)
-
-                card_df = card_df.rename(columns={'win': y['name']})
-                card_df = card_df.drop('user_id', axis=1)
-                cols = card_df.columns.tolist()
+                    ac[card] = np.where(all_card[card] == np.int64(y['num']), 1, 0)
+                ac = ac.rename(columns={'win': y['name']})
+                cols = ac.columns.tolist()
                 cols = cols[1:] + cols[0:1]
-                card_df = card_df[cols]
-                card_list.append(card_df)
+                ac = ac[cols]
+                card_list.append(ac)
 
         s_dic = {}
         for x in card_list:
             if x.drop(x.columns[-1], axis=1).sum(axis=0).sum() != 0:
                 s_dic[x.columns[-1]] = {'pick_count': x.drop(x.columns[-1], axis=1).sum(axis=0).sum(),
-                                        'pick_rate(%)': round(
-                                            x.drop(x.columns[-1], axis=1).sum(axis=0).sum() / (len(x) * 2), 2),
+                                        'pick_rate(%)': round(x.drop(x.columns[-1], axis=1).sum(axis=0).sum() / len(x),
+                                                              2),
                                         'win_rate(%)': round(
-                                            x.ix[:, 0:8].sum(axis=0).sum() / x.drop(x.columns[-1], axis=1).sum(
-                                                axis=0).sum(), 4)}
+                                            x[x[x.columns[-1]] == 1].ix[:, 0:8].sum(axis=0).sum() / x.drop(
+                                                x.columns[-1], axis=1).sum(axis=0).sum(), 4)}
             else:
                 s_dic[x.columns[-1]] = {'pick_count': 0,
                                         'pick_rate(%)': 0,
@@ -1175,6 +1185,7 @@ def job():
                                                                                                       'Tier Count')
         writer.save()
         cc += 1
+
     game_count = 0
     for x in card_dic_df[card_dic_df['tier'] == '0']['name']:
         game_count += pick_win.ix[x]['pick_count']
