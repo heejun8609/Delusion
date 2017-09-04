@@ -788,7 +788,7 @@ def job():
     le_cat.loc['Total'] = le_cat[0].sum(axis=0)
     total_user = le_cat.ix['Total'][0]
     def percent(row):
-        return row/row[7]
+        return row/row['Total']
     le_cat[yester] = le_cat.apply(percent)
     le_cat = le_cat.drop(0, axis=1)
     le_cat.loc['D-day'] = str(today - sta_date.date())[:7]
