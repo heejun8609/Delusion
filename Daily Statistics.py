@@ -1072,15 +1072,16 @@ def job():
                      ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
                      (ml_temp['event_time'] >= str(today - datetime.timedelta(days=3))) &
                      (ml_temp['event_time'] < str(today)) &
-                     (ml_temp['opponent_unlock_card_ref_id_1'] != 0 &
-                      (ml_temp['win'] == 1))].loc[:, ['user_id', 'win', 'hero', 'hero_random',
-                                                      'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
-                                                      'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
-                                                      'unlock_card_ref_id_5', 'unlock_card_ref_id_6',
-                                                      'opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
-                                                      'opponent_unlock_card_ref_id_3', 'opponent_unlock_card_ref_id_4',
-                                                      'opponent_unlock_card_ref_id_5', 'opponent_unlock_card_ref_id_6',
-                                                      'opponent_hero', 'opponent_hero_random']]
+                     (ml_temp['opponent_unlock_card_ref_id_1'] != 0) &
+                     (ml_temp['win'] == 1)].loc[:, ['user_id', 'win', 'hero', 'hero_random', 'opponent_id',
+                                                    'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
+                                                    'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
+                                                    'unlock_card_ref_id_5', 'unlock_card_ref_id_6',
+                                                    'opponent_hero', 'opponent_hero_random',
+                                                    'opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
+                                                    'opponent_unlock_card_ref_id_3', 'opponent_unlock_card_ref_id_4',
+                                                    'opponent_unlock_card_ref_id_5', 'opponent_unlock_card_ref_id_6'
+                                                    ]]
 
     wungsub = ml_temp[(ml_temp['match_type'] == 1) &
                       ((ml_temp['end_reason'] == 2) | (ml_temp['end_reason'] == 6)) &
@@ -1090,14 +1091,15 @@ def job():
                       (ml_temp['event_time'] >= str(today - datetime.timedelta(days=3))) &
                       (ml_temp['event_time'] < str(today)) &
                       (ml_temp['opponent_unlock_card_ref_id_1'] != 0) &
-                      (ml_temp['win'] == 1)].loc[:, ['user_id', 'win', 'hero', 'hero_random',
+                      (ml_temp['win'] == 1)].loc[:, ['user_id', 'win', 'hero', 'hero_random', 'opponent_id',
                                                      'unlock_card_ref_id_1', 'unlock_card_ref_id_2',
                                                      'unlock_card_ref_id_3', 'unlock_card_ref_id_4',
                                                      'unlock_card_ref_id_5', 'unlock_card_ref_id_6',
+                                                     'opponent_hero', 'opponent_hero_random',
                                                      'opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
                                                      'opponent_unlock_card_ref_id_3', 'opponent_unlock_card_ref_id_4',
-                                                     'opponent_unlock_card_ref_id_5', 'opponent_unlock_card_ref_id_6',
-                                                     'opponent_hero', 'opponent_hero_random']]
+                                                     'opponent_unlock_card_ref_id_5', 'opponent_unlock_card_ref_id_6'
+                                                     ]]
 
     work_list = [daeyun, wungsub]
     work_name = ['daeyun', 'wungsub']
@@ -1189,7 +1191,7 @@ def job():
     game_count = 0
     for x in card_dic_df[card_dic_df['tier'] == '0']['name']:
         game_count += pick_win.ix[x]['pick_count']
-
+        
     # 이메일 발송
     # !/usr/bin/env python3
 
