@@ -1191,7 +1191,18 @@ def job():
     game_count = 0
     for x in card_dic_df[card_dic_df['tier'] == '0']['name']:
         game_count += pick_win.ix[x]['pick_count']
-        
+
+    # 접속종료 원인 비율
+    end_temp = user_match_log_end[(user_match_log_end.event_time >= yester) &
+                                  (user_match_log_end.event_time < str(today))].loc[:,
+               ['user_id', 'match_id', 'end_reason']]
+
+    end_reason_ratio = end_temp.groupby(['end_reason', 'user_id'])['match_id'].size().sum(level=0) / \
+                       end_temp.groupby(['end_reason', 'user_id'])['match_id'].size().sum(level=0).sum()
+
+    end_ratio = round(end_reason_ratio.reset_index().set_index('end_reason').rename(columns={0: '발생비율'}), 4)
+
+
     # 이메일 발송
     # !/usr/bin/env python3
 
@@ -1254,6 +1265,8 @@ def job():
         4. (대윤님)직전 3일 동안의 카드 픽률 & 승률(랭크, User+AI)
 
         4. (웅섭님)직전 3일 동안의 카드 픽률 & 승률(랭크, User, Users CP 600이상) -> 게임수: ''' + game_count + ''' 
+        
+        5. End_reason Ratio -> '''+', '.join(str(end_ratio).replace("           "," : ").split('\n')[2:])+'''
 
         * 자세한 내용은 '원노트 기획 -> 박희준 -> 데이터 요청사항' 확인 요망
         https://onedrive.live.com/edit.aspx/%eb%ac%b8%ec%84%9c/%ec%ba%90%ec%8a%ac%eb%b2%88?cid=3d7703c304c2aa03&id=documents
