@@ -1202,6 +1202,7 @@ def job():
 
     end_ratio = round(end_reason_ratio.reset_index().set_index('end_reason').rename(columns={0: '발생비율'}), 4)
 
+    end_retension = ', '.join(str(end_ratio).replace("           ", " : ").split('\n')[2:])
 
     # 이메일 발송
     # !/usr/bin/env python3
@@ -1266,7 +1267,7 @@ def job():
 
         4. (웅섭님)직전 3일 동안의 카드 픽률 & 승률(랭크, User, Users CP 600이상) -> 게임수: ''' + game_count + ''' 
         
-        5. End_reason Ratio -> '''+', '.join(str(end_ratio).replace("           "," : ").split('\n')[2:])+'''
+        5. End_reason Ratio -> '''+end_retension+'''
 
         * 자세한 내용은 '원노트 기획 -> 박희준 -> 데이터 요청사항' 확인 요망
         https://onedrive.live.com/edit.aspx/%eb%ac%b8%ec%84%9c/%ec%ba%90%ec%8a%ac%eb%b2%88?cid=3d7703c304c2aa03&id=documents

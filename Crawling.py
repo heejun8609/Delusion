@@ -71,8 +71,12 @@ def job():
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
 
-    custom_date3 = datetime.date.today() - datetime.timedelta(days=3)
     custom_date2 = datetime.date.today() - datetime.timedelta(days=2)
+    custom_date3 = datetime.date.today() - datetime.timedelta(days=3)
+    custom_date4 = datetime.date.today() - datetime.timedelta(days=4)
+    custom_date5 = datetime.date.today() - datetime.timedelta(days=5)
+    custom_date6 = datetime.date.today() - datetime.timedelta(days=6)
+    custom_date7 = datetime.date.today() - datetime.timedelta(days=7)
 
     temp_date = []
     temp_auth = []
@@ -102,7 +106,7 @@ def job():
         # if 'Junnel Arabiana' in temp_auth:
         #     break
 
-        if str(custom_date2) in temp_date or str(custom_date3) in temp_date:
+        if [str(custom_date2), str(custom_date3), str(custom_date4), str(custom_date5), str(custom_date6), str(custom_date7)] in temp_date:
             break
 
     auth = []
