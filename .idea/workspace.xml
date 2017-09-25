@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0f066d4-7060-49f3-8156-c29f5483e9c8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crawling.py" afterPath="$PROJECT_DIR$/Crawling.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Daily Statistics_CBT.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Daily Statistics.py" afterPath="$PROJECT_DIR$/Daily Statistics.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,14 +45,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Daily Statistics.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Daily Statistics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Daily Statistics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="1269" column="48" lean-forward="false" selection-start-line="1269" selection-start-column="48" selection-end-line="1269" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-24809">
+              <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Daily Statistics_CBT.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Daily Statistics_CBT.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="613">
+              <caret line="1002" column="73" lean-forward="false" selection-start-line="1002" selection-start-column="73" selection-end-line="1002" selection-end-column="73" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,7 +68,7 @@
       <file leaf-file-name="Crawling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Crawling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
+            <state relative-caret-position="1786">
               <caret line="108" column="123" lean-forward="false" selection-start-line="108" selection-start-column="123" selection-end-line="108" selection-end-column="123" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
@@ -95,16 +104,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1330">
               <caret line="70" column="60" lean-forward="false" selection-start-line="70" selection-start-column="60" selection-end-line="70" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="word_table.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/word_table.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
-              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="73" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -155,8 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>7d</find>
-      <find>value</find>
       <find>attrs</find>
       <find>search</find>
       <find>si</find>
@@ -185,6 +182,8 @@
       <find>shut</find>
       <find>stone</find>
       <find>row['Total']</find>
+      <find>DAY3</find>
+      <find>3DAY</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -223,6 +222,7 @@
         <option value="$PROJECT_DIR$/templates/issue_trend.html" />
         <option value="$PROJECT_DIR$/Crawling.py" />
         <option value="$PROJECT_DIR$/Daily Statistics.py" />
+        <option value="$PROJECT_DIR$/Daily Statistics_CBT.py" />
       </list>
     </option>
   </component>
@@ -240,7 +240,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1924" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -261,6 +261,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -317,8 +319,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,13 +329,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\PHJ\PycharmProjects\Delusion\viz\static\img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\PHJ\PycharmProjects\Delusion" />
       <recent name="C:\Users\PHJ\PycharmProjects\Delusion\viz\static\img" />
       <recent name="C:\Users\PHJ\PycharmProjects\Delusion\viz\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PHJ\djangogirls\Delusion" />
+      <recent name="C:\Users\PHJ\PycharmProjects\Delusion\viz\static\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -522,10 +523,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.119791664" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11949685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40952381" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910052" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -567,7 +568,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/django_tables2/tables.py" />
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/django/urls/resolvers.py" />
     <entry file="file://$PROJECT_DIR$/templates/search_result.html" />
     <entry file="file://$PROJECT_DIR$/viz/migrations/__init__.py" />
@@ -662,7 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="73" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -765,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="73" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -841,7 +839,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Crawling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
+        <state relative-caret-position="1786">
           <caret line="108" column="123" lean-forward="false" selection-start-line="108" selection-start-column="123" selection-end-line="108" selection-end-column="123" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
@@ -853,11 +851,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Daily Statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="1269" column="48" lean-forward="false" selection-start-line="1269" selection-start-column="48" selection-end-line="1269" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-24809">
+          <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Daily Statistics_CBT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="1002" column="73" lean-forward="false" selection-start-line="1002" selection-start-column="73" selection-end-line="1002" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>

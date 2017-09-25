@@ -852,6 +852,8 @@ def job():
 
     match_all = match_succ.append(match_try)
     match_all = match_all.sort_values(['user_id', 'event_time'])
+    match_all.reset_index(inplace=True)
+    match_all.drop('index', axis=1, inplace=True)
 
     u_list = []
     cp = ''
@@ -1022,7 +1024,7 @@ def job():
                                            'opponent_unlock_card_ref_id_1', 'opponent_unlock_card_ref_id_2',
                                            'opponent_unlock_card_ref_id_3',
                                            'opponent_unlock_card_ref_id_4', 'opponent_unlock_card_ref_id_5',
-                                           'opponent_unlock_card_ref_id_6', ]]
+                                           'opponent_unlock_card_ref_id_6']]
     match_begin = user_match_log_begin.loc[:,
                   ['user_id', 'match_id', 'opponent_id', 'castle_level', 'match_type', 'point',
                    'opponent_point', 'hero', 'hero_random', 'opponent_hero', 'opponent_hero_random']]
@@ -1032,10 +1034,12 @@ def job():
     영웅/레온/0/영웅/1002
     영웅/에일라/0/영웅/1003
     영웅/그루보/0/영웅/1004
+    영웅/메르햄/0/영웅/1001
     건물/궁수탑/1/일반/10
     건물/포탑/1/일반/11
     건물/투석기/2/일반/20
     건물/발리스타/2/일반/21
+    건물/대공포/2/일반/22
     건물/비전탑/3/희귀/30
     유닛/고블린/1/일반/100
     유닛/바이킹/1/일반/101
@@ -1043,6 +1047,7 @@ def job():
     유닛/냉기술사/2/전설/103
     유닛/폭탄쥐/1/고급/104
     유닛/마법고양이/1/고급/106
+    유닛/오우거/2/일반/201
     유닛/임프/2/일반/200
     유닛/마법사/2/희귀/202
     유닛/망치/2/고급/203
@@ -1053,13 +1058,15 @@ def job():
     유닛/드래곤/3/희귀/302
     유닛/드레이크/3/희귀/303
     유닛/미노타우로스/3/희귀/304
-    유닛/미니골렘/3/희귀/305
+    유닛/전술비행선/3/희귀/307
+    유닛/골렘/3/희귀/301
     유닛/발키리/2/전설/306
     스펠/폭탄/1/일반/400
     스펠/불기둥/1/고급/401
     스펠/암석/2/희귀/402
     스펠/맹독/2/고급/403
-    스펠/통찰의눈/1/고급/407'''
+    스펠/통찰의눈/1/고급/407
+    스펠/악마의피/2/고급/404'''
 
     card_dic = {}
     for x in card_str.splitlines():
@@ -1088,7 +1095,7 @@ def job():
                       (ml_temp['opponent_id'] != 0) &
                       (ml_temp['point'] >= 600) &
                       (ml_temp['opponent_point'] >= 600) &
-                      (ml_temp['event_time'] >= str(today - datetime.timedelta(days=3))) &
+                      (ml_temp['event_time'] >= str(today - datetime.timedelta(days=7))) &
                       (ml_temp['event_time'] < str(today)) &
                       (ml_temp['opponent_unlock_card_ref_id_1'] != 0) &
                       (ml_temp['win'] == 1)].loc[:, ['user_id', 'win', 'hero', 'hero_random', 'opponent_id',
@@ -1204,6 +1211,15 @@ def job():
 
     end_retension = ', '.join(str(end_ratio).replace("           ", " : ").split('\n')[2:])
 
+    user_end_reason_3 = end_temp.groupby(['end_reason', 'user_id'])['match_id'].size()[3] / \
+                        end_temp.groupby(['end_reason', 'user_id'])['match_id'].size()[3].sum()
+
+    over_user_id = 'Nothing'
+    try:
+        over_user_id = ' / '.join(str(user_end_reason_3[user_end_reason_3 > end_reason_ratio[3]]).split('\n')[1:-1])
+    except:
+        pass
+
     # 이메일 발송
     # !/usr/bin/env python3
 
@@ -1235,7 +1251,7 @@ def job():
     text = "Hi!"
     part1 = MIMEText(text, 'plain')
     outer = MIMEMultipart()
-    outer['Subject'] = str(today) + ' Daily Statistics'
+    outer['Subject'] = str(today) + ' Daily Statistics(Main)'
     #     outer['To'] = 'vmurmurv@naver.com'
     outer['To'] = '곽웅섭 <palmblad@delusionstudio.net>,\
                         조대윤 <alsum@delusionstudio.net>, \
@@ -1257,21 +1273,21 @@ def job():
                      './4. card_pick_win/4) ' + yester + '_card_pic_win_ratio_wungsub.xlsx']
 
     text = '''
-        1. 유저 League & Castle Lv 분포(전체, 최근 3일)
+    1. 유저 League & Castle Lv 분포(전체, 최근 3일)
 
-        2. 전날 0 ~ 24시 동안의 랭크전 평균 매칭 대기 시간 & 평균 점수 차이
+    2. 전날 0 ~ 24시 동안의 랭크전 평균 매칭 대기 시간 & 평균 점수 차이
 
-        3. 전날 0 ~ 24시 동안의 매칭 비율
+    3. 전날 0 ~ 24시 동안의 매칭 비율
 
-        4. (대윤님)직전 3일 동안의 카드 픽률 & 승률(랭크, User+AI)
+    4. (대윤님)직전 3일 동안의 카드 픽률 & 승률(랭크, User+AI)
 
-        4. (웅섭님)직전 3일 동안의 카드 픽률 & 승률(랭크, User, Users CP 600이상) -> 게임수: ''' + game_count + ''' 
-        
-        5. End_reason Ratio -> '''+end_retension+'''
+    4. (웅섭님)직전 7일 동안의 카드 픽률 & 승률(랭크, User, Users CP 600이상) -> 게임수: ''' + str(int(len(wungsub))) + ''' 
 
-        * 자세한 내용은 '원노트 기획 -> 박희준 -> 데이터 요청사항' 확인 요망
-        https://onedrive.live.com/edit.aspx/%eb%ac%b8%ec%84%9c/%ec%ba%90%ec%8a%ac%eb%b2%88?cid=3d7703c304c2aa03&id=documents
-        '''
+    5. End_reason Ratio -> ''' + end_retension + ''', 접속종료 평균 초과 user_id -> ''' + over_user_id + '''
+
+    * 자세한 내용은 '원노트 기획 -> 박희준 -> 데이터 요청사항' 확인 요망
+    https://onedrive.live.com/edit.aspx/%eb%ac%b8%ec%84%9c/%ec%ba%90%ec%8a%ac%eb%b2%88?cid=3d7703c304c2aa03&id=documents
+    '''
 
     part = MIMEText(text, 'plain')
     outer.attach(part)
@@ -1332,7 +1348,7 @@ class Scheduler():
     # interval의 경우, 설정된 시간을 간격으로 일정하게 실행실행시킬 수 있습니다.
     def scheduler(self):
         #         trigger = IntervalTrigger(hours=1)
-        trigger = CronTrigger(day_of_week='mon-sun', hour='8', minute='20')
+        trigger = CronTrigger(day_of_week='mon-sun', hour='8', minute='30')
         self.sched.add_job(job, trigger)
         self.sched.start()
 
